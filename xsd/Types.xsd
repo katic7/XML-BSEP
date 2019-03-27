@@ -8,10 +8,16 @@
         <xs:restriction base="xs:long"/>
     </xs:simpleType>
     <xs:simpleType name="name">
-        <xs:restriction base="xs:string"/>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+            <xs:minLength value="2"/>
+        </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="surname">
-        <xs:restriction base="xs:string"/>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="email">
         <xs:restriction base="xs:string">
@@ -36,25 +42,98 @@
         <xs:sequence>
             <xs:element name="longitude" type="xs:double"/>
             <xs:element name="latitude" type="xs:double"/>
-            <xs:element name="town" type="xs:string"/>
-            <xs:element name="street" type="xs:string"/>
-            <xs:element name="street_number" type="xs:integer"/>
-            <xs:element name="postal_code" type="xs:integer"/>
+            <xs:element name="state">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="64"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="town">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="128"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="street">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="128"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="street_number">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="postal_code" type="xs:positiveInteger"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="telephone">
-        <xs:restriction base="xs:integer"/>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="card_number">
-        <xs:restriction base="xs:string"/>
+        <xs:restriction base="xs:string">
+            <xs:length value="16"/>
+        </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="exp_date">
         <xs:restriction base="xs:date"/>
     </xs:simpleType>
     <xs:simpleType name="csv">
-        <xs:restriction base="xs:integer">
-            <xs:maxExclusive value="3"/>
-            <xs:minExclusive value="3"/>
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="3"/>
         </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="category">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="description">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="free_cancelation">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="days_to_cancel">
+        <xs:restriction base="xs:positiveInteger"/>
+    </xs:simpleType>
+    <xs:simpleType name="price">
+        <xs:restriction base="xs:double"/>
+    </xs:simpleType>
+    <xs:simpleType name="included">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="number_of_beds">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="balcony">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="images">
+        <xs:restriction base="xs:base64Binary"/>
+    </xs:simpleType>
+    <xs:simpleType name="rating">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="completed">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="active">
+        <xs:restriction base="xs:boolean"/>
     </xs:simpleType>
 </xs:schema>
