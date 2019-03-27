@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1" targetNamespace="www.megatrevel.com/tim4"
+    xmlns="www.megatrevel.com/tim4">
+
+    <xs:simpleType name="id">
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+    <xs:simpleType name="name">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="surname">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="verified">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="dateOfBirth">
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+    <xs:simpleType name="state">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="longitude" type="xs:double"/>
+            <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="town" type="xs:string"/>
+            <xs:element name="street" type="xs:string"/>
+            <xs:element name="street_number" type="xs:integer"/>
+            <xs:element name="postal_code" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="telephone">
+        <xs:restriction base="xs:integer"/>
+    </xs:simpleType>
+    <xs:simpleType name="card_number">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="exp_date">
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+    <xs:simpleType name="csv">
+        <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="3"/>
+            <xs:minExclusive value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
