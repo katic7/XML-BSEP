@@ -78,12 +78,12 @@
             <xs:maxLength value="20"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="card_number">
+    <xs:simpleType name="cardNumber">
         <xs:restriction base="xs:string">
             <xs:length value="16"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="exp_date">
+    <xs:simpleType name="expDate">
         <xs:restriction base="xs:date"/>
     </xs:simpleType>
     <xs:simpleType name="csv">
@@ -100,19 +100,21 @@
     <xs:simpleType name="description">
         <xs:restriction base="xs:string"/>
     </xs:simpleType>
-    <xs:simpleType name="free_cancelation">
+    <xs:simpleType name="freeCancelation">
         <xs:restriction base="xs:boolean"/>
     </xs:simpleType>
-    <xs:simpleType name="days_to_cancel">
+    <xs:simpleType name="daysToCancel">
         <xs:restriction base="xs:positiveInteger"/>
     </xs:simpleType>
     <xs:simpleType name="price">
-        <xs:restriction base="xs:double"/>
+        <xs:restriction base="xs:double">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="included">
         <xs:restriction base="xs:boolean"/>
     </xs:simpleType>
-    <xs:simpleType name="number_of_beds">
+    <xs:simpleType name="numberOfBeds">
         <xs:restriction base="xs:integer">
             <xs:minInclusive value="1"/>
             <xs:maxInclusive value="10"/>

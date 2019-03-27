@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/accunit"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="www.megatravel.com/tim4/accunit" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4">
+
+    <xs:import namespace="www.megatrevel.com/tim4"
+        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/Types.xsd"/>
+    <xs:complexType name="AccommodationUnit">
+        <xs:sequence>
+            <xs:element name="numberOfBeds" type="ts:numberOfBeds"/>
+            <xs:element name="balcony" type="ts:balcony"/>
+            <xs:element name="price" type="ts:price"/>
+            <xs:element name="description" type="ts:description"/>
+            <xs:element name="rating" type="ts:rating"/>
+            <xs:element name="newElement" type="ts:images"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

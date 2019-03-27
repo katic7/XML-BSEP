@@ -2,9 +2,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel/tim4/user"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="www.megatravel/tim4/user" elementFormDefault="qualified" vc:minVersion="1.0"
-    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4">
+    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4"
+    xmlns:au="www.megatravel.com/tim4/accunit">
 
-    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="XML-BSEP/xsd/Types.xsd"/>
+    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/accunit"
+        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/AccommodationUnit.xsd"/>
     <xs:complexType name="User" abstract="true">
         <xs:sequence>
             <xs:element name="Id" type="ts:id"/>
@@ -25,11 +28,7 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="creditCards">
-                <xs:simpleType>
-                    <xs:list itemType="ts:id"/>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="creditCards" maxOccurs="unbounded" minOccurs="0" type="CreditCard"> </xs:element>
             <xs:element name="telephone" type="ts:telephone"/>
         </xs:sequence>
     </xs:complexType>
@@ -45,7 +44,10 @@
             <xs:complexContent>
                 <xs:extension base="User">
                     <xs:sequence>
-                        <xs:element name="AccomodationList"/>
+                        <xs:element name="accomodationList" maxOccurs="unbounded"
+                            type="au:AccommodationUnit" minOccurs="0"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="commentsList"
+                            type="Comment"/>
                     </xs:sequence>
                 </xs:extension>
             </xs:complexContent>
@@ -54,7 +56,12 @@
     <xs:element name="EndUser">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="User"/>
+                <xs:extension base="User">
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="commentsList"
+                            type="Comment"/>
+                    </xs:sequence>
+                </xs:extension>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
@@ -62,10 +69,24 @@
         <xs:sequence>
             <xs:element name="id" type="ts:id"/>
             <xs:element name="csv" type="ts:csv"/>
-            <xs:element name="expDate" type="ts:exp_date"/>
-            <xs:element name="cardNo" type="ts:card_number"/>
+            <xs:element name="expDate" type="ts:expDate"/>
+            <xs:element name="cardNo" type="ts:cardNumber"/>
             <xs:element name="surname" type="ts:surname"/>
             <xs:element name="name" type="ts:name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Comment">
+        <xs:sequence>
+            <xs:element name="userID" type="ts:id"/>
+            <xs:element name="accommodationUnitID" type="ts:id"/>
+            <xs:element name="text">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="256"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="commentDate" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

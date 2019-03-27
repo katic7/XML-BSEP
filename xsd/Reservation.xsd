@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/res"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="www.megatravel.com/tim4/res" elementFormDefault="qualified" vc:minVersion="1.0"
+    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4">
+
+    <xs:import namespace="www.megatrevel.com/tim4"
+        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/Types.xsd"/>
+    <xs:complexType name="Reservation">
+        <xs:sequence>
+            <xs:element name="userID" type="ts:id"/>
+            <xs:element name="reservationDate" type="xs:date"/>
+            <xs:element name="price" type="ts:price"/>
+            <xs:element name="beginDate" type="xs:date"/>
+            <xs:element name="endDate" type="xs:date"/>
+            <xs:element name="completed" type="xs:boolean"/>
+            <xs:element name="active" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
