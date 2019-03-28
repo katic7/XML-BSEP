@@ -4,8 +4,7 @@
     targetNamespace="www.megatravel.com/tim4/addserv" elementFormDefault="qualified"
     vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4">
 
-    <xs:import namespace="www.megatrevel.com/tim4"
-        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/Types.xsd"/>
+    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
     <xs:complexType name="AdditionalService">
         <xs:sequence>
             <xs:element name="name" type="ts:name"/>

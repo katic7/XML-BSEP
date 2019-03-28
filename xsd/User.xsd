@@ -3,11 +3,11 @@
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="www.megatravel/tim4/user" elementFormDefault="qualified" vc:minVersion="1.0"
     vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4"
-    xmlns:au="www.megatravel.com/tim4/accunit">
+    xmlns:au="www.megatravel.com/tim4/accunit" xmlns:rs="www.megatravel.com/tim4/res">
 
     <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
-    <xs:import namespace="www.megatravel.com/tim4/accunit"
-        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/AccommodationUnit.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/res" schemaLocation="Reservation.xsd"/>
     <xs:complexType name="User" abstract="true">
         <xs:sequence>
             <xs:element name="Id" type="ts:id"/>
@@ -60,6 +60,8 @@
                     <xs:sequence>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="commentsList"
                             type="Comment"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="reservationsList"
+                            type="rs:Reservation"/>
                     </xs:sequence>
                 </xs:extension>
             </xs:complexContent>

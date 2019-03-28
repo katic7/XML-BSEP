@@ -4,16 +4,22 @@
     targetNamespace="www.megatravel.com/tim4/accunit" elementFormDefault="qualified"
     vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4">
 
-    <xs:import namespace="www.megatrevel.com/tim4"
-        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/Types.xsd"/>
+    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
     <xs:complexType name="AccommodationUnit">
         <xs:sequence>
             <xs:element name="numberOfBeds" type="ts:numberOfBeds"/>
             <xs:element name="balcony" type="ts:balcony"/>
-            <xs:element name="price" type="ts:price"/>
+            <xs:element name="price" type="AccUnitPrice"/>
             <xs:element name="description" type="ts:description"/>
             <xs:element name="rating" type="ts:rating"/>
-            <xs:element name="newElement" type="ts:images"/>
+            <xs:element name="image" type="ts:images" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccUnitPrice">
+        <xs:sequence>
+            <xs:element name="startDate" type="xs:dateTime"/>
+            <xs:element name="endDate" type="xs:dateTime"/>
+            <xs:element name="price" type="xs:double"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
