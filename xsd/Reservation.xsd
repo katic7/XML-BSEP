@@ -2,14 +2,16 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/res"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="www.megatravel.com/tim4/res" elementFormDefault="qualified" vc:minVersion="1.0"
-    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4">
+    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4"
+    xmlns:au="www.megatravel.com/tim4/accunit">
 
-    <xs:import namespace="www.megatrevel.com/tim4"
-        schemaLocation="file:/C:/Users/Topolic/Desktop/XML-BSEP/xsd/Types.xsd"/>
+    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
     <xs:complexType name="Reservation">
         <xs:sequence>
-            <xs:element name="userID" type="ts:id"/>
+            <xs:element name="userID" type="ts:id" nillable="true"/>
             <xs:element name="reservationDate" type="xs:date"/>
+            <xs:element name="accUnit" type="au:AccommodationUnit"/>
             <xs:element name="price" type="ts:price"/>
             <xs:element name="beginDate" type="xs:date"/>
             <xs:element name="endDate" type="xs:date"/>

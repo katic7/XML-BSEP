@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/requests"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="www.megatravel.com/tim4/requests" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:rs="www.megatravel.com/tim4/res">
+    <xs:import namespace="www.megatravel.com/tim4/res" schemaLocation="Reservation.xsd"/>
+    
+    
+    <xs:element name="ReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" nillable="false"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="rs:Reservation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

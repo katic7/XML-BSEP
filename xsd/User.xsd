@@ -48,6 +48,13 @@
                             type="au:AccommodationUnit" minOccurs="0"/>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="commentsList"
                             type="Comment"/>
+                        <xs:element name="pmbr">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:totalDigits value="8"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
                     </xs:sequence>
                 </xs:extension>
             </xs:complexContent>

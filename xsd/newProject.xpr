@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="17.1">
+    <meta>
+        <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="newProject.xpr">
+        <file name="Accommodation.xsd"/>
+        <file name="AccommodationUnit.xsd"/>
+        <file name="AdditionalService.xsd"/>
+        <file name="Message.xsd"/>
+        <file name="newProject.xpr"/>
+        <file name="Reservation.xsd"/>
+        <file name="Types.xsd"/>
+        <file name="User.xsd"/>
+    </projectTree>
+</project>
