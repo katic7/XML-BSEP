@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:au="www.megatravel.com/tim4/accunit"
+    xmlns:ac="www.megatravel.com/tim4/acc" xmlns:ms="www.megatrael.com/tim4/message"
+    xmlns:rs="www.megatravel.com/tim4/res" xmlns:ts="www.megatrevel.com/tim4">
+    <xs:import namespace="www.megatrael.com/tim4/message" schemaLocation="Message.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/acc" schemaLocation="Accommodation.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/res" schemaLocation="Reservation.xsd"/>
+    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
+    <xs:element name="AccomodationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="acc" type="ac:AccommodationObject"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AccomodationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="acc" type="ac:AccommodationObject"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AccomodationUnitRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accu" type="au:AccommodationUnit"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AccomodationUnitResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accu" type="au:AccommodationUnit"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservationStatus" type="ts:active"/>
+                <xs:element name="reservationID" type="ts:id"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="res" type="rs:Reservation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NewMessageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="ms:Message"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="newMessageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="ms:Message"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
