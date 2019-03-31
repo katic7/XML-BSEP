@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:us="www.megatravel/tim4/user"
-    targetNamespace="www.megatrael.com/tim4/message" xmlns="www.megatrael.com/tim4/message">
+    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:us="www.megatravel.com/tim4/user"
+    targetNamespace="www.megatravel.com/tim4/message" xmlns="www.megatravel.com/tim4/message">
 
-    <xs:import namespace="www.megatravel/tim4/user" schemaLocation="User.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/user" schemaLocation="User.xsd"/>
     <xs:complexType name="Message">
         <xs:sequence>
             <xs:element name="sender" type="us:User"/>

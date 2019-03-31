@@ -2,10 +2,10 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/acc"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="www.megatravel.com/tim4/acc" elementFormDefault="qualified" vc:minVersion="1.0"
-    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4"
+    vc:maxVersion="1.1" xmlns:ts="www.megatravel.com/tim4"
     xmlns:au="www.megatravel.com/tim4/accunit">
 
-    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4" schemaLocation="Types.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
     <xs:complexType name="AccommodationObject">
         <xs:sequence>

@@ -2,12 +2,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
     vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:au="www.megatravel.com/tim4/accunit"
-    xmlns:ac="www.megatravel.com/tim4/acc" xmlns:ms="www.megatrael.com/tim4/message"
-    xmlns:rs="www.megatravel.com/tim4/res" xmlns:ts="www.megatrevel.com/tim4">
-    <xs:import namespace="www.megatrael.com/tim4/message" schemaLocation="Message.xsd"/>
+    xmlns:ac="www.megatravel.com/tim4/acc" xmlns:ms="www.megatravel.com/tim4/message"
+    xmlns:rs="www.megatravel.com/tim4/res" xmlns:ts="www.megatravel.com/tim4">
+    <xs:import namespace="www.megatravel.com/tim4/message" schemaLocation="Message.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/acc" schemaLocation="Accommodation.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/res" schemaLocation="Reservation.xsd"/>
-    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4" schemaLocation="Types.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
     <xs:element name="AccomodationRequest">
         <xs:complexType>

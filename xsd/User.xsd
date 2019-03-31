@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel/tim4/user"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/user"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-    targetNamespace="www.megatravel/tim4/user" elementFormDefault="qualified" vc:minVersion="1.0"
-    vc:maxVersion="1.1" xmlns:ts="www.megatrevel.com/tim4"
-    xmlns:au="www.megatravel.com/tim4/accunit" xmlns:rs="www.megatravel.com/tim4/res">
+    targetNamespace="www.megatravel.com/tim4/user" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:ts="www.megatravel.com/tim4"
+    xmlns:au="www.megatravel.com/tim4/accunit" xmlns:rs="www.megatravel.com/tim4/res"
+    xmlns:ao="www.megatravel.com/tim4/acc">
 
-    <xs:import namespace="www.megatrevel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4" schemaLocation="Types.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/res" schemaLocation="Reservation.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/acc" schemaLocation="Accommodation.xsd"/>
     <xs:complexType name="User" abstract="true">
         <xs:sequence>
             <xs:element name="Id" type="ts:id"/>
@@ -35,7 +37,17 @@
     <xs:element name="Administrator">
         <xs:complexType>
             <xs:complexContent>
-                <xs:extension base="User"/>
+                <xs:extension base="User">
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="postedComments"
+                            type="Comment"/>
+                        <xs:element name="accommodations" type="ao:AccommodationObject"/>
+                        <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0"
+                            name="endUsers" type="User"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="agentUsers"
+                            type="User"/>
+                    </xs:sequence>
+                </xs:extension>
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
