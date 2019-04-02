@@ -1,0 +1,12 @@
+server:
+  port: 8083  
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+ 
