@@ -6,8 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.ftn.reservationservice.model.Address;
 
 @Repository
-public interface ReservationServiceRepository extends JpaRepository<Address, Long> {
-	
-	
-
+public interface AddressRepository extends JpaRepository<Address, Long> {
 }

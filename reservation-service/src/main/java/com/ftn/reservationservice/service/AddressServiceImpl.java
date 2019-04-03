@@ -5,19 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ftn.reservationservice.model.Reservation;
+import com.ftn.reservationservice.model.Address;
 import com.ftn.reservationservice.repository.AddressRepository;
 
 @Service
-public class ReservationServiceServiceImpl implements ReservationServiceService{
-
+public class AddressServiceImpl implements AddressService {
+	
 	@Autowired
-	public AddressRepository reservationServiceRepository;
+	AddressRepository addressRepository;
 
 	@Override
-	public List<Reservation> getAll() {		
-		return null;
+	public List<Address> getAllAdresses() {
+		return addressRepository.findAll();
 	}
 
-	
 }
