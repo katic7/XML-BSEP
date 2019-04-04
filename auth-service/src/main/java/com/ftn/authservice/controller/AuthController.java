@@ -1,5 +1,6 @@
 package com.ftn.authservice.controller;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,6 +47,11 @@ public class AuthController {
 
     @Autowired
     JwtProvider jwtProvider;
+    
+    @RequestMapping("/secured")
+	public String secured(){
+		return "Pozdrav " + new Date();
+	}
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {

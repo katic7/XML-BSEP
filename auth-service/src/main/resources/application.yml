@@ -1,5 +1,10 @@
 server:
-  port: 8085  
+  port: 8085
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore.jks
+    key-store-password: password
+    key-alias: tomcat
 spring:
   application:
     name: auth-service
@@ -20,4 +25,7 @@ eureka:
 auth:
   app:
     jwtSecret: jwtAuthSecretKey
-    jwtExpiration: 86400
+    jwtExpiration: 86400  
+security:
+  require-ssl: true
+  
