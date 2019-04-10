@@ -26,6 +26,5 @@ auth:
   app:
     jwtSecret: jwtAuthSecretKey
     jwtExpiration: 86400  
-security:
-  require-ssl: true
+
   
