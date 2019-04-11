@@ -21,4 +21,9 @@ public class TestController {
 		return "Protected by USER";
 	}
 	
+	@GetMapping("/test")
+	public String test3() {
+		return "From Auth service!";
+	}
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.ftn.reservationservice.model.Address;
 import com.ftn.reservationservice.service.AddressService;
@@ -26,6 +27,12 @@ public class AddressController {
 		return new ResponseEntity<List<Address>>(addresses, HttpStatus.OK);
 		}
 		return null;
+	}
+	
+	@GetMapping("/test")
+	public String test() {
+		RestTemplate rt = new RestTemplate();
+		return rt.getForObject("https://localhost:8443/api/test/test", String.class);
 	}
 
 }
