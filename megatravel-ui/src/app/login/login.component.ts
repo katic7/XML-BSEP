@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
+  isEndpointOK = false;
   errorMessage = '';
+  endpointError = "You are not authorized to access this resource.";
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
  
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
         console.table(data);
+        
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.authorities);
@@ -47,21 +50,22 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getAuthorities();
         this.httpClient.get("https://localhost:8085/api/test/user").subscribe(data=>{
           console.log(data);
+          this.isEndpointOK = true;
+        }, error => {
+          this.isEndpointOK = false;
         });
         this.httpClient.get("https://localhost:8085/api/test/admin").subscribe(data=>{
           console.log(data);
+          this.isEndpointOK = true;
+        }, error => {
+          this.isEndpointOK = false;
         })
-        //this.reloadPage();
       },
       error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
+        this.errorMessage = error.error.errorMessage;
         this.isLoginFailed = true;
       }
     );
   }
- 
-  reloadPage() {
-    window.location.reload();
-  }
+
 }
