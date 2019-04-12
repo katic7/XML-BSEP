@@ -2,7 +2,7 @@ server:
   port: 8443
   ssl:
     key-store-type: JKS
-    key-store: classpath:serverkeystore.jks
+    key-store: classpath:server.jks
     key-store-password: password
     key-alias: localhost
 spring:

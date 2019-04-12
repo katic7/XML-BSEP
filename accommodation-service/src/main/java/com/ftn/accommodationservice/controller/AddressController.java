@@ -1,13 +1,6 @@
 package com.ftn.accommodationservice.controller;
 
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.client.RestTemplate;
 
 import com.ftn.accommodationservice.model.Address;
 import com.ftn.accommodationservice.service.AddressService;
@@ -45,12 +38,16 @@ public class AddressController {
 		return null;
 	}
 	
-	@GetMapping("test")
-    public String test() throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException, KeyStoreException, KeyManagementException, UnrecoverableKeyException {
-       
-        
-        return "---";
-    }
+	@GetMapping("/test")
+	public String test() {
+		RestTemplate rt = new RestTemplate();
+		return rt.getForObject("https://localhost:8443/api/test/test", String.class);
+	}
+	
+	@GetMapping("/test2")
+	public String test2() {
+		return "test";
+	}
 
 
 }

@@ -34,5 +34,10 @@ public class AddressController {
 		RestTemplate rt = new RestTemplate();
 		return rt.getForObject("https://localhost:8443/api/test/test", String.class);
 	}
+	
+	@GetMapping("/test2")
+	public String test2() {
+		return "test";
+	}
 
 }
