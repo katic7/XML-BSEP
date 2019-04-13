@@ -73,7 +73,7 @@ public class AccommodationObject {
     protected long id;
     @XmlElement(required = true)
     protected String name;
-    @XmlElement(required = true)
+    @XmlElement(required = true)    
     protected Address address;
     @XmlElement(required = true)
     protected String description;
@@ -82,7 +82,7 @@ public class AccommodationObject {
     protected boolean freeCancelation;
     @XmlElement(required = true)
     protected BigInteger daysToCancel;
-    @XmlElement(required = true)
+    @XmlElement(required = true)    
     protected Type type;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AccommodationUnit> accommodationsUnitList;
@@ -322,5 +322,13 @@ public class AccommodationObject {
         }
         return this.additionalServices;
     }
+
+	public void setAccommodationsUnitList(List<AccommodationUnit> accommodationsUnitList) {
+		this.accommodationsUnitList = accommodationsUnitList;
+	}
+
+	public void setAdditionalServices(List<AdditionalService> additionalServices) {
+		this.additionalServices = additionalServices;
+	}
 
 }

@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -69,6 +70,7 @@ public class AccommodationUnit {
     protected int numberOfBeds;
     protected boolean balcony;
     @XmlElement(required = true)
+    @OneToOne
     protected AccUnitPrice price;
     @XmlElement(required = true)
     protected String description;
@@ -77,7 +79,11 @@ public class AccommodationUnit {
     protected List<byte[]> image;
     @OneToMany(mappedBy = "accommodationUnit")
     protected List<AdditionalService> additionalServices;
-    protected AccommodationObject accommodationObject;
+    
+    private AccommodationObject accommodationObject;
+    
+    @OneToMany(mappedBy="accommodationUnit")
+    private List<Reservation> reservations;
 
     /**
      * Gets the value of the id property.
@@ -247,5 +253,29 @@ public class AccommodationUnit {
         }
         return this.additionalServices;
     }
+
+	public AccommodationObject getAccommodationObject() {
+		return accommodationObject;
+	}
+
+	public void setAccommodationObject(AccommodationObject accommodationObject) {
+		this.accommodationObject = accommodationObject;
+	}
+
+	public void setImage(List<byte[]> image) {
+		this.image = image;
+	}
+
+	public void setAdditionalServices(List<AdditionalService> additionalServices) {
+		this.additionalServices = additionalServices;
+	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
 
 }

@@ -9,6 +9,11 @@
 package com.ftn.accommodationservice.model;
 
 import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -75,8 +80,12 @@ import javax.xml.bind.annotation.XmlType;
     "streetNumber",
     "postalCode"
 })
+@Entity
 public class Address {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
     protected double longitude;
     protected double latitude;
     @XmlElement(required = true)
@@ -89,7 +98,7 @@ public class Address {
     protected BigInteger streetNumber;
     @XmlElement(name = "postal_code", required = true)
     @XmlSchemaType(name = "positiveInteger")
-    protected BigInteger postalCode;
+    protected BigInteger postalCode;    
 
     /**
      * Gets the value of the longitude property.
@@ -242,5 +251,13 @@ public class Address {
     public void setPostalCode(BigInteger value) {
         this.postalCode = value;
     }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}	
 
 }

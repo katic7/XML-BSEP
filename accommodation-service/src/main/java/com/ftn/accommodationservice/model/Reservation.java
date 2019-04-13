@@ -8,6 +8,10 @@
 
 package com.ftn.accommodationservice.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,16 +59,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "completed",
     "active"
 })
+@Entity
 public class Reservation {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
     protected long newElement;
     @XmlElement(required = true, type = Long.class, nillable = true)
-    protected Long userID;
+    protected User user;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar reservationDate;
     @XmlElement(required = true)
-    protected AccommodationUnit accUnit;
+    protected AccommodationUnit accommodationUnit;
     protected double price;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
@@ -99,8 +106,8 @@ public class Reservation {
      *     {@link Long }
      *     
      */
-    public Long getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
     /**
@@ -111,8 +118,8 @@ public class Reservation {
      *     {@link Long }
      *     
      */
-    public void setUserID(Long value) {
-        this.userID = value;
+    public void setUser(User value) {
+        this.user = value;
     }
 
     /**
@@ -137,31 +144,7 @@ public class Reservation {
      */
     public void setReservationDate(XMLGregorianCalendar value) {
         this.reservationDate = value;
-    }
-
-    /**
-     * Gets the value of the accUnit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AccommodationUnit }
-     *     
-     */
-    public AccommodationUnit getAccUnit() {
-        return accUnit;
-    }
-
-    /**
-     * Sets the value of the accUnit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AccommodationUnit }
-     *     
-     */
-    public void setAccUnit(AccommodationUnit value) {
-        this.accUnit = value;
-    }
+    }    
 
     /**
      * Gets the value of the price property.
@@ -258,5 +241,21 @@ public class Reservation {
     public void setActive(boolean value) {
         this.active = value;
     }
+
+	public AccommodationUnit getAccommodationUnit() {
+		return accommodationUnit;
+	}
+
+	public void setAccommodationUnit(AccommodationUnit accommodationUnit) {
+		this.accommodationUnit = accommodationUnit;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }

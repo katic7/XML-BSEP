@@ -8,6 +8,10 @@
 
 package com.ftn.accommodationservice.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -43,14 +47,17 @@ import javax.xml.bind.annotation.XmlType;
     "price",
     "included"
 })
+@Entity
 public class AdditionalService {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(required = true)
     protected String name;
     protected double price;
     protected boolean included;
     protected AccommodationObject accommodationObject;
+    private AccommodationUnit accommodationUnit;
     
     /**
      * Gets the value of the id property.
@@ -123,5 +130,21 @@ public class AdditionalService {
     public void setIncluded(boolean value) {
         this.included = value;
     }
+
+	public AccommodationObject getAccommodationObject() {
+		return accommodationObject;
+	}
+
+	public void setAccommodationObject(AccommodationObject accommodationObject) {
+		this.accommodationObject = accommodationObject;
+	}
+
+	public AccommodationUnit getAccommodationUnit() {
+		return accommodationUnit;
+	}
+
+	public void setAccommodationUnit(AccommodationUnit accommodationUnit) {
+		this.accommodationUnit = accommodationUnit;
+	}
 
 }

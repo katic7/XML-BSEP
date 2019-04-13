@@ -10,6 +10,12 @@ package com.ftn.accommodationservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -76,8 +82,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     Administrator.class,
     Agent.class
 })
+@Entity
 public abstract class User {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @XmlElement(name = "Id")
     protected long id;
     @XmlElement(required = true)
@@ -97,9 +106,12 @@ public abstract class User {
     protected Address address;
     @XmlElement(required = true)
     protected String role;
+    @OneToMany(mappedBy="user")
     protected List<CreditCard> creditCards;
     @XmlElement(required = true)
     protected String telephone;
+    @OneToMany(mappedBy="user")
+    private List<Reservation> reservations;
 
     /**
      * Gets the value of the id property.
@@ -377,5 +389,17 @@ public abstract class User {
     public void setTelephone(String value) {
         this.telephone = value;
     }
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	public void setCreditCards(List<CreditCard> creditCards) {
+		this.creditCards = creditCards;
+	}
 
 }

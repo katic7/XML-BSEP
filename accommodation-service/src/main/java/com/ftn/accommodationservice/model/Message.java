@@ -8,6 +8,10 @@
 
 package com.ftn.accommodationservice.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -45,8 +49,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "date",
     "receiver"
 })
+@Entity
 public class Message {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
     @XmlElement(required = true)
     protected User sender;
     @XmlElement(required = true)
@@ -152,5 +159,13 @@ public class Message {
     public void setReceiver(User value) {
         this.receiver = value;
     }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }

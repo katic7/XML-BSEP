@@ -9,6 +9,11 @@
 package com.ftn.accommodationservice.model;
 
 import java.math.BigInteger;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -49,8 +54,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "surname",
     "name"
 })
+@Entity
 public class CreditCard {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(required = true)
     protected BigInteger csv;
@@ -62,6 +69,7 @@ public class CreditCard {
     protected String surname;
     @XmlElement(required = true)
     protected String name;
+    private User user;
 
     /**
      * Gets the value of the id property.
@@ -198,5 +206,13 @@ public class CreditCard {
     public void setName(String value) {
         this.name = value;
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }

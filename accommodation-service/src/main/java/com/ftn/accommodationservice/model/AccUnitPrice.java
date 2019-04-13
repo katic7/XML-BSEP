@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -63,6 +64,8 @@ public class AccUnitPrice {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar endDate;
     protected double price;
+    @OneToOne(mappedBy = "price")
+    private AccommodationUnit accommodationUnit;
 
     /**
      * Gets the value of the id property.
@@ -143,5 +146,13 @@ public class AccUnitPrice {
     public void setPrice(double value) {
         this.price = value;
     }
+
+	public AccommodationUnit getAccommodationUnit() {
+		return accommodationUnit;
+	}
+
+	public void setAccommodationUnit(AccommodationUnit accommodationUnit) {
+		this.accommodationUnit = accommodationUnit;
+	}
 
 }
