@@ -9,6 +9,7 @@
     <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
     <xs:complexType name="Reservation">
         <xs:sequence>
+            <xs:element name="newElement" type="ts:id"/>
             <xs:element name="userID" type="ts:id" nillable="true"/>
             <xs:element name="reservationDate" type="xs:date"/>
             <xs:element name="accUnit" type="au:AccommodationUnit"/>

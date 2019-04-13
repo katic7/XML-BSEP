@@ -3,29 +3,37 @@
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="www.megatravel.com/tim4/acc" elementFormDefault="qualified" vc:minVersion="1.0"
     vc:maxVersion="1.1" xmlns:ts="www.megatravel.com/tim4"
-    xmlns:au="www.megatravel.com/tim4/accunit">
+    xmlns:au="www.megatravel.com/tim4/accunit" xmlns:as="www.megatravel.com/tim4/addserv">
 
     <xs:import namespace="www.megatravel.com/tim4" schemaLocation="Types.xsd"/>
     <xs:import namespace="www.megatravel.com/tim4/accunit" schemaLocation="AccommodationUnit.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/addserv" schemaLocation="AdditionalService.xsd"/>
     <xs:complexType name="AccommodationObject">
         <xs:sequence>
+            <xs:element name="id" type="ts:id"/>
             <xs:element name="name" type="ts:name"/>
             <xs:element name="address" type="ts:address"/>
-            <xs:element name="category" type="ts:category"/>
             <xs:element name="description" type="ts:description"/>
+            <xs:element name="category" type="Category"/>
             <xs:element name="freeCancelation" type="ts:freeCancelation"/>
             <xs:element name="daysToCancel" type="ts:daysToCancel"/>
-            <xs:element name="type">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="hotel"/>
-                        <xs:enumeration value="bed&amp;breakfast"/>
-                        <xs:enumeration value="appartment"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="type" type="Type"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="accommodationsUnitList"
                 type="au:AccommodationUnit"/>
+            <xs:element name="additionalServices" maxOccurs="unbounded" minOccurs="0"
+                type="as:AdditionalService"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Category">
+        <xs:sequence>
+            <xs:element name="id" type="ts:id"/>
+            <xs:element name="name" type="ts:name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Type">
+        <xs:sequence>
+            <xs:element name="id" type="ts:id"/>
+            <xs:element name="name" type="ts:name"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

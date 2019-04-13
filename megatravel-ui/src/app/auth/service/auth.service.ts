@@ -12,7 +12,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const authUrl = "https://localhost:8085/api/auth/"
+const authUrl = "https://localhost:8443/api/auth/"
 
 @Injectable({
   providedIn: 'root'

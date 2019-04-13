@@ -48,13 +48,13 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.httpClient.get("https://localhost:8085/api/test/user").subscribe(data=>{
+        this.httpClient.get("https://localhost:8443/api/test/user").subscribe(data=>{
           console.log(data);
           this.isEndpointOK = true;
         }, error => {
           this.isEndpointOK = false;
         });
-        this.httpClient.get("https://localhost:8085/api/test/admin").subscribe(data=>{
+        this.httpClient.get("https://localhost:8443/api/test/admin").subscribe(data=>{
           console.log(data);
           this.isEndpointOK = true;
         }, error => {

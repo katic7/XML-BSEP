@@ -2,21 +2,27 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.megatravel.com/tim4/accunit"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     targetNamespace="www.megatravel.com/tim4/accunit" elementFormDefault="qualified"
-    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:ts="www.megatravel.com/tim4">
+    vc:minVersion="1.0" vc:maxVersion="1.1" xmlns:ts="www.megatravel.com/tim4"
+    xmlns:as="www.megatravel.com/tim4/addserv">
 
     <xs:import namespace="www.megatravel.com/tim4" schemaLocation="Types.xsd"/>
+    <xs:import namespace="www.megatravel.com/tim4/addserv" schemaLocation="AdditionalService.xsd"/>
     <xs:complexType name="AccommodationUnit">
         <xs:sequence>
+            <xs:element name="id" type="ts:id"/>
             <xs:element name="numberOfBeds" type="ts:numberOfBeds"/>
             <xs:element name="balcony" type="ts:balcony"/>
             <xs:element name="price" type="AccUnitPrice"/>
             <xs:element name="description" type="ts:description"/>
             <xs:element name="rating" type="ts:rating"/>
             <xs:element name="image" type="ts:images" maxOccurs="unbounded"/>
+            <xs:element name="additionalServices" type="as:AdditionalService" maxOccurs="unbounded"
+                minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="AccUnitPrice">
         <xs:sequence>
+            <xs:element name="id" type="ts:id"/>
             <xs:element name="startDate" type="xs:dateTime"/>
             <xs:element name="endDate" type="xs:dateTime"/>
             <xs:element name="price" type="xs:double"/>

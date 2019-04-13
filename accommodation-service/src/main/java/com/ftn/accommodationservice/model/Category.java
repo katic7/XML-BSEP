@@ -15,19 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AdditionalService complex type.
+ * <p>Java class for Category complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AdditionalService">
+ * &lt;complexType name="Category">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{www.ftn.com/accommodationservice/model}id"/>
  *         &lt;element name="name" type="{www.ftn.com/accommodationservice/model}name"/>
- *         &lt;element name="price" type="{www.ftn.com/accommodationservice/model}price"/>
- *         &lt;element name="included" type="{www.ftn.com/accommodationservice/model}included"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,21 +35,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdditionalService", propOrder = {
+@XmlType(name = "Category", propOrder = {
     "id",
-    "name",
-    "price",
-    "included"
+    "name"
 })
-public class AdditionalService {
+public class Category {
 
     protected long id;
     @XmlElement(required = true)
     protected String name;
-    protected double price;
-    protected boolean included;
-    protected AccommodationObject accommodationObject;
-    
+
     /**
      * Gets the value of the id property.
      * 
@@ -90,38 +83,6 @@ public class AdditionalService {
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the price property.
-     * 
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Sets the value of the price property.
-     * 
-     */
-    public void setPrice(double value) {
-        this.price = value;
-    }
-
-    /**
-     * Gets the value of the included property.
-     * 
-     */
-    public boolean isIncluded() {
-        return included;
-    }
-
-    /**
-     * Sets the value of the included property.
-     * 
-     */
-    public void setIncluded(boolean value) {
-        this.included = value;
     }
 
 }

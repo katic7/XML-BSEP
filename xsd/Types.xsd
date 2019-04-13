@@ -91,12 +91,6 @@
             <xs:totalDigits value="3"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="category">
-        <xs:restriction base="xs:positiveInteger">
-            <xs:minInclusive value="1"/>
-            <xs:maxInclusive value="7"/>
-        </xs:restriction>
-    </xs:simpleType>
     <xs:simpleType name="description">
         <xs:restriction base="xs:string"/>
     </xs:simpleType>
