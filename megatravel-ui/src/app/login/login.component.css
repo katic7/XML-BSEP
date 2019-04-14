@@ -7,9 +7,10 @@
   }
 
 h1{
-    margin: 0 auto !important;
+    margin-left: 10%;
+    margin-bottom: 5%; 
 }  
 
-button{
-    margin-left: 120px;
+.regBtn {
+    margin-left: 30%;
 }

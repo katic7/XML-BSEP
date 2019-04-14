@@ -1,19 +1,53 @@
+<h1 style="margin-left: 17%">Attacks</h1>
+<hr />
+
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <h3> XSS attack!</h3>
-        <form (ngSubmit)="xssAttack()">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Search hotels</label>
-            <input type="text" class="form-control" [formControl]="hotel" placeholder="Enter name of the hotel..">
-            <input type="submit" value="Submit" class="submitBtn btn btn-outline-info">
-          </div>
-        </form>
+    <div class="row">
+      <div class="col-sm">
+        <h3> XSS attack!</h3>
+          <form (ngSubmit)="xssAttack()">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Search hotels</label>
+              <input type="text" class="form-control" [formControl]="hotel" placeholder="Enter name of the hotel..">
+              <input type="submit" value="Submit" class="submitBtn btn btn-outline-info">
+            </div>
+          </form>
       </div>
     </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm">
+        <h3>File chooser attack</h3>
+        <input type="file" (change)="onFileSelected($event)">
+        <button type="button" (click)="onUpload()">Upload</button>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm">
+          <h3>Zero star attack</h3>
+          <form (ngSubmit)="zeroStarAttack()">
+              <div class="rate">
+                  <input type="radio" id="star5" [formControl]="stars" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" [formControl]="stars" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" [formControl]="stars" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" [formControl]="stars" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" [formControl]="stars" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+              </div>
+              <input type="submit" value="Submit" class="submitBtn btn btn-outline-info">
+          </form>
+        </div>
+    </div>
+    <hr />
 </div>
+  
 
-<div *ngIf="pressed">
-  {{ hotel.value}}
-</div>
+
+
+
 
