@@ -55,12 +55,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "AccommodationObject", propOrder = {
     "id",
     "name",
-    "address",
+    "addressId",
     "description",
-    "category",
+    "categoryId",
     "freeCancelation",
     "daysToCancel",
-    "type",
+    "typeId",
     "accommodationsUnitList",
     "additionalServices"
 })
@@ -74,16 +74,16 @@ public class AccommodationObject {
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)    
-    protected Address address;
+    protected Long addressId;
     @XmlElement(required = true)
     protected String description;
     @XmlElement(required = true)
-    protected Category category;
+    protected Long categoryId;
     protected boolean freeCancelation;
     @XmlElement(required = true)
     protected BigInteger daysToCancel;
     @XmlElement(required = true)    
-    protected Type type;
+    protected Long typeId;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AccommodationUnit> accommodationsUnitList;
     @OneToMany(mappedBy = "accommodationObject")
@@ -137,8 +137,8 @@ public class AccommodationObject {
      *     {@link Address }
      *     
      */
-    public Address getAddress() {
-        return address;
+    public Long getAddressId() {
+        return addressId;
     }
 
     /**
@@ -149,8 +149,8 @@ public class AccommodationObject {
      *     {@link Address }
      *     
      */
-    public void setAddress(Address value) {
-        this.address = value;
+    public void setAddressId(Long value) {
+        this.addressId = value;
     }
 
     /**
@@ -185,8 +185,8 @@ public class AccommodationObject {
      *     {@link Category }
      *     
      */
-    public Category getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
     /**
@@ -197,8 +197,8 @@ public class AccommodationObject {
      *     {@link Category }
      *     
      */
-    public void setCategory(Category value) {
-        this.category = value;
+    public void setCategoryId(Long value) {
+        this.categoryId = value;
     }
 
     /**
@@ -249,8 +249,8 @@ public class AccommodationObject {
      *     {@link Type }
      *     
      */
-    public Type getType() {
-        return type;
+    public Long getTypeId() {
+        return typeId;
     }
 
     /**
@@ -261,8 +261,8 @@ public class AccommodationObject {
      *     {@link Type }
      *     
      */
-    public void setType(Type value) {
-        this.type = value;
+    public void setTypeId(Long value) {
+        this.typeId = value;
     }
 
     /**

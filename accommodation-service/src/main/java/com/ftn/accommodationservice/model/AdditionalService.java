@@ -8,10 +8,15 @@
 
 package com.ftn.accommodationservice.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -45,7 +50,9 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "name",
     "price",
-    "included"
+    "included",
+    "accommodationObject",
+    
 })
 @Entity
 public class AdditionalService {
@@ -56,8 +63,11 @@ public class AdditionalService {
     protected String name;
     protected double price;
     protected boolean included;
+    @ManyToOne
+    @JoinColumn(name="accommodation_object")
     protected AccommodationObject accommodationObject;
-    private AccommodationUnit accommodationUnit;
+    @ManyToMany(mappedBy = "additionalServices")
+    private List<AccommodationUnit> accommodationUnits;
     
     /**
      * Gets the value of the id property.
@@ -139,12 +149,14 @@ public class AdditionalService {
 		this.accommodationObject = accommodationObject;
 	}
 
-	public AccommodationUnit getAccommodationUnit() {
-		return accommodationUnit;
+	public List<AccommodationUnit> getAccommodationUnits() {
+		return accommodationUnits;
 	}
 
-	public void setAccommodationUnit(AccommodationUnit accommodationUnit) {
-		this.accommodationUnit = accommodationUnit;
+	public void setAccommodationUnits(List<AccommodationUnit> accommodationUnits) {
+		this.accommodationUnits = accommodationUnits;
 	}
+
+	
 
 }

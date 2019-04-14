@@ -8,6 +8,8 @@
 
 package com.ftn.accommodationservice.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -55,14 +56,14 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     @XmlElement(required = true)
-    protected User sender;
+    protected Long senderId;
     @XmlElement(required = true)
     protected String content;
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar date;
+    protected Date date;
     @XmlElement(required = true)
-    protected User receiver;
+    protected Long receiverId;
 
     /**
      * Gets the value of the sender property.
@@ -72,8 +73,8 @@ public class Message {
      *     {@link User }
      *     
      */
-    public User getSender() {
-        return sender;
+    public Long getSenderId() {
+        return senderId;
     }
 
     /**
@@ -84,8 +85,8 @@ public class Message {
      *     {@link User }
      *     
      */
-    public void setSender(User value) {
-        this.sender = value;
+    public void setSenderId(Long value) {
+        this.senderId = value;
     }
 
     /**
@@ -117,10 +118,10 @@ public class Message {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -129,10 +130,10 @@ public class Message {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setDate(XMLGregorianCalendar value) {
+    public void setDate(Date value) {
         this.date = value;
     }
 
@@ -144,8 +145,8 @@ public class Message {
      *     {@link User }
      *     
      */
-    public User getReceiver() {
-        return receiver;
+    public Long getReceiverId() {
+        return receiverId;
     }
 
     /**
@@ -156,8 +157,8 @@ public class Message {
      *     {@link User }
      *     
      */
-    public void setReceiver(User value) {
-        this.receiver = value;
+    public void setReceiverId(Long value) {
+        this.receiverId = value;
     }
 
 	public Long getId() {

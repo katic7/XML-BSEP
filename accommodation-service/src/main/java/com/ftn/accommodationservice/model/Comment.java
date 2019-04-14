@@ -8,6 +8,8 @@
 
 package com.ftn.accommodationservice.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -68,7 +69,7 @@ public class Comment {
     protected String text;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar commentDate;
+    protected Date commentDate;
 
     /**
      * Gets the value of the id property.
@@ -147,10 +148,10 @@ public class Comment {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getCommentDate() {
+    public Date getCommentDate() {
         return commentDate;
     }
 
@@ -159,10 +160,10 @@ public class Comment {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setCommentDate(XMLGregorianCalendar value) {
+    public void setCommentDate(Date value) {
         this.commentDate = value;
     }
 

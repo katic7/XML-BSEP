@@ -8,16 +8,19 @@
 
 package com.ftn.accommodationservice.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -48,11 +51,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Reservation", propOrder = {
-    "newElement",
+@XmlType(name = "Reservation", propOrder = {    
     "userID",
     "reservationDate",
-    "accUnit",
+    "accommodationUnit",
     "price",
     "beginDate",
     "endDate",
@@ -63,40 +65,30 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-    protected long newElement;
+	private Long id;    
     @XmlElement(required = true, type = Long.class, nillable = true)
+    @ManyToOne
+    @JoinColumn(name="user")
     protected User user;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar reservationDate;
+    protected Date reservationDate;
     @XmlElement(required = true)
+    @ManyToOne
+    @JoinColumn(name="accommodation_unit")
     protected AccommodationUnit accommodationUnit;
     protected double price;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar beginDate;
+    protected Date beginDate;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar endDate;
+    protected Date endDate;
     protected boolean completed;
     protected boolean active;
 
-    /**
-     * Gets the value of the newElement property.
-     * 
-     */
-    public long getNewElement() {
-        return newElement;
-    }
-
-    /**
-     * Sets the value of the newElement property.
-     * 
-     */
-    public void setNewElement(long value) {
-        this.newElement = value;
-    }
+    
+   
 
     /**
      * Gets the value of the userID property.
@@ -127,10 +119,10 @@ public class Reservation {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getReservationDate() {
+    public Date getReservationDate() {
         return reservationDate;
     }
 
@@ -139,10 +131,10 @@ public class Reservation {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setReservationDate(XMLGregorianCalendar value) {
+    public void setReservationDate(Date value) {
         this.reservationDate = value;
     }    
 
@@ -167,10 +159,10 @@ public class Reservation {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getBeginDate() {
+    public Date getBeginDate() {
         return beginDate;
     }
 
@@ -179,10 +171,10 @@ public class Reservation {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setBeginDate(XMLGregorianCalendar value) {
+    public void setBeginDate(Date value) {
         this.beginDate = value;
     }
 
@@ -191,10 +183,10 @@ public class Reservation {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
@@ -203,10 +195,10 @@ public class Reservation {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setEndDate(XMLGregorianCalendar value) {
+    public void setEndDate(Date value) {
         this.endDate = value;
     }
 

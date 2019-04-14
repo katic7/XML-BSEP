@@ -15,6 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -58,7 +62,9 @@ import javax.xml.bind.annotation.XmlType;
     "description",
     "rating",
     "image",
-    "additionalServices"
+    "additionalServices",
+    "accommodationObject",
+    "reservations"
 })
 
 @Entity
@@ -76,10 +82,16 @@ public class AccommodationUnit {
     protected String description;
     protected double rating;
     @XmlElement(required = true)
-    protected List<byte[]> image;
-    @OneToMany(mappedBy = "accommodationUnit")
+    protected String image;
+    @ManyToMany
+	@JoinTable(
+	        name = "accommodation_unit_additional_services", 
+	        joinColumns = { @JoinColumn(name = "accommodation_unit_id") }, 
+	        inverseJoinColumns = { @JoinColumn(name = "additional_services_id") }
+	    )
     protected List<AdditionalService> additionalServices;
-    
+    @ManyToOne
+    @JoinColumn(name="accommodation_object")
     private AccommodationObject accommodationObject;
     
     @OneToMany(mappedBy="accommodationUnit")
@@ -218,12 +230,7 @@ public class AccommodationUnit {
      * byte[]
      * 
      */
-    public List<byte[]> getImage() {
-        if (image == null) {
-            image = new ArrayList<byte[]>();
-        }
-        return this.image;
-    }
+    
 
     /**
      * Gets the value of the additionalServices property.
@@ -262,9 +269,7 @@ public class AccommodationUnit {
 		this.accommodationObject = accommodationObject;
 	}
 
-	public void setImage(List<byte[]> image) {
-		this.image = image;
-	}
+	
 
 	public void setAdditionalServices(List<AdditionalService> additionalServices) {
 		this.additionalServices = additionalServices;
@@ -276,6 +281,14 @@ public class AccommodationUnit {
 
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

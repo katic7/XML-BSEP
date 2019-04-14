@@ -9,6 +9,7 @@
 package com.ftn.accommodationservice.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,7 +22,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -99,11 +99,11 @@ public abstract class User {
     protected String password;
     protected boolean verified;
     @XmlElement(required = true)
-    protected XMLGregorianCalendar dateOfBirth;
+    protected Date dateOfBirth;
     @XmlElement(required = true)
     protected String state;
     @XmlElement(required = true)
-    protected Address address;
+    protected Long addressId;
     @XmlElement(required = true)
     protected String role;
     @OneToMany(mappedBy="user")
@@ -246,10 +246,10 @@ public abstract class User {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -258,10 +258,10 @@ public abstract class User {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setDateOfBirth(XMLGregorianCalendar value) {
+    public void setDateOfBirth(Date value) {
         this.dateOfBirth = value;
     }
 
@@ -297,8 +297,8 @@ public abstract class User {
      *     {@link Address }
      *     
      */
-    public Address getAddress() {
-        return address;
+    public Long getAddressId() {
+        return addressId;
     }
 
     /**
@@ -309,8 +309,8 @@ public abstract class User {
      *     {@link Address }
      *     
      */
-    public void setAddress(Address value) {
-        this.address = value;
+    public void setAddressId(Long value) {
+        this.addressId = value;
     }
 
     /**

@@ -9,16 +9,18 @@
 package com.ftn.accommodationservice.model;
 
 import java.math.BigInteger;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -62,13 +64,15 @@ public class CreditCard {
     @XmlElement(required = true)
     protected BigInteger csv;
     @XmlElement(required = true)
-    protected XMLGregorianCalendar expDate;
+    protected Date expDate;
     @XmlElement(required = true)
     protected String cardNo;
     @XmlElement(required = true)
     protected String surname;
     @XmlElement(required = true)
     protected String name;
+    @ManyToOne
+    @JoinColumn(name="user")
     private User user;
 
     /**
@@ -116,10 +120,10 @@ public class CreditCard {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getExpDate() {
+    public Date getExpDate() {
         return expDate;
     }
 
@@ -128,10 +132,10 @@ public class CreditCard {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setExpDate(XMLGregorianCalendar value) {
+    public void setExpDate(Date value) {
         this.expDate = value;
     }
 
