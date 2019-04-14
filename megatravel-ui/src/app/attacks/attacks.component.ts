@@ -17,7 +17,7 @@ export class AttacksComponent implements OnInit {
   hotel = new FormControl();
   stars = new FormControl();
   pressed : boolean = false;
-
+  selectedFile :File = null;
   ngOnInit() {
   }
 
@@ -35,7 +35,17 @@ export class AttacksComponent implements OnInit {
       this.httpClient.post("http://localhost:8081/accommodation-service/api/addresses/testRating", testRating).subscribe(data=>{
         console.log(data);
       });
-    } 
+    }
+  } 
+
+  onFileSelected(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload(){
+    const fd = new FormData();
+    fd.append("image",this.selectedFile, this.selectedFile.name);
   }
 
 }
