@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3> XSS attack!</h3>
+        <form (ngSubmit)="xssAttack()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Search hotels</label>
+            <input type="text" class="form-control" [formControl]="hotel" placeholder="Enter name of the hotel..">
+            <input type="submit" value="Submit" class="submitBtn btn btn-outline-info">
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="pressed">
+  {{ hotel.value}}
+</div>
+

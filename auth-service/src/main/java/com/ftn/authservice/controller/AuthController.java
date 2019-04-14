@@ -70,6 +70,13 @@ public class AuthController {
         String jwt = jwtProvider.generateJwtToken(authentication);
         return ResponseEntity.ok(new JwtResponse(jwt,userDetails.getUsername(), userDetails.getAuthorities()));
     }
+    
+    @PostMapping("/testSI")
+    public ResponseEntity<?> testSI(@Valid @RequestBody LoginForm loginRequest){
+    	
+    	User u = userRepository.testLogin(loginRequest.getUsername(),loginRequest.getPassword());
+    	return new ResponseEntity<UserDTO>(new UserDTO(u),HttpStatus.OK);
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
@@ -86,7 +93,7 @@ public class AuthController {
         // Creating user's account
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
                 signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
-
+        
         List<Role> roles = new ArrayList<>();
         
         Role userRole = roleRepository.findByName(RoleName.ROLE_USER)

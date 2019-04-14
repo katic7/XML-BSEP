@@ -10,10 +10,13 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { RegisterComponent } from './register/register.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
+import { AttacksComponent } from './attacks/attacks.component';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'attack', component: AttacksComponent }
 ];
 
 
@@ -21,7 +24,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AttacksComponent
   ],
   imports: [
     BrowserModule,

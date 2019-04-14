@@ -21,6 +21,7 @@ export class AuthService {
 
   private loginUrl = authUrl + 'signin';
   private signupUrl = authUrl + 'signup';
+  private testLogin = authUrl + 'testSI';
 
   constructor(private http: HttpClient) {
   }
