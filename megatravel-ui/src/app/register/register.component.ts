@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SignUpInfo } from '../auth/forms/register-info';
 import { AuthService } from '../auth/service/auth.service';
+import { Location } from '@angular/common';
  
 
- 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
  
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private location: Location) { }
  
   ngOnInit() { }
  
@@ -41,5 +41,7 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  this.location.replaceState("/login");
+  window.location.reload();
   }
 }

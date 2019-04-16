@@ -3,7 +3,9 @@ package com.ftn.accommodationservice.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 import com.ftn.accommodationservice.model.Address;
+import com.ftn.accommodationservice.model.TestRating;
 import com.ftn.accommodationservice.service.AddressService;
 
 @RestController
@@ -50,6 +53,11 @@ public class AddressController {
 	@GetMapping("/test2")
 	public String test2() {
 		return "test";
+	}
+	
+	@PostMapping("/testRating")
+	public String testRating(@Valid @RequestBody TestRating testRating) {
+		return "Uspesno promenjen rating!";
 	}
 
 
