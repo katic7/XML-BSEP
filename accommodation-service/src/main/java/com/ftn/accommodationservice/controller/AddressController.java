@@ -29,6 +29,9 @@ public class AddressController {
 	@Autowired
 	private AddressService addressService;
 	
+	 @Autowired
+	 private RestTemplate template;
+	
 	@GetMapping
 	public ResponseEntity<List<Address>> getAllAddresses() {
 		List<Address> addresses = addressService.getAddress();
@@ -45,9 +48,11 @@ public class AddressController {
 	}
 	
 	@GetMapping("/test")
-	public String test() {
-		RestTemplate rt = new RestTemplate();
-		return rt.getForObject("https://localhost:8443/api/test/test", String.class);
+	public String testa() {
+		ResponseEntity<String> response = template.getForEntity("https://localhost:8761/hello",
+				 String.class);
+				 System.out.println(response.getBody());
+				 return "a";
 	}
 	
 	@GetMapping("/test2")
