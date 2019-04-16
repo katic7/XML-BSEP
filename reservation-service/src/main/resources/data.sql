@@ -1,1 +1,1 @@
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (1, 1, 1, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (2, 1, 1, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);

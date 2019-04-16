@@ -3,6 +3,7 @@ package com.ftn.authservice.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -36,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAuthTokenFilter authenticationJwtTokenFilter() {
         return new JwtAuthTokenFilter();
     }
+    
 
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
@@ -57,15 +59,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable().
-                authorizeRequests()
-                .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http
+	        .cors()
+	            .and()
+            .headers().frameOptions()
+            	.disable()
+            	.and()
+	        .csrf()
+	            .disable()
+            .x509().subjectPrincipalRegex("CN=(.*?)(?:,|$)")
+	             .and()
+	        .exceptionHandling()
+	            .authenticationEntryPoint(unauthorizedHandler)
+	            .and()
+	        .sessionManagement()
+	            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+	            .and()
+	        .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
+	        .authorizeRequests()
+	            .antMatchers("/",
+			                 "/favicon.ico",
+			                 "/**/*.png",
+			                 "/**/*.gif",
+			                 "/**/*.svg",
+			                 "/**/*.jpg",
+			                 "/**/*.html",
+			                 "/**/*.css",
+			                 "/**/*.js")
+	                .permitAll()
+                .antMatchers(HttpMethod.POST, "/api/account/password-change")
+                	.authenticated()
+	            .antMatchers("/api/account/**")
+	                .anonymous()
+	            .antMatchers("/services/**")
+	            	.permitAll();
+//	            .anyRequest()
+//	                .authenticated();
     }
 }

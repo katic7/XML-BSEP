@@ -1,5 +1,12 @@
 server:
-  port: 8082  
+  port: 8082
+  ssl:
+    enabled: true
+    key-store: classpath:MyClient.jks
+    key-store-password: password
+    key-alias: MyClient
+security:
+  require-ssl: true 
 spring:
   application:
     name: accommodation-service
@@ -15,12 +22,16 @@ spring:
       hibernate:
         show_sql: true
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
-    preferIpAddress: true
-keystore:
-  file: keystore.jks
-  password: password
-  
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    statusPageUrl: https://localhost:${server.port}/info
+    healthCheckUrl: https://localhost:${server.port}/health
+    homePageUrl: https://localhost:${server.port}
+  client:
+    securePortEnabled: true
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka/

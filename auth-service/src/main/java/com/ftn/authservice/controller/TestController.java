@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class TestController {
 
 	@GetMapping("/admin")
-	@PreAuthorize("hasRole('SYSTEMADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String test() {
 		return "Protected by ADMIN";
 	}
@@ -23,6 +23,7 @@ public class TestController {
 	}
 	
 	@GetMapping("/test")
+	@PreAuthorize("hasAuthority('AddContent')")
 	public String test3() {
 		return "From Auth service!";
 	}

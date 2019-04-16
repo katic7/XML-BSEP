@@ -1,10 +1,14 @@
 server:
   port: 8443
   ssl:
-    key-store-type: JKS
-    key-store: classpath:server.jks
+    enabled: true
+    key-alias: MyServer
+    key-store-type: jks
+    key-store: classpath:MyServer.jks
     key-store-password: password
-    key-alias: localhost
+    key-password: password
+    trust-store: classpath:MyServer.jks
+    trust-store-password: password  
 spring:
   application:
     name: auth-service

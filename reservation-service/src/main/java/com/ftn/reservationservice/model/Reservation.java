@@ -57,7 +57,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Reservation {
 
-    protected long newElement;
     @XmlElement(required = true, type = Long.class, nillable = true)
     protected Long userID;
     @XmlElement(required = true)
@@ -75,21 +74,6 @@ public class Reservation {
     protected boolean completed;
     protected boolean active;
 
-    /**
-     * Gets the value of the newElement property.
-     * 
-     */
-    public long getNewElement() {
-        return newElement;
-    }
-
-    /**
-     * Sets the value of the newElement property.
-     * 
-     */
-    public void setNewElement(long value) {
-        this.newElement = value;
-    }
 
     /**
      * Gets the value of the userID property.
