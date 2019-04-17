@@ -1,6 +1,7 @@
 package com.ftn.reservationservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +22,10 @@ public class ReservationServiceController {
 //		}
 //		return null;
 //	}
+	
+	@GetMapping("/test2")
+	public String test2() {
+		return "test";
+	}
 	
 }

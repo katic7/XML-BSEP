@@ -1,11 +1,13 @@
 package com.ftn.authservice.services;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,32 +19,36 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.ftn.authservice.jwt.UserPrincipal;
 import com.ftn.authservice.model.Permission;
 import com.ftn.authservice.model.Role;
-
+import com.ftn.authservice.model.RoleName;
 import com.ftn.authservice.model.User;
+import com.ftn.authservice.repository.RoleRepository;
 import com.ftn.authservice.repository.UserRepository;
-
+import com.ftn.authservice.request.SignUpRequest;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class DomainUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
+	private RoleRepository roleRepository;
+
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(DomainUserDetailsService.class);
 
 	@Override
 	@Transactional
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		User user = userRepository.findByUsername(username)
-				.orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + username));
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		System.out.println(email);
+		User user = userRepository.findByEmail(email)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
 		return getUserPrincipal(user);
 	}
@@ -53,11 +59,43 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		logger.info("User {} has changed their password.", user.getEmail());
 	}
 
-	public User findByUsername(String username) {
-		return userRepository.findByUsername(username).orElse(null);
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email).orElse(null);
 	}
 
-	private UserPrinciple getUserPrincipal(User user) {
+	public void changeUserNonLockStatusTrue(User user) {
+		user.setNonLocked(true);
+		userRepository.save(user);
+	}
+
+	public void changeUserNonLockStatusFalse(User user) {
+		user.setNonLocked(false);
+		userRepository.save(user);
+	}
+
+	public List<User> findAllUsers() {
+		return userRepository.findUsersExceptSelf();
+	}
+
+	public User findCurrentUser() {
+		return userRepository.findCurrentUser();
+	}
+
+	@Transactional
+	public User registerUser(SignUpRequest signUpRequest) {
+		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+			return null;
+		}
+
+		User user = new User(signUpRequest.getEmail(), passwordEncoder.encode(signUpRequest.getPassword()),
+				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
+
+		userRepository.save(user);
+
+		return user;
+	}
+
+	private UserPrincipal getUserPrincipal(User user) {
 		Stream<String> roles = user.getRoles().stream()
 				.map(Role::getName)
 				.map(Enum::name);
@@ -72,7 +110,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				.map(SimpleGrantedAuthority::new)
 				.collect(Collectors.toList());
 
-		return new UserPrinciple(user.getId().toString(), user.getPassword(), user.getEmail(), authorities);
+		return new UserPrincipal(user.getId(), user.getPassword(), user.getEmail(), user.isEnabled(), authorities,
+				user.isNonLocked());
+	}
+
+	public void activateUser(User user) {
+		user.setEnabled(true);
+		userRepository.save(user);
 	}
 
 	public List<String> getUserAuthorities(User user) {

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,38 +16,44 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.ftn.authservice.jwt.JwtAuthEntryPoint;
-import com.ftn.authservice.jwt.JwtAuthTokenFilter;
-import com.ftn.authservice.services.UserDetailsServiceImpl;
-
-
+import com.ftn.authservice.jwt.JwtAuthenticationEntryPoint;
+import com.ftn.authservice.jwt.JwtAuthenticationFilter;
+import com.ftn.authservice.jwt.SecurityEvaluationContextExtension;
+import com.ftn.authservice.services.DomainUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-		prePostEnabled = true
+	securedEnabled = true,
+	jsr250Enabled = true,
+	prePostEnabled = true
 )
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    UserDetailsServiceImpl userDetailsService;
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+    private DomainUserDetailsService domainUserDetailsService;
 
     @Autowired
-    private JwtAuthEntryPoint unauthorizedHandler;
+    private JwtAuthenticationEntryPoint unauthorizedHandler;
+    
+    @Bean
+    public SecurityEvaluationContextExtension securityEvaluationContextExtension(){
+        return new SecurityEvaluationContextExtension();
+    }
 
     @Bean
-    public JwtAuthTokenFilter authenticationJwtTokenFilter() {
-        return new JwtAuthTokenFilter();
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
     }
     
-
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+            .userDetailsService(domainUserDetailsService)
+            .passwordEncoder(passwordEncoder());
     }
-
-    @Bean
+    
+    @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -75,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .sessionManagement()
 	            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 	            .and()
-	        .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
+	        .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 	        .authorizeRequests()
 	            .antMatchers("/",
 			                 "/favicon.ico",
@@ -96,4 +103,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //	            .anyRequest()
 //	                .authenticated();
     }
+	
 }

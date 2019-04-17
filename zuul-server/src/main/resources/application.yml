@@ -6,14 +6,16 @@ spring:
     name: zuul-server
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: false
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URI:https://localhost:8761/eureka}
   instance:
     preferIpAddress: true
 zuul:
   routes:
-    customer-service:
-      serviceId: customer-service
+    reservationservice:
+      serviceId: reservationservice
   host:
     socket-timeout-millis: 30000
 logging:

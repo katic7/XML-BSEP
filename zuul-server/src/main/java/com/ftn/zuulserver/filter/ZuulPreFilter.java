@@ -1,12 +1,18 @@
 package com.ftn.zuulserver.filter;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.client.RestTemplate;
 
 import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
 
 
 public class ZuulPreFilter extends ZuulFilter {
 
-	  //private static Logger log = LoggerFactory.getLogger(ZuulPreFilter.class);
+	  private static Logger log = LoggerFactory.getLogger(ZuulPreFilter.class);
 
 
 	  @Override
@@ -26,17 +32,17 @@ public class ZuulPreFilter extends ZuulFilter {
 
 	  @Override
 	  public Object run() {
-	    /*RequestContext ctx = RequestContext.getCurrentContext();
+	    RequestContext ctx = RequestContext.getCurrentContext();
 	    HttpServletRequest request = ctx.getRequest();
 	    RestTemplate restTemplate = new RestTemplate();
-	    log.info("TOKEN------>" + request.getHeader("Authorization"));
+	    
 	    String token = (request.getHeader("Authorization")).substring(7, request.getHeader("Authorization").length());
-	    log.info(token);
-	    String roles = restTemplate.getForObject("https://localhost:8443/api/auth/check/{token}", String.class, token);
-	    log.info("token je validan i role su -> " + roles);
-	    ctx.addZuulRequestHeader("Roles", roles);
-	    ctx.addZuulRequestHeader("Authorization", "Bearer "+token);*/
-	    return null;
+	    
+	    String permisije = restTemplate.getForObject("http://localhost:8085/api/auth/check/{token}", String.class, token);
+	  	
+	    ctx.addZuulRequestHeader("Permissions", permisije);
+	    log.info("PERMISIJE -> " + permisije);
+	    return request;
 	  }
 
 	}

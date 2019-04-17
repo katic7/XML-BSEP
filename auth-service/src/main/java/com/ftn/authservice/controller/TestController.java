@@ -22,10 +22,16 @@ public class TestController {
 		return "Protected by USER";
 	}
 	
-	@GetMapping("/test")
+	@GetMapping("/addcontent")
 	@PreAuthorize("hasAuthority('AddContent')")
-	public String test3() {
-		return "From Auth service!";
+	public String addContent() {
+		return "From Auth service - > Content Added!";
+	}
+	
+	@GetMapping("/create")
+	@PreAuthorize("hasAuthority('CREATE')")
+	public String create() {
+		return "From Auth service - > CREATED!";
 	}
 	
 	@GetMapping("/testauth")

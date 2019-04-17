@@ -20,8 +20,9 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+
+
 
 
 /**
@@ -77,23 +78,20 @@ import javax.xml.bind.annotation.XmlType;
     "creditCards",
     "telephone"
 })
-@XmlSeeAlso({
-    EndUser.class,
-    Administrator.class,
-    Agent.class
-})
+
 @Entity
-public abstract class User {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @XmlElement(name = "Id")
-    protected long id;
+    protected Long id;
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
     protected String surname;
-    @XmlElement(required = true)
+    protected String username;
+	@XmlElement(required = true)
     protected String email;
     @XmlElement(required = true)
     protected String password;
@@ -112,6 +110,9 @@ public abstract class User {
     protected String telephone;
     @OneToMany(mappedBy="user")
     private List<Reservation> reservations;
+    
+   
+
 
     /**
      * Gets the value of the id property.
@@ -400,6 +401,15 @@ public abstract class User {
 
 	public void setCreditCards(List<CreditCard> creditCards) {
 		this.creditCards = creditCards;
+	}
+
+	
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

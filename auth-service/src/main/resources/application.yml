@@ -1,14 +1,5 @@
 server:
-  port: 8443
-  ssl:
-    enabled: true
-    key-alias: MyServer
-    key-store-type: jks
-    key-store: classpath:MyServer.jks
-    key-store-password: password
-    key-password: password
-    trust-store: classpath:MyServer.jks
-    trust-store-password: password  
+  port: 8085
 spring:
   application:
     name: auth-service
@@ -18,10 +9,15 @@ spring:
     password: root
     initialization-mode: always
   jpa:
+    properties:
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create-drop
 eureka:
   client:
+    register-with-eureka: false
+    fetch-registry: false
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:

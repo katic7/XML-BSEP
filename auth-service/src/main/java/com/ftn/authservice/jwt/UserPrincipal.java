@@ -1,35 +1,37 @@
-package com.ftn.authservice.services;
-
+package com.ftn.authservice.jwt;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserPrinciple implements UserDetails {
-	private static final long serialVersionUID = 1L;
+public class UserPrincipal implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -901909149073198612L;
+	
 	private String id;
 	private String password;
 	private String username;
+	private boolean enabled;
+	private boolean nonLocked;
 	private Collection<? extends GrantedAuthority> autorities;
 	
-	public UserPrinciple(String id, String password, String username, Collection<? extends GrantedAuthority> autorities) {
+	public UserPrincipal(String id, String password, String username, boolean enabled, Collection<? extends GrantedAuthority> autorities, boolean locked) {
 		this.id = id;
 		this.password = password;
 		this.username = username;
 		this.autorities = autorities;
-
+		this.enabled = enabled;
+		this.nonLocked = locked;
 	}
 	
-	public UserPrinciple(String username,Collection<? extends GrantedAuthority> autorities ) {
-		this(null,null,username,autorities);
+	public UserPrincipal(String id, String username, boolean enabled, Collection<? extends GrantedAuthority> autorities, boolean locked) {
+		this(id, null, username, enabled, autorities, locked);
 	}
 	
-	public UserPrinciple(String id, String username, Collection<? extends GrantedAuthority> autorities) {
-		this(id, null, username, autorities);
-	}
-		
 	public String getId() {
 		return id;
 	}
@@ -56,7 +58,7 @@ public class UserPrinciple implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return true;
+		return nonLocked;
 	}
 
 	@Override
@@ -66,6 +68,7 @@ public class UserPrinciple implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return enabled;
 	}
+
 }
