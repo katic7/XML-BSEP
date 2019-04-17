@@ -18,10 +18,10 @@ insert into roles (id, name) values (2, 'ROLE_AGENT');
 insert into roles (id, name) values (3, 'ROLE_USER');
 
 -- users
-insert into users (id, email, enabled, password, non_locked) 
-values (UUID(), 'nemanja@gmail.com', 1, '$2a$10$8bH9N7jBJo6XNlfR.mKhYeD9yoWGJJXJ.rOaCgftdn5SdSwZaOlfq', 1);
-insert into users (id, email, enabled, password, non_locked) 
-values (UUID(), 'dimsic@gmail.com', 1, '$2a$10$uZzqU5v.G10pFySkUUIbXuNDukV//c19dBD/hiqbYSgyP8pbhTxh2', 1);
+insert into users (id, name, surname, address, postal_code, email, enabled, password, non_locked) 
+values (UUID(), 'Nemanja', 'Dime', 'Vojvodjanska 22', 21000 ,'nemanja@gmail.com', 1, '$2a$10$8bH9N7jBJo6XNlfR.mKhYeD9yoWGJJXJ.rOaCgftdn5SdSwZaOlfq', 1);
+insert into users (id, name, surname, address, postal_code, email, enabled, password, non_locked) 
+values (UUID(), 'Velja', 'Veljkovic', 'Bul. Evrope 22', 21000 ,'dimsic@gmail.com', 1, '$2a$10$uZzqU5v.G10pFySkUUIbXuNDukV//c19dBD/hiqbYSgyP8pbhTxh2', 1);
 
 -- role-permissions
 insert into role_permissions (permission_id, role_id) values (1, 1);

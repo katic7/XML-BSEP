@@ -6,7 +6,7 @@ spring:
     name: zuul-server
 eureka:
   client:
-    register-with-eureka: true
+    register-with-eureka: false
     fetch-registry: false
     serviceUrl:
       defaultZone: ${EUREKA_URI:https://localhost:8761/eureka}
