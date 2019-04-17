@@ -10,24 +10,36 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/api/test")
 public class TestController {
 
+	/** ADMIN ROLE - TEST 
+	 * @return
+	 */
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ADMIN')")
 	public String test() {
 		return "Protected by ADMIN";
 	}
 	
+	/** USER ROLE - TEST
+	 * @return
+	 */
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER')")
 	public String test2() {
 		return "Protected by USER";
 	}
 	
+	/** ADD CONTENT AUTHORITY - TEST
+	 * @return
+	 */
 	@GetMapping("/addcontent")
 	@PreAuthorize("hasAuthority('AddContent')")
 	public String addContent() {
 		return "From Auth service - > Content Added!";
 	}
 	
+	/** CREATE AUTHORITY - TEST
+	 * @return
+	 */
 	@GetMapping("/create")
 	@PreAuthorize("hasAuthority('CREATE')")
 	public String create() {

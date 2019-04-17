@@ -22,7 +22,7 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		String username = httpRequest.getHeader("username");
-		String permissions = httpRequest.getHeader("permissions");
+		String permissions = httpRequest.getHeader("Permissions");
 		
 		if(username != null && permissions != null && !username.equals("") && !permissions.equals("")) {
 			Set<SimpleGrantedAuthority> authorities = new HashSet<>();
