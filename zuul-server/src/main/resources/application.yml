@@ -1,6 +1,13 @@
     
 server:
   port: 8081
+  ssl:
+    enabled: true
+    key-store: classpath:ZuulServer.jks
+    key-store-password: password
+    key-alias: zuulserver
+security:
+  require-ssl: true
 spring:
   application:
     name: zuul-server

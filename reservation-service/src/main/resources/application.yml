@@ -1,5 +1,12 @@
 server:
-  port: 8083  
+  port: 8083
+  ssl:
+    enabled: true
+    key-store: classpath:Reservation.jks
+    key-store-password: password
+    key-alias: reservation
+security:
+  require-ssl: true   
 spring:
   application:
     name: reservation-service
@@ -16,7 +23,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URI:https://localhost:8761/eureka}
   instance:
     preferIpAddress: true
 logging:
