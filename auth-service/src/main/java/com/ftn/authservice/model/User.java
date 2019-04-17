@@ -30,10 +30,19 @@ public class User {
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String id;
 
+	private String name;
+	
+	private String surname;
+	
+	private String address;
+	
+	private int postalCode;
+	
 	@Column(unique = true)
 	private String email;
+	
 	private String password;
-
+	
 	@Column(name = "enabled")
 	private boolean enabled;
 	
@@ -45,6 +54,20 @@ public class User {
 
 	public User() {
 		this.enabled = false;
+	}
+
+	public User(String name, String surname, String address, int postalCode, String email, 
+				String password, Set<Role> roles) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.address = address;
+		this.postalCode = postalCode;
+		this.email = email;
+		this.password = password;
+		this.enabled = true;
+		this.nonLocked = true;
+		this.roles = roles;
 	}
 
 	public User(String email, String password, Set<Role> roles) {
@@ -101,6 +124,38 @@ public class User {
 	
 	public void setNonLocked(boolean locked) {
 		this.nonLocked = locked;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
 	}
 
 }

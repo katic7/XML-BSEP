@@ -22,12 +22,20 @@ export class RegisterComponent implements OnInit {
  
   onSubmit() {
     console.log(this.form);
+
+    if(this.form.password != this.form.rePassword){
+      alert("Please, check entered passwords!");
+      return;
+    }
  
     this.signupInfo = new SignUpInfo(
       this.form.name,
-      this.form.username,
+      this.form.surname,
+      this.form.address,
+      this.form.postalCode,
       this.form.email,
-      this.form.password);
+      this.form.password,
+      this.form.rePassword);
  
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
@@ -41,7 +49,7 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
-  this.location.replaceState("/login");
-  window.location.reload();
+  //this.location.replaceState("/login");
+  //window.location.reload();
   }
 }

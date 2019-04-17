@@ -117,13 +117,22 @@ public class AuthController {
                    HttpStatus.BAD_REQUEST);
         }
 
-        // Creating user's account
-       User user = new User(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()),
-				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
-        
-        
-        userRepository.save(user);
+       if(signUpRequest.getPassword().equals(signUpRequest.getConfirmPassword())) {
+    	// Creating user's account
+           User user = new User(signUpRequest.getName(), signUpRequest.getSurname(), signUpRequest.getAddress(),
+        		   				signUpRequest.getPostalCode(),signUpRequest.getEmail(), 
+        		   				encoder.encode(signUpRequest.getPassword()),
+        		   				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
+            
+            
+            userRepository.save(user);
 
-        return new ResponseEntity<User>(user, HttpStatus.CREATED);
+            return new ResponseEntity<User>(user, HttpStatus.CREATED);
+    	   
+       }else {
+    	   return new ResponseEntity<>("Fail -> Passwords don't match!",
+                   HttpStatus.BAD_REQUEST);
+       }
+        
     }
 }

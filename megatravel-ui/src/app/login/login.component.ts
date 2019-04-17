@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
  
-
 import { AuthService } from '../auth/service/auth.service';
 import { TokenStorageService } from '../auth/token-storage/token-storage.service';
 import { AuthLoginInfo } from '../auth/forms/login-info';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { JWTAuth } from '../auth/response/jwt-auth';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,18 @@ export class LoginComponent implements OnInit {
   endpointError = "You are not authorized to access this resource.";
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
+  private jwtauth: JWTAuth;
  
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private httpClient : HttpClient) { }
  
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getAuthorities();
+      this.authService.attemptAuth(this.loginInfo).subscribe(
+        data => {
+          console.table(data);
+          this.jwtauth = data;
+        });
     }
   }
  
@@ -40,26 +46,11 @@ export class LoginComponent implements OnInit {
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
         console.table(data);
-        
+        this.jwtauth = data;
         this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUsername(data.username);
-        this.tokenStorage.saveAuthorities(data.authorities);
  
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getAuthorities();
-        this.httpClient.get("https://localhost:8443/api/test/user").subscribe(data=>{
-          console.log(data);
-          this.isEndpointOK = true;
-        }, error => {
-          this.isEndpointOK = false;
-        });
-        this.httpClient.get("https://localhost:8443/api/test/admin").subscribe(data=>{
-          console.log(data);
-          this.isEndpointOK = true;
-        }, error => {
-          this.isEndpointOK = false;
-        })
       },
       error => {
         this.errorMessage = error.error.errorMessage;
