@@ -11,10 +11,12 @@ import { RegisterComponent } from './register/register.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { AttacksComponent } from './attacks/attacks.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'form', component: ReservationFormComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'attack', component: AttacksComponent }
 ];
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AttacksComponent
+    AttacksComponent,
+    ReservationFormComponent
   ],
   imports: [
     BrowserModule,

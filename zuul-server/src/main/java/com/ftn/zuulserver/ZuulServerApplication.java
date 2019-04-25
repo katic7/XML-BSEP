@@ -18,7 +18,7 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @SpringBootApplication
 public class ZuulServerApplication {
 	
-	@Bean
+	/*@Bean
 	public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
 	    DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
 	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/ZuulServer.jks");
@@ -49,7 +49,7 @@ public class ZuulServerApplication {
 			 }
 		 });
 	 }
-	 
+	 */
 	 @Bean
 	 public RestTemplate template() throws Exception{
 		 RestTemplate template = new RestTemplate();

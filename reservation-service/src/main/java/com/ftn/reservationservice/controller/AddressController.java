@@ -3,10 +3,10 @@ package com.ftn.reservationservice.controller;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,14 +32,22 @@ public class AddressController {
 	}
 	
 	@GetMapping("/test")
+
 	public String test() throws NoSuchAlgorithmException {
 		RestTemplate rt = new RestTemplate();
 		return rt.getForObject("https://localhost:8443/api/test/test", String.class);
 	}
 	
 	@GetMapping("/test2")
+	@PreAuthorize("hasAuthority('CREATE')")
 	public String test2() {
-		return "test";
+		return "test2";
+	}
+	
+	@GetMapping("/test3")
+	@PreAuthorize("hasAuthority('addContent')")
+	public String test3() {
+		return "test3";
 	}
 
 }

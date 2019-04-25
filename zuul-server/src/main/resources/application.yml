@@ -2,27 +2,27 @@
 server:
   port: 8081
   ssl:
-    enabled: true
+    enabled: false
     key-store: classpath:ZuulServer.jks
     key-store-password: password
     key-alias: zuulserver
 security:
-  require-ssl: true
+  require-ssl: false
 spring:
   application:
     name: zuul-server
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
     serviceUrl:
-      defaultZone: ${EUREKA_URI:https://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
     preferIpAddress: true
 zuul:
   routes:
     reservationservice:
-      serviceId: reservationservice
+      serviceId: reservation-service
+    accommodationservice:
+      serviceId: accommodation-service
   host:
     socket-timeout-millis: 30000
 logging:

@@ -104,6 +104,15 @@ public class AuthController {
     	}
     	return new ResponseEntity<String>(permissije, HttpStatus.OK);
     }
+    
+    @GetMapping("/check/{token}/username")
+    public ResponseEntity<?> getUsername(@PathVariable String token) throws InvalidJWTokenException{
+    	if(permissions.validateJwtToken(token)) {
+    		return new ResponseEntity<String>(jwtProvider.getUserPrincipal(token).getUsername(), HttpStatus.OK);
+    	}
+    	return null;
+    }
+    
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {

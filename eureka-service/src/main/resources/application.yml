@@ -1,13 +1,13 @@
 server:
   port: 8761
   ssl:
-    enabled: true
+    enabled: false
     key-store: classpath:MyServer.jks
     key-store-password: password
     trust-store: classpath:MyServer.jks
     trust-store-password: password
     key-alias: MyServer
-    client-auth: need
+
 logging:
   level:
     com:

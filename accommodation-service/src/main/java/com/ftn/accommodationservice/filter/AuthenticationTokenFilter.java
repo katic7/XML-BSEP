@@ -1,4 +1,6 @@
-package com.ftn.reservationservice.filter;
+package com.ftn.accommodationservice.filter;
+
+
 
 import java.io.IOException;
 import java.util.HashSet;
