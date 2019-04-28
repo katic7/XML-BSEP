@@ -1,0 +1,12 @@
+<div class="example-container">
+  <input type="text" required   class="search_input search_input_1 mb-2"  matInput placeholder="Destination" [formControl]="destination"    name="destination">
+  <input matInput required  [matDatepicker]="pickerpickup" (click)="pickerpickup.open()" class="mb-2 search_input search_input_1"  name="checkindate" [formControl]="checkin" placeholder="Check in date">
+  
+  <mat-datepicker #pickerpickup></mat-datepicker>
+
+  <input matInput required  class="mb-2 search_input search_input_1" [matDatepicker]="pickerdropoff" (click)="pickerdropoff.open()"  name="checkoutdate" [formControl]="checkout" placeholder="Check out date">
+ 
+  <mat-datepicker #pickerdropoff></mat-datepicker>
+  <input type="text" required   class="mb-2 search_input search_input_1"  matInput placeholder="Person"  [formControl]="persons"   name="people">
+  <button class="home_search_button" (click)="search()">search</button>
+</div>

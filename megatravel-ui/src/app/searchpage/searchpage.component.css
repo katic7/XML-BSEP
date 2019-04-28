@@ -30,6 +30,13 @@
 2. Body and some general stuff
 *********************************/
 
+.side-form {
+	margin-top:10%;
+	width: 20%;
+	background: orange;
+
+}
+
 *
 {
 	
@@ -1078,6 +1085,7 @@ section
 {
 	
 }
+
 
 /************
 13. 479px

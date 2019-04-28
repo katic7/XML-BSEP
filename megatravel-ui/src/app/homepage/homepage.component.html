@@ -1,0 +1,39 @@
+<div class="super_container">
+        
+  <app-navigation></app-navigation> 
+   
+    <div class="menu trans_500" id="menu" >
+            <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="menu_close_container"><div class="menu_close"></div></div>
+                
+                <ul>
+                    <li class="menu_item"><button (click)="setFlag('flights')">flights</button>
+                    <li class="menu_item"><button (click)="setFlag('hotels')">hotels</button>
+                    <li class="menu_item"><button (click)="setFlag('cars')">cars</button>
+
+                </ul>
+            </div>
+        </div>
+        
+        <div class="home">
+            <div class="home_slider_container">
+                        <div class="background_image" style="background-image:url(assets/bg_1.jpg)"></div>
+                        <div class="home_slider_content_container">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="home_slider_content">
+                                            <div class="home_title"><h2>Hotels & Resorts</h2></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    
+        <!-- Search -->
+    <app-reservation-form></app-reservation-form>
+</div>
+
+<app-footer></app-footer>

@@ -1,52 +1,26 @@
 import { NgModule } from '@angular/core';
-import { LayoutModule } from '@angular/cdk/layout';
-import {
-  MatToolbarModule,  
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatCardModule,
-  MatChipsModule,
-  MatDialogModule,
-  MatSnackBarModule,
-  MatGridListModule,
-  MatExpansionModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatSelectModule,
-  MatTableModule,
-  MatTooltipModule,
-  MatAutocompleteModule,
-} from '@angular/material';
-
-const modules: any[] = [
-  LayoutModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatCardModule,
-  MatChipsModule,
-  MatDialogModule,
-  MatSnackBarModule,
-  MatGridListModule,
-  MatExpansionModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatSelectModule,
-  MatTableModule,
-  MatTooltipModule,
-  MatAutocompleteModule,
-];
+import { MatDatepickerModule,
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [modules],
-  exports: [modules],
+  imports: [
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    BrowserAnimationsModule
+  ],
+  exports: [
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    BrowserAnimationsModule
+  ],
+  providers: [ MatDatepickerModule ],
 })
-export class MaterialModule { }
+
+export class MaterialModule {}

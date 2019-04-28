@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 /* CSS Document */
 
@@ -1079,6 +1080,7 @@ section
 	
 }
 
+
 /************
 13. 479px
 ************/
@@ -1096,3 +1098,13 @@ section
 {
 	
 }
+.example-container {
+	display: flex;
+	flex-direction: column;
+	padding: 10%;
+  }
+  
+  .example-container > * {
+	width: 100%;
+  }
+  

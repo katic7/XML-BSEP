@@ -1,0 +1,186 @@
+/*********************************
+11. Footer
+*********************************/
+
+.footer
+{
+	display: block;
+	position: relative;
+	padding-top: 136px;
+}
+.background_image
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.newsletter_title
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 36px;
+	font-weight: 400;
+	color: #FFFFFF;
+	line-height: 1.2;
+}
+.newsletter_subtitle
+{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	color: #FFFFFF;
+	font-weight: 300;
+	margin-top: 18px;
+}
+.newsletter_form_container
+{
+	margin-top: 84px;
+}
+.newsletter_input
+{
+	width: 100%;
+	height: 50px;
+	background: rgba(255,255,255,0.5);
+	border: none;
+	outline: none;
+	padding-left: 22px;
+	color: #FFFFFF;
+}
+.newsletter_input::-webkit-input-placeholder
+{
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	font-style: italic;
+	color: #FFFFFF !important;
+}
+.newsletter_input:-moz-placeholder
+{
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	font-style: italic;
+	color: #FFFFFF !important;
+}
+.newsletter_input::-moz-placeholder
+{
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	font-style: italic;
+	color: #FFFFFF !important;
+} 
+.newsletter_input:-ms-input-placeholder
+{ 
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	font-style: italic;
+	color: #FFFFFF !important;
+}
+.newsletter_input::input-placeholder
+{
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	font-style: italic;
+	color: #FFFFFF !important;
+}
+.newsletter_form > div:not(:last-child)
+{
+	margin-right: 15px;
+}
+.newsletter_form > div:first-child
+{
+	width: calc(100% - 176px);
+}
+.newsletter_form > div:first-child > div:first-child
+{
+	width: calc((100% - 15px) * 0.35);
+}
+.newsletter_form > div:first-child > div:last-child
+{
+	width: calc((100% - 15px) * 0.65);
+}
+.newsletter_form > div > div > div
+{
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 2px;
+	background: #FFFFFF;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.newsletter_button
+{
+	width: 161px;
+	height: 50px;
+	border-radius: 20px;
+	background: rgba(255,255,255,0.5);
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.footer_contact_row
+{
+	margin-top: 80px;
+	padding-bottom: 50px;
+}
+.footer_contact_item
+{
+	width: 100%;
+
+}
+.footer_contact_icon
+{
+	width: 68px;
+	height: 68px;
+}
+.footer_contact_icon img
+{
+	max-width: 100%;
+}
+.cr
+{
+	width: 100%;
+	height: 68px;
+}
+.cr div
+{
+	font-size: 12px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.48);
+}
+.footer_contact_title
+{
+	font-family: 'Oswald', sans-serif;
+	font-size: 24px;
+	color: #FFFFFF;
+	font-weight: 400;
+	text-transform: uppercase;
+	margin-top: 18px;
+}
+.footer_contact_list
+{
+	margin-top: 19px;
+}
+.footer_contact_list ul li
+{
+	font-size: 14px;
+	color: #FFFFFF;
+	line-height: 1.71;
+}
+.footer_contact_list ul li:not(:last-child)
+{
+	margin-bottom: 7px;
+}
