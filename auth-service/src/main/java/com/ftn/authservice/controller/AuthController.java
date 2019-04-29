@@ -74,6 +74,7 @@ public class AuthController {
     		Authentication authentication = authenticationManager.authenticate(
 	            token
 	        );
+    		
     		String email = authentication.getName();
     		List<String> authorities = authentication.getAuthorities().stream()
     				.map(GrantedAuthority::getAuthority)
@@ -86,6 +87,31 @@ public class AuthController {
 		} catch (AuthenticationException e) {
 			return new ResponseEntity<String>("Not logged!", HttpStatus.BAD_REQUEST);
 		}
+    }
+    
+    @GetMapping("/checkEmail/{email}")
+    public ResponseEntity<?> checkEmail(@PathVariable String email) {
+    	User loginUser = userRepository.findByEmail(email).get();
+    	if(loginUser == null) {
+            return new ResponseEntity<>("Fail -> No email found. Register first",
+                     HttpStatus.BAD_REQUEST);
+       } else {
+    	   return new ResponseEntity<User>(loginUser, HttpStatus.OK);
+       }
+    	
+    }
+    
+    @GetMapping("/getLogged/{jwt}")
+    public ResponseEntity<?> getLogged(@PathVariable String jwt) throws InvalidJWTokenException {
+    	
+    	User logged = userRepository.findByEmail(jwtProvider.getUserPrincipal(jwt).getUsername()).get();
+    	if(logged == null) {
+            return new ResponseEntity<>("Fail ->No logged user",
+                     HttpStatus.BAD_REQUEST);
+       } else {
+    	   return new ResponseEntity<User>(logged, HttpStatus.OK);
+       }
+    	
     }
     
     /*@PostMapping("/testSI")
