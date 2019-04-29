@@ -1,0 +1,29 @@
+.filterbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.filterbar {
+    border-radius: 2%;
+}
+
+.filterbar li  {
+    display: inline;
+}
+
+.filterbar button {
+    background: 0;
+    border-radius: 3px;
+    color: #003580;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 27px;
+    outline: 0;
+    padding: 0 .7em;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}

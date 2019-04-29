@@ -1,0 +1,32 @@
+.filtersection {
+    padding: 10px;
+    border-radius: 2%;
+}
+
+input {
+    background-color: #fff;
+    border: 2px rgba(0,0,0,0.5) solid;
+    border-radius: 2px;
+    height: 15px;
+    width: 15px;
+    top:0;
+    left:0;
+    right:0;
+}
+
+.services {
+    color: rgba(0,0,0,0.5) solid;
+    font-size: 1.1em;
+}
+
+.distance input {
+    width: 75%;
+    height: 22px;
+    padding: 10px;
+    margin-right: 3%;
+    
+}
+
+h5 {
+    margin-top: 10%;
+}

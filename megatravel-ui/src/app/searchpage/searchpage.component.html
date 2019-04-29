@@ -1,3 +1,33 @@
-<div class="side-form">
-    <app-sidesearchform [searchForm]="searchForm"></app-sidesearchform>
+<div class="nav">
+    <app-navigation></app-navigation>
 </div>
+
+<div class="header">
+    <h3>{{ searchForm.destination }}: broj properties found</h3>
+</div>
+
+<div class="side-form">
+    <div class="sidesearchform">
+        <app-sidesearchform [searchForm]="searchForm"></app-sidesearchform>
+    </div>
+    <div class="sidefiltersection">
+        <app-filtersection></app-filtersection>
+    </div>
+    
+</div>
+
+<div class="main-container">
+    <div class="filterbar">
+        <app-filterbar></app-filterbar>
+    </div>
+
+    <div class="searchobject">
+        <div *ngFor="let number of numbers">
+            <app-searchobject></app-searchobject>
+        </div>
+    </div>
+</div>
+
+
+
+

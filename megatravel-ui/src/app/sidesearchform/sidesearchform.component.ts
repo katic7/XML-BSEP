@@ -10,8 +10,8 @@ import { SearchForm } from '../models/SearchForm';
 export class SidesearchformComponent implements OnInit {
 
   destination = new  FormControl("");
-  checkin = new  FormControl("");
-  checkout = new  FormControl("");
+  checkin = new FormControl(new Date());
+  checkout = new FormControl(new Date());
   persons = new  FormControl("");
 
   @Input() searchForm : SearchForm;
@@ -20,8 +20,8 @@ export class SidesearchformComponent implements OnInit {
 
   ngOnInit() {
     this.destination.setValue(this.searchForm.destination);
-    this.checkin.setValue(this.searchForm.checkin);
-    this.checkout.setValue(this.searchForm.checkout);
+    this.checkin.setValue(new Date(this.searchForm.checkin));
+    this.checkout.setValue(new Date(this.searchForm.checkout));
     this.persons.setValue(this.searchForm.persons);
   }
 
