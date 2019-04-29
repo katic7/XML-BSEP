@@ -4,8 +4,10 @@ import { AuthService } from '../auth/service/auth.service';
 import { TokenStorageService } from '../auth/token-storage/token-storage.service';
 import { AuthLoginInfo } from '../auth/forms/login-info';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {Location} from '@angular/common';
 import { JWTAuth } from '../auth/response/jwt-auth';
+import { Router } from '@angular/router';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 @Component({
   selector: 'app-login',
@@ -18,12 +20,15 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   isEndpointOK = false;
   errorMessage = '';
-  endpointError = "You are not authorized to access this resource.";
+  validEmail = false;
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
   private jwtauth: JWTAuth;
+  private element;
  
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private httpClient : HttpClient) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+              private httpClient : HttpClient, private _location: Location,
+              private router: Router) { }
  
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -36,6 +41,34 @@ export class LoginComponent implements OnInit {
     }
   }
  
+  register() {
+    this.router.navigate(['register']);
+  }
+
+  checkEmail() {
+    this.authService.checkEmail(this.form.username).subscribe(data => {
+      this.validEmail = true;
+      this.isLoginFailed = false;
+
+      
+    }, error => {
+      this.errorMessage = error.error.errorMessage;
+      this.isLoginFailed = true;
+    })
+  }
+
+  backToEmail() {
+    this.validEmail = false;
+
+  }
+
+  ngAfterViewInit(){
+   
+      this.element = document.getElementById('em');
+    
+    
+  }
+
   onSubmit() {
     console.log(this.form);
  
@@ -51,9 +84,10 @@ export class LoginComponent implements OnInit {
  
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        this._location.back();
       },
       error => {
-        this.errorMessage = error.error.errorMessage;
+        this.errorMessage = "Wrong password, please try again."
         this.isLoginFailed = true;
       }
     );

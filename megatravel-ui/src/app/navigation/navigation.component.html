@@ -5,22 +5,13 @@
             <div class="row">
                 <div class="col d-flex flex-row">
                     
-                        <div class="phone">Welcome,  Guest</div>
-                        <div *ngIf="user != null" class="social">
-                            <ul class="social_list">
-                                <li class="social_list_item"><a href="#"><i class="fas fa-user-friends"></i></a></li>
-                                <li class="social_list_item"><a href="myreservations/flights"><i class="fas fa-plane"></i></a></li>
-                                <li class="social_list_item"><a href="myreservations/hotels"><i class="fas fa-hotel"></i></a></li>
-                               <li class="social_list_item"><a href="myreservations/cars"><i class="fas fa-car"></i></a></li>
-                                
-                                
-                            </ul>
-                        </div>
+                        <div class="phone">Welcome,  <span *ngIf="logged == null">Guest</span><span *ngIf="logged != null">{{logged.name}}</span></div>
+                     
                     <div class="user_box ml-auto">
                             <div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div>
-                            <span > <div class="user_box_login user_box_link"><button [routerLink]="['/login']">login</button></div></span>
-                            <span > <div class="user_box_register user_box_link"><button [routerLink]="['/register']">register</button></div></span>
-                            <span > <div class="user_box_register user_box_link"><button (click)="logout()">logout</button></div></span>
+                            <span *ngIf="logged == null"> <div class="user_box_login user_box_link"><button [routerLink]="['/login']">login</button></div></span>
+                            <span *ngIf="logged == null"> <div class="user_box_register user_box_link"><button [routerLink]="['/register']">register</button></div></span>
+                            <span *ngIf="logged != null"> <div class="user_box_register user_box_link"><button (click)="logout()">logout</button></div></span>
                     </div>
                 </div>
             </div>
