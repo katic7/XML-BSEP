@@ -1,49 +1,63 @@
-<configuration>
+<configuration debug="true">
 
-<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-    <encoder>
-      <charset>UTF-8</charset>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{35}) - %msg %n</pattern>
-    </encoder>
-  </appender>
+    <timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%M\(%line\) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
 
-  <appender name="FILE-ERROR" class="ch.qos.logback.core.FileAppender">
-    <file>errorFile.log</file>
-    <append>true</append>
+    <appender name="STDERR" class="ch.qos.logback.core.FileAppender">
+    	<file>errorFile.log</file>
+    	<append>true</append>
+    	<immediateFlush>true</immediateFlush>
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%M\(%line\) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
     
-    <!-- set immediateFlush to false for much higher logging throughput -->
-    <immediateFlush>true</immediateFlush>
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-    <encoder>
-       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-    </encoder>
-  </appender>
-  
-   <appender name="FILE-INFO" class="ch.qos.logback.core.FileAppender">
-    <file>infoFile.log</file>
-    <append>true</append>
-    <!-- set immediateFlush to false for much higher logging throughput -->
-    <immediateFlush>true</immediateFlush>
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-    <encoder>
-       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-    </encoder>
-  </appender>
-      
-  <root level="DEBUG">
-    <appender-ref ref="STDOUT" />
-  </root>    
+    <appender name="STDINFO" class="ch.qos.logback.core.FileAppender">
+    	<file>infoFile.log</file>
+    	<append>true</append>
+    	<immediateFlush>true</immediateFlush>
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%M\(%line\) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+	<logger name="com.ftn.authservice" level="info">
+  		<appender-ref ref="STDINFO" />
+	</logger>
+	
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDERR" />
+    </root>
         
-  <root level="ERROR">
-    <appender-ref ref="FILE-ERROR" additivity="false" />
-  </root>
-  
-   <root level="INFO">
-    <appender-ref ref="FILE-INFO"  additivity="false"/>
-  </root>
-  
 </configuration>

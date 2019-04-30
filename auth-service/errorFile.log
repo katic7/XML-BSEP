@@ -1,2 +1,1 @@
-12:56:38.828 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$55ff0b57] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-12:56:39.396 [main] INFO  c.f.a.AuthServiceApplication - No active profile set, falling back to default profiles: default
+23:24:08.380 ERROR c.f.a.controller.AuthController.authenticateUser(102) - Email nemanja@gmail.com unsuccessfully logged in with password attempt: veljkoERROR

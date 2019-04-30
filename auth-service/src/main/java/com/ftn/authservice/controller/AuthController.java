@@ -96,10 +96,10 @@ public class AuthController {
     		
     		String jwt = jwtProvider.generateToken(authentication);
     		ProfileDto profile = new ProfileDto(email, authorities, true);
-    		logger.info("email je "+loginRequest.getEmail() + " je pokusao sa pravim pasvordom " + loginRequest.getPassword());
+    		logger.info("Email "+loginRequest.getEmail() + " successfully logged in with password: " + loginRequest.getPassword());
 	        return ResponseEntity.ok(new JwtAuthenticationResponse(profile, jwt));
 		} catch (AuthenticationException e) {
-			logger.error("email je "+loginRequest.getEmail() + " je pokusao sa pogresnim pasvordom " + loginRequest.getPassword());
+			logger.error("Email "+loginRequest.getEmail() + " unsuccessfully logged in with password attempt: " + loginRequest.getPassword());
 			return new ResponseEntity<String>("Not logged!", HttpStatus.BAD_REQUEST);
 		}
     }
