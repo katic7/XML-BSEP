@@ -1,6 +1,5 @@
 <configuration debug="true">
 
-    <timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
@@ -14,11 +13,12 @@
             <onMatch>DENY</onMatch>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%M\(%line\) - %msg%n
+            <pattern>%d{HH:mm:ss} %-5level %logger{36}.%M\(%line\) - %msg%n
             </pattern>
         </encoder>
     </appender>
 
+	<timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
     <appender name="STDERR" class="ch.qos.logback.core.FileAppender">
     	<file>errorFile.log</file>
     	<append>true</append>
@@ -27,11 +27,12 @@
             <level>ERROR</level>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%M\(%line\) - %msg%n
+            <pattern>%d{dd.MM.yyyy HH:mm:ss} %-5level %logger{36}.%M\(%line\) - %msg%n
             </pattern>
         </encoder>
     </appender>
     
+    <timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
     <appender name="STDINFO" class="ch.qos.logback.core.FileAppender">
     	<file>infoFile.log</file>
     	<append>true</append>
@@ -45,7 +46,7 @@
             <onMismatch>ACCEPT</onMismatch>
         </filter>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%M\(%line\) - %msg%n
+            <pattern>%d{dd.MM.yyyy HH:mm:ss} %-5level %logger{36}.%M\(%line\) - %msg%n
             </pattern>
         </encoder>
     </appender>

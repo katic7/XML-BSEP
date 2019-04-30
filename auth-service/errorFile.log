@@ -1,1 +1,1 @@
-23:24:08.380 ERROR c.f.a.controller.AuthController.authenticateUser(102) - Email nemanja@gmail.com unsuccessfully logged in with password attempt: veljkoERROR
+30.04.2019 23:44:41 ERROR c.f.a.controller.AuthController.authenticateUser(102) - Email nemanja@gmail.com unsuccessfully logged in with password attempt: veljko5
