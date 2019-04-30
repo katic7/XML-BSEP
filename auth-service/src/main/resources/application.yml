@@ -14,6 +14,20 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create-drop
+  mail:
+    host: smtp.gmail.com
+    username: af083085@gmail.com
+    password: ovojetest123
+    debug: true
+    port: 465
+    transport:
+      protocol: smtp
+    smtp:
+      auth: true
+      starttls:
+        enable : true
+        require: true
+      ssl: true
 eureka:
   client:
     serviceUrl:
@@ -24,5 +38,4 @@ auth:
   app:
     jwtSecret: jwtAuthSecretKey
     jwtExpiration: 864000
-
   

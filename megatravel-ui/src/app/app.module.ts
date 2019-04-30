@@ -28,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'search', component: SearchpageComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'attack', component: AttacksComponent }
+  { path: 'attack', component: AttacksComponent },
+  { path: 'confirm-account/:token', component: HomepageComponent }
 ];
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignUpInfo } from '../auth/forms/register-info';
 import { AuthService } from '../auth/service/auth.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
  
 
 @Component({
@@ -15,11 +16,29 @@ export class RegisterComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+  validEmail = false;
  
-  constructor(private authService: AuthService, private location: Location) { }
+  constructor(private authService: AuthService, private location: Location, 
+              private router: Router) { }
  
   ngOnInit() { }
+
+  backToEmail() {
+    this.validEmail = false;
+  }
+
+  signin() {
+    this.router.navigate(['login']);
+  }
  
+  checkEmail() {
+    this.authService.validEmail(this.form.username).subscribe(data => {
+      this.validEmail = data;
+    }, error => {
+      this.validEmail = false;
+    })
+  }
+
   onSubmit() {
     console.log(this.form);
 
@@ -29,11 +48,7 @@ export class RegisterComponent implements OnInit {
     }
  
     this.signupInfo = new SignUpInfo(
-      this.form.name,
-      this.form.surname,
-      this.form.address,
-      this.form.postalCode,
-      this.form.email,
+      this.form.username,
       this.form.password,
       this.form.rePassword);
  
@@ -42,6 +57,7 @@ export class RegisterComponent implements OnInit {
         console.table(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['confirm-account/ft']);
       },
       error => {
         console.log(error);
@@ -49,7 +65,6 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
-  //this.location.replaceState("/login");
-  //window.location.reload();
+    
   }
 }

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col d-flex flex-row">
                     
-                        <div class="phone">Welcome,  <span *ngIf="logged == null">Guest</span><span *ngIf="logged != null">{{logged.name}}</span></div>
+                        <div class="phone">Welcome,  <span *ngIf="logged == null">Guest</span><span *ngIf="logged != null && logged.name != null">{{logged.name}}</span><span *ngIf="logged != null && logged.name == null">{{logged.email}}</span></div>
                      
                     <div class="user_box ml-auto">
                             <div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div>
@@ -25,16 +25,9 @@
             <div class="row">
                 <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                     <div class="logo_container">
-                        <div class="logo"><a href="/renta">MEGATRAVEL</a></div>
+                        <div class="logo"><a href="/home">MEGATRAVEL</a></div>
                     </div>
-                    <div class="main_nav_container ml-auto">
-                        <ul class="main_nav_list">
-                            <li class="main_nav_item"><button (click)="setFlag('flight')">flights</button></li>
-                            <li class="main_nav_item"><button (click)="setFlag('hotel')">hotels</button></li>
-                            <li class="main_nav_item"><button (click)="setFlag('car')">cars</button></li>
-    
-                        </ul>
-                    </div>
+
                     <div class="content_search ml-lg-0 ml-auto">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">

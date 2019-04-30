@@ -1,5 +1,6 @@
 package com.ftn.authservice.jwt;
 
+
 import org.springframework.data.repository.query.spi.EvaluationContextExtensionSupport;
 import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.core.Authentication;

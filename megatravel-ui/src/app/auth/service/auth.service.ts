@@ -24,6 +24,8 @@ export class AuthService {
   private testLogin = authUrl + 'testSI';
   private emailCheck = authUrl + 'checkEmail/';
   private getLoggedUrl = authUrl + 'getLogged/';
+  private validEmailUrl = authUrl + 'validEmail/';
+  private confirmUserUrl = authUrl + 'confirm/';
 
   constructor(private http: HttpClient) {
   }
@@ -43,4 +45,13 @@ export class AuthService {
   getLogged(): Observable<any> {
     return this.http.get(this.getLoggedUrl + sessionStorage.getItem("AuthToken"));
   }
+  
+  validEmail(email: String) :Observable<any> {
+    return this.http.get(this.validEmailUrl+email);
+  }
+
+  confirmUser(token: String) :Observable<any> {
+    return this.http.get(this.confirmUserUrl+token);
+  }
+
 }

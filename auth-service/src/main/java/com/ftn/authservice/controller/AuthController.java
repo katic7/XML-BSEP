@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,15 @@ import com.ftn.authservice.exception.InvalidJWTokenException;
 import com.ftn.authservice.jwt.JwtTokenProvider;
 import com.ftn.authservice.model.RoleName;
 import com.ftn.authservice.model.User;
+import com.ftn.authservice.model.VerificationToken;
 import com.ftn.authservice.repository.RoleRepository;
 import com.ftn.authservice.repository.UserRepository;
+import com.ftn.authservice.repository.VerificationTokenRepository;
 import com.ftn.authservice.request.LoginRequest;
 import com.ftn.authservice.request.SignUpRequest;
 import com.ftn.authservice.response.JwtAuthenticationResponse;
 import com.ftn.authservice.services.CheckTokenAndPermissions;
+import com.ftn.authservice.services.EmailService;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -56,6 +60,12 @@ public class AuthController {
     
     @Autowired
     CheckTokenAndPermissions permissions;
+    
+    @Autowired
+    EmailService emailService;
+    
+    @Autowired
+    VerificationTokenRepository verificationTokenRepository;
     
     @RequestMapping("/secured")
 	public String secured(){
@@ -95,10 +105,18 @@ public class AuthController {
     	if(loginUser == null) {
             return new ResponseEntity<>("Fail -> No email found. Register first",
                      HttpStatus.BAD_REQUEST);
-       } else {
-    	   return new ResponseEntity<User>(loginUser, HttpStatus.OK);
-       }
-    	
+       } 
+    	   return new ResponseEntity<User>(loginUser, HttpStatus.OK);	
+    }
+    
+    @GetMapping("/validEmail/{email}")
+    public ResponseEntity<?> validEmail(@PathVariable String email) {
+    	if(userRepository.findByEmail(email).isPresent()) {
+    		return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);	
+    	} else {
+    		return new ResponseEntity<>(true,
+                    HttpStatus.OK);
+    	}  	   
     }
     
     @GetMapping("/getLogged/{jwt}")
@@ -139,35 +157,61 @@ public class AuthController {
     	return null;
     }
     
+    @GetMapping("/confirm/{vtoken}")
+    public ResponseEntity<?> confirmUser(@PathVariable String vtoken) throws InvalidJWTokenException{
+    	VerificationToken token = verificationTokenRepository.findByConfirmationToken(vtoken);
+    	if(token != null)
+        {
+            User user = userRepository.findByEmail(token.getUser().getEmail()).get();
+            user.setEnabled(true);
+            userRepository.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        else
+        {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+		
+    }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-       if(userRepository.existsByEmail(signUpRequest.getEmail())) {
-           return new ResponseEntity<>("Fail -> Username is already taken!",
-                    HttpStatus.BAD_REQUEST);
-      }
-
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws MessagingException {
+       
        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
           return new ResponseEntity<>("Fail -> Email is already in use!",
                    HttpStatus.BAD_REQUEST);
         }
 
-       if(signUpRequest.getPassword().equals(signUpRequest.getConfirmPassword())) {
-    	// Creating user's account
-           User user = new User(signUpRequest.getName(), signUpRequest.getSurname(), signUpRequest.getAddress(),
-        		   				signUpRequest.getPostalCode(),signUpRequest.getEmail(), 
-        		   				encoder.encode(signUpRequest.getPassword()),
-        		   				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
-            
-            
-            userRepository.save(user);
-
-            return new ResponseEntity<User>(user, HttpStatus.CREATED);
-    	   
-       }else {
-    	   return new ResponseEntity<>("Fail -> Passwords don't match!",
-                   HttpStatus.BAD_REQUEST);
-       }
-        
+       if(signUpRequest.getPassword().equals(signUpRequest.getConfirmPassword()))
+				try {
+					
+					
+				       User user = new User(signUpRequest.getEmail(), 
+				    		   				encoder.encode(signUpRequest.getPassword()),
+				    		   				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
+				        
+				        user.setEnabled(false);
+				        
+				        
+				        VerificationToken confirmationToken = new VerificationToken(user);
+				        emailService.sendNotification(user, confirmationToken, "Welcome to Megatravel.com! Confirm your registration.");
+				        
+				        userRepository.save(user);
+			            verificationTokenRepository.save(confirmationToken);
+			            
+				        
+	
+				        return new ResponseEntity<User>(user, HttpStatus.CREATED);
+						   
+					   
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		else {
+	    	   return new ResponseEntity<>("Fail -> Passwords don't match!",
+	                   HttpStatus.BAD_REQUEST);
+	       }
+	return null;
     }
 }
