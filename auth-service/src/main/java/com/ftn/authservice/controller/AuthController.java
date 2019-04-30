@@ -194,7 +194,7 @@ public class AuthController {
 				        
 				        
 				        VerificationToken confirmationToken = new VerificationToken(user);
-				        emailService.sendNotification(user, confirmationToken, "Welcome to Megatravel.com! Confirm your registration.");
+				        //emailService.sendNotification(user, confirmationToken, "Welcome to Megatravel.com! Confirm your registration.");
 				        
 				        userRepository.save(user);
 			            verificationTokenRepository.save(confirmationToken);

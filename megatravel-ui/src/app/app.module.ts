@@ -21,6 +21,7 @@ import { SidesearchformComponent } from './sidesearchform/sidesearchform.compone
 import { FilterbarComponent } from './sortbar/filterbar.component';
 import { SearchobjectComponent } from './searchobject/searchobject.component';
 import { FiltersectionComponent } from './filtersection/filtersection.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchpageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'attack', component: AttacksComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'confirm-account/:token', component: HomepageComponent }
 ];
 
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     SidesearchformComponent,
     FilterbarComponent,
     SearchobjectComponent,
-    FiltersectionComponent
+    FiltersectionComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

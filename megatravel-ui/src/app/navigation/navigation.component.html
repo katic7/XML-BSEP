@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col d-flex flex-row">
                     
-                        <div class="phone">Welcome,  <span *ngIf="logged == null">Guest</span><span *ngIf="logged != null && logged.name != null">{{logged.name}}</span><span *ngIf="logged != null && logged.name == null">{{logged.email}}</span></div>
+                        <div class="phone">Welcome,  <span *ngIf="logged == null">Guest</span><span *ngIf="logged != null && logged.name != null"><button (click)="gotoProfile()" class="profile-button">{{logged.name}}</button></span><span *ngIf="logged != null && logged.name == null">{{logged.email}}</span></div>
                      
                     <div class="user_box ml-auto">
                             <div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div>

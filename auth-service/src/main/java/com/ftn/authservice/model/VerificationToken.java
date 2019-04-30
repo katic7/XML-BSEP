@@ -18,6 +18,10 @@ import javax.persistence.TemporalType;
 @Entity
 public class VerificationToken {
 
+	public VerificationToken() {
+		
+	}
+	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="token_id")

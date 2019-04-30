@@ -31,14 +31,7 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
  
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.authService.attemptAuth(this.loginInfo).subscribe(
-        data => {
-          console.table(data);
-          this.jwtauth = data;
-        });
-    }
+
   }
  
   register() {
