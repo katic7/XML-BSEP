@@ -1,0 +1,49 @@
+<configuration>
+
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <charset>UTF-8</charset>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{35}) - %msg %n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE-ERROR" class="ch.qos.logback.core.FileAppender">
+    <file>errorFile.log</file>
+    <append>true</append>
+    
+    <!-- set immediateFlush to false for much higher logging throughput -->
+    <immediateFlush>true</immediateFlush>
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+   <appender name="FILE-INFO" class="ch.qos.logback.core.FileAppender">
+    <file>infoFile.log</file>
+    <append>true</append>
+    <!-- set immediateFlush to false for much higher logging throughput -->
+    <immediateFlush>true</immediateFlush>
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+      
+  <root level="DEBUG">
+    <appender-ref ref="STDOUT" />
+  </root>    
+        
+  <root level="ERROR">
+    <appender-ref ref="FILE-ERROR" additivity="false" />
+  </root>
+  
+   <root level="INFO">
+    <appender-ref ref="FILE-INFO"  additivity="false"/>
+  </root>
+  
+</configuration>

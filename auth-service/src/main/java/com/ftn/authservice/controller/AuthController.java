@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +69,8 @@ public class AuthController {
     @Autowired
     VerificationTokenRepository verificationTokenRepository;
     
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+    
     @RequestMapping("/secured")
 	public String secured(){
 		return "Pozdrav " + new Date();
@@ -92,9 +96,10 @@ public class AuthController {
     		
     		String jwt = jwtProvider.generateToken(authentication);
     		ProfileDto profile = new ProfileDto(email, authorities, true);
-    		
+    		logger.info("email je "+loginRequest.getEmail() + " je pokusao sa pravim pasvordom " + loginRequest.getPassword());
 	        return ResponseEntity.ok(new JwtAuthenticationResponse(profile, jwt));
 		} catch (AuthenticationException e) {
+			logger.error("email je "+loginRequest.getEmail() + " je pokusao sa pogresnim pasvordom " + loginRequest.getPassword());
 			return new ResponseEntity<String>("Not logged!", HttpStatus.BAD_REQUEST);
 		}
     }
