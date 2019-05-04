@@ -13,16 +13,7 @@ export class HomepageComponent implements OnInit {
   constructor(private authService : AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if(this.route.snapshot.params.token != 'ft') {
-      const token = this.route.snapshot.params.token;
-      this.authService.confirmUser(token).subscribe(data => {
-
-      }, error => {
-
-      })
-    } else {
-      alert("verifikuj acc")
-    }
+   
   }
 
   

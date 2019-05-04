@@ -1,7 +1,4 @@
-package com.ftn.accommodationservice.config;
-
-
-
+package com.ftn.agentservice.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -18,10 +15,11 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
-public class WebServiceConfig extends WsConfigurerAdapter{
+public class WebServiceConfiguration extends WsConfigurerAdapter{
 
 	
-	 @Bean
+	 @SuppressWarnings({ "rawtypes", "unchecked" })
+	@Bean
 	    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
 	        MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 	        servlet.setApplicationContext(applicationContext);
@@ -34,13 +32,13 @@ public class WebServiceConfig extends WsConfigurerAdapter{
 	        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 	        wsdl11Definition.setPortTypeName("CountriesPort");
 	        wsdl11Definition.setLocationUri("/ws");
-	        wsdl11Definition.setTargetNamespace("www.ftn.com/accomodation-service/model");
+	        wsdl11Definition.setTargetNamespace("http://www.ftn.com/agentservice/soap");
 	        wsdl11Definition.setSchema(countriesSchema);
 	        return wsdl11Definition;
 	    }
 
 	    @Bean
 	    public XsdSchema countriesSchema() {
-	        return new SimpleXsdSchema(new ClassPathResource("Soap.xsd"));
+	        return new SimpleXsdSchema(new ClassPathResource("countries.xsd"));
 	    }
 }

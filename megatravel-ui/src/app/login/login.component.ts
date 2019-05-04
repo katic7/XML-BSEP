@@ -6,8 +6,9 @@ import { AuthLoginInfo } from '../auth/forms/login-info';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Location} from '@angular/common';
 import { JWTAuth } from '../auth/response/jwt-auth';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
+import { RouteService } from '../routeservice/RouteService';
 
 @Component({
   selector: 'app-login',
@@ -25,13 +26,14 @@ export class LoginComponent implements OnInit {
   private loginInfo: AuthLoginInfo;
   private jwtauth: JWTAuth;
   private element;
+
  
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private httpClient : HttpClient, private _location: Location,
-              private router: Router) { }
+              private router: Router, private routeService: RouteService) { }
  
   ngOnInit() {
-
+    
   }
  
   register() {
@@ -64,7 +66,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
- 
+    console.log("prosli url " + this.routeService.getPreviousUrl());
     this.loginInfo = new AuthLoginInfo(
       this.form.username,
       this.form.password);
@@ -77,7 +79,14 @@ export class LoginComponent implements OnInit {
  
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this._location.back();
+        
+        if(this.routeService.getPreviousUrl().includes('register')) {
+          this.router.navigate(['home']);
+        } else {
+          this._location.back();
+        }
+       
+       
       },
       error => {
         this.errorMessage = "Wrong password, please try again."

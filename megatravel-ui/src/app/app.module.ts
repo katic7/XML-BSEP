@@ -22,6 +22,7 @@ import { FilterbarComponent } from './sortbar/filterbar.component';
 import { SearchobjectComponent } from './searchobject/searchobject.component';
 import { FiltersectionComponent } from './filtersection/filtersection.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RouteService } from './routeservice/RouteService';
 
 
 const appRoutes: Routes = [
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
-  }],
+  },
+  RouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

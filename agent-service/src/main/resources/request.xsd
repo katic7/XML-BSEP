@@ -1,9 +1,9 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:gs="www.ftn.com/accomodation-service/model">
+				  xmlns:gs="http://www.ftn.com/agentservice/soap">
     <soapenv:Header/>
     <soapenv:Body>
         <gs:getCountryRequest>
-            <gs:name>SPANJOLSKA</gs:name>
+            <gs:name>Spain</gs:name>
         </gs:getCountryRequest>
     </soapenv:Body>
 </soapenv:Envelope>

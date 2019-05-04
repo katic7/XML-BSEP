@@ -23,7 +23,7 @@ export class AuthService {
   private signupUrl = authUrl + 'signup';
   private testLogin = authUrl + 'testSI';
   private emailCheck = authUrl + 'checkEmail/';
-  private getLoggedUrl = authUrl + 'getLogged/';
+  private getLoggedUrl = authUrl + 'getLogged';
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
 
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   getLogged(): Observable<any> {
-    return this.http.get(this.getLoggedUrl + sessionStorage.getItem("AuthToken"));
+    return this.http.get(this.getLoggedUrl);
   }
   
   validEmail(email: String) :Observable<any> {
