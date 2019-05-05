@@ -19,10 +19,16 @@
     </appender>
 
 	<timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
-    <appender name="STDERR" class="ch.qos.logback.core.FileAppender">
-    	<file>errorFile.log</file>
-    	<append>true</append>
-    	<immediateFlush>true</immediateFlush>
+    <appender name="STDERR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>logs/errorFile.log</file>
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	      <fileNamePattern>logs/errorFile.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+	      <timeBasedFileNamingAndTriggeringPolicy
+	      	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	        <maxFileSize>1KB</maxFileSize>
+	      </timeBasedFileNamingAndTriggeringPolicy>
+	      <maxHistory>30</maxHistory>
+    	</rollingPolicy>
     	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
@@ -33,10 +39,16 @@
     </appender>
     
     <timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss" />
-    <appender name="STDINFO" class="ch.qos.logback.core.FileAppender">
-    	<file>infoFile.log</file>
-    	<append>true</append>
-    	<immediateFlush>true</immediateFlush>
+    <appender name="STDINFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<file>logs/infoFile.log</file>
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	      <fileNamePattern>logs/infoFile.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+	      <timeBasedFileNamingAndTriggeringPolicy
+	        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	      	<maxFileSize>1KB</maxFileSize>
+	      </timeBasedFileNamingAndTriggeringPolicy>
+	      <maxHistory>30</maxHistory>
+    	</rollingPolicy>
     	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
