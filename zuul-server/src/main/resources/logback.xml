@@ -95,11 +95,11 @@
         <appender-ref ref="STDOUT" />
     </root>
 
-	<logger name="com.ftn.authservice" level="trace" additivity="false" >
+	<logger name="com.ftn.zuulservice" level="trace" additivity="false" >
   		<appender-ref ref="STDERR" />
   		<appender-ref ref="STDWARN" />
   		<appender-ref ref="STDINFO" />
 	</logger>
-	
+    
         
 </configuration>

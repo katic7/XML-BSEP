@@ -1,7 +1,0 @@
-05.05.2019 13:48:53 INFO  c.f.a.AuthServiceApplication.logStartupProfileInfo(675) - No active profile set, falling back to default profiles: default
-05.05.2019 13:49:09 INFO  c.f.a.AuthServiceApplication.logStarted(59) - Started AuthServiceApplication in 19.645 seconds (JVM running for 20.415)
-05.05.2019 13:50:41 INFO  c.f.a.controller.AuthController.authenticateUser(99) - Email nemanja@gmail.com successfully logged in with password: veljko
-05.05.2019 13:50:42 INFO  c.f.a.controller.AuthController.authenticateUser(99) - Email nemanja@gmail.com successfully logged in with password: veljko
-05.05.2019 13:50:44 INFO  c.f.a.controller.AuthController.authenticateUser(99) - Email nemanja@gmail.com successfully logged in with password: veljko
-05.05.2019 13:50:44 INFO  c.f.a.controller.AuthController.authenticateUser(99) - Email nemanja@gmail.com successfully logged in with password: veljko
-05.05.2019 13:51:15 INFO  c.f.a.controller.AuthController.authenticateUser(99) - Email nemanja@gmail.com successfully logged in with password: veljko

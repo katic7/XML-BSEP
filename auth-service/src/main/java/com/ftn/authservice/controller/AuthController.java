@@ -96,10 +96,11 @@ public class AuthController {
     		
     		String jwt = jwtProvider.generateToken(authentication);
     		ProfileDto profile = new ProfileDto(email, authorities, true);
-    		logger.info("Email "+loginRequest.getEmail() + " successfully logged in with password: " + loginRequest.getPassword());
+    		User us = userRepository.findByEmail(loginRequest.getEmail()).get();
+    		logger.info("ID: {} | PRN4SI | success", us.getId() );
 	        return ResponseEntity.ok(new JwtAuthenticationResponse(profile, jwt));
 		} catch (AuthenticationException e) {
-			logger.error("Email "+loginRequest.getEmail() + " unsuccessfully logged in with password attempt: " + loginRequest.getPassword());
+			logger.error("PRN4SI | fail");
 			return new ResponseEntity<String>("Not logged!", HttpStatus.BAD_REQUEST);
 		}
     }
