@@ -19,13 +19,13 @@ export class SearchpageComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.forEach(a => {
-      this.searchForm.checkin = a.in;
-      this.searchForm.checkout = a.out;
+      this.searchForm.checkin = new Date(a.in);
+      this.searchForm.checkout = new Date(a.out);
       this.searchForm.destination = a.where;
       this.searchForm.persons = +a.persons;
    })
 
-  
+  console.log(this.searchForm);
   }
 
 }

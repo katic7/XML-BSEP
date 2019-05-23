@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DESKTOP-FET5BBI | 2019-05-23 12:13:11 | as.AuthController | ID: 50c0e1df-7d1f-11e9-8f31-00ff20341b4a | PRN4SI | success
 DESKTOP-FET5BBI | 2019-05-23 09:13:59 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 09:15:22 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
@@ -28,3 +29,7 @@ DESKTOP-FET5BBI | 2019-05-23 01:59:08 | as.AuthController | ID: 1 | PRN4SI | suc
 DESKTOP-FET5BBI | 2019-05-23 02:00:35 | as.AuthController | ID: 1 | PRN4SI | success
 DESKTOP-FET5BBI | 2019-05-23 02:01:57 | as.AuthController | ID: 1 | PRN4SI | success
 DESKTOP-FET5BBI | 2019-05-23 02:02:58 | as.AuthController | ID: 1 | PRN4SI | success
+=======
+DESKTOP-SKD9GDH | 2019-05-20 06:01:56 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-20 06:02:23 | as.AuthServiceApplication | Started AuthServiceApplication in 29.785 seconds (JVM running for 30.572)
+>>>>>>> 22fd86a30056a13bf7c99c7e5e9746375e5c0779

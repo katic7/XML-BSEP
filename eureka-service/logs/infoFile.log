@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DESKTOP-FET5BBI | 2019-05-23 09:13:28 | as.EurekaServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 09:13:45 | as.EurekaServiceApplication | Started EurekaServiceApplication in 21.844 seconds (JVM running for 24.447)
 DESKTOP-FET5BBI | 2019-05-23 12:03:51 | as.EurekaServiceApplication | No active profile set, falling back to default profiles: default
@@ -13,3 +14,7 @@ DESKTOP-FET5BBI | 2019-05-23 01:16:15 | as.EurekaServiceApplication | Started Eu
 DESKTOP-FET5BBI | 2019-05-23 01:42:48 | as.EurekaServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 01:43:02 | as.EurekaServiceApplication | Started EurekaServiceApplication in 18.044 seconds (JVM running for 19.134)
 DESKTOP-FET5BBI | 2019-05-23 01:54:59 | as.EurekaServiceApplication | No active profile set, falling back to default profiles: default
+=======
+DESKTOP-SKD9GDH | 2019-05-20 02:59:05 | as.EurekaServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-20 02:59:14 | as.EurekaServiceApplication | Started EurekaServiceApplication in 12.392 seconds (JVM running for 13.011)
+>>>>>>> 22fd86a30056a13bf7c99c7e5e9746375e5c0779
