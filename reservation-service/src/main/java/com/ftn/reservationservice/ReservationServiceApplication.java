@@ -18,12 +18,12 @@ public class ReservationServiceApplication {
 	/*@Bean
 	public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
 	    DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
-	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/Reservation.jks");
+	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/reservation-service.jks");
 	    System.setProperty("javax.net.ssl.keyStorePassword", "password");
-	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/Reservation.jks");
+	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/reservation-service.jks");
 	    System.setProperty("javax.net.ssl.trustStorePassword", "password");
 	    EurekaJerseyClientBuilder builder = new EurekaJerseyClientBuilder();
-	    builder.withClientName("Reservation");
+	    builder.withClientName("reservation-service");
 	    builder.withSystemSSLConfiguration();
 	    builder.withMaxTotalConnections(10);
 	    builder.withMaxConnectionsPerHost(10);
@@ -45,8 +45,8 @@ public class ReservationServiceApplication {
 			 return false;
 			 }
 		 });
-	 }*/
-	 
+	 }
+	 */
 	 @Bean
 	 public RestTemplate template() throws Exception{
 		 RestTemplate template = new RestTemplate();

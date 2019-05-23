@@ -42,7 +42,7 @@ public class JwtTokenProvider {
 		
 		return Jwts.builder()
 			.setClaims(additionalInfo)
-			.setSubject(userDetails.getId())
+			.setSubject(userDetails.getId().toString())
 			.setIssuedAt(new Date())
 			.setExpiration(expiryDate)
 			.setHeaderParam("typ", "JWT")
@@ -55,7 +55,7 @@ public class JwtTokenProvider {
 			Claims claims = getClaimsFromToken(jwt);
 			
 			return new UserPrincipal(
-				getIdFromClaims(claims), 
+				Long.parseLong(getIdFromClaims(claims)), 
 				getUsernameFromClaims(claims), 
 				true,
 				getGrantedAuthoritiesFromClaims(claims),true

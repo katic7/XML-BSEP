@@ -12,14 +12,14 @@ public class UserPrincipal implements UserDetails {
 	 */
 	private static final long serialVersionUID = -901909149073198612L;
 	
-	private String id;
+	private Long id;
 	private String password;
 	private String username;
 	private boolean enabled;
 	private boolean nonLocked;
 	private Collection<? extends GrantedAuthority> autorities;
 	
-	public UserPrincipal(String id, String password, String username, boolean enabled, Collection<? extends GrantedAuthority> autorities, boolean locked) {
+	public UserPrincipal(Long id, String password, String username, boolean enabled, Collection<? extends GrantedAuthority> autorities, boolean locked) {
 		this.id = id;
 		this.password = password;
 		this.username = username;
@@ -28,12 +28,18 @@ public class UserPrincipal implements UserDetails {
 		this.nonLocked = locked;
 	}
 	
-	public UserPrincipal(String id, String username, boolean enabled, Collection<? extends GrantedAuthority> autorities, boolean locked) {
+	public UserPrincipal(Long id, String username, boolean enabled, Collection<? extends GrantedAuthority> autorities, boolean locked) {
 		this(id, null, username, enabled, autorities, locked);
 	}
 	
-	public String getId() {
+	
+
+	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override

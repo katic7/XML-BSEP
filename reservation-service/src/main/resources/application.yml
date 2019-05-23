@@ -2,9 +2,9 @@ server:
   port: 8083
   ssl:
     enabled: false
-    key-store: classpath:Reservation.jks
+    key-store: classpath:reservation-service.jks
     key-store-password: password
-    key-alias: reservation
+    key-alias: reservation-service
 security:
   require-ssl: false   
 spring:

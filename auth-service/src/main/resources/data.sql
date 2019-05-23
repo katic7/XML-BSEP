@@ -19,22 +19,13 @@ insert into roles (id, name) values (3, 'ROLE_USER');
 
 -- users
 insert into users (id, name, surname, address, postal_code, email, enabled, password, non_locked) 
-values (UUID(), 'Nemanja', 'Dime', 'Vojvodjanska 22', 21000 ,'nemanja@gmail.com', 1, '$2a$10$tlHY4ACO1oM5KR5eFRNdaOcIfOR0ZQXEnCB0TjnBgHPIOWHIfZN7K', 1);
+values (1, 'Nemanja', 'Dime', 'Vojvodjanska 22', 21000 ,'nemanja@gmail.com', 1, '$2a$10$tlHY4ACO1oM5KR5eFRNdaOcIfOR0ZQXEnCB0TjnBgHPIOWHIfZN7K', 1);
 insert into users (id, name, surname, address, postal_code, email, enabled, password, non_locked) 
-values (UUID(), 'Velja', 'Veljkovic', 'Bul. Evrope 22', 21000 ,'dimsic@gmail.com', 1, '$2a$10$tlHY4ACO1oM5KR5eFRNdaOcIfOR0ZQXEnCB0TjnBgHPIOWHIfZN7K', 1);
+values (2, 'Velja', 'Veljkovic', 'Bul. Evrope 22', 21000 ,'dimsic@gmail.com', 1, '$2a$10$tlHY4ACO1oM5KR5eFRNdaOcIfOR0ZQXEnCB0TjnBgHPIOWHIfZN7K', 1);
 
 -- role-permissions
-insert into role_permissions (permission_id, role_id) values (1, 1);
 insert into role_permissions (permission_id, role_id) values (2, 1);
-insert into role_permissions (permission_id, role_id) values (3, 1);
-insert into role_permissions (permission_id, role_id) values (4, 1);
-insert into role_permissions (permission_id, role_id) values (5, 1);
-insert into role_permissions (permission_id, role_id) values (6, 1);
-insert into role_permissions (permission_id, role_id) values (7, 1);
-insert into role_permissions (permission_id, role_id) values (8, 1);
-insert into role_permissions (permission_id, role_id) values (9, 1);
-insert into role_permissions (permission_id, role_id) values (10, 1);
-insert into role_permissions (permission_id, role_id) values (11, 1);
+
 
 insert into role_permissions (permission_id, role_id) values (1, 3);
 insert into role_permissions (permission_id, role_id) values (2, 3);

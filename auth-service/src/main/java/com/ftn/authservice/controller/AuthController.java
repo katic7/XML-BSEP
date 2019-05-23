@@ -18,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -125,25 +126,18 @@ public class AuthController {
     	}  	   
     }
     
-    @GetMapping("/getLogged/{jwt}")
-    public ResponseEntity<?> getLogged(@PathVariable String jwt) throws InvalidJWTokenException {
-    	
-    	User logged = userRepository.findByEmail(jwtProvider.getUserPrincipal(jwt).getUsername()).get();
-    	if(logged == null) {
-            return new ResponseEntity<>("Fail ->No logged user",
+    @GetMapping("/getLogged")
+    public ResponseEntity<?> getLogged() {
+    	System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+    	if(userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).isPresent()) {
+    		User logged = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+    		return new ResponseEntity<User>(logged, HttpStatus.OK);
+    	} else {
+    		 return new ResponseEntity<>("Fail ->No logged user",
                      HttpStatus.BAD_REQUEST);
-       } else {
-    	   return new ResponseEntity<User>(logged, HttpStatus.OK);
-       }
+    	}   	
     	
     }
-    
-    /*@PostMapping("/testSI")
-    public ResponseEntity<?> testSI(@Valid @RequestBody LoginRequest loginRequest){
-    	
-    	User u = userRepository.testLogin(loginRequest.getEmail(),loginRequest.getPassword());
-    	return new ResponseEntity<User>(u,HttpStatus.OK);
-    }*/
     
     @GetMapping("/check/{token}")
     public ResponseEntity<?> checkToken(@PathVariable String token) throws InvalidJWTokenException{
@@ -179,6 +173,11 @@ public class AuthController {
         }
 		
     }
+    
+    @GetMapping("/signout") 
+    public void signout() {
+    	SecurityContextHolder.clearContext();
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws MessagingException {
@@ -196,7 +195,7 @@ public class AuthController {
 				    		   				encoder.encode(signUpRequest.getPassword()),
 				    		   				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
 				        
-				        user.setEnabled(false);
+				        user.setEnabled(true);
 				        
 				        
 				        VerificationToken confirmationToken = new VerificationToken(user);

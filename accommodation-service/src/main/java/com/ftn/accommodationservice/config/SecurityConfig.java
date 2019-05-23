@@ -1,7 +1,6 @@
 package com.ftn.accommodationservice.config;
 
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -51,21 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .sessionManagement()
 	            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 	            .and()
-	        .authorizeRequests()
-	            .antMatchers("/",
-			                 "/favicon.ico",
-			                 "/**/*.png",
-			                 "/**/*.gif",
-			                 "/**/*.svg",
-			                 "/**/*.jpg",
-			                 "/**/*.html",
-			                 "/**/*.css",
-			                 "/**/*.js")
-	                .permitAll()
-                .antMatchers("/api/**")
-	            	.permitAll();
-//	            .anyRequest()
-//	                .authenticated();
+	        .authorizeRequests().anyRequest()
+	                .authenticated();
     }
 	
 }

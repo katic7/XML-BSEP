@@ -23,6 +23,8 @@ zuul:
       serviceId: reservation-service
     accommodationservice:
       serviceId: accommodation-service
+    bezbednost::
+      serviceId: pki-service
   host:
     socket-timeout-millis: 30000
 logging:
