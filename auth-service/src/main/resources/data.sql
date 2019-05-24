@@ -33,6 +33,6 @@ insert into role_permissions (permission_id, role_id) values (3, 3);
 
 -- user-roles
 insert into user_roles (user_id, role_id) 
-values ((select id from users where email = 'nemanja@gmail.com'), 1);
+values (1, 1);
 insert into user_roles (user_id, role_id) 
-values ((select id from users where email = 'dimsic@gmail.com'), 1);
+values (2, 1);

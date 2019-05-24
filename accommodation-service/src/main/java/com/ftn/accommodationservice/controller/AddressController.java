@@ -75,7 +75,8 @@ public class AddressController {
 	
 	@GetMapping("/testhttps")
 	public String test5() {
-		return "https ok";
+		return "ssl ok";
+		
 	}
 
 

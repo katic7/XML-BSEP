@@ -1,5 +1,6 @@
 package com.ftn.authservice.controller;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,10 +47,11 @@ public class TestController {
 		return "From Auth service - > CREATED!";
 	}
 	
-	@GetMapping("/testauth")
+	@GetMapping("/https")
 	public String test4() {
 		RestTemplate rt = new RestTemplate();
-		return rt.getForObject("http://localhost:8082/api/addresses/test2", String.class);
+		return rt.exchange("https://localhost:8082/api/addresses/testhttps", HttpMethod.GET, null, String.class).getBody();
+		//return rt.getForObject("https://localhost:8082/api/addresses/testhttps", String.class);
 	}
 	
 }

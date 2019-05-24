@@ -32,10 +32,8 @@ import com.ftn.authservice.exception.InvalidJWTokenException;
 import com.ftn.authservice.jwt.JwtTokenProvider;
 import com.ftn.authservice.model.RoleName;
 import com.ftn.authservice.model.User;
-import com.ftn.authservice.model.VerificationToken;
 import com.ftn.authservice.repository.RoleRepository;
 import com.ftn.authservice.repository.UserRepository;
-import com.ftn.authservice.repository.VerificationTokenRepository;
 import com.ftn.authservice.request.LoginRequest;
 import com.ftn.authservice.request.SignUpRequest;
 import com.ftn.authservice.response.JwtAuthenticationResponse;
@@ -66,9 +64,7 @@ public class AuthController {
     
     @Autowired
     EmailService emailService;
-    
-    @Autowired
-    VerificationTokenRepository verificationTokenRepository;
+   
     
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
     
@@ -157,7 +153,7 @@ public class AuthController {
     	return null;
     }
     
-    @GetMapping("/confirm/{vtoken}")
+    /*@GetMapping("/confirm/{vtoken}")
     public ResponseEntity<?> confirmUser(@PathVariable String vtoken) throws InvalidJWTokenException{
     	VerificationToken token = verificationTokenRepository.findByConfirmationToken(vtoken);
     	if(token != null)
@@ -172,7 +168,7 @@ public class AuthController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 		
-    }
+    }*/
     
     @GetMapping("/signout") 
     public void signout() {
@@ -198,14 +194,10 @@ public class AuthController {
 				        user.setEnabled(true);
 				        
 				        
-				        VerificationToken confirmationToken = new VerificationToken(user);
+				       
 				        //emailService.sendNotification(user, confirmationToken, "Welcome to Megatravel.com! Confirm your registration.");
 				        
 				        userRepository.save(user);
-			            verificationTokenRepository.save(confirmationToken);
-			            
-				        
-	
 				        return new ResponseEntity<User>(user, HttpStatus.CREATED);
 						   
 					   

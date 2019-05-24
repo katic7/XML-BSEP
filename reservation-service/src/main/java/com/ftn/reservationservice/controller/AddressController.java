@@ -35,7 +35,7 @@ public class AddressController {
 	@PreAuthorize("hasAuthority('READ')")
 	public String test() throws NoSuchAlgorithmException {
 		RestTemplate rt = new RestTemplate();
-		return rt.getForObject("https://localhost:8082/api/addresses/testhttps", String.class);
+		return rt.getForObject("https://localhost:8082/api/reservations/test2", String.class);
 	}
 	
 	@GetMapping("/test2")

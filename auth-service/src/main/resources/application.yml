@@ -38,4 +38,3 @@ auth:
   app:
     jwtSecret: jwtAuthSecretKey
     jwtExpiration: 864000
-  

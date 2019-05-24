@@ -34,7 +34,7 @@
             <level>ERROR</level>
         </filter>
         <encoder>
-            <pattern>%contextName | %d{yyyy-MM-dd hh:mm:ss} | as.%logger{0} | %msg%n
+            <pattern>%contextName | %d{yyyy-MM-dd hh:mm:ss} | es.%logger{0} | %msg%n
             </pattern>
         </encoder>
     </appender>
@@ -58,7 +58,7 @@
             <onMatch>DENY</onMatch>
         </filter>
         <encoder>
-            <pattern>%contextName | %d{yyyy-MM-dd hh:mm:ss} | as.%logger{0} | %msg%n
+            <pattern>%contextName | %d{yyyy-MM-dd hh:mm:ss} | es.%logger{0} | %msg%n
             </pattern>
         </encoder>
     </appender>
@@ -86,7 +86,7 @@
             <onMatch>DENY</onMatch>
         </filter>
         <encoder>
-            <pattern>%contextName | %d{yyyy-MM-dd hh:mm:ss} | as.%logger{0} | %msg%n
+            <pattern>%contextName | %d{yyyy-MM-dd hh:mm:ss} | es.%logger{0} | %msg%n
             </pattern>
         </encoder>
     </appender>

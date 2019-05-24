@@ -11,7 +11,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.ftn.authservice.model.User;
-import com.ftn.authservice.model.VerificationToken;
 
 @Service
 public class EmailService {
@@ -26,7 +25,7 @@ public class EmailService {
 	@Value("${spring.mail.username}")
 	private String username;
 	
-	public void sendNotification(User user, VerificationToken token, String subject) throws MessagingException {
+	/*public void sendNotification(User user, VerificationToken token, String subject) throws MessagingException {
 		MimeMessage mimeMessage = javamailsender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
 		
@@ -227,7 +226,7 @@ public class EmailService {
 		javamailsender.send(mimeMessage);
 		System.out.println("saljem mejl");
 		
+	
 		
-		
-	}
+	}	*/
 }
