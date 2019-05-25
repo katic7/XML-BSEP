@@ -38,13 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		.authorizeRequests()
 
-		.antMatchers("/api/addresses/testhttps").permitAll()
+		.antMatchers("/api/*").permitAll()
+		.antMatchers("/ws/*").permitAll()
+		.antMatchers("/ws").permitAll()
+		
+		.anyRequest().authenticated().and();
 		
 		
-		.anyRequest().authenticated().and()
-		
-		
-		.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		//.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	http.csrf().disable();
     	
        /* http

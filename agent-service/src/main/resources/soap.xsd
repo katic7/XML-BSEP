@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://ftn.com/accommodationservice/xsd" 
+xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualified">
+	
+	 <xs:simpleType name="id">
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+    <xs:simpleType name="name">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+            <xs:minLength value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="surname">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="verified">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="dateOfBirth">
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+    <xs:simpleType name="state">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="longitude" type="xs:double"/>
+            <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="state">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="64"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="town">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="128"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="street">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="128"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="street_number">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="postal_code" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="telephone">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="cardNumber">
+        <xs:restriction base="xs:string">
+            <xs:length value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="expDate">
+        <xs:restriction base="xs:date"/>
+    </xs:simpleType>
+    <xs:simpleType name="csv">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:totalDigits value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="description">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    <xs:simpleType name="freeCancelation">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="daysToCancel">
+        <xs:restriction base="xs:positiveInteger"/>
+    </xs:simpleType>
+    <xs:simpleType name="price">
+        <xs:restriction base="xs:double">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="included">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="numberOfBeds">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="balcony">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="images">
+        <xs:restriction base="xs:base64Binary"/>
+    </xs:simpleType>
+    <xs:simpleType name="rating">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="completed">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    <xs:simpleType name="active">
+        <xs:restriction base="xs:boolean"/>
+    </xs:simpleType>
+    
+   <xs:complexType name="AdditionalService">
+    <xs:sequence>
+            <xs:element name="id" type="tns:id"/>
+            <xs:element name="name" type="tns:name"/>
+            <xs:element name="price" type="tns:price"/>
+            <xs:element name="included" type="tns:included"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="AccUnitPrice">
+        <xs:sequence>
+            <xs:element name="id" type="tns:id"/>
+            <xs:element name="startDate" type="xs:dateTime"/>
+            <xs:element name="endDate" type="xs:dateTime"/>
+            <xs:element name="price" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="GetAccommodationUnitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:complexType name="GetAccommodationUnitResponse">
+        <xs:sequence>
+            <xs:element name="id" type="tns:id"/>
+            <xs:element name="numberOfBeds" type="tns:numberOfBeds"/>
+            <xs:element name="balcony" type="tns:balcony"/>
+            <xs:element name="price" type="tns:AccUnitPrice"/>
+            <xs:element name="description" type="tns:description"/>
+            <xs:element name="rating" type="tns:rating"/>
+            <xs:element name="image" type="tns:images" maxOccurs="unbounded"/>
+            <xs:element name="additionalServices" type="tns:AdditionalService" maxOccurs="unbounded"
+                minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="GetAccommodationObjectRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:complexType name="GetAccommodationObjectResponse">
+        <xs:sequence>
+            <xs:element name="id" type="tns:id"/>
+            <xs:element name="name" type="tns:name"/>
+            <xs:element name="address" type="tns:address"/>
+            <xs:element name="description" type="tns:description"/>
+            <xs:element name="category" type="tns:Category"/>
+            <xs:element name="freeCancelation" type="tns:freeCancelation"/>
+            <xs:element name="daysToCancel" type="tns:daysToCancel"/>
+            <xs:element name="type" type="tns:Type"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="accommodationsUnitList"
+                type="tns:GetAccommodationUnitResponse"/>
+            <xs:element name="additionalServices" maxOccurs="unbounded" minOccurs="0"
+                type="tns:AdditionalService"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="Category">
+        <xs:sequence>
+            <xs:element name="id" type="tns:id"/>
+            <xs:element name="name" type="tns:name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Type">
+        <xs:sequence>
+            <xs:element name="id" type="tns:id"/>
+            <xs:element name="name" type="tns:name"/>
+        </xs:sequence>
+    </xs:complexType>
+	
+	<xs:element name="GetTestRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="xs:int"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetTestResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "Test" type="tns:Test"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Test">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

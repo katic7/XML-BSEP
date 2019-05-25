@@ -1,21 +1,32 @@
 package com.ftn.agentservice.config;
 
-import javax.xml.ws.soap.MTOMFeature;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
-import com.ftn.agentservice.soap.AccommodationWS;
-import com.ftn.agentservice.soap.AccommodationWSSetup;
+import com.ftn.agentservice.soap.AccommodationClient;
+
 
 @Configuration
 public class ServiceConfiguration {
-	
+
+
 	@Bean
-	public AccommodationWS getAccomodationWebServiceSoap() {
-		AccommodationWSSetup service = new AccommodationWSSetup();
-		AccommodationWS sservice = service.getAccomodationWebServicePort(new MTOMFeature());
-		return sservice;
+	public Jaxb2Marshaller marshaller() {
+		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+		// this package must match the package in the  specified in
+		// pom.xml
+		marshaller.setContextPath("com.ftn.accommodationservice.xsd");
+		return marshaller;
+	}
+
+	@Bean
+	public AccommodationClient movieClient(Jaxb2Marshaller marshaller) {
+		AccommodationClient client = new AccommodationClient();
+		client.setDefaultUri("http://localhost:8082/ws");
+		client.setMarshaller(marshaller);
+		client.setUnmarshaller(marshaller);
+		return client;
 	}
 
 }
