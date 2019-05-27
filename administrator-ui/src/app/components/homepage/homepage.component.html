@@ -4,14 +4,13 @@
       <div class="container">
           <div class="row">
               <div class="col d-flex flex-row"> 
-                <div class="phone">Welcome,  <span *ngIf="logged == null">Guest</span><span *ngIf="logged != null && logged.name != null"><a href="http://localhost:4200/profile" class="profile-button">{{logged.name}}</a></span><span *ngIf="logged != null && logged.name == null">{{logged.email}}</span></div>          
+                <div class="phone">Welcome to administration page, <span *ngIf="logged == null">please login!</span><span *ngIf="logged != null && logged.name != null">{{logged.name}}</span></div>          
                   <div class="user_box ml-auto">
                           <div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div>
                           <div class="user_box_login user_box_link"><button [routerLink]="['/users']">users</button></div>
                           <div class="user_box_login user_box_link"><button [routerLink]="['/comments']">comments</button></div>
                           <div class="user_box_login user_box_link"><button [routerLink]="['/agents']">agents</button></div>
                           <span *ngIf="logged == null"> <div class="user_box_login user_box_link"><button [routerLink]="['/login']">login</button></div></span>
-                          <span *ngIf="logged == null"> <div class="user_box_register user_box_link"><button [routerLink]="['/register']">register</button></div></span>
                           <span *ngIf="logged != null"> <div class="user_box_register user_box_link"><button (click)="logout()">logout</button></div></span>
                   </div>
               </div>

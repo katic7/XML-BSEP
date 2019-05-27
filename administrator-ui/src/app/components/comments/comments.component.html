@@ -1,1 +1,33 @@
 <app-homepage></app-homepage>
+
+<br/>
+<br/>
+<div class="wrapper" style="margin-left: 0.5%;">
+    <div>
+        <h1 style="float: left; margin-right: 5px;">Unpublished comments </h1>
+    </div>
+    <table class="table table-striped table-sm" id="comments_table">
+        <thead>
+            <tr>
+            <th>CommentID</th>
+            <th>UserID</th>
+            <th>AccUnitID</th>
+            <th>Text</th>
+            <th>Date</th>
+            <th>Visible</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let comment of comments">
+            <td>{{comment.id}}</td>
+            <td>{{comment.userID}}</td>
+            <td>{{comment.accommodationUnitID}}</td>
+            <td>{{comment.text}}</td>
+            <td>{{comment.commentDate}}</td>
+            <td>{{comment.visible}}</td>
+            <td><button (click)="Publish(comment)" type="button" class="btn btn-outline-success">Publish</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

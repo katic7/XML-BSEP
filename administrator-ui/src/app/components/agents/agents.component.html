@@ -1,1 +1,33 @@
 <app-homepage></app-homepage>
+
+<br/>
+<br/>
+<button *ngIf="!show_register_form" class="btn btn-outline-primary" (click)="addAgent()">Add new agent</button>
+<div style="margin-left:10px;">
+    <div *ngIf="show_register_form">
+        <h1>Create new agent</h1>
+    </div>
+
+    <div *ngIf="show_register_form" id="em" class="form-group animated bounceInRight" style="width:50%;">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname</label>
+            <input type="text" class="form-control" name="surname" [(ngModel)]="form.surname" #surname="ngModel" required /> 
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="address" [(ngModel)]="form.address" #address="ngModel" required />  
+        </div>
+    <div class="form-group">
+        <label for="taxNumber">Tax number</label>
+        <input type="text" class="form-control" name="taxNumber" [(ngModel)]="form.taxNumber" #taxNumber="ngModel" required />  
+        </div>
+    </div>
+    
+    <div class="form-group">
+      <button (click)="onSubmit()" *ngIf="show_register_form" class="btn btn-outline-success">Create</button>
+    </div>
+</div>
