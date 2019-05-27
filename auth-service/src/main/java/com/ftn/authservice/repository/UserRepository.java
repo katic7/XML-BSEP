@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import com.ftn.authservice.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
 	@EntityGraph(value = "User.Roles.Permissions")
 	Optional<User> findByEmail(String email);
-
+	
 	boolean existsByEmail(String username);
 
 	@Query("select u from User u where u.id = ?#{principal.id}")

@@ -1,5 +1,6 @@
 package com.ftn.authservice.controller;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ftn.authservice.dto.ActivateUserDTO;
 import com.ftn.authservice.dto.ProfileDto;
+import com.ftn.authservice.dto.UserDTO;
+import com.ftn.authservice.dto.UserStatus;
 import com.ftn.authservice.exception.InvalidJWTokenException;
 import com.ftn.authservice.jwt.JwtTokenProvider;
 import com.ftn.authservice.model.RoleName;
@@ -73,6 +78,35 @@ public class AuthController {
 		return "Pozdrav " + new Date();
 	}
 
+    @PostMapping("/activateUser") //dodati permisije
+    public ResponseEntity<?> activateUser(@RequestBody ActivateUserDTO acu){
+    	User usr = userRepository.getOne(acu.getId());
+    	if(acu.getStatus().equals(UserStatus.ACTIVATE)) {
+    		usr.setEnabled(acu.isFlag());
+    		userRepository.save(usr);
+    	}else if(acu.getStatus().equals(UserStatus.BLOCK)){
+    		usr.setNonLocked(!acu.isFlag());
+    		userRepository.save(usr);
+    	}
+    	return new ResponseEntity<String>("BRAO", HttpStatus.OK);
+    }
+    
+    @GetMapping("/getAll") //permisije
+    public List<UserDTO> getAllUseres(){
+    	List<UserDTO> users =  new ArrayList<UserDTO>();
+    	for(User u : userRepository.findAll()) {
+    		users.add(new UserDTO(u));
+    	}
+    	return users;
+    }
+    
+    @DeleteMapping("/deleteUser/{id}")//perm..
+    public ResponseEntity<?> deleteUser(@PathVariable Long id){
+    	User usr = userRepository.getOne(id);
+    	userRepository.delete(usr);
+    	return new ResponseEntity<String>("DELETED", HttpStatus.OK);
+    }
+    
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
     	try {
