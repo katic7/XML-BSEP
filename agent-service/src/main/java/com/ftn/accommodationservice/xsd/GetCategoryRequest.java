@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "id"
 })
-@XmlRootElement(name = "GetTestRequest")
-public class GetTestRequest {
+@XmlRootElement(name = "GetCategoryRequest")
+public class GetCategoryRequest {
 
     protected long id;
 
@@ -57,5 +57,5 @@ public class GetTestRequest {
     public void setId(long value) {
         this.id = value;
     }
-
+  
 }

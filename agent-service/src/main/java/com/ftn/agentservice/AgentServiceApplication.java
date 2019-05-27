@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.ftn.accommodationservice.xsd.GetAccommodationObjectResponse;
-import com.ftn.accommodationservice.xsd.GetTestResponse;
+
+import com.ftn.accommodationservice.xsd.GetCategoryResponse;
 import com.ftn.agentservice.soap.AccommodationClient;
 
 
@@ -23,9 +23,8 @@ public class AgentServiceApplication {
 	
 	@PostConstruct
 	public void init() {
-		System.out.println("usao");
-		GetTestResponse response = client.test(4);
-		System.out.println(response.getTest().getName());
+		GetCategoryResponse response = client.getCategory(Long.valueOf(1));
+		System.out.println(response.getCategory().getName());
 	}
 
 }

@@ -211,11 +211,27 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
             <xs:element name="name" type="tns:name"/>
         </xs:sequence>
     </xs:complexType>
+    
+    <xs:element name="GetCategoryRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="xs:long"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetCategoryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "Category" type="tns:Category"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
 	
 	<xs:element name="GetTestRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name= "id" type="xs:int"/>
+				<xs:element name= "id" type="xs:long"/>
 			</xs:sequence>	
 		</xs:complexType>
 	</xs:element>

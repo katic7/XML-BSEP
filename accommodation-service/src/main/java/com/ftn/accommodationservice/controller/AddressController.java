@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ftn.accommodationservice.model.Address;
 import com.ftn.accommodationservice.model.TestRating;
+import com.ftn.accommodationservice.repository.CategoryRepository;
 import com.ftn.accommodationservice.service.AddressService;
 
 @RestController
@@ -28,6 +29,9 @@ public class AddressController {
 	
 	@Autowired
 	private AddressService addressService;
+	
+	@Autowired
+	private CategoryRepository crepo;
 	
 	 @Autowired
 	 private RestTemplate template;
@@ -56,10 +60,8 @@ public class AddressController {
 	}
 	
 	@GetMapping("/test2")
-	@PreAuthorize("hasAuthority('CREATE')")
 	public String test2() {
-		addressService.getAddress();
-		return "test2";
+		return crepo.getOne(Long.valueOf(1)).getName();
 	}
 	
 	@GetMapping("/test3")
