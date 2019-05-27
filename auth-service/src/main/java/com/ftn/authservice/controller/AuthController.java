@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ftn.authservice.dto.ActivateUserDTO;
@@ -88,7 +89,7 @@ public class AuthController {
     		usr.setNonLocked(!acu.isFlag());
     		userRepository.save(usr);
     	}
-    	return new ResponseEntity<String>("BRAO", HttpStatus.OK);
+    	return new ResponseEntity<UserDTO>(new UserDTO(usr), HttpStatus.OK);
     }
     
     @GetMapping("/getAll") //permisije
@@ -99,12 +100,12 @@ public class AuthController {
     	}
     	return users;
     }
-    
-    @DeleteMapping("/deleteUser/{id}")//perm..
+ 
+    @RequestMapping(value="/deleteUser/{id}", method=RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
     	User usr = userRepository.getOne(id);
     	userRepository.delete(usr);
-    	return new ResponseEntity<String>("DELETED", HttpStatus.OK);
+    	return new ResponseEntity<>(HttpStatus.OK);
     }
     
     @PostMapping("/signin")
