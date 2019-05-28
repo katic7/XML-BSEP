@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="AccUnitPrice" type="{http://ftn.com/accommodationservice/xsd}AccUnitPrice"/>
+ *         &lt;element name="Address" type="{http://ftn.com/accommodationservice/xsd}address"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "accUnitPrice"
+    "address"
 })
-@XmlRootElement(name = "GetAccUnitPriceResponse")
-public class GetAccUnitPriceResponse {
+@XmlRootElement(name = "GetAddressResponse")
+public class GetAddressResponse {
 
-    @XmlElement(name = "AccUnitPrice", required = true)
-    protected AccUnitPrice accUnitPrice;
+    @XmlElement(name = "Address", required = true)
+    protected Address address;
 
     /**
-     * Gets the value of the accUnitPrice property.
+     * Gets the value of the address property.
      * 
      * @return
      *     possible object is
-     *     {@link AccUnitPrice }
+     *     {@link Address }
      *     
      */
-    public AccUnitPrice getAccUnitPrice() {
-        return accUnitPrice;
+    public Address getAddress() {
+        return address;
     }
 
     /**
-     * Sets the value of the accUnitPrice property.
+     * Sets the value of the address property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AccUnitPrice }
+     *     {@link Address }
      *     
      */
-    public void setAccUnitPrice(AccUnitPrice value) {
-        this.accUnitPrice = value;
+    public void setAddress(Address value) {
+        this.address = value;
     }
 
 }

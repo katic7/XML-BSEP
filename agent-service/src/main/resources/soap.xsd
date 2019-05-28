@@ -213,6 +213,54 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 			</xs:sequence>	
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="GetAddressRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="GetAddressResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "Address" type="tns:address"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetAdditionalServiceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="GetAdditionalServiceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AdditionalService" type="tns:AdditionalService"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetTypeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="GetTypeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "Type" type="tns:Type"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
     
     
     <xs:complexType name="Category">
@@ -240,6 +288,22 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name= "Category" type="tns:Category"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetAccUnitPriceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="xs:long"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetAccUnitPriceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AccUnitPrice" type="tns:AccUnitPrice"/>
 			</xs:sequence>	
 		</xs:complexType>
 	</xs:element>

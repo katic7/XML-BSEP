@@ -10,7 +10,6 @@ package com.ftn.accommodationservice.xsd;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="AccUnitPrice" type="{http://ftn.com/accommodationservice/xsd}AccUnitPrice"/>
+ *         &lt;element name="id" type="{http://ftn.com/accommodationservice/xsd}id"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +35,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "accUnitPrice"
+    "id"
 })
-@XmlRootElement(name = "GetAccUnitPriceResponse")
-public class GetAccUnitPriceResponse {
+@XmlRootElement(name = "GetAddressRequest")
+public class GetAddressRequest {
 
-    @XmlElement(name = "AccUnitPrice", required = true)
-    protected AccUnitPrice accUnitPrice;
+    protected long id;
 
     /**
-     * Gets the value of the accUnitPrice property.
+     * Gets the value of the id property.
      * 
-     * @return
-     *     possible object is
-     *     {@link AccUnitPrice }
-     *     
      */
-    public AccUnitPrice getAccUnitPrice() {
-        return accUnitPrice;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the accUnitPrice property.
+     * Sets the value of the id property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link AccUnitPrice }
-     *     
      */
-    public void setAccUnitPrice(AccUnitPrice value) {
-        this.accUnitPrice = value;
+    public void setId(long value) {
+        this.id = value;
     }
 
 }

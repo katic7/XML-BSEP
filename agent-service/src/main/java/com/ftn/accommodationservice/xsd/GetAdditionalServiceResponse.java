@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="AccUnitPrice" type="{http://ftn.com/accommodationservice/xsd}AccUnitPrice"/>
+ *         &lt;element name="AdditionalService" type="{http://ftn.com/accommodationservice/xsd}AdditionalService"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "accUnitPrice"
+    "additionalService"
 })
-@XmlRootElement(name = "GetAccUnitPriceResponse")
-public class GetAccUnitPriceResponse {
+@XmlRootElement(name = "GetAdditionalServiceResponse")
+public class GetAdditionalServiceResponse {
 
-    @XmlElement(name = "AccUnitPrice", required = true)
-    protected AccUnitPrice accUnitPrice;
+    @XmlElement(name = "AdditionalService", required = true)
+    protected AdditionalService additionalService;
 
     /**
-     * Gets the value of the accUnitPrice property.
+     * Gets the value of the additionalService property.
      * 
      * @return
      *     possible object is
-     *     {@link AccUnitPrice }
+     *     {@link AdditionalService }
      *     
      */
-    public AccUnitPrice getAccUnitPrice() {
-        return accUnitPrice;
+    public AdditionalService getAdditionalService() {
+        return additionalService;
     }
 
     /**
-     * Sets the value of the accUnitPrice property.
+     * Sets the value of the additionalService property.
      * 
      * @param value
      *     allowed object is
-     *     {@link AccUnitPrice }
+     *     {@link AdditionalService }
      *     
      */
-    public void setAccUnitPrice(AccUnitPrice value) {
-        this.accUnitPrice = value;
+    public void setAdditionalService(AdditionalService value) {
+        this.additionalService = value;
     }
 
 }
