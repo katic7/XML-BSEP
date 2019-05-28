@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { SearchForm } from '../models/SearchForm';
+import { ReservationService } from 'src/app/services/reservation.service';
+import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-searchpage',
@@ -13,16 +16,19 @@ export class SearchpageComponent implements OnInit {
 
   searchForm : SearchForm = new SearchForm();
   numbers = [1,2,3,4,5,6,7,8,9,10];
+  accUnits : AccommodationUnit[] = [];
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe) { }
 
   ngOnInit() {
 
     this.route.params.forEach(a => {
-      this.searchForm.checkin = new Date(a.in);
-      this.searchForm.checkout = new Date(a.out);
+      this.searchForm.checkin = this.pipe.transform(a.in, "yyyy-MM-dd");
+      this.searchForm.checkout = this.pipe.transform(a.out, "yyyy-MM-dd");
       this.searchForm.destination = a.where;
       this.searchForm.persons = +a.persons;
+      console.log(this.searchForm);
+      this.reservationService.getFreeAccUnits(this.searchForm).subscribe(data => { this.accUnits = data; console.log(data); });
    })
 
   console.log(this.searchForm);

@@ -15,9 +15,7 @@ spring:
     username: root
     password: root
     initialization-mode: always
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
+  
 eureka:
   client:
     serviceUrl:

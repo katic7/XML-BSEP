@@ -248,4 +248,11 @@ public class Reservation {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", user=" + user + ", reservationDate=" + reservationDate
+				+ ", accommodationUnit="  + ", price=" + price + ", beginDate=" + beginDate
+				+ ", endDate=" + endDate + ", completed=" + completed + ", active=" + active + "]";
+	}
+
 }

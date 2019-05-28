@@ -31,6 +31,7 @@ insert into accommodation_unit (id, balcony, description, image, number_of_beds,
 insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (2, 1, 'Description of unit 1', '', 3, 4.42, 1, 2);
 insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (3, 0, 'Description of unit 1', '', 4, 2.29, 1, 3);
 
+
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (1, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 1, 1);
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (2, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 2, 2);
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (3, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 3, 2);

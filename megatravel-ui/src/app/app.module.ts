@@ -23,6 +23,7 @@ import { SearchobjectComponent } from './searchobject/searchobject.component';
 import { FiltersectionComponent } from './filtersection/filtersection.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
+import { DatePipe } from '@angular/common';
 
 
 const appRoutes: Routes = [
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     useClass: AuthInterceptor,
     multi: true,
   },
-  RouteService],
+  RouteService,
+  DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

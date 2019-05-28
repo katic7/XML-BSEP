@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 DESKTOP-FET5BBI | 2019-05-23 01:17:51 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 01:20:50 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 01:21:15 | as.ReservationServiceApplication | Started ReservationServiceApplication in 28.782 seconds (JVM running for 29.841)
@@ -9,7 +9,7 @@ DESKTOP-FET5BBI | 2019-05-23 01:27:34 | as.ReservationServiceApplication | Start
 DESKTOP-FET5BBI | 2019-05-23 01:28:50 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 01:29:37 | as.ReservationServiceApplication | Started ReservationServiceApplication in 51.845 seconds (JVM running for 52.93)
 DESKTOP-FET5BBI | 2019-05-23 02:06:33 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
-=======
+
 DESKTOP-SKD9GDH | 2019-05-20 06:02:45 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-SKD9GDH | 2019-05-20 06:02:57 | as.ReservationServiceApplication | Started ReservationServiceApplication in 14.66 seconds (JVM running for 15.582)
 DESKTOP-SKD9GDH | 2019-05-20 06:11:43 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
@@ -17,6 +17,35 @@ DESKTOP-SKD9GDH | 2019-05-20 06:12:15 | as.ReservationServiceApplication | No ac
 DESKTOP-SKD9GDH | 2019-05-20 06:19:33 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-SKD9GDH | 2019-05-20 06:20:34 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-SKD9GDH | 2019-05-20 06:20:44 | as.ReservationServiceApplication | Started ReservationServiceApplication in 13.22 seconds (JVM running for 13.86)
->>>>>>> 22fd86a30056a13bf7c99c7e5e9746375e5c0779
+
 DESKTOP-FET5BBI | 2019-05-23 07:18:22 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-05-23 07:18:55 | as.ReservationServiceApplication | Started ReservationServiceApplication in 38.049 seconds (JVM running for 39.054)
+
+DESKTOP-SKD9GDH | 2019-05-27 01:07:43 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 01:07:55 | as.ReservationServiceApplication | Started ReservationServiceApplication in 15.451 seconds (JVM running for 16.221)
+DESKTOP-SKD9GDH | 2019-05-27 03:38:41 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 03:38:59 | as.ReservationServiceApplication | Started ReservationServiceApplication in 21.299 seconds (JVM running for 22.256)
+DESKTOP-SKD9GDH | 2019-05-27 03:44:54 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 03:45:04 | as.ReservationServiceApplication | Started ReservationServiceApplication in 13.584 seconds (JVM running for 14.224)
+DESKTOP-SKD9GDH | 2019-05-27 03:49:38 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 03:49:48 | as.ReservationServiceApplication | Started ReservationServiceApplication in 13.263 seconds (JVM running for 13.861)
+DESKTOP-SKD9GDH | 2019-05-27 07:47:25 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 07:47:36 | as.ReservationServiceApplication | Started ReservationServiceApplication in 14.881 seconds (JVM running for 15.752)
+DESKTOP-SKD9GDH | 2019-05-27 08:02:33 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 08:02:47 | as.ReservationServiceApplication | Started ReservationServiceApplication in 17.77 seconds (JVM running for 18.572)
+DESKTOP-SKD9GDH | 2019-05-27 08:21:28 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 08:22:32 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 08:22:43 | as.ReservationServiceApplication | Started ReservationServiceApplication in 13.995 seconds (JVM running for 14.624)
+DESKTOP-SKD9GDH | 2019-05-27 08:28:05 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 08:28:17 | as.ReservationServiceApplication | Started ReservationServiceApplication in 14.756 seconds (JVM running for 15.471)
+DESKTOP-SKD9GDH | 2019-05-27 08:30:38 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 08:30:51 | as.ReservationServiceApplication | Started ReservationServiceApplication in 15.651 seconds (JVM running for 16.307)
+DESKTOP-SKD9GDH | 2019-05-27 09:00:38 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 09:00:49 | as.ReservationServiceApplication | Started ReservationServiceApplication in 14.425 seconds (JVM running for 15.12)
+DESKTOP-SKD9GDH | 2019-05-27 09:10:39 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 09:10:49 | as.ReservationServiceApplication | Started ReservationServiceApplication in 12.773 seconds (JVM running for 13.435)
+DESKTOP-SKD9GDH | 2019-05-27 09:11:38 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 09:11:47 | as.ReservationServiceApplication | Started ReservationServiceApplication in 12.665 seconds (JVM running for 13.363)
+DESKTOP-SKD9GDH | 2019-05-27 09:12:52 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-27 09:13:03 | as.ReservationServiceApplication | Started ReservationServiceApplication in 13.813 seconds (JVM running for 14.659)
+
