@@ -9,6 +9,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.ftn.accommodationservice.model.AccommodationObject;
+import com.ftn.accommodationservice.model.Address;
 import com.ftn.accommodationservice.model.Category;
 import com.ftn.accommodationservice.repository.AccommodationRepository;
 import com.ftn.accommodationservice.repository.AddressRepository;
@@ -30,9 +31,6 @@ public class AccommodationEndpoint {
 	private AccommodationObjectService aoservice;
 	
 	@Autowired
-	private AccommodationRepository arepo;
-	
-	@Autowired
 	private AccommodationRepository aorepo;
 	
 	@Autowired
@@ -44,19 +42,30 @@ public class AccommodationEndpoint {
 	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAccommodationObjectRequest")
 	@ResponsePayload
+	@Transactional
 	public GetAccommodationObjectResponse getAccommodationById(@RequestPayload GetAccommodationObjectRequest request) {
 		System.out.println("Usao u endpoint");
-		
 		AccommodationObject ao = aorepo.getOne(request.getId());
-		return mapAOR(ao);
+		Address add = addressrepo.getOne(ao.getAddressId());
+		Category c = catrepo.getOne(ao.getCategoryId());
+		com.ftn.accommodationservice.xsd.AccommodationObject s = new com.ftn.accommodationservice.xsd.AccommodationObject();
+		com.ftn.accommodationservice.xsd.Address aaa = new com.ftn.accommodationservice.xsd.Address();
+		com.ftn.accommodationservice.xsd.Category ccc = new com.ftn.accommodationservice.xsd.Category();
+		s.setAddress(aaa);
+		s.setCategory(ccc);
+		s.setDaysToCancel(ao.getDaysToCancel());
+		s.setDescription(ao.getDescription());
+		s.setName(ao.getName());
+		s.setId(ao.getId());
+		s.setFreeCancelation(ao.isFreeCancelation());
+		GetAccommodationObjectResponse e = new GetAccommodationObjectResponse();
+		// fali addition services i accu niti
+		
+		e.setAccommodationObject(s);
+		return e;
 	}
 	
-	private GetAccommodationObjectResponse mapAOR(AccommodationObject ao) {
-		GetAccommodationObjectResponse n = new GetAccommodationObjectResponse();
-		n.setName(ao.getName());
-		//dalje mapirati
-		return n;
-	}
+
 	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetTestRequest")
 	@ResponsePayload

@@ -150,16 +150,9 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
             <xs:element name="price" type="xs:double"/>
         </xs:sequence>
     </xs:complexType>
+
     
-    <xs:element name="GetAccommodationUnitRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name= "id" type="tns:id"/>
-			</xs:sequence>	
-		</xs:complexType>
-	</xs:element>
-    
-    <xs:complexType name="GetAccommodationUnitResponse">
+<xs:complexType name="AccommodationUnit">
         <xs:sequence>
             <xs:element name="id" type="tns:id"/>
             <xs:element name="numberOfBeds" type="tns:numberOfBeds"/>
@@ -172,16 +165,7 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
                 minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-    
-    <xs:element name="GetAccommodationObjectRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name= "id" type="tns:id"/>
-			</xs:sequence>	
-		</xs:complexType>
-	</xs:element>
-    
-    <xs:complexType name="GetAccommodationObjectResponse">
+    <xs:complexType name="AccommodationObject">
         <xs:sequence>
             <xs:element name="id" type="tns:id"/>
             <xs:element name="name" type="tns:name"/>
@@ -192,11 +176,43 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
             <xs:element name="daysToCancel" type="tns:daysToCancel"/>
             <xs:element name="type" type="tns:Type"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="accommodationsUnitList"
-                type="tns:GetAccommodationUnitResponse"/>
+                type="tns:AccommodationUnit"/>
             <xs:element name="additionalServices" maxOccurs="unbounded" minOccurs="0"
                 type="tns:AdditionalService"/>
         </xs:sequence>
     </xs:complexType>
+        
+    <xs:element name="GetAccommodationUnitRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="GetAccommodationUnitResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AccommodationUnit" type="tns:AccommodationUnit"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:element name="GetAccommodationObjectRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+    
+	<xs:element name="GetAccommodationObjectResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AccommodationObject" type="tns:AccommodationObject"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
     
     
     <xs:complexType name="Category">
