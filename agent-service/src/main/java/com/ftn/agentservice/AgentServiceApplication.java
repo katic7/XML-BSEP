@@ -21,10 +21,10 @@ public class AgentServiceApplication {
 	@Autowired
 	private AccommodationClient client;
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void init() {
 		GetAccommodationObjectResponse response = client.getAccommodation(Long.valueOf(1));
 		System.out.println(response.getAccommodationObject().getDescription());
-	}
+	}*/
 
 }

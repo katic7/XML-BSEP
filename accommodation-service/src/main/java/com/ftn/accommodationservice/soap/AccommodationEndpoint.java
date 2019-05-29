@@ -1,5 +1,8 @@
 package com.ftn.accommodationservice.soap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,21 +13,27 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.ftn.accommodationservice.model.AccUnitPrice;
 import com.ftn.accommodationservice.model.AccommodationObject;
+import com.ftn.accommodationservice.model.AccommodationUnit;
 import com.ftn.accommodationservice.model.AdditionalService;
 import com.ftn.accommodationservice.model.Address;
 import com.ftn.accommodationservice.model.Category;
+import com.ftn.accommodationservice.model.Reservation;
 import com.ftn.accommodationservice.model.Type;
 import com.ftn.accommodationservice.repository.AccommodationRepository;
 import com.ftn.accommodationservice.repository.AccommodationUnitPriceRepository;
+import com.ftn.accommodationservice.repository.AccommodationUnitRepository;
 import com.ftn.accommodationservice.repository.AdditionalServiceRepository;
 import com.ftn.accommodationservice.repository.AddressRepository;
 import com.ftn.accommodationservice.repository.CategoryRepository;
+import com.ftn.accommodationservice.repository.ReservationRepository;
 import com.ftn.accommodationservice.repository.TypeRepository;
 import com.ftn.accommodationservice.service.AccommodationObjectService;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceRequest;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.GetAccommodationObjectRequest;
 import com.ftn.accommodationservice.xsd.GetAccommodationObjectResponse;
+import com.ftn.accommodationservice.xsd.GetAccommodationUnitRequest;
+import com.ftn.accommodationservice.xsd.GetAccommodationUnitResponse;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetAddressRequest;
@@ -62,6 +71,11 @@ public class AccommodationEndpoint {
 	@Autowired
 	private AccommodationUnitPriceRepository acurepo;
 	
+	@Autowired
+	private AccommodationUnitRepository aunitrepo;
+	
+	@Autowired
+	private ReservationRepository res;
 	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAccommodationObjectRequest")
 	@ResponsePayload
@@ -174,6 +188,51 @@ public class AccommodationEndpoint {
 		s.setTown(as.getTown());		
 		e.setAddress(s);
 		return e;
+	}
+	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAccommodationUnitRequest")
+	@ResponsePayload
+	@Transactional
+	public GetAccommodationUnitResponse saveAccUnit(@RequestPayload GetAccommodationUnitRequest request) {
+		GetAccommodationUnitResponse response = new GetAccommodationUnitResponse();
+		AccommodationUnit unitModel = new AccommodationUnit();
+		unitModel.setBalcony(request.getAccommodationUnit().isBalcony());
+		unitModel.setDescription(request.getAccommodationUnit().getDescription());
+		AccommodationObject ao = aorepo.getOne(request.getAccommodationUnit().getAccObjectId());
+		
+		
+		
+		unitModel.setAccommodationObject(ao);
+		List<AdditionalService> servisi = new ArrayList<>();
+		for(com.ftn.accommodationservice.xsd.AdditionalService xsd : request.getAccommodationUnit().getAdditionalServices())  {
+			servisi.add(additionalservicerepo.getOne(xsd.getId()));
+		}
+		unitModel.setAdditionalServices(servisi);
+		
+		unitModel.setId(request.getAccommodationUnit().getId());
+		//unitModel.setImage(request.getAccommodationUnit().getImage());
+		unitModel.setPrice(acurepo.getOne(request.getAccommodationUnit().getPrice().getId()));
+		unitModel.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
+		unitModel.setRating(request.getAccommodationUnit().getRating());
+		List<Reservation> ress = new ArrayList<>();
+		for(com.ftn.accommodationservice.xsd.Reservation rr : request.getAccommodationUnit().getReservations()) {
+			ress.add(res.getOne(rr.getId()));
+		}
+		
+		aunitrepo.save(unitModel);
+		
+		com.ftn.accommodationservice.xsd.AccommodationUnit rspau = new com.ftn.accommodationservice.xsd.AccommodationUnit();
+		rspau.setAccObjectId(request.getAccommodationUnit().getAccObjectId());
+		rspau.setBalcony(request.getAccommodationUnit().isBalcony());
+		rspau.setId(request.getAccommodationUnit().getId());
+		rspau.setDescription(request.getAccommodationUnit().getDescription());
+		rspau.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
+		rspau.setPrice(request.getAccommodationUnit().getPrice());
+		rspau.setRating(request.getAccommodationUnit().getRating());
+		
+		response.setAccommodationUnit(rspau);
+		
+		return response;
 	}
 
 }

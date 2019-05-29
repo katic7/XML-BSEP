@@ -4,10 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
+import com.ftn.accommodationservice.xsd.AccommodationUnit;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceRequest;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.GetAccommodationObjectRequest;
 import com.ftn.accommodationservice.xsd.GetAccommodationObjectResponse;
+import com.ftn.accommodationservice.xsd.GetAccommodationUnitRequest;
+import com.ftn.accommodationservice.xsd.GetAccommodationUnitResponse;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetAddressRequest;
@@ -67,4 +70,9 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		return (GetAccUnitPriceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	
+	public GetAccommodationUnitResponse saveNewAcc(AccommodationUnit au) {
+		GetAccommodationUnitRequest request = new GetAccommodationUnitRequest();
+		request.setAccommodationUnit(au);
+		return (GetAccommodationUnitResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
 }
