@@ -7,3 +7,7 @@ functions config set projectId reservation-cloud-service
 functions start
 functions deploy {{method-name}} --trigger-http
 ```
+
+methods: newRating
+         getAllRatings
+         getSpecificRating/{id}

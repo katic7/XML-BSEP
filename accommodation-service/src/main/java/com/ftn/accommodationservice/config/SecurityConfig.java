@@ -42,10 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/ws/*").permitAll()
 		.antMatchers("/ws").permitAll()
 		.antMatchers("/api/addresses/test2").permitAll()
-		.anyRequest().authenticated().and();
+		.antMatchers("/api/comment/rating").permitAll()
+		.anyRequest().authenticated().and()
 		
 		
-		//.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	http.csrf().disable();
     	
        /* http

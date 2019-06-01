@@ -1,25 +1,34 @@
-/**
- * 
- * HTTP cloud function provides greeting feature. Responds to any HTTP request
- * that can provide "name" field in HTTP body or as a request parameter.
- *
- * @param {!Object} req Cloud Function request context.
- * @param {!Object} res Cloud Function response context.
- */
- 
+const connection = require('./database')
+
 import('@google/cloud-debug');
-exports.helloHttp = function helloHttp(req, res) {
-  
-  // Example input: ?name=Pera or {"name": "Pera"}
-  let name = req.query.name || req.body.name;
-  
-  if (name === undefined) {
-    // This is an error case, as "name" is required.
-    console.warn('Bad request: No name provided.');
-    res.status(400).send('Name is not defined!');
-  } else {
-    // Everything is okay.
-    console.log('Sending a greeting to: ' + name);
-    res.status(200).send('Hello ' + name + '!');
-  }
+exports.newRating = function newRating(req, res) {
+    let userID = req.body.userID;
+    let comment = req.body.comment;
+    let rating = req.body.rating;
+
+    connection.query("insert into ratings (userID, comment, rating) values (?, ?, ?)",[userID, comment, rating], (err, result) => {
+        if (err) res.status(400).send('nije dobro upisivanje');
+        else res.status(200).send('upisano '+ comment);
+    });
+};
+
+
+
+import('@google/cloud-debug');
+exports.getAllRatings = function getAllRatings(req, res) {
+    connection.query("select * from ratings", (err, result)=> {
+        if (err) res.status(400).send('nije dobro getovanje svih');
+        else res.status(200).send(result);
+    });
+};
+
+import('@google/cloud-debug');
+exports.getSpecificRating = function getSpecificRating(req, res) {
+    connection.query("select id, userID, comment, rating from ratings where id="+req.query.id,
+        (err, result)=> {
+        if (err) res.status(400).send('nije dobro getovanje odredjenog');
+        else {
+            res.status(200).send(result[0]);
+        }
+    });
 };
