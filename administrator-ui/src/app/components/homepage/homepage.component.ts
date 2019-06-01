@@ -18,6 +18,7 @@ export class HomepageComponent implements OnInit {
     this.getLoggedUser();
   }
 
+  /*
   getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       this.logged = data;
@@ -25,8 +26,8 @@ export class HomepageComponent implements OnInit {
       this.logged = null;
     })
   }
+  */
 
-  /*
   getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       if(data != null) {
@@ -38,7 +39,7 @@ export class HomepageComponent implements OnInit {
       this.router.navigate(['/login']);
       })
   }
-  */
+  
 
   gotoProfile() {
     this.router.navigate(['profile']);
