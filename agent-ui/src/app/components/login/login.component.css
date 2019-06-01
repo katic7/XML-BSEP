@@ -1,0 +1,85 @@
+
+.container {
+    background: #f4f7fc;
+    padding: 30px;
+    border-radius: 2%;
+    margin-top: 1%;
+  }
+
+h1{
+    padding-top: 15%;
+    margin-bottom: 10%; 
+}  
+
+.back {
+    display: inline;
+    
+}
+
+.back p {
+    float: right;
+}
+
+.divider {
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.social > div {
+    display: inline;
+}
+
+.social > div button {
+    height: 60px;
+    width: 100px;
+    padding: 12px;
+    margin-left: 15%;
+    background: transparent;
+    border: 1px solid #07c;
+    background: white;
+    cursor: pointer;
+}
+
+.password {
+    text-align: center;
+    margin-top: 4%;
+}
+
+.password button {
+    padding: 12px;
+    background: transparent;
+    color: #07c;
+    cursor: pointer;
+    border: none;
+}
+
+.text {
+    white-space: nowrap;
+    margin: 0 8px 3px;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: #dedede;
+}
+
+.regBtn {
+    width: 100%;
+    font-weight: bold;
+}
+.back-button {
+    width: 18px;
+    height: 18px;
+    color: #07c!important;
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    position: fixed;
+    
+}

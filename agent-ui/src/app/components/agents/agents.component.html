@@ -1,0 +1,82 @@
+<app-navigation></app-navigation>
+
+<br/>
+<br/>
+<button *ngIf="!show_register_form" class="btn btn-outline-primary centered" (click)="addAccUnit()">Add new accommodation unit</button>
+<div class="container">
+    <div *ngIf="show_register_form" class="centeredTitle">
+        <h1>Create new accomodation unit</h1>
+    </div>
+
+    <div *ngIf="show_register_form" id="em" class="form-group" id="centeredForm" style="width:20%;">
+        <div class="form-group">
+            <label for="numberOfBeds">Number of beds:</label>
+            <input type="number" class="form-control" name="numberOfBeds" [formControl]="numberOfBeds" required />
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" name="description" [formControl]="description" required></textarea>  
+        </div>
+        <div style="width:95%">
+            <label for="priceFORM" style=" float:left">Balcony</label>
+            <mat-checkbox class="example-margin" [formControl]="balcony" style="float:right"></mat-checkbox>
+        </div>
+        <div id="priceFORM">
+          <label for="priceFORM">Price:</label>
+          <select style="width:100px !important; float:left;" [formControl]="priceFORM">
+            <option *ngFor="let price of prices" [value]="price.price" >{{price.price}}</option>
+          </select>
+        </div>
+        <button style="width:100px !important; width:55px !important; padding: 0.7px 5px; margin-left:10px;" class="btn btn-outline-primary" (click)="showPriceFrom()">New</button>
+        <div class="">
+            <label for="priceFORM" style="margin-top:5%;">Additional services:</label>
+            <div>
+              <mat-selection-list [(ngModel)]="accommodationUnit.additionalServices" #adsrc>
+                <mat-list-option *ngFor="let additionalService of additionalServicesARRAY">
+                  {{additionalService.name}} ({{additionalService.price}} $)
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+        </div>
+    <button (click)="Cancel()" style="margin-top:5%;" *ngIf="show_register_form" class="btn btn-outline-primary">Cancel</button>
+    <div class="form-group" style="margin-top:5%; float:right;">
+      <button (click)="onSubmit()" *ngIf="show_register_form" class="btn btn-outline-success">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="priceTitle" *ngIf="show_newPrice">
+  <div>
+      <h2>Create new price</h2>
+  </div>
+
+  <div  id="em2" class="form-group" style="width:25%;">
+      <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+        <div class="">                
+          <label for="name" class="col-form-label">Start date:</label>
+          <mat-form-field class="example-full-width">
+            <input matInput required [matDatepicker]="picker3" [formControl]="startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="" style="margin-left: 15px;">
+          <label for="name" class="col-form-label">End date:</label>
+          <mat-form-field class="example-full-width">
+            <input matInput required [matDatepicker]="picker2" [formControl]="endDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="form-group">
+          <label for="newPrice">Price</label> 
+          <input type="number" class="form-control" name="newPriceValue" [formControl]="newPriceValue"  required />
+      </div>
+      <button (click)="CancelPrice()" style="float:left;" class="btn btn-outline-primary">Cancel</button>
+      <div class="form-group">
+        <button (click)="addPrice()" style="float:right;" class="btn btn-outline-success">Add price</button>
+      </div>
+  </div>
+</div>
