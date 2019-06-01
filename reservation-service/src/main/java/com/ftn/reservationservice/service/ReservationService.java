@@ -6,7 +6,7 @@ import java.util.List;
 import com.ftn.reservationservice.model.AccommodationUnit;
 import com.ftn.reservationservice.model.Reservation;
 
-public interface ReservationServiceService {
+public interface ReservationService {
 	
 	List<Reservation> getAll();
 	List<AccommodationUnit> getAvailableAccUnits(String dest, Date startDate, Date endDate);

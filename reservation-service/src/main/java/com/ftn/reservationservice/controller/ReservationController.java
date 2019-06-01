@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ftn.reservationservice.dto.SearchFormDTO;
 import com.ftn.reservationservice.model.AccommodationUnit;
-import com.ftn.reservationservice.service.ReservationServiceService;
+import com.ftn.reservationservice.service.ReservationService;
 
 @RestController
 @RequestMapping("/api/reservations")
-public class ReservationServiceController {
+public class ReservationController {
 	
 	@Autowired
-	public ReservationServiceService reservationServiceService;
+	public ReservationService reservationService;
 	
 //	@GetMapping
 //	public ResponseEntity<List<Reservation>> getAllReservation() {
-//		List<Reservation> reservations = reservationServiceService.getAll();
+//		List<Reservation> reservations = reservationService.getAll();
 //		if(reservations != null) {
 //			return new ResponseEntity<List<Reservation>>(reservations, HttpStatus.OK);
 //		}
@@ -39,7 +39,7 @@ public class ReservationServiceController {
 	@PostMapping("/getfreeunits")
 	public ResponseEntity<List<AccommodationUnit>> getFreeAccUnits(@RequestBody SearchFormDTO info) {
 		System.out.println("``````````````````USAO JE GDE TREBA`````````````````");
-		List<AccommodationUnit> acu = reservationServiceService.getAvailableAccUnits(info.getDestination(), info.getCheckin(), info.getCheckout());
+		List<AccommodationUnit> acu = reservationService.getAvailableAccUnits(info.getDestination(), info.getCheckin(), info.getCheckout());
 		if(acu != null) {
 			return new ResponseEntity<List<AccommodationUnit>>(acu, HttpStatus.OK);
 		}

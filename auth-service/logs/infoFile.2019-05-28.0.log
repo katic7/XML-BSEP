@@ -1,0 +1,42 @@
+<<<<<<< HEAD
+DESKTOP-FET5BBI | 2019-05-23 12:13:11 | as.AuthController | ID: 50c0e1df-7d1f-11e9-8f31-00ff20341b4a | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 09:13:59 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 09:15:22 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 09:16:14 | as.AuthServiceApplication | Started AuthServiceApplication in 56.35 seconds (JVM running for 57.554)
+DESKTOP-FET5BBI | 2019-05-23 09:18:22 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 09:48:56 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 10:31:19 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 10:55:26 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 10:55:27 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 10:56:54 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 11:12:20 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 11:28:15 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 11:58:34 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 12:04:54 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 12:06:07 | as.AuthServiceApplication | Started AuthServiceApplication in 77.8 seconds (JVM running for 79.77)
+DESKTOP-FET5BBI | 2019-05-23 12:06:54 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 12:43:30 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 01:23:34 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 01:24:34 | as.AuthServiceApplication | Started AuthServiceApplication in 65.266 seconds (JVM running for 67.269)
+DESKTOP-FET5BBI | 2019-05-23 01:25:05 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 01:26:33 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 01:30:15 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 01:33:15 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 01:56:43 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 01:57:34 | as.AuthServiceApplication | Started AuthServiceApplication in 55.496 seconds (JVM running for 56.705)
+DESKTOP-FET5BBI | 2019-05-23 01:58:16 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 01:59:08 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 02:00:35 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 02:01:57 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 02:02:58 | as.AuthController | ID: 1 | PRN4SI | success
+=======
+DESKTOP-SKD9GDH | 2019-05-20 06:01:56 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-05-20 06:02:23 | as.AuthServiceApplication | Started AuthServiceApplication in 29.785 seconds (JVM running for 30.572)
+>>>>>>> 22fd86a30056a13bf7c99c7e5e9746375e5c0779
+DESKTOP-FET5BBI | 2019-05-23 06:34:14 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 06:35:11 | as.AuthServiceApplication | Started AuthServiceApplication in 61.076 seconds (JVM running for 62.643)
+DESKTOP-FET5BBI | 2019-05-23 06:39:46 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-FET5BBI | 2019-05-23 06:53:26 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 07:10:14 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 07:16:36 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-FET5BBI | 2019-05-23 07:21:32 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
