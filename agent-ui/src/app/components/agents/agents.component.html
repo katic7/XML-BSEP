@@ -31,7 +31,7 @@
         <div class="">
             <label for="priceFORM" style="margin-top:5%;">Additional services:</label>
             <div>
-              <mat-selection-list [(ngModel)]="accommodationUnit.additionalServices" #adsrc>
+              <mat-selection-list [(ngModel)]="accommodationUnit.additionalServices">
                 <mat-list-option *ngFor="let additionalService of additionalServicesARRAY">
                   {{additionalService.name}} ({{additionalService.price}} $)
                 </mat-list-option>

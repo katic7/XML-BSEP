@@ -262,6 +262,23 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="GetAllAdditionalServiceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="GetAllAdditionalServiceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="additionalServices" type="tns:AdditionalService" maxOccurs="unbounded"
+                minOccurs="0"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
 	<xs:element name="GetTypeRequest">
 		<xs:complexType>
 			<xs:sequence>

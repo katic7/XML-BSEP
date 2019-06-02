@@ -1,5 +1,7 @@
 package com.ftn.agentservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ftn.accommodationservice.xsd.AccommodationUnit;
+import com.ftn.accommodationservice.xsd.AdditionalService;
 import com.ftn.accommodationservice.xsd.GetAccommodationUnitResponse;
+import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.agentservice.soap.AccommodationClient;
 
 @RestController
@@ -28,5 +32,11 @@ public class AccommodationController {
 	@GetMapping
 	public String test() {
 		return "nemanjica";
+	}
+	
+	@GetMapping("/allAdditionalServices")
+	public List<AdditionalService> getAllAdditionalServices(){
+		GetAllAdditionalServiceResponse as = client.getAllAdditionalServiceResponse();
+		return as.getAdditionalServices();
 	}
 }

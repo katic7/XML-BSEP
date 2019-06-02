@@ -38,6 +38,8 @@ import com.ftn.accommodationservice.xsd.GetAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetAddressRequest;
 import com.ftn.accommodationservice.xsd.GetAddressResponse;
+import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceRequest;
+import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetCategoryRequest;
 import com.ftn.accommodationservice.xsd.GetCategoryResponse;
 import com.ftn.accommodationservice.xsd.GetTestRequest;
@@ -168,6 +170,24 @@ public class AccommodationEndpoint {
 		s.setIncluded(as.isIncluded());
 		s.setPrice(as.getPrice());
 		e.setAdditionalService(s);
+		return e;
+	}
+	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAllAdditionalServiceRequest")
+	@ResponsePayload
+	@Transactional
+	public GetAllAdditionalServiceResponse getAllAdditionalService(@RequestPayload GetAllAdditionalServiceRequest request) {
+		List<AdditionalService> as = additionalservicerepo.findAll();
+		GetAllAdditionalServiceResponse e = new GetAllAdditionalServiceResponse();
+		for(AdditionalService a : as) {
+			com.ftn.accommodationservice.xsd.AdditionalService asxsd = new com.ftn.accommodationservice.xsd.AdditionalService();
+			asxsd.setId(a.getId());
+			asxsd.setIncluded(a.isIncluded());
+			asxsd.setName(a.getName());
+			asxsd.setPrice(a.getPrice());
+			e.getAdditionalServices().add(asxsd);
+		}
+		
 		return e;
 	}
 	

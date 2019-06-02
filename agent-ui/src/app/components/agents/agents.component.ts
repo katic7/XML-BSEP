@@ -40,7 +40,7 @@ export class AgentsComponent implements OnInit {
 
   addAccUnit(){
     this.show_register_form = true;
-    //-----------------TESTING---------------------------
+    /*-----------------TESTING---------------------------
     this.price1 = new Price;
     this.price1.id = 1;
     this.price1.startDate = "1/1/2019";
@@ -58,7 +58,8 @@ export class AgentsComponent implements OnInit {
       { "id": 1, "name": "Pool", "price": 30, "included": true},
       { "id": 2, "name": "Breakfast", "price": 80, "included": true}
     );
-    //-------------------------------------------
+    //-------------------------------------------*/
+    
   }
 
   Cancel(){
@@ -72,6 +73,7 @@ export class AgentsComponent implements OnInit {
   addPrice(){
     this.show_newPrice = false;
     this.addedPrice.startDate = this.datePipe.transform(this.startDate.value,'yyyy-MM-dd');
+    alert(this.addedPrice.startDate);
     this.addedPrice.endDate = this.datePipe.transform(this.endDate.value,'yyyy-MM-dd');
     this.addedPrice.price = this.newPriceValue.value;
     this.prices.push(this.addedPrice);

@@ -15,6 +15,8 @@ import com.ftn.accommodationservice.xsd.GetAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetAddressRequest;
 import com.ftn.accommodationservice.xsd.GetAddressResponse;
+import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceRequest;
+import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetCategoryRequest;
 import com.ftn.accommodationservice.xsd.GetCategoryResponse;
 import com.ftn.accommodationservice.xsd.GetTestRequest;
@@ -62,6 +64,11 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		GetAdditionalServiceRequest request = new GetAdditionalServiceRequest();
 		request.setId(1);
 		return (GetAdditionalServiceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+	
+	public GetAllAdditionalServiceResponse getAllAdditionalServiceResponse() {
+		GetAllAdditionalServiceRequest request = new GetAllAdditionalServiceRequest();
+		return (GetAllAdditionalServiceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	
 	public GetAccUnitPriceResponse getAccUnitPrice(Long id) {

@@ -10,7 +10,6 @@ package com.ftn.accommodationservice.xsd;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="AccommodationUnit" type="{http://ftn.com/accommodationservice/xsd}AccommodationUnit"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,37 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "accommodationUnit"
-})
-@XmlRootElement(name = "GetAccommodationUnitResponse")
-public class GetAccommodationUnitResponse {
+@XmlType(name = "")
+@XmlRootElement(name = "GetAllAdditionalServiceRequest")
+public class GetAllAdditionalServiceRequest {
 
-    @XmlElement(name = "AccommodationUnit", required = true)
-    protected AccommodationUnit accommodationUnit;
-
-    /**
-     * Gets the value of the accommodationUnit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AccommodationUnit }
-     *     
-     */
-    public AccommodationUnit getAccommodationUnit() {
-        return accommodationUnit;
-    }
-
-    /**
-     * Sets the value of the accommodationUnit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AccommodationUnit }
-     *     
-     */
-    public void setAccommodationUnit(AccommodationUnit value) {
-        this.accommodationUnit = value;
-    }
 
 }
