@@ -35,21 +35,12 @@ export class AgentsComponent implements OnInit {
   reservations : Array<Reservations> = new Array<Reservations>();
   additionalServicesARRAY : Array<AdditionalService>;
   
-  prices : Array<AccUnitPrice> = new Array<AccUnitPrice>();
-  price1 : AccUnitPrice; price2 : AccUnitPrice;
-  
-
   addAccUnit(){
     this.show_register_form = true;
     this.additionalServiceService.getAllAdditionalServ().subscribe(data=>{
       this.additionalServicesARRAY = data;
     });
-    this.price1 = new AccUnitPrice;
-    this.price1.id = 1;
-    this.price1.startDate = "1996-01-01";
-    this.price1.endDate = "1996-01-01";
-    this.price1.price = 200;
-    this.prices.push(this.price1);
+    
   }
 
   Cancel(){
