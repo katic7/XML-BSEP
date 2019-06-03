@@ -6,7 +6,7 @@
 //
 
 
-package com.ftn.reservationservice.model;
+package com.ftn.authservice.model;
 
 import java.util.List;
 
@@ -21,8 +21,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -142,8 +140,7 @@ public class AdditionalService {
     public void setIncluded(boolean value) {
         this.included = value;
     }
-    
-    @JsonIgnore
+
 	public AccommodationObject getAccommodationObject() {
 		return accommodationObject;
 	}
@@ -151,7 +148,7 @@ public class AdditionalService {
 	public void setAccommodationObject(AccommodationObject accommodationObject) {
 		this.accommodationObject = accommodationObject;
 	}
-	@JsonIgnore
+
 	public List<AccommodationUnit> getAccommodationUnits() {
 		return accommodationUnits;
 	}

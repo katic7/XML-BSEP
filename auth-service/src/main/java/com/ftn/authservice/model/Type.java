@@ -6,39 +6,30 @@
 //
 
 
-package com.ftn.reservationservice.model;
-
-import java.util.List;
+package com.ftn.authservice.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 /**
- * <p>Java class for AdditionalService complex type.
+ * <p>Java class for Type complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AdditionalService">
+ * &lt;complexType name="Type">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{www.ftn.com/accommodationservice/model}id"/>
  *         &lt;element name="name" type="{www.ftn.com/accommodationservice/model}name"/>
- *         &lt;element name="price" type="{www.ftn.com/accommodationservice/model}price"/>
- *         &lt;element name="included" type="{www.ftn.com/accommodationservice/model}included"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -48,29 +39,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdditionalService", propOrder = {
+@XmlType(name = "Type", propOrder = {
     "id",
-    "name",
-    "price",
-    "included",
-    "accommodationObject",
-    
+    "name"
 })
 @Entity
-public class AdditionalService {
+public class Type {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     @XmlElement(required = true)
     protected String name;
-    protected double price;
-    protected boolean included;
-    @ManyToOne
-    @JoinColumn(name="accommodation_object")
-    protected AccommodationObject accommodationObject;
-    @ManyToMany(mappedBy = "additionalServices")
-    private List<AccommodationUnit> accommodationUnits;
     
+
     /**
      * Gets the value of the id property.
      * 
@@ -111,55 +92,5 @@ public class AdditionalService {
         this.name = value;
     }
 
-    /**
-     * Gets the value of the price property.
-     * 
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Sets the value of the price property.
-     * 
-     */
-    public void setPrice(double value) {
-        this.price = value;
-    }
-
-    /**
-     * Gets the value of the included property.
-     * 
-     */
-    public boolean isIncluded() {
-        return included;
-    }
-
-    /**
-     * Sets the value of the included property.
-     * 
-     */
-    public void setIncluded(boolean value) {
-        this.included = value;
-    }
-    
-    @JsonIgnore
-	public AccommodationObject getAccommodationObject() {
-		return accommodationObject;
-	}
-
-	public void setAccommodationObject(AccommodationObject accommodationObject) {
-		this.accommodationObject = accommodationObject;
-	}
-	@JsonIgnore
-	public List<AccommodationUnit> getAccommodationUnits() {
-		return accommodationUnits;
-	}
-
-	public void setAccommodationUnits(List<AccommodationUnit> accommodationUnits) {
-		this.accommodationUnits = accommodationUnits;
-	}
-
 	
-
 }

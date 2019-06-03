@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ftn.reservationservice.model.AccommodationUnit;
 import com.ftn.reservationservice.model.Reservation;
+import com.ftn.reservationservice.repository.AccommodationUnitRepository;
 import com.ftn.reservationservice.repository.AddressRepository;
 import com.ftn.reservationservice.repository.ReservationRepository;
 
@@ -20,6 +21,9 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired
 	public AddressRepository addressRepository;
+	
+	@Autowired
+	public AccommodationUnitRepository accommodationUnitRepository;
 
 	@Override
 	public List<Reservation> getAll() {		
@@ -46,16 +50,38 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Override
 	public List<AccommodationUnit> getAvailableAccUnits(String dest, Date startDate, Date endDate) {		
-		List<Reservation> reservations = reservationRepository.findReservationsInInterval(startDate, endDate);		
+		//List<Reservation> reservations = reservationRepository.findReservationsInInterval(startDate, endDate);		
+		List<Reservation> reservations = reservationRepository.findAll();
 		List<AccommodationUnit> acu = new ArrayList<>();
+		List<AccommodationUnit> allAcu = accommodationUnitRepository.findAll();
+		
+		for(AccommodationUnit au : allAcu) {
+			if(addressRepository.getOne(au.getAccommodationObject().getAddressId()).getTown().equals(dest)) {
+				acu.add(au);
+			}
+		}
 		
 		for(Reservation r : reservations) {
-			if(!acu.contains(r.getAccommodationUnit())) {
-				if(addressRepository.getOne(r.getAccommodationUnit().getAccommodationObject().getAddressId()).getTown().equals(dest)) {
-					acu.add(r.getAccommodationUnit());
+			if(acu.contains(r.getAccommodationUnit())) {				
+				if((r.getBeginDate().compareTo(startDate) > 0 && r.getBeginDate().compareTo(endDate) < 0) || (r.getEndDate().compareTo(startDate) > 0 && r.getEndDate().compareTo(endDate) < 0)) {
+					acu.remove(r.getAccommodationUnit());
 				}
 			}
 		}
+		
+		/*for(Reservation r : reservations) {
+			if(!acu.contains(r.getAccommodationUnit())) {
+				if(addressRepository.getOne(r.getAccommodationUnit().getAccommodationObject().getAddressId()).getTown().equals(dest)) {
+					if(r.getBeginDate().compareTo(startDate) < 0 || r.getBeginDate().compareTo(endDate) > 0) {
+						if(r.getEndDate().compareTo(startDate) < 0 || r.getEndDate().compareTo(endDate) > 0) {
+							acu.add(r.getAccommodationUnit());
+						}
+					}						
+				}
+			}
+		}*/
+		
+		//		 not((r.begin_date between ?1 and ?2) or (r.end_date between ?1 and ?2))
 		
 		return acu;
 	}

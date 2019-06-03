@@ -6,7 +6,7 @@
 //
 
 
-package com.ftn.reservationservice.model;
+package com.ftn.authservice.model;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -21,8 +21,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -289,7 +287,6 @@ public class AccommodationObject {
      * 
      * 
      */
-    @JsonIgnore
     public List<AccommodationUnit> getAccommodationsUnitList() {
         if (accommodationsUnitList == null) {
             accommodationsUnitList = new ArrayList<AccommodationUnit>();
@@ -319,7 +316,6 @@ public class AccommodationObject {
      * 
      * 
      */
-    @JsonIgnore
     public List<AdditionalService> getAdditionalServices() {
         if (additionalServices == null) {
             additionalServices = new ArrayList<AdditionalService>();

@@ -3,7 +3,7 @@
 </div>
 
 <div class="header">
-    <h3>{{ searchForm.destination }}: broj properties found</h3>
+    <h3>{{ searchForm.destination }}: {{accUnits.length}} properties found</h3>
 </div>
 
 <div class="side-form">
@@ -22,8 +22,8 @@
     </div>
 
     <div class="searchobject">
-        <div *ngFor="let number of numbers">
-            <app-searchobject></app-searchobject>
+        <div *ngFor="let accUnit of accUnits">
+            <app-searchobject [accUnit]="accUnit"></app-searchobject>
         </div>
     </div>
 </div>

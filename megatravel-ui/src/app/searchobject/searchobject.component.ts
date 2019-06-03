@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-searchobject',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchobjectComponent implements OnInit {
 
+  @Input()  accUnit : AccommodationUnit
   constructor() { }
 
   ngOnInit() {

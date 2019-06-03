@@ -1,5 +1,6 @@
 package com.ftn.reservationservice.security;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -32,7 +33,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+    	http
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		
+		.authorizeRequests()
+
+		.antMatchers("/api/*").permitAll()
+		.antMatchers("/ws/*").permitAll()
+		.antMatchers("/ws").permitAll()
+		.antMatchers("/api/addresses/test2").permitAll()
+		.antMatchers("/api/comment/rating").permitAll()
+		.antMatchers("/api/reservations/getfreeunits").permitAll()
+		.anyRequest().authenticated().and()
+		
+		
+		.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+	http.csrf().disable();
+    	
+       /* http
 	        .cors()
 	            .and()
             .headers().frameOptions()
@@ -50,9 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 	            .and()
 	        .authorizeRequests().anyRequest()
-	                .authenticated();
+	                .authenticated();*/
     }
-	
-
 	
 }

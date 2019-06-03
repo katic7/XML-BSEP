@@ -11,6 +11,8 @@ private Long id;
 	private Date checkout;
 	
 	private String destination;
+	
+	private int persons;
 
 	public SearchFormDTO() {
 		super();
@@ -46,6 +48,14 @@ private Long id;
 
 	public void setDestination(String destination) {
 		this.destination = destination;
+	}
+
+	public int getPersons() {
+		return persons;
+	}
+
+	public void setPersons(int persons) {
+		this.persons = persons;
 	}
 
 }

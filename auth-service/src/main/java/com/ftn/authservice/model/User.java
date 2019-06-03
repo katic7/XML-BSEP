@@ -1,8 +1,9 @@
 package com.ftn.authservice.model;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedSubgraph;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -33,9 +37,7 @@ public class User {
 	
 	private String surname;
 	
-	private String address;
-	
-	private int postalCode;
+	protected Long addressId;	
 	
 	@Column(unique = true)
 	private String email;
@@ -46,6 +48,14 @@ public class User {
 	private boolean enabled;
 	
 	private boolean nonLocked;
+	
+	protected Date dateOfBirth;
+	
+	protected String telephone;
+	
+	@OneToMany(mappedBy="user")
+    private List<Reservation> reservations;
+	
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -55,17 +65,34 @@ public class User {
 		this.enabled = false;
 	}
 
-	public User(String name, String surname, String address, int postalCode, String email, 
+	public User(String name, String surname, Long address, String email, 
 				String password, Set<Role> roles) {
 		super();
 		this.name = name;
 		this.surname = surname;
-		this.address = address;
-		this.postalCode = postalCode;
+		this.addressId = address;
 		this.email = email;
 		this.password = password;
 		this.enabled = true;
 		this.nonLocked = true;
+		this.roles = roles;
+	}
+
+	public User(Long id, String name, String surname, Long addressId, String email, String password,
+			boolean enabled, boolean nonLocked, Date dateOfBirth, String telephone,
+			List<com.ftn.authservice.model.Reservation> reservations, Set<Role> roles) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.addressId = addressId;
+		this.email = email;
+		this.password = password;
+		this.enabled = enabled;
+		this.nonLocked = nonLocked;
+		this.dateOfBirth = dateOfBirth;
+		this.telephone = telephone;
+		this.reservations = reservations;
 		this.roles = roles;
 	}
 
@@ -141,22 +168,38 @@ public class User {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}	
+
+	public Long getAddressId() {
+		return addressId;
 	}
 
-	public String getAddress() {
-		return address;
+	public void setAddressId(Long addressId) {
+		this.addressId = addressId;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public int getPostalCode() {
-		return postalCode;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	@JsonIgnore
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 }

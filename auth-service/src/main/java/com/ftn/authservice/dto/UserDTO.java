@@ -7,8 +7,7 @@ public class UserDTO {
 	private Long id;
 	private String name;
 	private String surname;
-	private String address;
-	private int postalCode;
+	private Long addressId;
 	private String email;
 	private String password;
 	private boolean enabled;
@@ -19,14 +18,13 @@ public class UserDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserDTO(Long id, String name, String surname, String address, int postalCode, String email, String password,
+	public UserDTO(Long id, String name, String surname, Long address, String email, String password,
 			boolean enabled, boolean nonLocked) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
-		this.address = address;
-		this.postalCode = postalCode;
+		this.addressId = address;
 		this.email = email;
 		this.password = password;
 		this.enabled = enabled;
@@ -37,8 +35,7 @@ public class UserDTO {
 		this.id = u.getId();
 		this.name = u.getName();
 		this.surname = u.getSurname();
-		this.address = u.getAddress();
-		this.postalCode = u.getPostalCode();
+		this.addressId = u.getAddressId();
 		this.email = u.getEmail();
 		this.password = u.getPassword();
 		this.enabled = u.isEnabled();
@@ -69,22 +66,14 @@ public class UserDTO {
 		this.surname = surname;
 	}
 
-	public String getAddress() {
-		return address;
+	public Long getAddressId() {
+		return addressId;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(Long address) {
+		this.addressId = address;
 	}
-
-	public int getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
-	}
-
+	
 	public String getEmail() {
 		return email;
 	}

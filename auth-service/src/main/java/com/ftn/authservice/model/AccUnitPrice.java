@@ -6,7 +6,7 @@
 //
 
 
-package com.ftn.reservationservice.model;
+package com.ftn.authservice.model;
 
 import java.util.Date;
 
@@ -20,8 +20,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -150,7 +148,7 @@ public class AccUnitPrice {
     public void setPrice(double value) {
         this.price = value;
     }
-    @JsonIgnore
+
 	public AccommodationUnit getAccommodationUnit() {
 		return accommodationUnit;
 	}
