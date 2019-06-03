@@ -67,7 +67,6 @@ public class AccommodationUnit {
     @XmlElement(required = true)
     protected String description;
     protected double rating;
-    @XmlElement(required = true)
     protected byte[] image;
     protected long accObjectId;
     protected List<Reservation> reservations;

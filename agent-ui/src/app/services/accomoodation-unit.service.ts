@@ -11,6 +11,6 @@ export class AccomoodationUnitService {
   constructor(private http : HttpClient) { }
 
   addNewAccU(accU : AccommodationUnit) : Observable<any>{
-    return this.http.post('//localhost:8085/api/', accU);    //PRILAGODI BEKENND APIU
+    return this.http.post('http://localhost:8091/api/accommodations/addAccUnit', accU);    //PRILAGODI BEKENND APIU
   }
 }

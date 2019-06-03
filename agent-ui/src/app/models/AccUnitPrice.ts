@@ -1,4 +1,4 @@
-export class Price {
+export class AccUnitPrice {
 
     id:number;
     startDate:string;

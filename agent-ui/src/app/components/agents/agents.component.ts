@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Price } from 'src/app/models/Price';
+import { AccUnitPrice } from 'src/app/models/AccUnitPrice';
 import { AdditionalService } from 'src/app/models/AdditionalService';
 import { Router } from '@angular/router';
 import { PriceService } from 'src/app/services/price.service';
@@ -8,6 +8,7 @@ import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 import { Reservations } from 'src/app/models/Reservations';
 import { AccomoodationUnitService } from 'src/app/services/accomoodation-unit.service';
 import { DatePipe } from '@angular/common';
+import { AdditionalServiceService } from 'src/app/services/additional-service.service';
 
 @Component({
   selector: 'app-agents',
@@ -16,7 +17,7 @@ import { DatePipe } from '@angular/common';
 })
 export class AgentsComponent implements OnInit {
 
-  constructor(private router: Router, private priceService : PriceService, private accUnitService : AccomoodationUnitService, private datePipe: DatePipe) { }
+  constructor(private router: Router, private priceService : PriceService, private accUnitService : AccomoodationUnitService, private datePipe: DatePipe, private additionalServiceService : AdditionalServiceService) { }
 
   show_register_form : boolean = false;
   show_newPrice : boolean = false;
@@ -29,37 +30,26 @@ export class AgentsComponent implements OnInit {
   endDate = new FormControl('');
   newPriceValue = new FormControl('');
   additionalServices = new FormControl('');
-  addedPrice : Price = new Price;
+  addedPrice : AccUnitPrice = new AccUnitPrice;
   accommodationUnit : AccommodationUnit = new AccommodationUnit();
   reservations : Array<Reservations> = new Array<Reservations>();
-  //-----------------TESTING---------------------------
-  prices : Array<Price> = new Array<Price>();
-  price1 : Price; price2 : Price;
   additionalServicesARRAY : Array<AdditionalService>;
-  //--------------------------------------------
+  
+  prices : Array<AccUnitPrice> = new Array<AccUnitPrice>();
+  price1 : AccUnitPrice; price2 : AccUnitPrice;
+  
 
   addAccUnit(){
     this.show_register_form = true;
-    /*-----------------TESTING---------------------------
-    this.price1 = new Price;
+    this.additionalServiceService.getAllAdditionalServ().subscribe(data=>{
+      this.additionalServicesARRAY = data;
+    });
+    this.price1 = new AccUnitPrice;
     this.price1.id = 1;
-    this.price1.startDate = "1/1/2019";
-    this.price1.endDate = "1/2/2019";
+    this.price1.startDate = "1996-01-01";
+    this.price1.endDate = "1996-01-01";
     this.price1.price = 200;
     this.prices.push(this.price1);
-    this.price2 = new Price;
-    this.price2.id = 1;
-    this.price2.startDate = "1/1/2019";
-    this.price2.endDate = "1/2/2019";
-    this.price2.price = 500;
-    this.prices.push(this.price2);
-    this.additionalServicesARRAY = Array(
-      { "id": 0, "name": "Wifi", "price": 10, "included": true},
-      { "id": 1, "name": "Pool", "price": 30, "included": true},
-      { "id": 2, "name": "Breakfast", "price": 80, "included": true}
-    );
-    //-------------------------------------------*/
-    
   }
 
   Cancel(){
@@ -70,57 +60,49 @@ export class AgentsComponent implements OnInit {
     this.show_newPrice = true;
   }
 
-  addPrice(){
-    this.show_newPrice = false;
-    this.addedPrice.startDate = this.datePipe.transform(this.startDate.value,'yyyy-MM-dd');
-    alert(this.addedPrice.startDate);
-    this.addedPrice.endDate = this.datePipe.transform(this.endDate.value,'yyyy-MM-dd');
-    this.addedPrice.price = this.newPriceValue.value;
-    this.prices.push(this.addedPrice);
-    /*
-    this.priceService.addNewPrice(addedPrice).subscribe(data=>{
-
-    });
-    */
-    var clearFC = new FormControl('');
-    this.startDate = clearFC;
-    this.endDate = clearFC;
-    this.newPriceValue = clearFC;
-  }
-
   CancelPrice(){
     this.show_newPrice = false;
-    var clearFC = new FormControl('');
-    this.startDate = clearFC;
-    this.endDate = clearFC;
-    this.newPriceValue = clearFC;
+
+    this.startDate = new FormControl('');
+    this.endDate = new FormControl('');
+    this.newPriceValue = new FormControl('');
+  }
+
+  balconyChanged(){
+    console.log(this.balcony.value);
   }
 
   onSubmit(){
+     this.addedPrice.startDate = this.datePipe.transform(this.startDate.value,'yyyy-MM-dd');
+     this.addedPrice.endDate = this.datePipe.transform(this.endDate.value,'yyyy-MM-dd');
+     this.addedPrice.price = this.newPriceValue.value;
      var newAccommodationUnit : AccommodationUnit = new AccommodationUnit();
      newAccommodationUnit.numberOfBeds = this.numberOfBeds.value;
+     newAccommodationUnit.balcony = false;
+     if(this.balcony.value){
+      newAccommodationUnit.balcony = true;
+     }
+     this.accommodationUnit.price = this.addedPrice;
+     newAccommodationUnit.price = this.accommodationUnit.price;
      newAccommodationUnit.description = this.description.value;
-     newAccommodationUnit.price = this.priceFORM.value;
-     newAccommodationUnit.balcony = this.balcony.value;
-     newAccommodationUnit.accObjectId = null; //??
-     newAccommodationUnit.image = null;
-     newAccommodationUnit.reservations = this.reservations;     
      newAccommodationUnit.rating = 0;
+     newAccommodationUnit.image = null;
+     newAccommodationUnit.accObjectId = 2; //??
+     newAccommodationUnit.reservations = this.reservations;     
      newAccommodationUnit.additionalServices = this.accommodationUnit.additionalServices;
-     console.table(newAccommodationUnit);
-     /*
      this.accUnitService.addNewAccU(newAccommodationUnit).subscribe(data=>{
-
+        console.table(data);
      });
-     */
-    alert("Success!!!");
-    var clearFC = new FormControl('');
-    this.numberOfBeds = clearFC;
-    this.description = clearFC;
-    this.priceFORM = clearFC;
-    this.balcony = clearFC;
+     
+    this.numberOfBeds = new FormControl('');
+    this.description =  new FormControl('');
+    this.accommodationUnit.price = null;
+    this.balcony =  new FormControl('');
     this.accommodationUnit.additionalServices = null;
-
+    this.startDate = new FormControl('');
+    this.endDate = new FormControl('');
+    this.newPriceValue = new FormControl('');
+    
   }
 
   ngOnInit() {

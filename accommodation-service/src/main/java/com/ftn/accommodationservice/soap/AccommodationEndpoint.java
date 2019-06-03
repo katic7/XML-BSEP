@@ -221,17 +221,24 @@ public class AccommodationEndpoint {
 		AccommodationObject ao = aorepo.getOne(request.getAccommodationUnit().getAccObjectId());
 		
 		
-		
+		System.out.println(request.getAccommodationUnit().getAdditionalServices().size() + " text");
 		unitModel.setAccommodationObject(ao);
 		List<AdditionalService> servisi = new ArrayList<>();
 		for(com.ftn.accommodationservice.xsd.AdditionalService xsd : request.getAccommodationUnit().getAdditionalServices())  {
-			servisi.add(additionalservicerepo.getOne(xsd.getId()));
+			System.out.println("usao34");
+			unitModel.getAdditionalServices().add(additionalservicerepo.getOne(xsd.getId()));
 		}
-		unitModel.setAdditionalServices(servisi);
+		System.out.println(unitModel.getAdditionalServices().size() + " text222");
+		//unitModel.setAdditionalServices(servisi);
 		
 		unitModel.setId(request.getAccommodationUnit().getId());
 		//unitModel.setImage(request.getAccommodationUnit().getImage());
-		unitModel.setPrice(acurepo.getOne(request.getAccommodationUnit().getPrice().getId()));
+		AccUnitPrice acup = new AccUnitPrice();
+		acup.setEndDate(request.getAccommodationUnit().getPrice().getEndDate());
+		acup.setStartDate(request.getAccommodationUnit().getPrice().getStartDate());
+		acup.setPrice(request.getAccommodationUnit().getPrice().getPrice());
+		acup.setAccommodationUnit(aunitrepo.getOne(request.getAccommodationUnit().getId()));
+		unitModel.setPrice(acurepo.save(acup));
 		unitModel.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
 		unitModel.setRating(request.getAccommodationUnit().getRating());
 		List<Reservation> ress = new ArrayList<>();
@@ -249,7 +256,7 @@ public class AccommodationEndpoint {
 		rspau.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
 		rspau.setPrice(request.getAccommodationUnit().getPrice());
 		rspau.setRating(request.getAccommodationUnit().getRating());
-		
+		request.getAccommodationUnit().getAdditionalServices().forEach(r->{rspau.getAdditionalServices().add(r);});
 		response.setAccommodationUnit(rspau);
 		
 		return response;

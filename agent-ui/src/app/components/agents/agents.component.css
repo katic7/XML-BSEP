@@ -19,7 +19,7 @@
 .centeredTitle{
     position: fixed; /* or absolute */
     top: 10%;
-    left: 1%;
+    left: 5%;
 }
 
 #priceFORM{
@@ -28,8 +28,7 @@
 
 #em2{
     position: fixed; /* or absolute */
-    top: 20%;
-    left: 45%; 
+    margin-top: 2%; 
 }
 
 .priceTitle{

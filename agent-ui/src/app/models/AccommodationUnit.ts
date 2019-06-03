@@ -1,4 +1,4 @@
-import { Price } from './Price';
+import { AccUnitPrice } from './AccUnitPrice';
 import { Reservations } from './Reservations';
 import { AdditionalService } from './AdditionalService';
 
@@ -7,7 +7,7 @@ export class AccommodationUnit {
     id:number;
     numberOfBeds:number;
     balcony:boolean;
-    price:Price;
+    price:AccUnitPrice;
     description:number;
     rating:number;
     image:string;

@@ -3,6 +3,7 @@ package com.ftn.agentservice.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,5 +39,12 @@ public class AccommodationController {
 	public List<AdditionalService> getAllAdditionalServices(){
 		GetAllAdditionalServiceResponse as = client.getAllAdditionalServiceResponse();
 		return as.getAdditionalServices();
+	}
+	
+	@PostMapping("/addAccUnit")
+	public AccommodationUnit addNewAccUnit(@RequestBody AccommodationUnit accUnit) {
+		GetAccommodationUnitResponse r = client.saveNewAcc(accUnit);
+		return r.getAccommodationUnit();
+		
 	}
 }
