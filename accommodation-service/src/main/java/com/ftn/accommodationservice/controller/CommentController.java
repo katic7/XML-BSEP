@@ -72,6 +72,18 @@ public class CommentController {
 		return response.getBody();
 	}
 	
+	@GetMapping("/ratings/accommodation/{id}")
+	@PreAuthorize("hasAuthority('CREATE')")
+	public List<RatingDTO> getRatingsFromSpecificAcc(@PathVariable Long id){
+		ResponseEntity<List<RatingDTO>> response = template.exchange(
+				"http://localhost:8010/reservation-cloud-service/us-central1/getRatingsFromSpecificAcc",
+				  HttpMethod.GET,
+				  null,
+				  new ParameterizedTypeReference<List<RatingDTO>>(){});
+		List<RatingDTO> ratingss = response.getBody();
+		return ratingss;
+	}
+	
 	
 	
 }

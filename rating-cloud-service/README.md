@@ -6,6 +6,7 @@ npm install -g @google-cloud/functions-emulator
 functions config set projectId reservation-cloud-service
 functions start
 functions deploy {{method-name}} --trigger-http
+
 ```
 
 methods: newRating
