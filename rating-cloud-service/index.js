@@ -64,7 +64,7 @@ exports.publishComment = function publishComment(req, res) {
 	(err, result)=> {
 	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
 	    else {
-		res.status(200).send(result);
+		res.status(200).send("Successfully updated");
 	    }
 	});
 };
