@@ -42,6 +42,7 @@ public class ZuulPreFilter extends ZuulFilter {
 	    String username = restTemplate.getForObject("http://localhost:8085/api/auth/check/{token}/username", String.class, token);
 	    ctx.addZuulRequestHeader("Permissions", permisije);
 	    ctx.addZuulRequestHeader("username", username);
+	   
 	    log.info("PERMISIJE -> " + permisije);
 	    return null;
 	  }
