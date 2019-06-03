@@ -8,6 +8,7 @@
 
 package com.ftn.accommodationservice.model;
 
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 
 
 /**
@@ -88,7 +91,8 @@ public class AccommodationObject {
     protected List<AccommodationUnit> accommodationsUnitList;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AdditionalService> additionalServices;
-
+    @OneToOne(mappedBy = "accObj")
+    private Agent agent;
     /**
      * Gets the value of the id property.
      * 

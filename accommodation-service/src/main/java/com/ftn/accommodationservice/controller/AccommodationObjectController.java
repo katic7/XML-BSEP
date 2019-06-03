@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ftn.accommodationservice.dto.AccommodationObjectDTO;
 import com.ftn.accommodationservice.model.AccUnitPrice;
 import com.ftn.accommodationservice.model.AccommodationObject;
 import com.ftn.accommodationservice.model.AccommodationUnit;
@@ -51,6 +52,13 @@ public class AccommodationObjectController {
 		}
 		
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping("/getOne/{id}")
+	public AccommodationObjectDTO getObj(@PathVariable Long id){
+		AccommodationObject acc = accommodationObjectService.getOneAccObj(id);
+		AccommodationObjectDTO accDto = new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId());
+		return accDto;
 	}
 	
 	@PostMapping("/addunit/{accobject_id}")

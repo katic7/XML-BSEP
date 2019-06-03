@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -27,6 +29,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NamedEntityGraph(name = "User.Roles.Permissions", 
 	attributeNodes = @NamedAttributeNode(value = "roles", subgraph = "permissions"), 
 	subgraphs = @NamedSubgraph(name = "permissions", attributeNodes = @NamedAttributeNode("permissions")))
+@Inheritance(
+	    strategy = InheritanceType.JOINED
+	)
 public class User {
 
 	@Id
@@ -60,6 +65,7 @@ public class User {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+	
 
 	public User() {
 		this.enabled = false;

@@ -29,15 +29,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.ftn.authservice.dto.ActivateUserDTO;
+import com.ftn.authservice.dto.CreateAgentDTO;
 import com.ftn.authservice.dto.ProfileDto;
 import com.ftn.authservice.dto.UserDTO;
 import com.ftn.authservice.dto.UserStatus;
 import com.ftn.authservice.exception.InvalidJWTokenException;
 import com.ftn.authservice.jwt.JwtTokenProvider;
+import com.ftn.authservice.model.AccommodationObject;
+import com.ftn.authservice.model.Agent;
 import com.ftn.authservice.model.RoleName;
 import com.ftn.authservice.model.User;
+import com.ftn.authservice.repository.AgentRepository;
 import com.ftn.authservice.repository.RoleRepository;
 import com.ftn.authservice.repository.UserRepository;
 import com.ftn.authservice.request.LoginRequest;
@@ -56,6 +61,9 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    AgentRepository agentRepository;
+    
     @Autowired
     RoleRepository roleRepository;
 
@@ -99,6 +107,18 @@ public class AuthController {
     		users.add(new UserDTO(u));
     	}
     	return users;
+    }
+    
+    @PostMapping("/createAgent")
+    public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
+    	User usr = userRepository.getOne(ca.getUser());
+    	System.out.println(usr.getName()+"XasXASXS");
+    	Agent ag = new Agent(usr);
+    	ag.setPib(ca.getPib());
+    	RestTemplate template  = new RestTemplate();
+    	ag.setAccObj(template.getForObject("http://localhost:8082/api/accobject/getOne/" + ca.getAccObj(), AccommodationObject.class));
+    	agentRepository.saveAgent(ag.getPib(),ag.getId(),ag.getAccObj().getId());
+    	return new ResponseEntity<>(HttpStatus.CREATED);
     }
  
     @RequestMapping(value="/deleteUser/{id}", method=RequestMethod.DELETE)

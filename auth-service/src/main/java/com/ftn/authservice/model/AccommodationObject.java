@@ -17,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -88,7 +89,8 @@ public class AccommodationObject {
     protected List<AccommodationUnit> accommodationsUnitList;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AdditionalService> additionalServices;
-
+    @OneToOne(mappedBy = "accObj")
+    private Agent agent;
     /**
      * Gets the value of the id property.
      * 
@@ -105,7 +107,16 @@ public class AccommodationObject {
         this.id = value;
     }
 
-    /**
+    
+    public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
+	/**
      * Gets the value of the name property.
      * 
      * @return
