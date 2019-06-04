@@ -17,7 +17,10 @@ import com.ftn.accommodationservice.dto.AccommodationObjectDTO;
 import com.ftn.accommodationservice.model.AccUnitPrice;
 import com.ftn.accommodationservice.model.AccommodationObject;
 import com.ftn.accommodationservice.model.AccommodationUnit;
+import com.ftn.accommodationservice.model.Agent;
 import com.ftn.accommodationservice.model.Reservation;
+import com.ftn.accommodationservice.repository.AccommodationObjectRepository;
+import com.ftn.accommodationservice.repository.AccommodationRepository;
 import com.ftn.accommodationservice.service.AccommodationObjectService;
 
 @RestController
@@ -26,6 +29,9 @@ public class AccommodationObjectController {
 	
 	@Autowired
 	private AccommodationObjectService accommodationObjectService;
+	
+	@Autowired
+	private AccommodationObjectRepository accommodationObjectRepository;
 	
 	@GetMapping("/getprices")
 	public ResponseEntity<List<AccUnitPrice>> getAllPrices() {
@@ -59,6 +65,22 @@ public class AccommodationObjectController {
 		AccommodationObject acc = accommodationObjectService.getOneAccObj(id);
 		AccommodationObjectDTO accDto = new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId());
 		return accDto;
+	}
+	
+	@GetMapping("/getAllwOutAgent")
+	public List<AccommodationObjectDTO> getFreeAcc(){
+		List<AccommodationObject> svi = accommodationObjectRepository.findAll();
+		List<AccommodationObject> lista= accommodationObjectRepository.objWithAgents();
+		List<AccommodationObjectDTO> povratnaLista = new ArrayList<AccommodationObjectDTO>();
+		for(AccommodationObject acc : lista) {
+			svi.remove(acc);
+		}
+		for(AccommodationObject acc : svi) {
+			povratnaLista.add(new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId()));
+		}
+		
+		
+	return povratnaLista;
 	}
 	
 	@PostMapping("/addunit/{accobject_id}")

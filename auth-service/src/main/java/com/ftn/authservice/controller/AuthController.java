@@ -40,6 +40,7 @@ import com.ftn.authservice.exception.InvalidJWTokenException;
 import com.ftn.authservice.jwt.JwtTokenProvider;
 import com.ftn.authservice.model.AccommodationObject;
 import com.ftn.authservice.model.Agent;
+import com.ftn.authservice.model.Role;
 import com.ftn.authservice.model.RoleName;
 import com.ftn.authservice.model.User;
 import com.ftn.authservice.repository.AgentRepository;
@@ -112,12 +113,13 @@ public class AuthController {
     @PostMapping("/createAgent")
     public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
     	User usr = userRepository.getOne(ca.getUser());
-    	System.out.println(usr.getName()+"XasXASXS");
     	Agent ag = new Agent(usr);
     	ag.setPib(ca.getPib());
     	RestTemplate template  = new RestTemplate();
     	ag.setAccObj(template.getForObject("http://localhost:8082/api/accobject/getOne/" + ca.getAccObj(), AccommodationObject.class));
     	agentRepository.saveAgent(ag.getPib(),ag.getId(),ag.getAccObj().getId());
+    	usr.getRoles().add(roleRepository.findByName(RoleName.ROLE_AGENT));
+    	userRepository.save(usr);
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }
  
