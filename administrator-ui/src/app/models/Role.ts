@@ -5,5 +5,6 @@ export class Role {
 
 export enum RoleName {
     ROLE_USER,
-    ROLE_SYSTEMADMIN,    
+    ROLE_ADMIN,
+    ROLE_AGENT,    
 }
