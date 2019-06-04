@@ -112,6 +112,7 @@ public class AuthController {
     
     @PostMapping("/createAgent")
     public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
+    	System.out.println(ca.getAccObj() + " " +ca.getUser());
     	User usr = userRepository.getOne(ca.getUser());
     	Agent ag = new Agent(usr);
     	ag.setPib(ca.getPib());

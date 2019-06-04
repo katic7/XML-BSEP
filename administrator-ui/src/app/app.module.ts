@@ -12,6 +12,10 @@ import { UsersComponent } from './components/users/users.component';
 import { AgentsComponent } from './components/agents/agents.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatInputModule, MatFormFieldModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent },
@@ -35,6 +39,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }

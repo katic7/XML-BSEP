@@ -31,7 +31,39 @@
             <td><button (click)="ActivateUser(user)" type="button" [disabled]="user.enabled" class="btn btn-outline-success">Activate</button></td>
             <td><button (click)="BlockUser(user)" type="button" [disabled]="!user.nonLocked" class="btn btn-outline-warning">Block</button></td>
             <td><button (click)="DeleteUser(user)" type="button" class="btn btn-outline-danger">Delete</button></td>
+            <td><button type="button" (click)="open(content,user.id)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Make agent</button></td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<!--MODAL-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add agent</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     
+      <div class="form-group" style="width:65%;">
+        <label style="float:left;">Accommodation Object: </label>
+        <select style="float:right;" [(ngModel)]="accommodationObject" #accommodationObjectss>
+          <option *ngFor="let accObject of accommodationObjects" [ngValue]="accObject" >{{accObject.name}}</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-top:10%;">
+        <label for="taxNumber">Tax number: </label>
+        <input type="text" class="form-control" name="taxNumber" [formControl]="taxNumber" required />  
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="AddNewAgent()">Save</button>
+    </div>
+</ng-template>
+  
+
+
+
+
