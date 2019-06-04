@@ -4,7 +4,7 @@
   </div>
   <div class="header">
     <h1>{{accUnit.accommodationObject.name}}</h1>
-    <p>Adresa smestaja</p>
+    <p>{{address.street}} {{address.streetNumber}}, {{address.town}}</p>
 
     <div class="informations">
       <p>
@@ -20,11 +20,11 @@
   
       <div class="price">
         <p>Price for n nights</p>
-        <p>RSD 12,459</p>
+        <p>EUR {{this.accUnit.price.price}}</p>
       </div>
   
       <div class="availability">
-        <button>See availability</button>
+        <button (click)="makeAReservation()">Book</button>
       </div>
   
     </div>

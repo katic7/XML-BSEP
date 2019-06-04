@@ -27,4 +27,8 @@ export class ReservationService {
     return this.http.post("http://localhost:8083/api/reservations/getfreeunits", info);
   }
 
+  getAdress(id) : Observable<any> {
+    return this.http.get("http://localhost:8083/api/addresses/" + id);
+  }
+
 }

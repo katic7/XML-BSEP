@@ -19,4 +19,9 @@ public class AddressServiceImpl implements AddressService {
 		return addressRepository.findAll();
 	}
 
+	@Override
+	public Address getOne(Long id) {
+		return addressRepository.getOne(id);
+	}
+
 }

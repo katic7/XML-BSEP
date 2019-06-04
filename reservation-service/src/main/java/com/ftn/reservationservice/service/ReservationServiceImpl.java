@@ -86,5 +86,10 @@ public class ReservationServiceImpl implements ReservationService{
 		return acu;
 	}
 
+	@Override
+	public Reservation makeAReservation(Reservation reservation) {
+		return reservationRepository.save(reservation);
+	}
+
 	
 }
