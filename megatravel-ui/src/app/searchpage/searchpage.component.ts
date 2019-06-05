@@ -6,6 +6,7 @@ import { SearchForm } from '../models/SearchForm';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-searchpage',
@@ -18,7 +19,8 @@ export class SearchpageComponent implements OnInit {
   numbers = [1,2,3,4,5,6,7,8,9,10];
   accUnits : AccommodationUnit[] = [];
   
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe) { }
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 
@@ -32,6 +34,15 @@ export class SearchpageComponent implements OnInit {
    })
 
   console.log(this.searchForm);
+  }
+
+  onSorted(event) {
+    this.spinner.show();
+ 
+    setTimeout(() => {
+        this.spinner.hide();
+    }, 1000);
+    this.accUnits = event;
   }
 
 }

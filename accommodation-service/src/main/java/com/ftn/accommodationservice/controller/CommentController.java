@@ -16,21 +16,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 import com.ftn.accommodationservice.dto.CommentVisibilityDTO;
 import com.ftn.accommodationservice.dto.RatingDTO;
 import com.ftn.accommodationservice.dto.RatingScoreDTO;
 import com.ftn.accommodationservice.model.AccommodationUnit;
-import com.ftn.accommodationservice.model.Comment;
 import com.ftn.accommodationservice.repository.AccommodationUnitRepository;
-import com.ftn.accommodationservice.repository.CommentRepository;
 
 @RestController
 @RequestMapping("/api/comment")
 public class CommentController {
-
-	@Autowired
-	private CommentRepository commentRepository;
 	
 	@Autowired
 	private RestTemplate template;
@@ -44,10 +38,10 @@ public class CommentController {
 		com.setVisible(cv.isFlag());
 		commentRepository.save(com);
 		return new ResponseEntity<String>("SET VISIBILITY!", HttpStatus.OK);*/
-		RatingDTO response = template.postForObject(
+		String response = template.postForObject(
 				"http://localhost:8010/reservation-cloud-service/us-central1/publishComment",
-				cv, RatingDTO.class);
-		return new ResponseEntity<RatingDTO>(response, HttpStatus.OK);
+				cv, String.class);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 		
 		
 	}

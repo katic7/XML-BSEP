@@ -1,8 +1,8 @@
 <div class="filterbar">
   <ul>
-    <li><button>Price (lowest first)</button></li>
+    <li><button (click)="priceLowest()" >Price <span *ngIf="lowestPriceBoolean">(lowest first)</span><span *ngIf="!lowestPriceBoolean">(highest first)</span></button></li>
     <li><button>Distance from destination</button></li>
-    <li><button>Review score</button></li>
-    <li><button>Category</button></li>
+    <li><button (click)="review()">Review score <span *ngIf="lowestRatingBoolean">(lowest first)</span><span *ngIf="!lowestRatingBoolean">(highest first)</span></button></li>
+    <li><button (click)="category()">Category <i class="fas fa-star"></i> <span *ngIf="lowestCategoryBoolean">(lowest first)</span><span *ngIf="!lowestCategoryBoolean">(highest first)</span></button></li>
   </ul>
 </div>
