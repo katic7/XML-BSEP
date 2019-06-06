@@ -91,5 +91,10 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationRepository.save(reservation);
 	}
 
+	@Override
+	public AccommodationUnit getOneUnit(Long id) {
+		return accommodationUnitRepository.getOne(id);
+	}
+
 	
 }

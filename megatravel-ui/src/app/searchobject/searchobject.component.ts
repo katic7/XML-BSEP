@@ -8,6 +8,7 @@ import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Address } from 'src/app/models/Address';
 import { ReservationDTO } from 'src/app/models/ReservationDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchobject',
@@ -20,6 +21,7 @@ export class SearchobjectComponent implements OnInit {
   @Input()  searchForm : SearchForm
   address : Address = new Address
   logged : User;
+  difference
 
 
   getLoggedUser() {
@@ -31,22 +33,27 @@ export class SearchobjectComponent implements OnInit {
   }
 
   makeAReservation() {
-    let res : ReservationDTO = new ReservationDTO;
-    res.accommodationUnitId = this.accUnit.id;
-    res.beginDate = this.searchForm.checkin;
-    res.endDate = this.searchForm.checkout;
-    res.price = this.accUnit.price.price;
-    res.userId = this.logged.id;
+    // let res : ReservationDTO = new ReservationDTO;
+    // res.accommodationUnitId = this.accUnit.id;
+    // res.beginDate = this.searchForm.checkin;
+    // res.endDate = this.searchForm.checkout;
+    // res.price = this.accUnit.price.price;
+    // res.userId = this.logged.id;
 
-    console.log(res);
+    // console.log(res);
+
+    this.router.navigate(['/book', {in: this.searchForm.checkin, out: this.searchForm.checkout, user: this.logged.id, acu: this.accUnit.id, price: this.accUnit.price.price}]);
   }
 
 
-  constructor(private authService: AuthService, private reservationService: ReservationService) { }
+  constructor(private authService: AuthService, private reservationService: ReservationService, private router: Router) { }
 
   ngOnInit() {
     this.getLoggedUser();
     this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
+    var dateone = new Date(this.searchForm.checkin);
+    var datetwo = new Date(this.searchForm.checkout);
+    this.difference = (datetwo - dateone) / 1000 / 60 / 60 / 24;
   }
 
 }

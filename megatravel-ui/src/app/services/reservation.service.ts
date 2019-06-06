@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SearchForm } from 'src/app/models/SearchForm';
 import { HttpHeaders } from '@angular/common/http';
+import { ReservationDTO } from 'src/app/models/ReservationDTO';
 
 /*const headers = {
   "Access-Control-Allow-Origin" : "*"
@@ -29,6 +30,14 @@ export class ReservationService {
 
   getAdress(id) : Observable<any> {
     return this.http.get("http://localhost:8083/api/addresses/" + id);
+  }
+
+  makeAReservation(info : ReservationDTO) : Observable<any> {
+    return this.http.post("http://localhost:8083/api/reservations", info);
+  }
+
+  getOneUnit(id) : Observable<any> {
+    return this.http.get("http://localhost:8083/api/reservations/getOneUnit/" + id);
   }
 
 }

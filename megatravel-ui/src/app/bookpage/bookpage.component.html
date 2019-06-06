@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="assets/bg_2.jpg"></div>
+    <mat-card-title>{{accUnit.accommodationObject.name}}</mat-card-title>
+    <mat-card-subtitle>{{address.street}} {{address.streetNumber}}, {{address.town}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="assets/bg_2.jpg" alt="">
+  <mat-card-content>
+    <p>
+      <b>{{reservation.beginDate}} - {{reservation.endDate}}</b>
+    </p>
+    <p>
+      Object informations: {{accUnit.accommodationObject.description}}
+    </p>
+    <p>
+      Unit informations: {{accUnit.description}}
+    </p>
+    <p>
+      Additional services:
+      <b *ngFor="let additionalService of accUnit.additionalServices">{{additionalService.name}} </b>
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="book()">Book</button>
+    <button mat-button color="warn">Cancel</button>
+  </mat-card-actions>
+</mat-card>

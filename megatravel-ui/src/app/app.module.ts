@@ -25,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { BookpageComponent } from './bookpage/bookpage.component';
 
 
 const appRoutes: Routes = [
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'attack', component: AttacksComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'confirm-account/:token', component: HomepageComponent }
+  { path: 'confirm-account/:token', component: HomepageComponent },
+  { path: 'book', component: BookpageComponent }
 ];
 
 
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     FilterbarComponent,
     SearchobjectComponent,
     FiltersectionComponent,
-    ProfileComponent
+    ProfileComponent,
+    BookpageComponent
   ],
   imports: [
     BrowserModule,

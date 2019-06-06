@@ -44,6 +44,11 @@ public class AccommodationObjectServiceImpl implements AccommodationObjectServic
 		return acorepo.getOne(id);
 	}
 
+	@Override
+	public AccommodationUnit getOneAccUnit(Long id) {
+		return acurepo.getOne(id);
+	}
+
 	
 	
 	

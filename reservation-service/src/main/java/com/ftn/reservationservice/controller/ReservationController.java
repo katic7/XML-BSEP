@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,15 @@ public class ReservationController {
 		return "test";
 	}
 	
+	@GetMapping("/getOneUnit/{id}")
+	public ResponseEntity<AccommodationUnit> getOneAccUnit(@PathVariable Long id) {
+		AccommodationUnit acu = reservationService.getOneUnit(id);
+		if(acu != null) {
+			return new ResponseEntity<AccommodationUnit>(acu, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
 	@PostMapping("/getfreeunits")
 	public ResponseEntity<List<AccommodationUnit>> getFreeAccUnits(@RequestBody SearchFormDTO info) {
 		System.out.println("``````````````````USAO JE GDE TREBA`````````````````");
@@ -67,6 +77,7 @@ public class ReservationController {
 			newRes.setBeginDate(res.getBeginDate());
 			newRes.setEndDate(res.getEndDate());
 			newRes.setReservationDate(new Date());
+			newRes.setPrice(res.getPrice());
 			newRes.setUser(userRepository.getOne(res.getUserId()));
 			
 			reservationService.makeAReservation(newRes);

@@ -11,6 +11,7 @@ public interface AccommodationObjectService {
 	AccUnitPrice addNewPrice(AccUnitPrice acup);
 	List<AccUnitPrice> getAllPrices();
 	
+	AccommodationUnit getOneAccUnit(Long id);
 	AccommodationUnit AddNewAccUnit(AccommodationUnit acu);
 	
 	AccommodationObject getOneAccObj(Long id);

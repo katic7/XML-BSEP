@@ -8,23 +8,30 @@
 
     <div class="informations">
       <p>
-        Informacije vezane za smestaj
+        Object informations: {{accUnit.accommodationObject.description}}
+      </p>
+      <p>
+        Unit informations: {{accUnit.description}}
+      </p>
+      <p>
+        Additional services:
+        <b *ngFor="let additionalService of accUnit.additionalServices">{{additionalService.name}} </b>
       </p>
     </div>
   </div>
   <div class="rightside">
 
     <div class="rating">
-      <p>Rating Score <b>{{accUnit.rating}}</b> </p>  
-      <p>broj review-ova</p>
+      <p>Rating:<b>{{accUnit.rating}}</b> </p>  
+      <p>Number of reviews</p>
   
       <div class="price">
-        <p>Price for n nights</p>
-        <p>EUR {{this.accUnit.price.price}}</p>
+        <p>Price for {{difference}} nights:</p>
+        <p><b>EUR {{this.accUnit.price.price * difference}}</b></p>
       </div>
   
       <div class="availability">
-        <button (click)="makeAReservation()">Book</button>
+        <button (click)="makeAReservation()">See Availability</button>
       </div>
   
     </div>
