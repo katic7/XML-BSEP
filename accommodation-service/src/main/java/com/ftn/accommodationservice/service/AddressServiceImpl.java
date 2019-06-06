@@ -24,4 +24,10 @@ public class AddressServiceImpl implements AddressService {
 		return addressRepo.save(address);
 	}
 
+	@Override
+	public Address getOne(Long id) {
+		// TODO Auto-generated method stub
+		return addressRepo.getOne(id);
+	}
+
 }

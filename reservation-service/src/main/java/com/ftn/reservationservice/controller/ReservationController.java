@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,6 +76,15 @@ public class ReservationController {
 		}
 		
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@PostMapping("/distance/{distance}")
+	public ResponseEntity<List<AccommodationUnit>> getFreeByDistance(@PathVariable double distance, @RequestBody SearchFormDTO res) {
+		List<AccommodationUnit> acu = reservationService.getAvailableAccUnitsWithDistance(res, distance);
+		if(acu != null) {
+			return new ResponseEntity<List<AccommodationUnit>>(acu, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 }

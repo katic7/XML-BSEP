@@ -38,10 +38,10 @@ insert into user_roles (user_id, role_id)
 values (2, 1);
 
 
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (1, 1, 1, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (2, 1, 1, 'Srbija', 'Novi Sad', 'Stevana Musica', 11, 21000);
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (3, 1, 1, 'Srbija', 'Novi Sad', 'Vojvode Misica', 24, 21000);
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (4, 1, 1, 'Srbija', 'Beocin', 'Desanke Maksimovic', 20, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (1, 45.250059, 19.850372, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (2, 45.250147, 19.851885, 'Srbija', 'Novi Sad', 'Stevana Musica', 11, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (3, 45.253381, 19.854155, 'Srbija', 'Novi Sad', 'Vojvode Misica', 24, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (4, 45.207862, 19.716492, 'Srbija', 'Beocin', 'Desanke Maksimovic', 20, 21000);
 
 insert into category (id, name) values (1, '1*');
 insert into category (id, name) values (2, '2*');

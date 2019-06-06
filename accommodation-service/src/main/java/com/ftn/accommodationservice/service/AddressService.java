@@ -10,4 +10,6 @@ public interface AddressService {
 	List<Address> getAddress();
 
 	Address addAddress(Address address);
+	
+	Address getOne(Long id);
 }
