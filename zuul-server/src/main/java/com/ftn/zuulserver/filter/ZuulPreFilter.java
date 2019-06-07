@@ -32,7 +32,7 @@ public class ZuulPreFilter extends ZuulFilter {
 
 	  @Override
 	  public Object run() {
-	    RequestContext ctx = RequestContext.getCurrentContext();
+	    /*RequestContext ctx = RequestContext.getCurrentContext();
 	    HttpServletRequest request = ctx.getRequest();
 	    RestTemplate restTemplate = new RestTemplate();
 	    
@@ -43,7 +43,7 @@ public class ZuulPreFilter extends ZuulFilter {
 	    ctx.addZuulRequestHeader("Permissions", permisije);
 	    ctx.addZuulRequestHeader("username", username);
 	   
-	    log.info("PERMISIJE -> " + permisije);
+	    log.info("PERMISIJE -> " + permisije);*/
 	    return null;
 	  }
 

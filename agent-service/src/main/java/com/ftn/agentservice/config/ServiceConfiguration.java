@@ -16,7 +16,9 @@ public class ServiceConfiguration {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 		// this package must match the package in the  specified in
 		// pom.xml
-		marshaller.setContextPath("com.ftn.accommodationservice.xsd");
+		//String [] packagesToScan = {"com.ftn.accommodationservice.xsd",""};
+		//marshaller.setPackagesToScan(packagesToScan);
+		//marshaller.setContextPath("com.ftn.accommodationservice.xsd");
 		return marshaller;
 	}
 

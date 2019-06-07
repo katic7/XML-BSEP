@@ -38,13 +38,9 @@ public class TestController {
 		return "From Auth service - > Content Added!";
 	}
 	
-	/** CREATE AUTHORITY - TEST
-	 * @return
-	 */
-	@GetMapping("/create")
-	@PreAuthorize("hasAuthority('CREATE')")
+	@GetMapping("/testing")
 	public String create() {
-		return "From Auth service - > CREATED!";
+		return "From Auth service";
 	}
 	
 	@GetMapping("/https")

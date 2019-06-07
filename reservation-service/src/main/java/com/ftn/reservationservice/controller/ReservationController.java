@@ -88,13 +88,5 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
-	@PostMapping("/distance/{distance}")
-	public ResponseEntity<List<AccommodationUnit>> getFreeByDistance(@PathVariable double distance, @RequestBody SearchFormDTO res) {
-		List<AccommodationUnit> acu = reservationService.getAvailableAccUnitsWithDistance(res, distance);
-		if(acu != null) {
-			return new ResponseEntity<List<AccommodationUnit>>(acu, HttpStatus.OK);
-		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
 	
 }

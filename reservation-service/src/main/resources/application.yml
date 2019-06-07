@@ -1,12 +1,27 @@
-server:
-  port: 8083
+server:  
+  port: ${PORT:8083}
   ssl:
-    enabled: false
-    key-store: classpath:reservation-service.jks
+    enabled: true
+    key-store: classpath:reservation.jks
     key-store-password: password
-    key-alias: reservation-service
+    key-alias: reservation
+    
 security:
-  require-ssl: false   
+  require-ssl: true
+  
+eureka:
+  instance:
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    preferIpAddress: true
+    statusPageUrl: https://localhost:${server.port}/info
+    healthCheckUrl: https://localhost:${server.port}/health
+    homePageUrl: https://localhost:${server.port}
+  client:
+    securePortEnabled: true
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka/ 
 spring:
   application:
     name: reservation-service
@@ -15,17 +30,9 @@ spring:
     username: root
     password: root
     initialization-mode: always
-  
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
-logging:
-  level:
-    ROOT: INFO
-    org.springframework: ERROR
-    com.fd: TRACE
-  pattern:
-    console: "%-5level %d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true

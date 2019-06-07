@@ -15,15 +15,15 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @EnableDiscoveryClient
 public class ReservationServiceApplication {
 	
-	/*@Bean
+	@Bean
 	public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
 	    DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
-	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/reservation-service.jks");
+	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/reservation.jks");
 	    System.setProperty("javax.net.ssl.keyStorePassword", "password");
-	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/reservation-service.jks");
+	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/reservation.jks");
 	    System.setProperty("javax.net.ssl.trustStorePassword", "password");
 	    EurekaJerseyClientBuilder builder = new EurekaJerseyClientBuilder();
-	    builder.withClientName("reservation-service");
+	    builder.withClientName("reservation");
 	    builder.withSystemSSLConfiguration();
 	    builder.withMaxTotalConnections(10);
 	    builder.withMaxConnectionsPerHost(10);
@@ -31,22 +31,6 @@ public class ReservationServiceApplication {
 	    return args;
 	}
 	
-	static
-	 {
-	
-	 javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
-		 new javax.net.ssl.HostnameVerifier() {
-		 
-		 public boolean verify(String hostname,
-		 javax.net.ssl.SSLSession sslSession) {
-			 if (hostname.equals("localhost")) {
-			 return true;
-			 }
-			 return false;
-			 }
-		 });
-	 }
-	 */
 	 @Bean
 	 public RestTemplate template() throws Exception{
 		 RestTemplate template = new RestTemplate();

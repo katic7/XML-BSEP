@@ -55,9 +55,8 @@ public class AddressController {
 	}
 	
 	@GetMapping("/test3")
-	@PreAuthorize("hasAuthority('addContent')")
 	public String test3() {
-		return "test3";
+		return "ja sam iz reservation-service";
 	}
 
 }

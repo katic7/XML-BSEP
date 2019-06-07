@@ -1,29 +1,30 @@
-server:
-  port: 8081
-  ssl:
-    enabled: false
-    key-store: classpath:zuul.jks
-    key-store-password: ${KEY_STORE_PASSWORD}
-    trust-store: classpath:trust-zuul.jks
-    trust-store-password: ${KEY_STORE_PASSWORD}
-    key-alias: zuul
-security:
-  require-ssl: false
 spring:
   application:
     name: zuul-server
+server:  
+  port: ${PORT:8081}
+  ssl:
+    enabled: true
+    key-store: classpath:zuul.jks
+    key-store-password: password
+    key-alias: zuul
+    
+security:
+  require-ssl: true
 eureka:
   instance:
     nonSecurePortEnabled: false
-    securePortEnabled: false
-    securePort: 8081
-    statusPageUrl: http://localhost:8081/info
-    healthCheckUrl: http://localhost:8081/health
-    homePageUrl: http://localhost:8081
+    securePortEnabled: true
+    securePort: ${server.port}
+    preferIpAddress: true
+    statusPageUrl: https://localhost:${server.port}/info
+    healthCheckUrl: https://localhost:${server.port}/health
+    homePageUrl: https://localhost:${server.port}
   client:
-    securePortEnabled: false
+    securePortEnabled: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: https://localhost:8761/eureka/ 
 zuul:
   routes:
     reservationservice:
@@ -34,5 +35,11 @@ zuul:
       serviceId: pki-service
   host:
     socket-timeout-millis: 30000
+  sslHostnameValidationEnabled: false
 ribbon:
-  IsSecure: false
+  IsSecured: true
+  eureka:
+    enabled: true
+  TrustStore: classpath:zuul.jks
+  TrustStorePassword : password
+  IsHostnameValidationRequired: false

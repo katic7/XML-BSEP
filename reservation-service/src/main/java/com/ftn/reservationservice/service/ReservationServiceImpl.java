@@ -102,29 +102,9 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-<<<<<<< HEAD
-	public List<AccommodationUnit> getAvailableAccUnitsWithDistance(SearchFormDTO form, double distance) {
-		String placeToGo = form.getDestination();
-		RestTemplate template = new RestTemplate();
-		ResponseEntity<List<AccommodationObject>> response = template.exchange(
-				"http://localhost:8082/api/accobject",
-				  HttpMethod.GET,
-				  null,
-				  new ParameterizedTypeReference<List<AccommodationObject>>(){});
-		List<AccommodationObject> accs = response.getBody();
-		for(AccommodationObject ao : accs) {
-			Address addr = addressService.getOne(ao.getAddressId());
-			double latitude = addr.getLatitude();
-			double longitude = addr.getLongitude();
-			
-			//way to get lat/long from placeToGo either from Google API or discover some other way
-			
-		}
-		return null;
-=======
+
 	public AccommodationUnit getOneUnit(Long id) {
 		return accommodationUnitRepository.getOne(id);
->>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
 	}
 
 	

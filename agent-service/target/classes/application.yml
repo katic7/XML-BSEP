@@ -1,5 +1,27 @@
-server:
-  port: 8091
+server:  
+  port: ${PORT:8091}
+  ssl:
+    enabled: true
+    key-store: classpath:agent.jks
+    key-store-password: password
+    key-alias: agent
+    
+security:
+  require-ssl: true
+  
+eureka:
+  instance:
+    preferIpAddress: true
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    statusPageUrl: https://localhost:${server.port}/info
+    healthCheckUrl: https://localhost:${server.port}/health
+    homePageUrl: https://localhost:${server.port}
+  client:
+    securePortEnabled: true
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka/ 
 spring:
   application:
     name: agent-service
@@ -9,9 +31,8 @@ spring:
     password: root
     initialization-mode: always
   jpa:
-    properties:
-      hibernate: 
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create-drop
-  
+    properties:
+      hibernate:
+        show_sql: true

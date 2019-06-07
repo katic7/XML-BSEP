@@ -66,7 +66,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+    	http
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		
+		.authorizeRequests()
+
+		.antMatchers("/api/*").permitAll()
+		.antMatchers("/ws/*").permitAll()
+		.antMatchers("/ws").permitAll()
+		.antMatchers("/hello").permitAll()
+		.antMatchers("/api/test/*").permitAll()
+		.antMatchers("/api/test/testing").permitAll()
+		.antMatchers("/api/addresses/test2").permitAll()
+		.antMatchers("/api/comment/rating").permitAll();
+		//.anyRequest().authenticated().and()
+		
+		
+		//.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+	http.csrf().disable();
+    	
+       /* http
 	        .cors()
 	            .and()
             .headers().frameOptions()
@@ -74,34 +93,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             	.and()
 	        .csrf()
 	            .disable()
+	            .authorizeRequests()
+	            .anyRequest().authenticated()
+	            .and()
+	            .addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
             .x509().subjectPrincipalRegex("CN=(.*?)(?:,|$)")
 	             .and()
-	        .exceptionHandling()
-	            .authenticationEntryPoint(unauthorizedHandler)
-	            .and()
 	        .sessionManagement()
 	            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 	            .and()
-	        .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-	        .authorizeRequests()
-	            .antMatchers("/",
-			                 "/favicon.ico",
-			                 "/**/*.png",
-			                 "/**/*.gif",
-			                 "/**/*.svg",
-			                 "/**/*.jpg",
-			                 "/**/*.html",
-			                 "/**/*.css",
-			                 "/**/*.js")
-	                .permitAll()
-                .antMatchers(HttpMethod.POST, "/api/account/password-change")
-                	.authenticated()
-	            .antMatchers("/api/auth/**")
-	                .permitAll()
-	            .antMatchers("/services/**")
-	            	.permitAll();
-//	            .anyRequest()
-//	                .authenticated();
+	        .authorizeRequests().anyRequest()
+	                .authenticated();*/
     }
 	
 }
