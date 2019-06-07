@@ -1,0 +1,40 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+    initialization-mode: always
+  jpa:
+    properties:
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    username: af083085@gmail.com
+    password: ovojetest123
+    debug: true
+    port: 465
+    transport:
+      protocol: smtp
+    smtp:
+      auth: true
+      starttls:
+        enable : true
+        require: true
+      ssl: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+auth:
+  app:
+    jwtSecret: jwtAuthSecretKey
+    jwtExpiration: 864000

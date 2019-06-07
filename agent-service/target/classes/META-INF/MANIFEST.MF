@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: nemanja
+Build-Jdk: 11.0.2
+Implementation-Title: agent-service
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.ftn
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/agent-service
+Created-By: Maven Integration for Eclipse
+
