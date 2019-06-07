@@ -4,9 +4,10 @@
 <br/>
 <div class="wrapper" style="margin-left: 0.5%;">
     <div>
-        <h1 style="float: left; margin-right: 5px;">Users </h1>
+        <h1 style="text-align: center; margin-right: 5px;">All system users </h1>
     </div>
-    <table class="table table-striped table-sm" style="width:50%" id="users_table">
+    <h2>Role[user]</h2>
+    <table class="table table-striped table-sm"  id="users_table">
         <thead>
             <tr>
             <th>Id</th>
@@ -15,8 +16,9 @@
             <th>Surname</th>
             <th>Active</th>
             <th>Blocked</th>
-            <th></th>
-            <th></th>
+            <th><img src="..\..\..\assets\img\verify.png"></th>
+            <th><img src="..\..\..\assets\img\block.png"></th>
+            <th><img src="..\..\..\assets\img\delete.png"></th>
             <th></th>
             </tr>
         </thead>
@@ -35,32 +37,63 @@
             </tr>
         </tbody>
     </table>
+  <h2>Role[agent]</h2>
+  <table class="table table-striped table-sm"  id="users_table">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Active</th>
+          <th>Blocked</th>
+          <th>Accommodation object name</th>
+          <th ><img src="..\..\..\assets\img\verify.png"></th>
+          <th><img src="..\..\..\assets\img\block.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let agent of agents">
+          <td>{{agent.id}}</td>
+          <td>{{agent.email}}</td>
+          <td>{{agent.name}}</td>
+          <td>{{agent.surname}}</td>
+          <td>{{agent.enabled}}</td>
+          <td>{{!agent.nonLocked}}</td>
+          <td>{{agent.accObj.name}}</td>
+          <td><button (click)="ActivateUser(user)" type="button" [disabled]="user.enabled" class="btn btn-outline-success">Activate</button></td>
+          <td><button (click)="BlockUser(user)" type="button" [disabled]="!user.nonLocked" class="btn btn-outline-warning">Block</button></td>
+          <td><button (click)="DeleteUser(user)" type="button" class="btn btn-outline-danger">Delete</button></td>
+          </tr>
+      </tbody>
+  </table>
 </div>
 
 <!--MODAL-->
 <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Add agent</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add agent</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   
+    <div class="form-group" style="width:65%;">
+      <label style="float:left;">Accommodation Object: </label>
+      <select style="float:right;" [(ngModel)]="accommodationObject" #accommodationObjectss>
+        <option *ngFor="let accObject of accommodationObjects" [ngValue]="accObject" >{{accObject.name}}</option>
+      </select>
     </div>
-    <div class="modal-body">
-     
-      <div class="form-group" style="width:65%;">
-        <label style="float:left;">Accommodation Object: </label>
-        <select style="float:right;" [(ngModel)]="accommodationObject" #accommodationObjectss>
-          <option *ngFor="let accObject of accommodationObjects" [ngValue]="accObject" >{{accObject.name}}</option>
-        </select>
-      </div>
-      <div class="form-group" style="margin-top:10%;">
-        <label for="taxNumber">Tax number: </label>
-        <input type="text" class="form-control" name="taxNumber" [formControl]="taxNumber" required />  
-      </div>
+    <div class="form-group" style="margin-top:10%;">
+      <label for="taxNumber">Tax number: </label>
+      <input type="text" class="form-control" name="taxNumber" [formControl]="taxNumber" required />  
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="AddNewAgent()">Save</button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="AddNewAgent()">Save</button>
+  </div>
 </ng-template>
   
 

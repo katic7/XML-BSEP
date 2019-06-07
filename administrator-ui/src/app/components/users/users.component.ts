@@ -10,6 +10,7 @@ import { AccommodationObject } from 'src/app/models/AccommodationObject';
 import { AccObjectService } from '../services/acc-object.service';
 import { CreateAgent } from 'src/app/models/CreateAgent';
 import { AgentService } from '../services/agent.service';
+import { Agent } from 'src/app/models/Agent';
 
 @Component({
   selector: 'app-users',
@@ -29,6 +30,7 @@ export class UsersComponent implements OnInit {
   accommodationObject : AccommodationObject = new AccommodationObject();
   usr_id :number;
   agent_user : CreateAgent = new CreateAgent();
+  agents : Agent[] = [];
 
   ActivateUser(user){
     this.acU = new ActivateUser(user.id, true, "ACTIVATE");
@@ -68,9 +70,16 @@ export class UsersComponent implements OnInit {
     this.agent_user.accObj = this.accommodationObject.id;
     console.log( this.agent_user);
     this.agentService.addAgent(this.agent_user).subscribe(data=>{
-      console.log(data);
+        const index: number = this.users.findIndex(user =>user.id === this.usr_id);
+        alert(index + "adas");
+          if (index !== -1) {
+            this.users.splice(index, 1);
+          }
+      this.agentService.getOneAgent(this.usr_id).subscribe(ag=>{
+        this.agents.push(ag);
+      });
     });
-    window.location.reload();
+   // window.location.reload();
     
   }
 
@@ -85,11 +94,15 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe(data =>{
+    this.userService.getOnlyUsers().subscribe(data =>{
       this.users = data;  
     });
     this.accObjectService.getAccObjects().subscribe(data=>{
       this.accommodationObjects = data;
+    })
+
+    this.agentService.getAll().subscribe(data=>{
+      this.agents = data;
     })
   }
 

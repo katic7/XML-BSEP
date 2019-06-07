@@ -23,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.ftn.authservice.dto.ActivateUserDTO;
+import com.ftn.authservice.dto.AgentDTO;
 import com.ftn.authservice.dto.CreateAgentDTO;
 import com.ftn.authservice.dto.ProfileDto;
 import com.ftn.authservice.dto.UserDTO;
@@ -108,6 +110,42 @@ public class AuthController {
     		users.add(new UserDTO(u));
     	}
     	return users;
+    }
+    
+    @GetMapping("/getOne/{id}")
+    public ResponseEntity<?> getUser(@PathVariable Long id){
+    	return new ResponseEntity<UserDTO>(new UserDTO(userRepository.getOne(id)), HttpStatus.OK);	
+    }
+    
+    @GetMapping("/getOneAgent/{id}")
+    public ResponseEntity<?> getAgent(@PathVariable Long id){
+    	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);
+    }
+    
+    @GetMapping("/getOnlyUsers")
+    public ResponseEntity<?> getOnlyUsers(){
+    	List<User> users = userRepository.findAll();
+    	List<Agent> agenti = agentRepository.findAll();
+    	List<UserDTO> povratna = new ArrayList<UserDTO>();
+    	
+    	for(Agent a : agenti) {
+    		users.remove(userRepository.getOne(a.getId()));
+    	}
+    	for(User u : users) {
+    		povratna.add(new UserDTO(u));
+    	}
+    	return new ResponseEntity<List<UserDTO>>(povratna, HttpStatus.OK);
+    }
+    
+    @GetMapping("/getAgents")
+    public ResponseEntity<List<AgentDTO>> getAgents(){
+    	List<Agent> svi = agentRepository.findAll();
+    	List<AgentDTO> povratna = new ArrayList<AgentDTO>();
+    	for(Agent a : svi) {
+    		povratna.add(new AgentDTO(a));
+    	}
+    	
+    	return new ResponseEntity<List<AgentDTO>>(povratna, HttpStatus.OK);
     }
     
     @PostMapping("/createAgent")

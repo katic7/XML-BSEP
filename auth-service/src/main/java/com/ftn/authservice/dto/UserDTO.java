@@ -1,5 +1,9 @@
 package com.ftn.authservice.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ftn.authservice.model.Role;
 import com.ftn.authservice.model.User;
 
 public class UserDTO {
@@ -12,6 +16,8 @@ public class UserDTO {
 	private String password;
 	private boolean enabled;
 	private boolean nonLocked;
+	private List<RoleDTO> roles;
+	
 	
 	public UserDTO() {
 		super();
@@ -40,6 +46,13 @@ public class UserDTO {
 		this.password = u.getPassword();
 		this.enabled = u.isEnabled();
 		this.nonLocked = u.isNonLocked();
+		
+		roles = new ArrayList<>();
+		if(u.getRoles() != null) {
+			for(Role r : u.getRoles()) {
+				roles.add(new RoleDTO(r.getName()));
+			}
+		}
 	}
 
 	public Long getId() {
@@ -104,6 +117,18 @@ public class UserDTO {
 
 	public void setNonLocked(boolean nonLocked) {
 		this.nonLocked = nonLocked;
+	}
+
+	public List<RoleDTO> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleDTO> roles) {
+		this.roles = roles;
+	}
+
+	public void setAddressId(Long addressId) {
+		this.addressId = addressId;
 	}
 	
 	

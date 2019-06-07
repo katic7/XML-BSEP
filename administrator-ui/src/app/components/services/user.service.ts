@@ -21,4 +21,12 @@ export class UserService {
   deleteUser(id) : Observable<any> {
     return this.http.delete('//localhost:8085/api/auth/deleteUser/' + id);
   }
+
+  getOnlyUsers() : Observable<any> {
+    return this.http.get('//localhost:8085/api/auth/getOnlyUsers');
+  }
+
+  getOneUser(id: number) : Observable<any>{
+    return this.http.get('//localhost:8085/api/auth/getOne/'+id);
+  }
 }
