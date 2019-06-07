@@ -1,12 +1,14 @@
 server:
   port: 8082
   ssl:
-    enabled: false
-    key-store: classpath:accommodation-service.jks
+    enabled: true
+    key-store: classpath:accommodationkeystore.jks
     key-store-password: password
-    key-alias: accommodation-service
+    trust-store: classpath:accommodationtruststore.jks
+    trust-store-password: password
+    key-alias: acc
 security:
-  require-ssl: false 
+  require-ssl: true 
 spring:
   application:
     name: accommodation-service
@@ -24,5 +26,5 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://localhost:8761/eureka/
 debug: true

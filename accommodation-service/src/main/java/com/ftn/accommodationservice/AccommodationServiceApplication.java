@@ -15,15 +15,15 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @EnableDiscoveryClient
 public class AccommodationServiceApplication {
 	
-	/*@Bean
+	@Bean
 	public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
 	    DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
-	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/accommodation-service.jks");
+	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/accommodationkeystore.jks");
 	    System.setProperty("javax.net.ssl.keyStorePassword", "password");
-	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/accommodation-service.jks");
+	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/accommodationtruststore.jks");
 	    System.setProperty("javax.net.ssl.trustStorePassword", "password");
 	    EurekaJerseyClientBuilder builder = new EurekaJerseyClientBuilder();
-	    builder.withClientName("accommodation-service");
+	    builder.withClientName("acc");
 	    builder.withSystemSSLConfiguration();
 	    builder.withMaxTotalConnections(10);
 	    builder.withMaxConnectionsPerHost(10);
@@ -45,7 +45,7 @@ public class AccommodationServiceApplication {
 			 return false;
 			 }
 		 });
-	 }*/
+	 }
 	 
 	 @Bean
 	 public RestTemplate template() throws Exception{

@@ -102,6 +102,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<AccommodationUnit> getAvailableAccUnitsWithDistance(SearchFormDTO form, double distance) {
 		String placeToGo = form.getDestination();
 		RestTemplate template = new RestTemplate();
@@ -120,6 +121,10 @@ public class ReservationServiceImpl implements ReservationService{
 			
 		}
 		return null;
+=======
+	public AccommodationUnit getOneUnit(Long id) {
+		return accommodationUnitRepository.getOne(id);
+>>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
 	}
 
 	

@@ -25,7 +25,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
+<<<<<<< HEAD
 import { FilterPipe } from './searchpage/filter.pipe';
+=======
+import { BookpageComponent } from './bookpage/bookpage.component';
+>>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
 
 
 const appRoutes: Routes = [
@@ -35,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'attack', component: AttacksComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'confirm-account/:token', component: HomepageComponent }
+  { path: 'confirm-account/:token', component: HomepageComponent },
+  { path: 'book', component: BookpageComponent }
 ];
 
 
@@ -55,7 +60,11 @@ const appRoutes: Routes = [
     SearchobjectComponent,
     FiltersectionComponent,
     ProfileComponent,
+<<<<<<< HEAD
     FilterPipe
+=======
+    BookpageComponent
+>>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
   ],
   imports: [
     BrowserModule,

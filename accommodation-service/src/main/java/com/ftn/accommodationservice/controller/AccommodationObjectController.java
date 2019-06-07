@@ -110,5 +110,14 @@ public class AccommodationObjectController {
 		
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
+	
+	/*@GetMapping("/getOneUnit/{id}")
+	public ResponseEntity<AccommodationUnit> getOneAccUnit(@PathVariable Long id) {
+		AccommodationUnit acu = accommodationObjectService.getOneAccUnit(id);
+		if(acu != null) {
+			return new ResponseEntity<AccommodationUnit>(acu, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}*/
 
 }
