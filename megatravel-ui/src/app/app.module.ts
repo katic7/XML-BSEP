@@ -25,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FilterPipe } from './searchpage/filter.pipe';
 
 
 const appRoutes: Routes = [
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     FilterbarComponent,
     SearchobjectComponent,
     FiltersectionComponent,
-    ProfileComponent
+    ProfileComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,8 @@ const appRoutes: Routes = [
     multi: true,
   },
   RouteService,
-  DatePipe],
+  DatePipe,
+  FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

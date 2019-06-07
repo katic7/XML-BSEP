@@ -1,15 +1,8 @@
 <div class="filterbar">
   <ul>
-<<<<<<< HEAD
-    <li><button (click)="showPhase(1)" [class.phase-active]="activeButton === 1">Price (lowest first)</button></li>
-    <li><button (click)="showPhase(2)" [class.phase-active]="activeButton === 2">Distance from destination</button></li>
-    <li><button (click)="showPhase(3)" [class.phase-active]="activeButton === 3">Review score</button></li>
-    <li><button (click)="showPhase(4)" [class.phase-active]="activeButton === 4">Category</button></li>
-=======
     <li><button (click)="priceLowest()" >Price <span *ngIf="lowestPriceBoolean">(lowest first)</span><span *ngIf="!lowestPriceBoolean">(highest first)</span></button></li>
     <li><button>Distance from destination</button></li>
     <li><button (click)="review()">Review score <span *ngIf="lowestRatingBoolean">(lowest first)</span><span *ngIf="!lowestRatingBoolean">(highest first)</span></button></li>
     <li><button (click)="category()">Category <i class="fas fa-star"></i> <span *ngIf="lowestCategoryBoolean">(lowest first)</span><span *ngIf="!lowestCategoryBoolean">(highest first)</span></button></li>
->>>>>>> 61797cc7d278ec5c13f269d0d1a69ab78ce47138
   </ul>
 </div>

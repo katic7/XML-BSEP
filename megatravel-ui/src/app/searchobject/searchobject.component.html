@@ -9,6 +9,9 @@
     <div class="informations">
       <p>
         Informacije vezane za smestaj
+        <span *ngFor="let adit of accUnit.additionalServices"> 
+          {{ adit.name }}
+        </span>
       </p>
     </div>
   </div>

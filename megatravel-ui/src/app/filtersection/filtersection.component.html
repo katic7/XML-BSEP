@@ -4,9 +4,9 @@
 
   <h5>Type</h5>
   <div class="types">
-    <input type="checkbox" name="all-inc" id="all-inc"> All-inclusive <br>
-    <input type="checkbox" name="nesto" id="nesto"> Breakfast & dinner <br>
-    <input type="checkbox" name="nesto2" id="nesto2"> Nesto <br>
+    <input type="checkbox" (change)="filter($event)" name="All-inclusive" id="all-inc"> All-inclusive <br>
+    <input type="checkbox" (change)="filter($event)" name="nesto" id="nesto"> Breakfast & dinner <br>
+    <input type="checkbox" (change)="filter($event)" name="nesto2" id="nesto2"> Nesto <br>
   </div>
 
   <h5>Services</h5>

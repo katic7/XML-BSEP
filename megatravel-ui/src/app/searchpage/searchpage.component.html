@@ -11,18 +11,14 @@
         <app-sidesearchform [searchForm]="searchForm"></app-sidesearchform>
     </div>
     <div class="sidefiltersection">
-        <app-filtersection ></app-filtersection>
+        <app-filtersection [accUnits]="accUnits" (sorted)="onFilter($event)"></app-filtersection>
     </div>
     
 </div>
 
 <div class="main-container">
     <div class="filterbar">
-<<<<<<< HEAD
-        <app-filterbar [accUnits]="accUnits"></app-filterbar>
-=======
         <app-filterbar [accUnits]="accUnits" (sorted)="onSorted($event)"></app-filterbar>
->>>>>>> 61797cc7d278ec5c13f269d0d1a69ab78ce47138
     </div>
     
     <div class="searchobject">
@@ -33,12 +29,8 @@
         type="line-scale-party">
         <p style="font-size: 20px; color: white">Loading...</p>
         </ngx-spinner>
-        <div *ngFor="let accUnit of accUnits">
+        <div *ngFor="let accUnit of accUnits | filter: searchTerm">
             <app-searchobject [searchForm]="searchForm" [accUnit]="accUnit"></app-searchobject>
         </div>
     </div>
 </div>
-
-
-
-

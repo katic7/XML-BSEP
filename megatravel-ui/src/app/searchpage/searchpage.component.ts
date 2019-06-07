@@ -7,7 +7,6 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-searchpage',
@@ -19,11 +18,10 @@ export class SearchpageComponent implements OnInit {
   searchForm : SearchForm = new SearchForm();
   numbers = [1,2,3,4,5,6,7,8,9,10];
   accUnits : AccommodationUnit[] = [];
-  apiUrl = "https://api.opencagedata.com/geocode/v1/json?q=";
-  apiKey=  "&key=55f3c34bb9a3424d96a72154deca11ea&no_annotations=1&language=en";
+  searchTerm="";
   
   constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
-    private spinner: NgxSpinnerService, private http: HttpClient) { }
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 
@@ -37,18 +35,6 @@ export class SearchpageComponent implements OnInit {
    })
 
   console.log(this.searchForm);
-
-   this.getLatLong();
-  }
-
-  getLatLong() {
-    let headers = new HttpHeaders({
-      "Access-Control-Allow-Origin" : "*" });
-  let options = { headers: headers };
-    let url = this.searchForm.destination.replace(/ /g, '%20');
-    this.http.get(this.apiUrl+url+this.apiKey, options).subscribe(data => {
-      alert(data.results.geometry.lat + ' ' + data.results.geometry.lng);
-    })
   }
 
   onSorted(event) {
@@ -58,6 +44,15 @@ export class SearchpageComponent implements OnInit {
         this.spinner.hide();
     }, 1000);
     this.accUnits = event;
+  }
+
+  onFilter(event) {
+    this.spinner.show();
+ 
+    setTimeout(() => {
+        this.spinner.hide();
+    }, 1000);
+    this.searchTerm = event;
   }
 
 }

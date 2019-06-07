@@ -45,8 +45,10 @@ export class SearchobjectComponent implements OnInit {
   constructor(private authService: AuthService, private reservationService: ReservationService) { }
 
   ngOnInit() {
+    console.log(this.accUnit);
     this.getLoggedUser();
-    this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
+    this.reservationService.getAdress(this.accUnit.accommodationObject.addressId)
+                           .subscribe(data => { this.address = data;});
   }
 
 }

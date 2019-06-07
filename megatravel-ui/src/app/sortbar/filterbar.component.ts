@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import { Component, OnInit, Input } from '@angular/core';
-import { AccommodationUnit } from '../models/AccommodationUnit';
-=======
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AccommodationUnit } from '../models/AccommodationUnit';
 import { ifStmt } from '@angular/compiler/src/output/output_ast';
 import { NgxSpinnerService } from 'ngx-spinner';
->>>>>>> 61797cc7d278ec5c13f269d0d1a69ab78ce47138
 
 @Component({
   selector: 'app-filterbar',
@@ -20,40 +15,12 @@ export class FilterbarComponent implements OnInit {
   @Input() accUnits:AccommodationUnit[];
   @Output() sorted = new EventEmitter<AccommodationUnit[]>();
 
-  @Input() accUnits:AccommodationUnit[];
-
   constructor() { }
 
   ngOnInit() {
     
   }
 
-<<<<<<< HEAD
-
-  activeButton
-  showPhase(event){
-    this.activeButton = event;
-    switch(event) {
-      case 1: this.sortBy("price");
-    }
-    this.accUnits[0].description = "aaa";
-  }
-
- sortBy(field: string) {
-    alert(field);
-        this.accUnits.sort((a: any, b: any) => {
-            if (a[field] < b[field]) {
-                return -1;
-            } else if (a[field] > b[field]) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-        this.accUnits = this.accUnits;
-}
-
-=======
   priceLowest() {
 
     if(this.lowestPriceBoolean) {
@@ -164,5 +131,4 @@ export class FilterbarComponent implements OnInit {
   }
     
  
->>>>>>> 61797cc7d278ec5c13f269d0d1a69ab78ce47138
 }

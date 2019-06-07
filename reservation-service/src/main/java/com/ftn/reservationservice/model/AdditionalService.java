@@ -151,7 +151,7 @@ public class AdditionalService {
 	public void setAccommodationObject(AccommodationObject accommodationObject) {
 		this.accommodationObject = accommodationObject;
 	}
-	@JsonIgnore
+
 	public List<AccommodationUnit> getAccommodationUnits() {
 		return accommodationUnits;
 	}
