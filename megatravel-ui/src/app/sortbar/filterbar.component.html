@@ -1,8 +1,8 @@
 <div class="filterbar">
   <ul>
-    <li><button>Price (lowest first)</button></li>
-    <li><button>Distance from destination</button></li>
-    <li><button>Review score</button></li>
-    <li><button>Category</button></li>
+    <li><button (click)="showPhase(1)" [class.phase-active]="activeButton === 1">Price (lowest first)</button></li>
+    <li><button (click)="showPhase(2)" [class.phase-active]="activeButton === 2">Distance from destination</button></li>
+    <li><button (click)="showPhase(3)" [class.phase-active]="activeButton === 3">Review score</button></li>
+    <li><button (click)="showPhase(4)" [class.phase-active]="activeButton === 4">Category</button></li>
   </ul>
 </div>

@@ -1,35 +1,40 @@
 server:
   port: 8081
   ssl:
-    enabled: false
-    key-store: classpath:ZuulServer.jks
-    key-store-password: password
-    key-alias: zuulserver
+    enabled: true
+    key-store: classpath:zuul.jks
+    key-store-password: ${KEY_STORE_PASSWORD}
+    key-alias: zuul
 security:
-  require-ssl: false
+  require-ssl: true
 spring:
   application:
     name: zuul-server
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
-    preferIpAddress: true
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: 8090
+    statusPageUrl: https://localhost:8090/info
+    healthCheckUrl: https://localhost:8090/health
+    homePageUrl: https://localhost:8090
+  client:
+    securePortEnabled: true
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka
 zuul:
   routes:
     reservationservice:
       serviceId: reservation-service
     accommodationservice:
       serviceId: accommodation-service
-    bezbednost::
+    bezbednost:
       serviceId: pki-service
   host:
     socket-timeout-millis: 30000
-logging:
-  level:
-    ROOT: INFO
-    org.springframework: ERROR
-    com.fd: TRACE
-  pattern:
-    console: "%-5level %d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+ribbon:
+  IsSecure: true
+  TrustStore: classpath:zuul.jks
+  TrustStorePassword: ${KEY_STORE_PASSWORD}
+  ReadTimeout: 60000
+  MaxAutoRetries: 2

@@ -27,3 +27,11 @@
     text-decoration: none;
     white-space: nowrap;
 }
+
+.filterbar button:hover {
+    background: burlywood;
+}
+
+.phase-active{
+    background-color: burlywood !important;
+  }
