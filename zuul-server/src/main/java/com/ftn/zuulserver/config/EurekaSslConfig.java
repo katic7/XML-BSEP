@@ -10,11 +10,11 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @Configuration
 public class EurekaSslConfig {
 
-	/*public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
+	public DiscoveryClient.DiscoveryClientOptionalArgs discoveryClientOptionalArgs() throws NoSuchAlgorithmException {
 	    DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
 	    System.setProperty("javax.net.ssl.keyStore", "src/main/resources/zuul.jks");
 	    System.setProperty("javax.net.ssl.keyStorePassword", "password");
-	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/zuul.jks");
+	    System.setProperty("javax.net.ssl.trustStore", "src/main/resources/trust-zuul.jks");
 	    System.setProperty("javax.net.ssl.trustStorePassword", "password");
 	    System.setProperty("javax.net.debug", "ssl");
 	    EurekaJerseyClientBuilder builder = new EurekaJerseyClientBuilder();
@@ -24,5 +24,5 @@ public class EurekaSslConfig {
 	    builder.withMaxConnectionsPerHost(10);
 	    args.setEurekaJerseyClient(builder.build());
 	    return args;
-	}*/
+	}
 }

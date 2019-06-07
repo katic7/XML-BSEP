@@ -1,20 +1,21 @@
 server:
   port: 8761
   ssl:
-    enabled: false
+    enabled: true
     key-store: classpath:eureka.jks
     key-store-password: ${KEY_STORE_PASSWORD}
-    trust-store: classpath:eureka.jks
+    trust-store: classpath:trust-eureka.jks
     trust-store-password: ${KEY_STORE_PASSWORD}
     key-alias: eureka
+    client-auth: need
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://localhost:8761/eureka/
   instance:
     hostname: localhost
     preferIpAddress: true
-    securePortEnabled: false
+    securePortEnabled: true
     nonSecurePortEnabled: false
