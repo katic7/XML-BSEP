@@ -18,12 +18,23 @@
 
 <div class="main-container">
     <div class="filterbar">
+<<<<<<< HEAD
         <app-filterbar [accUnits]="accUnits"></app-filterbar>
+=======
+        <app-filterbar [accUnits]="accUnits" (sorted)="onSorted($event)"></app-filterbar>
+>>>>>>> 61797cc7d278ec5c13f269d0d1a69ab78ce47138
     </div>
-
+    
     <div class="searchobject">
+        <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="line-scale-party">
+        <p style="font-size: 20px; color: white">Loading...</p>
+        </ngx-spinner>
         <div *ngFor="let accUnit of accUnits">
-            <app-searchobject [accUnit]="accUnit"></app-searchobject>
+            <app-searchobject [searchForm]="searchForm" [accUnit]="accUnit"></app-searchobject>
         </div>
     </div>
 </div>

@@ -5,9 +5,16 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import com.ftn.reservationservice.dto.SearchFormDTO;
+import com.ftn.reservationservice.model.AccommodationObject;
 import com.ftn.reservationservice.model.AccommodationUnit;
+import com.ftn.reservationservice.model.Address;
 import com.ftn.reservationservice.model.Reservation;
 import com.ftn.reservationservice.repository.AccommodationUnitRepository;
 import com.ftn.reservationservice.repository.AddressRepository;
@@ -24,6 +31,9 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired
 	public AccommodationUnitRepository accommodationUnitRepository;
+	
+	@Autowired
+	public AddressService addressService;
 
 	@Override
 	public List<Reservation> getAll() {		
@@ -84,6 +94,32 @@ public class ReservationServiceImpl implements ReservationService{
 		//		 not((r.begin_date between ?1 and ?2) or (r.end_date between ?1 and ?2))
 		
 		return acu;
+	}
+
+	@Override
+	public Reservation makeAReservation(Reservation reservation) {
+		return reservationRepository.save(reservation);
+	}
+
+	@Override
+	public List<AccommodationUnit> getAvailableAccUnitsWithDistance(SearchFormDTO form, double distance) {
+		String placeToGo = form.getDestination();
+		RestTemplate template = new RestTemplate();
+		ResponseEntity<List<AccommodationObject>> response = template.exchange(
+				"http://localhost:8082/api/accobject",
+				  HttpMethod.GET,
+				  null,
+				  new ParameterizedTypeReference<List<AccommodationObject>>(){});
+		List<AccommodationObject> accs = response.getBody();
+		for(AccommodationObject ao : accs) {
+			Address addr = addressService.getOne(ao.getAddressId());
+			double latitude = addr.getLatitude();
+			double longitude = addr.getLongitude();
+			
+			//way to get lat/long from placeToGo either from Google API or discover some other way
+			
+		}
+		return null;
 	}
 
 	

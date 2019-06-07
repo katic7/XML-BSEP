@@ -24,6 +24,7 @@ import { FiltersectionComponent } from './filtersection/filtersection.component'
 import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 const appRoutes: Routes = [
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
     FormsModule,
     RouterModule.forRoot(
       appRoutes,

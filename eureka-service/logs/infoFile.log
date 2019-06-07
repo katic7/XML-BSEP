@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DESKTOP-FET5BBI | 2019-06-05 06:44:24 | es.EurekaServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-06-05 06:44:41 | es.EurekaServiceApplication | Started EurekaServiceApplication in 20.798 seconds (JVM running for 21.999)
 DESKTOP-FET5BBI | 2019-06-05 06:49:29 | es.EurekaServiceApplication | No active profile set, falling back to default profiles: default
@@ -30,3 +31,11 @@ DESKTOP-FET5BBI | 2019-06-05 07:53:49 | es.EurekaServiceApplication | No active 
 DESKTOP-FET5BBI | 2019-06-05 07:53:59 | es.EurekaServiceApplication | Started EurekaServiceApplication in 14.473 seconds (JVM running for 15.55)
 DESKTOP-FET5BBI | 2019-06-05 07:55:55 | es.EurekaServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-FET5BBI | 2019-06-05 07:56:05 | es.EurekaServiceApplication | Started EurekaServiceApplication in 14.76 seconds (JVM running for 15.694)
+=======
+MKIT_LENOVO40 | 2019-06-06 01:19:26 | es.EurekaServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-06 01:19:38 | es.EurekaServiceApplication | Started EurekaServiceApplication in 14.687 seconds (JVM running for 16.026)
+MKIT_LENOVO40 | 2019-06-06 01:22:20 | es.EurekaServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-06 01:22:31 | es.EurekaServiceApplication | Started EurekaServiceApplication in 13.388 seconds (JVM running for 14.456)
+MKIT_LENOVO40 | 2019-06-06 01:32:33 | es.EurekaServiceApplicationTests | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-06 01:32:46 | es.EurekaServiceApplicationTests | Started EurekaServiceApplicationTests in 15.782 seconds (JVM running for 17.392)
+>>>>>>> 61797cc7d278ec5c13f269d0d1a69ab78ce47138
