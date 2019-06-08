@@ -11,6 +11,7 @@ security:
   
 eureka:
   instance:
+    hostname: localhost
     nonSecurePortEnabled: false
     securePortEnabled: true
     preferIpAddress: true

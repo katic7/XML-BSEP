@@ -13,10 +13,11 @@ security:
   require-ssl: true
 eureka:
   instance:
+    hostname: localhost
     nonSecurePortEnabled: false
     securePortEnabled: true
     securePort: ${server.port}
-    preferIpAddress: true
+    preferIpAddress: false
     statusPageUrl: https://localhost:${server.port}/info
     healthCheckUrl: https://localhost:${server.port}/health
     homePageUrl: https://localhost:${server.port}

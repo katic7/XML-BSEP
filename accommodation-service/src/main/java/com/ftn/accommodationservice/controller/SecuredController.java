@@ -14,8 +14,9 @@ public class SecuredController {
 		System.out.println(fromReservation);
 		String fromAuth = template.getForObject("https://localhost:8085/api/test/testing", String.class);
 		System.out.println(fromAuth);
-		
-		return "I'm secured!";
+		String fromZuul = template.getForObject("https://localhost:8081/reservationservice/api/addresses/test3", String.class);
+		System.out.println(fromZuul);
+		return fromReservation + " " + fromAuth + " preko zuula: "+fromZuul;
 	}
 	
 }
