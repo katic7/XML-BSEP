@@ -15,13 +15,10 @@ server:
     
 eureka:
   instance:
-    hostname: localhost
     securePort: ${server.port}
     securePortEnabled: true
-    preferIpAddress: true
+    prefer-ip-address: true
     nonSecurePortEnabled: false 
-    homePageUrl: https://${eureka.instance.hostname}:${server.port}/
-    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/admin/info
   client:
     registerWithEureka: false
     fetchRegistry: false

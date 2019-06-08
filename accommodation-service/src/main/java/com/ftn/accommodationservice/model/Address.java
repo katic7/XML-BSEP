@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * <p>Java class for address complex type.
@@ -81,7 +83,9 @@ import javax.xml.bind.annotation.XmlType;
     "postalCode"
 })
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Address {
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

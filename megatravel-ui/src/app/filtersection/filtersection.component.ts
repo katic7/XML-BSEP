@@ -19,7 +19,13 @@ export class FiltersectionComponent implements OnInit {
   }
 
   filter(event) {
-    this.sorted.emit(event.srcElement.name);
+    if(event.target.checked) {
+      this.sorted.emit(event.srcElement.name);
+    } else {
+      this.sorted.emit('un');
+    }
+    
+    
   }
 
 }

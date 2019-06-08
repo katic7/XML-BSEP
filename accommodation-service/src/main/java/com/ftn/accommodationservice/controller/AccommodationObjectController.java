@@ -17,10 +17,10 @@ import com.ftn.accommodationservice.dto.AccommodationObjectDTO;
 import com.ftn.accommodationservice.model.AccUnitPrice;
 import com.ftn.accommodationservice.model.AccommodationObject;
 import com.ftn.accommodationservice.model.AccommodationUnit;
-import com.ftn.accommodationservice.model.Agent;
+import com.ftn.accommodationservice.model.AdditionalService;
 import com.ftn.accommodationservice.model.Reservation;
 import com.ftn.accommodationservice.repository.AccommodationObjectRepository;
-import com.ftn.accommodationservice.repository.AccommodationRepository;
+import com.ftn.accommodationservice.repository.AdditionalServiceRepository;
 import com.ftn.accommodationservice.service.AccommodationObjectService;
 
 @RestController
@@ -32,6 +32,9 @@ public class AccommodationObjectController {
 	
 	@Autowired
 	private AccommodationObjectRepository accommodationObjectRepository;
+	
+	@Autowired
+	private AdditionalServiceRepository additonalRepo;
 	
 	@GetMapping("/getprices")
 	public ResponseEntity<List<AccUnitPrice>> getAllPrices() {
@@ -114,5 +117,15 @@ public class AccommodationObjectController {
 		}
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}*/
+	
+	@GetMapping("/additionalservices/{name}")
+	public ResponseEntity<AdditionalService> getService(@PathVariable String name) {
+		AdditionalService add = additonalRepo.findByName(name);
+		if(add != null) {
+			System.out.println(add.getName());
+			return new ResponseEntity<AdditionalService>(add, HttpStatus.OK);
+		} 
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
 
 }

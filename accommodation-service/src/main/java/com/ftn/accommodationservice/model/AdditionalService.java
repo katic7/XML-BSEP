@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * <p>Java class for AdditionalService complex type.
@@ -140,7 +142,8 @@ public class AdditionalService {
     public void setIncluded(boolean value) {
         this.included = value;
     }
-
+    
+    @JsonIgnore
 	public AccommodationObject getAccommodationObject() {
 		return accommodationObject;
 	}
@@ -149,6 +152,7 @@ public class AdditionalService {
 		this.accommodationObject = accommodationObject;
 	}
 
+	@JsonIgnore
 	public List<AccommodationUnit> getAccommodationUnits() {
 		return accommodationUnits;
 	}

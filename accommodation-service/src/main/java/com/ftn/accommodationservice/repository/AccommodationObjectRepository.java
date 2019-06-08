@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ftn.accommodationservice.model.AccommodationObject;
-import com.ftn.accommodationservice.model.Agent;
+
 
 @Repository
 public interface AccommodationObjectRepository extends JpaRepository<AccommodationObject, Long>{

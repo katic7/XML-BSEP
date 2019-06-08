@@ -152,6 +152,7 @@ public class AdditionalService {
 		this.accommodationObject = accommodationObject;
 	}
 
+	@JsonIgnore
 	public List<AccommodationUnit> getAccommodationUnits() {
 		return accommodationUnits;
 	}

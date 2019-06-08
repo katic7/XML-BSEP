@@ -11,13 +11,13 @@
 
   <h5>Services</h5>
   <div class="services">
-    <input type="checkbox" name="parking" id="parking"> Parking <br>
-    <input type="checkbox" name="wifi" id="wifi"> Wifi <br>
-    <input type="checkbox" name="breakfast" id="breakfast"> Breakfast <br>
-    <input type="checkbox" name="tv" id="tv">TV <br>
-    <input type="checkbox" name="kitchen" id="kitchen"> Kitchen <br>
-    <input type="checkbox" name="bathroom" id="bathroom">Bathroom <br>
-    <input type="checkbox" name="pets" id="pets">Pets allowed <br>
+    <input type="checkbox" (change)="filter($event)" name="Parking" id="parking"> Parking <br>
+    <input type="checkbox" (change)="filter($event)" name="Wifi" id="wifi"> Wifi <br>
+    <input type="checkbox" (change)="filter($event)" name="Breakfast" id="breakfast"> Breakfast <br>
+    <input type="checkbox" (change)="filter($event)" name="TV" id="tv">TV <br>
+    <input type="checkbox" (change)="filter($event)" name="Kitchen" id="kitchen"> Kitchen <br>
+    <input type="checkbox" (change)="filter($event)" name="Bathroom" id="bathroom">Bathroom <br>
+    <input type="checkbox" (change)="filter($event)" name="Pets" id="pets">Pets allowed <br>
   </div>
 
   <h5>Distance from destination</h5>

@@ -70,19 +70,8 @@ public class Comment {
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected Date commentDate;
-    protected boolean visible;
 
-    
-    
-    public boolean isVisible() {
-		return visible;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
-
-	/**
+    /**
      * Gets the value of the id property.
      * 
      */

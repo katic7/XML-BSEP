@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * <p>Java class for AccUnitPrice complex type.
@@ -148,7 +150,7 @@ public class AccUnitPrice {
     public void setPrice(double value) {
         this.price = value;
     }
-
+    @JsonIgnore
 	public AccommodationUnit getAccommodationUnit() {
 		return accommodationUnit;
 	}

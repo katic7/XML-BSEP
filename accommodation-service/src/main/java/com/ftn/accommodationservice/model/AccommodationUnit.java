@@ -26,6 +26,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * <p>Java class for AccommodationUnit complex type.
@@ -68,6 +71,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AccommodationUnit {
 
 	@Id
@@ -153,6 +157,7 @@ public class AccommodationUnit {
      *     {@link AccUnitPrice }
      *     
      */
+    
     public AccUnitPrice getPrice() {
         return price;
     }
@@ -254,13 +259,15 @@ public class AccommodationUnit {
      * 
      * 
      */
+    //@JsonIgnore
     public List<AdditionalService> getAdditionalServices() {
         if (additionalServices == null) {
             additionalServices = new ArrayList<AdditionalService>();
         }
         return this.additionalServices;
     }
-
+    
+    //@JsonIgnore
 	public AccommodationObject getAccommodationObject() {
 		return accommodationObject;
 	}
@@ -275,6 +282,7 @@ public class AccommodationUnit {
 		this.additionalServices = additionalServices;
 	}
 
+	@JsonIgnore
 	public List<Reservation> getReservations() {
 		return reservations;
 	}

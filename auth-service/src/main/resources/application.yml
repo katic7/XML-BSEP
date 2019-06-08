@@ -11,13 +11,10 @@ security:
   
 eureka:
   instance:
+    prefer-ip-address: true
     nonSecurePortEnabled: false
     securePortEnabled: true
     securePort: ${server.port}
-    preferIpAddress: true
-    statusPageUrl: https://localhost:${server.port}/info
-    healthCheckUrl: https://localhost:${server.port}/health
-    homePageUrl: https://localhost:${server.port}
   client:
     securePortEnabled: true
     serviceUrl:

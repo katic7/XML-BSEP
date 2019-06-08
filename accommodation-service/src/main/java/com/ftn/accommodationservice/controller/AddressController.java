@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.ftn.accommodationservice.model.Address;
-import com.ftn.accommodationservice.model.TestRating;
+
 import com.ftn.accommodationservice.repository.CategoryRepository;
 import com.ftn.accommodationservice.service.AddressService;
 
@@ -74,11 +74,6 @@ public class AddressController {
 	@PreAuthorize("hasAuthority('BlockComments')")
 	public String test3() {
 		return "test3";
-	}
-	
-	@PostMapping("/testRating")
-	public String testRating(@Valid @RequestBody TestRating testRating) {
-		return "Uspesno promenjen rating!";
 	}
 	
 	@GetMapping("/testhttps")

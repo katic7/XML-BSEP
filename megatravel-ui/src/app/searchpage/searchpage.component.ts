@@ -7,6 +7,8 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AdditionalservicesService } from '../services/additionalservices.service';
+import { AdditionalService } from '../models/AdditionalService';
 
 @Component({
   selector: 'app-searchpage',
@@ -18,10 +20,10 @@ export class SearchpageComponent implements OnInit {
   searchForm : SearchForm = new SearchForm();
   numbers = [1,2,3,4,5,6,7,8,9,10];
   accUnits : AccommodationUnit[] = [];
-  searchTerm="";
+  searchTerm: AdditionalService = null;
   
   constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService, private addService: AdditionalservicesService) { }
 
   ngOnInit() {
 
@@ -33,7 +35,7 @@ export class SearchpageComponent implements OnInit {
       console.log(this.searchForm);
       this.reservationService.getFreeAccUnits(this.searchForm).subscribe(data => { this.accUnits = data; console.log(data); });
    })
-
+ 
   console.log(this.searchForm);
   }
 
@@ -47,12 +49,18 @@ export class SearchpageComponent implements OnInit {
   }
 
   onFilter(event) {
+   // this.searchTerm=new AdditionalService();
     this.spinner.show();
  
     setTimeout(() => {
         this.spinner.hide();
     }, 1000);
-    this.searchTerm = event;
+    if(event != 'un') {
+      this.addService.getAdditionalByName(event).subscribe(data => {
+        this.searchTerm = data;
+      })
+    }
+
   }
 
 }

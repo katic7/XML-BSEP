@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * <p>Java class for Reservation complex type.
@@ -63,6 +65,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 @Entity
 public class Reservation {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;    
@@ -87,9 +90,6 @@ public class Reservation {
     protected boolean completed;
     protected boolean active;
 
-    
-   
-
     /**
      * Gets the value of the userID property.
      * 
@@ -98,6 +98,7 @@ public class Reservation {
      *     {@link Long }
      *     
      */
+    @JsonIgnore
     public User getUser() {
         return user;
     }
@@ -234,6 +235,7 @@ public class Reservation {
         this.active = value;
     }
 
+    @JsonIgnore
 	public AccommodationUnit getAccommodationUnit() {
 		return accommodationUnit;
 	}
@@ -248,6 +250,13 @@ public class Reservation {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", user=" + user + ", reservationDate=" + reservationDate
+				+ ", accommodationUnit="  + ", price=" + price + ", beginDate=" + beginDate
+				+ ", endDate=" + endDate + ", completed=" + completed + ", active=" + active + "]";
 	}
 
 }
