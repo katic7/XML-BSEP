@@ -25,11 +25,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
-<<<<<<< HEAD
 import { FilterPipe } from './searchpage/filter.pipe';
-=======
 import { BookpageComponent } from './bookpage/bookpage.component';
->>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
+
 
 
 const appRoutes: Routes = [
@@ -60,11 +58,9 @@ const appRoutes: Routes = [
     SearchobjectComponent,
     FiltersectionComponent,
     ProfileComponent,
-<<<<<<< HEAD
-    FilterPipe
-=======
+    FilterPipe,
     BookpageComponent
->>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
+
   ],
   imports: [
     BrowserModule,
@@ -76,7 +72,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
+      {useHash: true}
 )
   ],
   providers: [{

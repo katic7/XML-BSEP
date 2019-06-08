@@ -10,6 +10,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   getLogged() : Observable<any> {
-    return this.http.get("http://localhost:8085/api/auth/getLogged");
+    return this.http.get("https://localhost:8085/api/auth/getLogged");
   }
 }

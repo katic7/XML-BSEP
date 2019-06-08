@@ -29,13 +29,6 @@ spring:
     url: jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: root
-    initialization-mode: always
-  jpa:
-    properties:
-      hibernate: 
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
   mail:
     host: smtp.gmail.com
     username: af083085@gmail.com

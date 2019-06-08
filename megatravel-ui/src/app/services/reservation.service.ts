@@ -25,19 +25,19 @@ export class ReservationService {
       "Access-Control-Allow-Origin" : "*" });
   let options = { headers: headers };
     //return this.http.post("http://localhost:8081/reservationservice/api/reservations/getfreeunits", info, options);
-    return this.http.post("http://localhost:8083/api/reservations/getfreeunits", info);
+    return this.http.post("https://localhost:8083/api/reservations/getfreeunits", info);
   }
 
   getAdress(id) : Observable<any> {
-    return this.http.get("http://localhost:8083/api/addresses/" + id);
+    return this.http.get("https://localhost:8083/api/addresses/" + id);
   }
 
   makeAReservation(info : ReservationDTO) : Observable<any> {
-    return this.http.post("http://localhost:8083/api/reservations", info);
+    return this.http.post("https://localhost:8083/api/reservations", info);
   }
 
   getOneUnit(id) : Observable<any> {
-    return this.http.get("http://localhost:8083/api/reservations/getOneUnit/" + id);
+    return this.http.get("https://localhost:8083/api/reservations/getOneUnit/" + id);
   }
 
 }

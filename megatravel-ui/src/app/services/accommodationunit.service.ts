@@ -9,10 +9,10 @@ export class AccommodationunitService {
   constructor(private http: HttpClient) { }
 
   getProfilePicture(id) : Observable<any>{
-   return this.http.get("http://localhost:8082//ratings/specificAccommodation/"+id);
+   return this.http.get("https://localhost:8082/ratings/specificAccommodation/"+id);
   }
 
   getOne(id) : Observable<any> {
-    return this.http.get("http://localhost:8082/api/accobject/getOneUnit/" + id);
+    return this.http.get("https://localhost:8082/api/accobject/getOneUnit/" + id);
   }
 }

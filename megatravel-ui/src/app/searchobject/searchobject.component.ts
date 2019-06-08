@@ -49,17 +49,11 @@ export class SearchobjectComponent implements OnInit {
   constructor(private authService: AuthService, private reservationService: ReservationService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.accUnit);
     this.getLoggedUser();
-<<<<<<< HEAD
-    this.reservationService.getAdress(this.accUnit.accommodationObject.addressId)
-                           .subscribe(data => { this.address = data;});
-=======
     this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
-    var dateone = new Date(this.searchForm.checkin);
-    var datetwo = new Date(this.searchForm.checkout);
+    var dateone:any = new Date(this.searchForm.checkin);
+    var datetwo:any = new Date(this.searchForm.checkout);
     this.difference = (datetwo - dateone) / 1000 / 60 / 60 / 24;
->>>>>>> 4659e4313b82f4a767ec34290d3efb7558317bea
   }
 
 }

@@ -5,16 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import com.ftn.reservationservice.dto.SearchFormDTO;
-import com.ftn.reservationservice.model.AccommodationObject;
 import com.ftn.reservationservice.model.AccommodationUnit;
-import com.ftn.reservationservice.model.Address;
 import com.ftn.reservationservice.model.Reservation;
 import com.ftn.reservationservice.repository.AccommodationUnitRepository;
 import com.ftn.reservationservice.repository.AddressRepository;
@@ -31,9 +24,6 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired
 	public AccommodationUnitRepository accommodationUnitRepository;
-	
-	@Autowired
-	public AddressService addressService;
 
 	@Override
 	public List<Reservation> getAll() {		
@@ -102,7 +92,6 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-
 	public AccommodationUnit getOneUnit(Long id) {
 		return accommodationUnitRepository.getOne(id);
 	}

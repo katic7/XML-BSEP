@@ -33,11 +33,6 @@ public class AccommodationObjectController {
 	@Autowired
 	private AccommodationObjectRepository accommodationObjectRepository;
 	
-	@GetMapping()
-	public ResponseEntity<List<AccommodationObject>> getAllAccObjects() {
-		return new ResponseEntity<>(accommodationObjectRepository.findAll(), HttpStatus.OK);
-	}
-	
 	@GetMapping("/getprices")
 	public ResponseEntity<List<AccUnitPrice>> getAllPrices() {
 		List<AccUnitPrice> prices = accommodationObjectService.getAllPrices();
