@@ -38,19 +38,9 @@ export class FilterPipe implements PipeTransform {
             }
         }
        }  return units;*/
-       console.log(listFilter.length);
-       if(listFilter.length != 0) {
-        listFilter.forEach(f => {
-            if(f.include != true) {
-                alert(listFilter.length);
-                listFilter.splice(listFilter.indexOf(f), 1);
-                alert(listFilter.length);
-            }
-        })
- 
-        console.log(listFilter);
-       }
-       return null;
-    }
 
+ 
+       return null;
+       }
+       
 }

@@ -69,7 +69,17 @@ export class SearchpageComponent implements OnInit {
     var newFilter: FilterObject = new FilterObject();
     newFilter.name = event.target.name;
     newFilter.include = event.srcElement.checked;
+    
+    if(this.listToFilter.length != 0) {
+      this.listToFilter.forEach(f => {
+          console.log(f.include);
+          if(f.include != true) {
+              alert(this.listToFilter.length);
+              this.listToFilter.splice(this.listToFilter.indexOf(f), 1);
+              alert(this.listToFilter.length);
+          }
+      })
     this.listToFilter.push(newFilter);
   }
-
+  }
 }
