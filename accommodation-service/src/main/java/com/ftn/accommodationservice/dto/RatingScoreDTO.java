@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RatingScoreDTO {
-	
 	double ratingScore;
-	Long accommodationID;
 
 }

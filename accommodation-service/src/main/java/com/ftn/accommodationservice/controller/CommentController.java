@@ -91,18 +91,15 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/specificAccommodation/{id}")
-	@PreAuthorize("hasAuthority('CREATE')")
-	public AccommodationUnit getRatingScore(@PathVariable Long id){
+	public double getRatingScore(@PathVariable Long id){
 		ResponseEntity<RatingScoreDTO> response = template.exchange(
 				"http://localhost:8010/reservation-cloud-service/us-central1/getRatingScore?id="+id,
 				HttpMethod.GET,
 				null, 
 				new ParameterizedTypeReference<RatingScoreDTO>(){});
-		Long accId = response.getBody().getAccommodationID();
 		double ratingScore = response.getBody().getRatingScore();
-		AccommodationUnit ac = aunitRepository.getOne(accId);
-		ac.setRating(ratingScore);	
-		return aunitRepository.save(ac);
+		System.out.println(ratingScore);
+		return ratingScore;
 	}
 	
 	@GetMapping("/ratings/published/accommodation/{id}")

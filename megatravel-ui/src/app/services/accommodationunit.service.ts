@@ -15,4 +15,8 @@ export class AccommodationunitService {
   getOne(id) : Observable<any> {
     return this.http.get("https://localhost:8082/api/accobject/getOneUnit/" + id);
   }
+
+  getRatingScore(id):Observable<any> {
+    return this.http.get("https://localhost:8082/api/comment/ratings/specificAccommodation/"+id)
+  }
 }

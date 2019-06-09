@@ -46,11 +46,11 @@ exports.getRatingsFromSpecificAcc = function getRatingsFromSpecificAcc(req, res)
 
 import('@google/cloud-debug');
 exports.getRatingScore = function getRatingScore(req, res) {
-    connection.query("select avg(rating) as ratingScore, accommodationID  from ratings where accommodationID="+req.query.accommodationID,
+    connection.query("select avg(rating) as ratingScore from ratings where accommodationID="+req.query.id,
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
-		res.status(200).send(result);
+		res.status(200).send(result[0]);
 	    }
 	});
 };
