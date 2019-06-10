@@ -9,6 +9,7 @@ import { JWTAuth } from '../auth/response/jwt-auth';
 import { Router, NavigationEnd } from '@angular/router';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 import { RouteService } from '../routeservice/RouteService';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   private loginInfo: AuthLoginInfo;
   private jwtauth: JWTAuth;
   private element;
-
+  logged : User;
  
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private httpClient : HttpClient, private _location: Location,
@@ -70,7 +71,7 @@ export class LoginComponent implements OnInit {
     this.loginInfo = new AuthLoginInfo(
       this.form.username,
       this.form.password);
- 
+      
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
         console.table(data);
@@ -93,6 +94,8 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
+
+    
   }
 
 }

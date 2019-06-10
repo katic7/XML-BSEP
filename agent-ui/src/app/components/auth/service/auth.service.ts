@@ -12,13 +12,13 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const authUrl = "http://localhost:8085/api/auth/"
+const authUrl = "https://localhost:8085/api/auth/"
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  private getCurrentUser = authUrl + 'getCurrentUser';
   private loginUrl = authUrl + 'signin';
   private signupUrl = authUrl + 'signup';
   private testLogin = authUrl + 'testSI';
@@ -26,7 +26,7 @@ export class AuthService {
   private getLoggedUrl = authUrl + 'getLogged';
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
-
+  private signout = authUrl + 'signout';
   constructor(private http: HttpClient) {
   }
 
@@ -54,4 +54,12 @@ export class AuthService {
     return this.http.get(this.confirmUserUrl+token);
   }
 
+  getCurrent() : Observable<any>{
+    return this.http.get(this.getCurrentUser);
+  }
+
+  signOut() : Observable<any>{
+    return this.http.get(this.signout);
+    window.sessionStorage.clear();
+  }
 }
