@@ -5,7 +5,11 @@ server:
     key-store: classpath:agent.jks
     key-store-password: password
     key-alias: agent
-    
+web:
+  service:
+    username: nemanjica
+    password: password
+        
 security:
   require-ssl: true
   

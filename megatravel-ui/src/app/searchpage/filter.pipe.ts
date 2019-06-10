@@ -3,6 +3,7 @@ import { AccommodationUnit } from '../models/AccommodationUnit';
 import { AdditionalService } from '../models/AdditionalService';
 import { AdditionalservicesService } from '../services/additionalservices.service';
 import { FilterObject } from '../models/FilterObject';
+import { AccommodationunitService } from '../services/accommodationunit.service';
 
 
 @Pipe({
@@ -11,36 +12,26 @@ import { FilterObject } from '../models/FilterObject';
 })
 export class FilterPipe implements PipeTransform {
 
-    constructor(private addService: AdditionalservicesService) {}
-
-    transform(units: AccommodationUnit[], listFilter: FilterObject[]): AccommodationUnit[] {
-      /* if(event != undefined || event != null) {
-        let isChecked = event.srcElement.checked;
-        
-        let name = event.target.name;
-        
-        if(isChecked) {
-            for(var i =0; i < units.length;i++) {
-                for(var j = 0; j < units[i].additionalServices.length; j++) {
-                    if(units[i].additionalServices[j].name === name) {
-                        unn.push(units[i])
+    transform(units: AccommodationUnit[], listFilter: FilterObject[], globa): AccommodationUnit[] {
+        var unn:AccommodationUnit[] = [];
+        units = globa;
+        if(listFilter.length != 0) {
+            listFilter.forEach(lf => {
+                for(var i =0; i < units.length;i++) {
+                    for(var j = 0; j < units[i].additionalServices.length; j++) {
+                        if(units[i].additionalServices[j].name == lf.name) {
+                            unn.push(units[i]);
+                           
+                        } else {
+                            break;
+                        }
                     }
-                }
-            }
+                }       
+            })
+            
             return unn;
         } else {
-            for(var i =0; i < units.length;i++) {
-                for(var j = 0; j < units[i].additionalServices.length; j++) {
-                    if(units[i].additionalServices[j].name != name) {
-                        unn.push(units[i])
-                    }
-                }
-            }
+            return units;
         }
-       }  return units;*/
-
- 
-       return null;
-       }
-       
+    } 
 }

@@ -5,6 +5,10 @@ server:
     key-store: classpath:accommodation.jks
     key-store-password: password
     key-alias: accommodation
+web:
+  service:
+    username: nemanjica
+    password: password
     
 security:
   require-ssl: true

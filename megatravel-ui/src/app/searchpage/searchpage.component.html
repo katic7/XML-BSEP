@@ -29,7 +29,7 @@
         type="line-scale-party">
         <p style="font-size: 20px; color: white">Loading...</p>
         </ngx-spinner>
-        <div *ngFor="let accUnit of accUnits | filter: listToFilter">
+        <div *ngFor="let accUnit of accUnits | filter: listToFilter:globa">
             <app-searchobject [searchForm]="searchForm" [accUnit]="accUnit"></app-searchobject>
         </div>
     </div>
