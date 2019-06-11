@@ -17,6 +17,6 @@ export class AccommodationunitService {
   }
 
   getRatingScore(id):Observable<any> {
-    return this.http.get("https://localhost:8082/api/comment/ratings/specificAccommodation/"+id)
+    return this.http.get("https://localhost:8081/accommodationservice/api/comment/ratings/specificAccommodation/"+id)
   }
 }

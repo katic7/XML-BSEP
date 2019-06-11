@@ -17,7 +17,7 @@ exports.newRating = function newRating(req, res) {
 import('@google/cloud-debug');
 exports.getAllRatings = function getAllRatings(req, res) {
     connection.query("select * from ratings", (err, result)=> {
-	if (err) res.status(400).send('nije dobro getovanje svih');
+	if (err) res.status(400).send(err);
 	else res.status(200).send(result);
     });
 };
@@ -37,7 +37,7 @@ import('@google/cloud-debug');
 exports.getRatingsFromSpecificAcc = function getRatingsFromSpecificAcc(req, res) {
     connection.query("select * from ratings where accommodationID="+req.query.accommodationID,
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
 		res.status(200).send(result);
 	    }

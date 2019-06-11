@@ -72,7 +72,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      {useHash: true}
+      {enableTracing: true}
 )
   ],
   providers: [{
