@@ -44,11 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/hello").permitAll()
 		.antMatchers("/api/accobject/*").permitAll()
 		.antMatchers("/api/addresses/test2").permitAll()
-		.antMatchers("/api/comment/*").permitAll();
-		//.anyRequest().authenticated().and()
+		.antMatchers("/api/comment/*").permitAll()
+		.anyRequest().authenticated().and()
 		
 		
-		//.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	http.csrf().disable();
     	
        /* http

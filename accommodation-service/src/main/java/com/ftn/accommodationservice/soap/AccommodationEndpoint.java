@@ -177,6 +177,7 @@ public class AccommodationEndpoint {
 	@ResponsePayload
 	@Transactional
 	public GetAllAdditionalServiceResponse getAllAdditionalService(@RequestPayload GetAllAdditionalServiceRequest request) {
+		System.out.println("debug");
 		List<AdditionalService> as = additionalservicerepo.findAll();
 		GetAllAdditionalServiceResponse e = new GetAllAdditionalServiceResponse();
 		for(AdditionalService a : as) {

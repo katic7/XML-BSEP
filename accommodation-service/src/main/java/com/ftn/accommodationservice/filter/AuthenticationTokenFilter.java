@@ -17,6 +17,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.web.client.RestTemplate;
 
 public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -27,17 +28,22 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		RestTemplate restTemplate = new RestTemplate();	    
+	    //String token = (httpRequest.getHeader("Authorization")).substring(7, httpRequest.getHeader("Authorization").length());
+	   // String permisije = restTemplate.getForObject("https://localhost:8085/api/auth/check/{token}", String.class, token);
+	    //String username = restTemplate.getForObject("https://localhost:8085/api/auth/check/{token}/username", String.class, token);
 		String username = httpRequest.getHeader("username");
-		String permissions = httpRequest.getHeader("Permissions");
-		System.out.println(username);
-		System.out.println(permissions);
-		if(username != null && permissions != null && !username.equals("") && !permissions.equals("")) {
+		String permisije = httpRequest.getHeader("Permissions");
+	    
+	    System.out.println(username);
+		System.out.println(permisije);
+		if(username != null && permisije != null && !username.equals("") && !permisije.equals("")) {
 			Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 			
-			String[] tokens = permissions.split("\\|");
-			for(String token : tokens) {
+			String[] tokens = permisije.split("\\|");
+			for(String tokene : tokens) {
 				
-				authorities.add(new SimpleGrantedAuthority(token));
+				authorities.add(new SimpleGrantedAuthority(tokene));
 			}
 			
 			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username,  null, authorities);

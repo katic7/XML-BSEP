@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,8 +41,10 @@ public class AccommodationObjectController {
 	public ResponseEntity<List<AccUnitPrice>> getAllPrices() {
 		List<AccUnitPrice> prices = accommodationObjectService.getAllPrices();
 		if(prices != null) {
+			System.out.println("dosao");
 			return new ResponseEntity<List<AccUnitPrice>>(prices, HttpStatus.OK);
 		} 
+
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
@@ -64,6 +67,7 @@ public class AccommodationObjectController {
 	}
 	
 	@GetMapping("/getOne/{id}")
+	@PreAuthorize("hasAuthority('nepostoji')")
 	public AccommodationObjectDTO getObj(@PathVariable Long id){
 		AccommodationObject acc = accommodationObjectService.getOneAccObj(id);
 		AccommodationObjectDTO accDto = new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId());

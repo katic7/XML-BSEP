@@ -32,18 +32,15 @@ public class ZuulPreFilter extends ZuulFilter {
 
 	  @Override
 	  public Object run() {
-	    /*RequestContext ctx = RequestContext.getCurrentContext();
+	    RequestContext ctx = RequestContext.getCurrentContext();
 	    HttpServletRequest request = ctx.getRequest();
 	    RestTemplate restTemplate = new RestTemplate();
-	    
 	    String token = (request.getHeader("Authorization")).substring(7, request.getHeader("Authorization").length());
-	    
-	    String permisije = restTemplate.getForObject("http://localhost:8085/api/auth/check/{token}", String.class, token);
-	    String username = restTemplate.getForObject("http://localhost:8085/api/auth/check/{token}/username", String.class, token);
+	    String permisije = restTemplate.getForObject("https://localhost:8085/api/auth/check/{token}", String.class, token);
+	    String username = restTemplate.getForObject("https://localhost:8085/api/auth/check/{token}/username", String.class, token);
 	    ctx.addZuulRequestHeader("Permissions", permisije);
 	    ctx.addZuulRequestHeader("username", username);
-	   
-	    log.info("PERMISIJE -> " + permisije);*/
+	    log.info("PERMISIJE -> " + permisije);
 	    return null;
 	  }
 
