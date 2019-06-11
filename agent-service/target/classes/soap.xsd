@@ -43,13 +43,6 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
         	<xs:element name="id" type="tns:id"/>
             <xs:element name="longitude" type="xs:double"/>
             <xs:element name="latitude" type="xs:double"/>
-            <xs:element name="state">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:maxLength value="64"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
             <xs:element name="town">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -213,12 +206,41 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 			</xs:sequence>	
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="PostAccommodationObjectRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="tns:name"/>
+	            <xs:element name="address" type="tns:address"/>
+	            <xs:element name="description" type="tns:description"/>
+	            <xs:element name="category" type="tns:Category"/>
+	            <xs:element name="freeCancelation" type="tns:freeCancelation"/>
+	            <xs:element name="daysToCancel" type="tns:daysToCancel"/>
+	            <xs:element name="type" type="tns:Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="PostAccommodationObjectResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AccommodationObject" type="tns:AccommodationObject"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
     
     <xs:element name="GetAccommodationObjectRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name= "id" type="tns:id"/>
-			</xs:sequence>	
+				<xs:element name="id" type="tns:id"/>
+				<xs:element name="name" type="tns:name"/>
+	            <xs:element name="address" type="tns:address"/>
+	            <xs:element name="description" type="tns:description"/>
+	            <xs:element name="category" type="tns:Category"/>
+	            <xs:element name="freeCancelation" type="tns:freeCancelation"/>
+	            <xs:element name="daysToCancel" type="tns:daysToCancel"/>
+	            <xs:element name="type" type="tns:Type"/>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
     

@@ -9,25 +9,23 @@
 package com.ftn.accommodationservice.xsd;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AccommodationObject complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AccommodationObject">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://ftn.com/accommodationservice/xsd}id"/>
  *         &lt;element name="name" type="{http://ftn.com/accommodationservice/xsd}name"/>
  *         &lt;element name="address" type="{http://ftn.com/accommodationservice/xsd}address"/>
  *         &lt;element name="description" type="{http://ftn.com/accommodationservice/xsd}description"/>
@@ -35,8 +33,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="freeCancelation" type="{http://ftn.com/accommodationservice/xsd}freeCancelation"/>
  *         &lt;element name="daysToCancel" type="{http://ftn.com/accommodationservice/xsd}daysToCancel"/>
  *         &lt;element name="type" type="{http://ftn.com/accommodationservice/xsd}Type"/>
- *         &lt;element name="accommodationsUnitList" type="{http://ftn.com/accommodationservice/xsd}AccommodationUnit" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="additionalServices" type="{http://ftn.com/accommodationservice/xsd}AdditionalService" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,21 +42,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AccommodationObject", propOrder = {
-    "id",
+@XmlType(name = "", propOrder = {
     "name",
     "address",
     "description",
     "category",
     "freeCancelation",
     "daysToCancel",
-    "type",
-    "accommodationsUnitList",
-    "additionalServices"
+    "type"
 })
-public class AccommodationObject {
+@XmlRootElement(name = "PostAccommodationObjectRequest")
+public class PostAccommodationObjectRequest {
 
-    protected long id;
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
@@ -74,24 +67,6 @@ public class AccommodationObject {
     protected BigInteger daysToCancel;
     @XmlElement(required = true)
     protected Type type;
-    protected List<AccommodationUnit> accommodationsUnitList;
-    protected List<AdditionalService> additionalServices;
-
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(long value) {
-        this.id = value;
-    }
 
     /**
      * Gets the value of the name property.
@@ -251,64 +226,6 @@ public class AccommodationObject {
      */
     public void setType(Type value) {
         this.type = value;
-    }
-
-    /**
-     * Gets the value of the accommodationsUnitList property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the accommodationsUnitList property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAccommodationsUnitList().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AccommodationUnit }
-     * 
-     * 
-     */
-    public List<AccommodationUnit> getAccommodationsUnitList() {
-        if (accommodationsUnitList == null) {
-            accommodationsUnitList = new ArrayList<AccommodationUnit>();
-        }
-        return this.accommodationsUnitList;
-    }
-
-    /**
-     * Gets the value of the additionalServices property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the additionalServices property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAdditionalServices().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AdditionalService }
-     * 
-     * 
-     */
-    public List<AdditionalService> getAdditionalServices() {
-        if (additionalServices == null) {
-            additionalServices = new ArrayList<AdditionalService>();
-        }
-        return this.additionalServices;
     }
 
 }

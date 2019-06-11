@@ -10,6 +10,7 @@ package com.ftn.accommodationservice.xsd;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="AccommodationObject" type="{http://ftn.com/accommodationservice/xsd}AccommodationObject"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,27 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "accommodationObject"
 })
-@XmlRootElement(name = "GetAccUnitPriceRequest")
-public class GetAccUnitPriceRequest {
+@XmlRootElement(name = "PostAccommodationObjectResponse")
+public class PostAccommodationObjectResponse {
 
-    protected long id;
+    @XmlElement(name = "AccommodationObject", required = true)
+    protected AccommodationObject accommodationObject;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the accommodationObject property.
      * 
+     * @return
+     *     possible object is
+     *     {@link AccommodationObject }
+     *     
      */
-    public long getId() {
-        return id;
+    public AccommodationObject getAccommodationObject() {
+        return accommodationObject;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the accommodationObject property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link AccommodationObject }
+     *     
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setAccommodationObject(AccommodationObject value) {
+        this.accommodationObject = value;
     }
 
 }

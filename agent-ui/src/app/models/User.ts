@@ -11,5 +11,5 @@ export class User {
                 public password:string,
                 public enabled:boolean,
                 public nonLocked:boolean,
-                public rolesDTO:Array<Role>) {}
+                public roles:Array<Role>) {}
 }
