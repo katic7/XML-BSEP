@@ -48,6 +48,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PreAuthorize("hasAuthority('AddPrice')")
 	@PostMapping("/addprice")
 	public ResponseEntity<AccUnitPrice> addNewPrice(@RequestBody AccUnitPrice acup) {
 		AccUnitPrice price = new AccUnitPrice();
@@ -67,7 +68,6 @@ public class AccommodationObjectController {
 	}
 	
 	@GetMapping("/getOne/{id}")
-	@PreAuthorize("hasAuthority('nepostoji')")
 	public AccommodationObjectDTO getObj(@PathVariable Long id){
 		AccommodationObject acc = accommodationObjectService.getOneAccObj(id);
 		AccommodationObjectDTO accDto = new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId());
@@ -90,6 +90,7 @@ public class AccommodationObjectController {
 	return povratnaLista;
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/addunit/{accobject_id}")
 	public ResponseEntity<AccommodationUnit> addNewAccUnit(@PathVariable Long accobject_id, @RequestBody AccommodationUnit acu) {
 		AccommodationUnit newAcu = new AccommodationUnit();

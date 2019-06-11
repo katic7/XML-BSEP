@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -90,6 +91,7 @@ public class AuthController {
 		return "Pozdrav " + new Date();
 	}
 
+    @PreAuthorize("hasAuthority('AddUsers')")
     @PostMapping("/activateUser") //dodati permisije
     public ResponseEntity<?> activateUser(@RequestBody ActivateUserDTO acu){
     	User usr = userRepository.getOne(acu.getId());
@@ -103,6 +105,7 @@ public class AuthController {
     	return new ResponseEntity<UserDTO>(new UserDTO(usr), HttpStatus.OK);
     }
     
+    @PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getAll") //permisije
     public List<UserDTO> getAllUseres(){
     	List<UserDTO> users =  new ArrayList<UserDTO>();
@@ -112,16 +115,19 @@ public class AuthController {
     	return users;
     }
     
+    @PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getOne/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id){
     	return new ResponseEntity<UserDTO>(new UserDTO(userRepository.getOne(id)), HttpStatus.OK);	
     }
     
+    @PreAuthorize("hasAuthority('AddAgents')")
     @GetMapping("/getOneAgent/{id}")
     public ResponseEntity<?> getAgent(@PathVariable Long id){
     	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);
     }
     
+    @PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getOnlyUsers")
     public ResponseEntity<?> getOnlyUsers(){
     	List<User> users = userRepository.findAll();
@@ -137,6 +143,7 @@ public class AuthController {
     	return new ResponseEntity<List<UserDTO>>(povratna, HttpStatus.OK);
     }
     
+    @PreAuthorize("hasAuthority('AddAgents')")
     @GetMapping("/getAgents")
     public ResponseEntity<List<AgentDTO>> getAgents(){
     	List<Agent> svi = agentRepository.findAll();
@@ -148,6 +155,7 @@ public class AuthController {
     	return new ResponseEntity<List<AgentDTO>>(povratna, HttpStatus.OK);
     }
     
+    @PreAuthorize("hasAuthority('AddAgents')")
     @PostMapping("/createAgent")
     public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
     	System.out.println(ca.getAccObj() + " " +ca.getUser());
@@ -162,6 +170,7 @@ public class AuthController {
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }
  
+    @PreAuthorize("hasAuthority('DeleteUsers')")
     @RequestMapping(value="/deleteUser/{id}", method=RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
     	User usr = userRepository.getOne(id);
@@ -194,7 +203,7 @@ public class AuthController {
 	        return ResponseEntity.ok(new JwtAuthenticationResponse(profile, jwt));
 		} catch (AuthenticationException e) {
 			logger.error("PRN4SI | fail");
-			return new ResponseEntity<String>("Not logged!", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Not logged! " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
     }
     

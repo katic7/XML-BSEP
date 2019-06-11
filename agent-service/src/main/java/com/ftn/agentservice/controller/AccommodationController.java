@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,7 @@ public class AccommodationController {
 		return as.getAdditionalServices();
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/addAccUnit")
 	public AccommodationUnit addNewAccUnit(@RequestBody AccommodationUnit accUnit) {
 		GetAccommodationUnitResponse r = client.saveNewAcc(accUnit);

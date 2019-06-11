@@ -30,6 +30,8 @@ zuul:
       serviceId: accommodation-service
     bezbednost:
       serviceId: pki-service
+    agentservice:
+      serviceId: agent-service
   host:
     socket-timeout-millis: 30000
   sslHostnameValidationEnabled: false
