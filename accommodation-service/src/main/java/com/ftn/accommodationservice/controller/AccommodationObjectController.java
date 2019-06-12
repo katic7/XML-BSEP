@@ -37,6 +37,7 @@ public class AccommodationObjectController {
 	@Autowired
 	private AdditionalServiceRepository additonalRepo;
 	
+	@PreAuthorize("hasAuthority('AddPrice')")
 	@GetMapping("/getprices")
 	public ResponseEntity<List<AccUnitPrice>> getAllPrices() {
 		List<AccUnitPrice> prices = accommodationObjectService.getAllPrices();
@@ -123,6 +124,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}*/
 	
+	@PreAuthorize("hasAuthority('GetAdditionalServices')")
 	@GetMapping("/additionalservices/{name}")
 	public ResponseEntity<AdditionalService> getService(@PathVariable String name) {
 		AdditionalService add = additonalRepo.findByName(name);

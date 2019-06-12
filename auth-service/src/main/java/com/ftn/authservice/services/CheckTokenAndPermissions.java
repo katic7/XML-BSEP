@@ -1,12 +1,14 @@
 package com.ftn.authservice.services;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import com.ftn.authservice.exception.InvalidJWTokenException;
@@ -40,15 +42,23 @@ public class CheckTokenAndPermissions {
 	public List<String> getPermissions(String authToken) throws InvalidJWTokenException {
 		if(validateJwtToken(authToken)) {
 			UserPrincipal up = jwtProvider.getUserPrincipal(authToken);
+			System.out.println(up.getUsername() + " username");
+
 			List<String> permissions = new ArrayList<String>();
+			
 			up.getAuthorities().forEach(role -> {
-				Role r = roleRepo.findByName(getRoleName(role.getAuthority()));
-				for(Permission p : r.getPermissions()) {
-					if(!permissions.contains(p.getName())) {
-						permissions.add(p.getName());
-					}
-				}
+				System.out.println(role.getAuthority() + " authority");
+				permissions.add(role.getAuthority().toString());
+//				Role r = roleRepo.findByName(getRoleName(role.getAuthority()));
+//				System.out.println("USAO U for " + r.getPermissions().size());
+//				for(Permission p : r.getPermissions()) {				
+//					if(!permissions.contains(p.getName())) {
+//						System.out.println("USAO U IF");
+//						permissions.add(p.getName());
+//					}
+//				}
 			});
+			
 			return permissions;
 		}
 		

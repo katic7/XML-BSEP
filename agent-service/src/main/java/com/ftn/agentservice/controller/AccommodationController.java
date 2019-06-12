@@ -24,6 +24,7 @@ public class AccommodationController {
 	@Autowired
 	private AccommodationClient client;
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping
 	public String newAcc(@RequestBody AccommodationUnit request) {
 		GetAccommodationUnitResponse r = client.saveNewAcc(request);
@@ -36,6 +37,7 @@ public class AccommodationController {
 		return "nemanjica";
 	}
 	
+	@PreAuthorize("hasAuthority('AddPrice')")
 	@GetMapping("/allAdditionalServices")
 	public List<AdditionalService> getAllAdditionalServices(){
 		GetAllAdditionalServiceResponse as = client.getAllAdditionalServiceResponse();

@@ -33,6 +33,7 @@ public class CommentController {
 	private AccommodationUnitRepository aunitRepository;
 	
 	@PostMapping("/visibility")
+	@PreAuthorize("hasAuthority('ApproveComment')")
 	public ResponseEntity<?> commentVisibility(@RequestBody CommentVisibilityDTO cv){
 		/*Comment com = commentRepository.getOne(cv.getId());
 		com.setVisible(cv.isFlag());
@@ -47,7 +48,7 @@ public class CommentController {
 	}
 	
 	@PostMapping("/rating")
-	@PreAuthorize("hasAuthority('CREATE')")
+	@PreAuthorize("hasAuthority('PublishComment')")
 	public ResponseEntity<?> postRating(@RequestBody RatingDTO rating){
 		HttpEntity<RatingDTO> request = new HttpEntity<RatingDTO>(rating);
 		String _return= template.postForObject("http://localhost:8010/reservation-cloud-service/us-central1/newRating",
@@ -56,7 +57,7 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings")
-	@PreAuthorize("hasAuthority('CREATE')")
+	@PreAuthorize("hasAuthority('GetComments')")
 	public List<RatingDTO> getAllRatings(){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
 				"http://localhost:8010/reservation-cloud-service/us-central1/getAllRatings",
@@ -112,7 +113,6 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/published")
-	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getAllPublishedRatings(){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
 				"http://localhost:8010/reservation-cloud-service/us-central1/getPublishedComments",

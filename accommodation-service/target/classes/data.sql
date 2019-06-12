@@ -23,6 +23,10 @@ insert into permission (id, name) values (21, 'DeleteAgents');
 insert into permission (id, name) values (22, 'IssueCert');
 insert into permission (id, name) values (23, 'RevokeCert');
 insert into permission (id, name) values (24, 'AddPrice');
+insert into permission (id, name) values (25, 'PublishComment');
+insert into permission (id, name) values (26, 'GetAccUnit');
+insert into permission (id, name) values (27, 'MakeReservation');
+insert into permission (id, name) values (28, 'GetAdditionalServices');
 
 -- roles
 insert into roles (id, name) values (1, 'ROLE_ADMIN');
@@ -65,6 +69,10 @@ insert into role_permissions (permission_id, role_id) values (21, 4);
 insert into role_permissions (permission_id, role_id) values (22, 4);
 insert into role_permissions (permission_id, role_id) values (23, 4);
 insert into role_permissions (permission_id, role_id) values (24, 4);
+insert into role_permissions (permission_id, role_id) values (25, 4);
+insert into role_permissions (permission_id, role_id) values (26, 4);
+insert into role_permissions (permission_id, role_id) values (27, 4);
+insert into role_permissions (permission_id, role_id) values (28, 4);
 insert into role_permissions (permission_id, role_id) values (1, 1);
 insert into role_permissions (permission_id, role_id) values (2, 1);
 insert into role_permissions (permission_id, role_id) values (3, 1);
@@ -86,8 +94,15 @@ insert into role_permissions (permission_id, role_id) values (18, 1);
 insert into role_permissions (permission_id, role_id) values (19, 1);
 insert into role_permissions (permission_id, role_id) values (20, 1);
 insert into role_permissions (permission_id, role_id) values (21, 1);
+insert into role_permissions (permission_id, role_id) values (24, 1);
+insert into role_permissions (permission_id, role_id) values (25, 1);
+insert into role_permissions (permission_id, role_id) values (26, 1);
+insert into role_permissions (permission_id, role_id) values (28, 1);
 insert into role_permissions (permission_id, role_id) values (24, 2);
 insert into role_permissions (permission_id, role_id) values (13, 2);
+insert into role_permissions (permission_id, role_id) values (26, 2);
+insert into role_permissions (permission_id, role_id) values (25, 3);
+insert into role_permissions (permission_id, role_id) values (27, 3);
 
 -- user-roles
 insert into user_roles (user_id, role_id) 

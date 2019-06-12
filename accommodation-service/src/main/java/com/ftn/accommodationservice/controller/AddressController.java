@@ -37,7 +37,7 @@ public class AddressController {
 	 @Autowired
 	 private RestTemplate template;
 	
-	@GetMapping
+	@GetMapping //treba
 	public ResponseEntity<List<Address>> getAllAddresses() {
 		List<Address> addresses = addressService.getAddress();
 		if(addresses != null) {
@@ -51,8 +51,7 @@ public class AddressController {
 		return new ResponseEntity<Address>(addressService.getOne(id), HttpStatus.OK);
 	}
 	
-	@PostMapping
-
+	@PostMapping //treba
 	public ResponseEntity<Address> postNewAddress(@RequestBody Address address, HttpServletRequest request) {
 		return new ResponseEntity<Address>(addressService.addAddress(address), HttpStatus.CREATED);
 	}

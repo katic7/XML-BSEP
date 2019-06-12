@@ -246,7 +246,7 @@ public class AuthController {
     	return new ResponseEntity<UserDTO>(new UserDTO(logged), HttpStatus.OK);
     }
     
-    @GetMapping("/check/{token}")
+    @GetMapping("/check/{token}") 
     public ResponseEntity<?> checkToken(@PathVariable String token) throws InvalidJWTokenException{
     	List<String> permisije = permissions.getPermissions(token);
     	String permissije = "";
