@@ -18,9 +18,9 @@
 
   <h5>Distance from destination</h5>
   <div class="distance">
-    <input type="text">
-    <select>
-      <option>m</option>
+    <input (input)="onInput()" [formControl]="distance" type="text">
+    <select (change)="onInput()" [formControl]="unit">
+      <option selected>m</option>
       <option>km</option>
     </select>
   </div>

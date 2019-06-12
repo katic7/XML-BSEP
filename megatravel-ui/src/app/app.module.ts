@@ -27,6 +27,7 @@ import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FilterPipe } from './searchpage/filter.pipe';
 import { BookpageComponent } from './bookpage/bookpage.component';
+import { DestinationFilter } from './searchpage/destinationfilter.pipe';
 
 
 
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     FiltersectionComponent,
     ProfileComponent,
     FilterPipe,
+    DestinationFilter,
     BookpageComponent
 
   ],
@@ -82,7 +84,8 @@ const appRoutes: Routes = [
   },
   RouteService,
   DatePipe,
-  FilterPipe],
+  FilterPipe,
+  DestinationFilter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
