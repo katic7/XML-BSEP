@@ -11,6 +11,9 @@ import { AdditionalservicesService } from '../services/additionalservices.servic
 import { AdditionalService } from '../models/AdditionalService';
 import { AccommodationunitService } from '../services/accommodationunit.service';
 import { FilterObject } from '../models/FilterObject';
+import { DestinationObject } from '../models/DestinationObject';
+import { Address } from '../models/Address';
+import { DistanceFilter } from '../models/DistanceFilter';
 
 @Component({
   selector: 'app-searchpage',
@@ -24,8 +27,10 @@ export class SearchpageComponent implements OnInit {
   accUnits : AccommodationUnit[] = [];
   searchTerm: AdditionalService = null;
   event = null;
+  listaAdresa: Address[] = [];
+  something = null;
   listToFilter: FilterObject[] = [];
-  globa;
+  destination:DestinationObject = new DestinationObject();
   newFilter: FilterObject ;
   constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
     private spinner: NgxSpinnerService, private addService: AdditionalservicesService,
@@ -42,12 +47,16 @@ export class SearchpageComponent implements OnInit {
         this.accUnits = data;       
         this.accUnits.forEach(ac => {
           this.accService.getRatingScore(ac.id).subscribe(data => {
-            console.log("rating 4 " + ac.id + " is " +data);
             ac.rating = data;
           })
+            this.accService.getAddress(ac.accommodationObject.addressId).subscribe(data=>{
+              this.listaAdresa.push(data);
+          });
         })
-        console.log(this.accUnits);
       });
+      this.destination.distanceO = null;
+       
+      
    })
  
   }
@@ -81,6 +90,26 @@ export class SearchpageComponent implements OnInit {
         }
       }
     );
-    console.table(this.listToFilter);
+   
+  }
+
+  onDistance(event) {
+    this.spinner.show();
+ 
+    setTimeout(() => {
+        this.spinner.hide();
+    }, 1000);
+
+    if(event.unit != "" && event.distance != null) {
+      let streetName = this.searchForm.destination.replace(/ /g,'+');
+      this.accService.getDestinationInfo(streetName).subscribe(info => {
+        this.destination.longitude = info[0].lon;
+        this.destination.latitude = info[0].lat;
+      });
+      this.destination.distanceO = new DistanceFilter();
+      this.destination.distanceO.distance = event.distance;
+      this.destination.distanceO.unit = event.unit;
+    }
+
   }
 }

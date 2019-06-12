@@ -17,6 +17,16 @@ export class AccommodationunitService {
   }
 
   getRatingScore(id):Observable<any> {
-    return this.http.get("https://localhost:8081/accommodationservice/api/comment/ratings/specificAccommodation/"+id)
+    return this.http.get("https://localhost:8082/api/comment/ratings/specificAccommodation/"+id)
   }
+
+
+  getDestinationInfo(street) : Observable<any> {
+    return this.http.get("https://nominatim.openstreetmap.org/search?q="+street+"&format=json");
+  }
+
+  getAddress(id):Observable<any> {
+    return this.http.get("https://localhost:8082/api/addresses", id);
+  }
+
 }

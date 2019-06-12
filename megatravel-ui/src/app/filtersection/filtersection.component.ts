@@ -4,6 +4,8 @@ import { ifStmt } from '@angular/compiler/src/output/output_ast';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdditionalService } from '../models/AdditionalService';
 import { AdditionalservicesService } from '../services/additionalservices.service';
+import { FormControl } from '@angular/forms';
+import { DistanceFilter } from '../models/DistanceFilter';
 
 @Component({
   selector: 'app-filtersection',
@@ -14,6 +16,10 @@ export class FiltersectionComponent implements OnInit {
   @Input() accUnits:AccommodationUnit[];
   @Output() sorted = new EventEmitter<String>();
   allAdditionalServices : AdditionalService[] = [];
+  distance = new FormControl("");
+  unit = new FormControl("");
+  @Output() ret = new EventEmitter<DistanceFilter>();
+
   constructor(private additionalServices: AdditionalservicesService) { }
 
   ngOnInit() {
@@ -24,6 +30,13 @@ export class FiltersectionComponent implements OnInit {
 
   filter(event) {
     this.sorted.emit(event); 
+  }
+
+  onInput() {
+    let ret = new DistanceFilter();
+    ret.distance = this.distance.value;
+    ret.unit = this.unit.value;
+    this.ret.emit(ret);
   }
 
 }
