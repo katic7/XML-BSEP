@@ -5,6 +5,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 import { AccommodationunitService } from 'src/app/services/accommodationunit.service';
 import { Address } from 'src/app/models/Address';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-bookpage',
@@ -18,10 +19,16 @@ export class BookpageComponent implements OnInit {
   address: Address = new Address();
 
   book() {
-    this.reservationService.makeAReservation(this.reservation).subscribe(data => { console.log(data) });
+    this.reservationService.makeAReservation(this.reservation).subscribe(data => { console.log(data);
+      alert("Booked successfully");
+      this._location.back();});
   }
 
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService) { }
+  goBack() {
+    this._location.back();
+  }
+
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private _location: Location) { }
 
   ngOnInit() {
 

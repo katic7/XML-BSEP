@@ -1,0 +1,14 @@
+
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+.mainDiv {
+    margin: auto;
+    margin-top: 2%;
+  width: 800px;
+  border: 2px solid gainsboro;
+  padding: 10px;
+}
