@@ -69,6 +69,7 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/{id}")
+	@PreAuthorize("hasAuthority('CREATE')")
 	public RatingDTO getSpecificRating(@PathVariable Long id){
 		ResponseEntity<RatingDTO> response = template.exchange(
 									"http://localhost:8010/reservation-cloud-service/us-central1/getSpecificRating?id="+id,
@@ -79,6 +80,7 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/accommodation/{id}")
+	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getRatingsFromSpecificAcc(@PathVariable Long id){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
 				"http://localhost:8010/reservation-cloud-service/us-central1/getRatingsFromSpecificAcc?accommodationID="+id,
@@ -102,6 +104,7 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/published/accommodation/{id}")
+	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getPublishedRatingsOfAccommodation(@PathVariable Long id){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
 				"http://localhost:8010/reservation-cloud-service/us-central1/getPublishedCommentsOfAccommodation?accommodationID="+id,
