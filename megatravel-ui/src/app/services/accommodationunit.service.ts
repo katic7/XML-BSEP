@@ -26,7 +26,7 @@ export class AccommodationunitService {
   }
 
   getAddress(id):Observable<any> {
-    return this.http.get("https://localhost:8082/api/addresses", id);
+    return this.http.get("https://localhost:8082/api/addresses/" + id);
   }
 
 }

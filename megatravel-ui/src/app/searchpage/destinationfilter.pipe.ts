@@ -15,22 +15,35 @@ import { Address } from '../models/Address';
 export class DestinationFilter implements PipeTransform {
     
     transform(units: AccommodationUnit[], destObj: DestinationObject, listaAdresa:Address[]): AccommodationUnit[] {
+        console.log("IZ PAJPA " + listaAdresa);
         let unn : AccommodationUnit[] = [];
         if( destObj.distanceO != null) {
            for(var i = 0; i < listaAdresa.length; i++) {
-                let distanceInKm = this.calcCrow(destObj.latitude, destObj.longitude, listaAdresa[i][0].latitude, listaAdresa[i][0].longitude);
+                let distanceInKm = this.calcCrow(destObj.latitude, destObj.longitude, listaAdresa[i].latitude, listaAdresa[i].longitude);
+                console.log("ASDSDA" + distanceInKm + " ID: " + listaAdresa[i].id);
                 if(destObj.distanceO.unit == "m") {
                     
-                    let distanceInM = distanceInKm/1000;
-                    if(destObj.distanceO.distance < distanceInM) {       
-                      return units.filter(u => u.accommodationObject.addressId = listaAdresa[i][0].id);
+                    let distanceInM = distanceInKm*1000;
+                    if(destObj.distanceO.distance > distanceInM) {       
+                      //return units.filter(u => u.accommodationObject.addressId == listaAdresa[i].id);
+                      units.forEach(u => {
+                           if(u.accommodationObject.addressId == listaAdresa[i].id) {
+                               unn.push(u);
+                           }
+                        })
                     }
                 } else {
-                    if(destObj.distanceO.distance < distanceInKm) {         
-                     return units.filter(u => u.accommodationObject.addressId = listaAdresa[i][0].id);
+                    if(destObj.distanceO.distance > distanceInKm) {         
+                     //return units.filter(u => u.accommodationObject.addressId == listaAdresa[i].id);
+                     units.forEach(u => {
+                        if(u.accommodationObject.addressId == listaAdresa[i].id) {
+                            unn.push(u);
+                        }
+                     })
                     }
                 }
             }
+            return unn;
         } else {
             return units;
         }  

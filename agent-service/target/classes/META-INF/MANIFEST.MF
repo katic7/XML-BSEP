@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: agent-service
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Korisnik
+Built-By: Topolic
 Implementation-Vendor-Id: com.ftn
-Build-Jdk: 1.8.0_201
+Build-Jdk: 1.8.0_151
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/agent-service
 Created-By: Maven Integration for Eclipse
