@@ -21,7 +21,7 @@ export class DestinationFilter implements PipeTransform {
                 let distanceInKm = this.calcCrow(destObj.latitude, destObj.longitude, listaAdresa[i][0].latitude, listaAdresa[i][0].longitude);
                 if(destObj.distanceO.unit == "m") {
                     
-                    let distanceInM = distanceInKm/1000;
+                    let distanceInM = distanceInKm*1000;
                     if(destObj.distanceO.distance < distanceInM) {       
                       return units.filter(u => u.accommodationObject.addressId = listaAdresa[i][0].id);
                     }

@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Built-By: ndimsic
+Build-Jdk: 12.0.1
 Implementation-Title: accommodation-service
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Topolic
 Implementation-Vendor-Id: com.ftn
-Build-Jdk: 1.8.0_151
-Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/accommodation-service
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/accommodation-service
 Created-By: Maven Integration for Eclipse
 
