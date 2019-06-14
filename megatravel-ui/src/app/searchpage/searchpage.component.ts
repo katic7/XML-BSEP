@@ -14,6 +14,7 @@ import { FilterObject } from '../models/FilterObject';
 import { DestinationObject } from '../models/DestinationObject';
 import { Address } from '../models/Address';
 import { DistanceFilter } from '../models/DistanceFilter';
+import { DestinationFilter } from 'src/app/searchpage/destinationfilter.pipe';
 
 @Component({
   selector: 'app-searchpage',
@@ -32,7 +33,7 @@ export class SearchpageComponent implements OnInit {
   listToFilter: FilterObject[] = [];
   destination:DestinationObject = new DestinationObject();
   newFilter: FilterObject ;
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe, private filterPipe: DestinationFilter,
     private spinner: NgxSpinnerService, private addService: AdditionalservicesService,
     private accService: AccommodationunitService) { }
 
@@ -48,9 +49,10 @@ export class SearchpageComponent implements OnInit {
         this.accUnits.forEach(ac => {
           this.accService.getRatingScore(ac.id).subscribe(data => {
             ac.rating = data;
-          })
-            this.accService.getAddress(ac.accommodationObject.addressId).subscribe(data=>{
-              this.listaAdresa.push(data);
+          });
+          this.accService.getAddress(ac.accommodationObject.addressId).subscribe(data=>{
+            this.listaAdresa.push(data);
+            console.log("ADRESEEE: " + this.listaAdresa);
           });
         })
       });
@@ -60,6 +62,8 @@ export class SearchpageComponent implements OnInit {
    })
  
   }
+
+  
 
   onSorted(event) {
     this.spinner.show();

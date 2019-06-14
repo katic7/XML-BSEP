@@ -115,10 +115,10 @@ insert into user_roles (user_id, role_id)
 values (4, 2);
 
 --address
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (1, 45.250059, 19.850372, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (2, 45.250147, 19.851885, 'Srbija', 'Novi Sad', 'Stevana Musica', 11, 21000);
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (3, 45.253381, 19.854155, 'Srbija', 'Novi Sad', 'Vojvode Misica', 24, 21000);
-insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (4, 45.207862, 19.716492, 'Srbija', 'Beocin', 'Desanke Maksimovic', 20, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (1, 19.8505121, 45.2500775, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (2, 19.8519715, 45.2500097, 'Srbija', 'Novi Sad', 'Stevana Musica', 11, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (3, 19.8540348, 45.253186, 'Srbija', 'Novi Sad', 'Vojvode Misica', 24, 21000);
+insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (4, 19.7165794, 45.2076382, 'Srbija', 'Beocin', 'Desanke Maksimovic', 20, 21000);
 
 --category
 insert into category (id, name) values (1, '1*');
@@ -151,8 +151,8 @@ insert into acc_unit_price (id, end_date, price, start_date) values (4, '2019-12
 
 --accommodation_unit
 insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (1, 1, 'Description of unit 1', '', 2, 4.99, 1, 1);
-insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (2, 1, 'Description of unit 2', '', 3, 4.42, 1, 2);
-insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (3, 0, 'Description of unit 3', '', 4, 2.29, 1, 3);
+insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (2, 1, 'Description of unit 2', '', 3, 4.42, 2, 2);
+insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (3, 0, 'Description of unit 3', '', 4, 2.29, 3, 3);
 insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (4, 0, 'Description of unit 4', '', 4, 2.29, 4, 3);
 
 --accommodation_unit_additional_services
