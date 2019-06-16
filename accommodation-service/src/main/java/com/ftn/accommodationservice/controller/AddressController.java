@@ -51,6 +51,7 @@ public class AddressController {
 		return new ResponseEntity<Address>(addressService.getOne(id), HttpStatus.OK);
 	}
 	
+
 	@PostMapping //treba
 	public ResponseEntity<Address> postNewAddress(@RequestBody Address address, HttpServletRequest request) {
 		return new ResponseEntity<Address>(addressService.addAddress(address), HttpStatus.CREATED);

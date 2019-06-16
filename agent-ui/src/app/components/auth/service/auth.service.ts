@@ -27,6 +27,8 @@ export class AuthService {
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
   private signout = authUrl + 'signout';
+  private getAgent = authUrl + 'getOneAgent/';
+
   constructor(private http: HttpClient) {
   }
 
@@ -61,5 +63,9 @@ export class AuthService {
   signOut() : Observable<any>{
     return this.http.get(this.signout);
     window.sessionStorage.clear();
+  }
+
+  getOneAgent(id : number) : Observable<any>{
+    return this.http.get(this.getAgent + id);
   }
 }

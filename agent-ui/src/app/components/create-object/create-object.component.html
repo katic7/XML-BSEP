@@ -1,0 +1,65 @@
+<form class="example-form" (ngSubmit)="onSubmit()">
+  <h2>Create new accommodation object!</h2>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)] ="accObj.name" name="name" id="name">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" [(ngModel)] ="accObj.description" name="desc" id="desc"></textarea>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+      <mat-label>Select category</mat-label>
+      <mat-select [(value)]="selected" [(formControl)] ="kat" name="cate" id="cate">
+        <mat-option value="1">1*</mat-option>
+        <mat-option value="2">2*</mat-option>
+        <mat-option value="3">3*</mat-option>
+        <mat-option value="4">4*</mat-option>
+        <mat-option value="5">5*</mat-option>
+      </mat-select>
+    </mat-form-field>
+  <br/>
+  <mat-checkbox [(ngModel)]="accObj.freeCancelation" name="canc" id="canc">Free cacnelation</mat-checkbox>
+  <br/>
+  <mat-form-field>
+    <input matInput type="number" min="0" [(ngModel)]="accObj.daystoCancel" name="day" id="day" placeholder="Days to cancel">
+  </mat-form-field>
+    
+  <br/>
+  <mat-form-field>
+      <mat-label>Select type of object</mat-label>
+      <mat-select [(value)]="selected" [(formControl)] ="tip">
+        <mat-option value="1">Hotel</mat-option>
+        <mat-option value="2">Motel</mat-option>
+        <mat-option value="3">Hostel</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Street" [(ngModel)]="address.street" name="street" id="street">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="number">
+          <input type="number" matInput placeholder="No." [(ngModel)]="address.streetNumber" name="streetNum" id="streetNum">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="City" [(ngModel)]="address.town" name="town" id="town">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="State" [(ngModel)]="address.state" name="state" id="state">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput #postalCode maxlength="5" placeholder="Postal Code" [(ngModel)]="address.postalCode" name="postalC" id="postalC">
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field></td>
+  </tr></table>
+  <button class="btn btn-outline-secondary" style="margin-right: 4px;">Cancel</button> <button type="submit" class="btn btn-outline-success">Create</button>
+</form>

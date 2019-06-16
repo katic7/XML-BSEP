@@ -11,10 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ftn.accommodationservice.xsd.AccommodationObject;
 import com.ftn.accommodationservice.xsd.AccommodationUnit;
 import com.ftn.accommodationservice.xsd.AdditionalService;
+import com.ftn.accommodationservice.xsd.Address;
 import com.ftn.accommodationservice.xsd.GetAccommodationUnitResponse;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
+import com.ftn.accommodationservice.xsd.PostAccommodationObjectResponse;
+import com.ftn.accommodationservice.xsd.PostAddressRequest;
+import com.ftn.accommodationservice.xsd.PostAddressResponse;
 import com.ftn.agentservice.soap.AccommodationClient;
 
 @RestController
@@ -43,6 +48,18 @@ public class AccommodationController {
 		GetAllAdditionalServiceResponse as = client.getAllAdditionalServiceResponse();
 		return as.getAdditionalServices();
 	}
+	
+	@PostMapping("/createAddress")
+	public Address createAddress(@RequestBody Address adr) {
+		PostAddressResponse address = client.createAddress(adr);
+		adr.setId(address.getAddress().getId());
+		return adr;
+	}
+	
+	/*@PostMapping("/createAccObject")
+	public AccommodationObject createObject(@RequestBody AccommodationObject accObj) {
+		PostAccommodationObjectResponse acc = client.cr
+	}*/
 	
 	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/addAccUnit")

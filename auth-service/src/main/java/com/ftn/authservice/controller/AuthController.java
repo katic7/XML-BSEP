@@ -3,7 +3,9 @@ package com.ftn.authservice.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.mail.MessagingException;
@@ -115,13 +117,13 @@ public class AuthController {
     	return users;
     }
     
-    @PreAuthorize("hasAuthority('AddUsers')")
+    //@PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getOne/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id){
     	return new ResponseEntity<UserDTO>(new UserDTO(userRepository.getOne(id)), HttpStatus.OK);	
     }
     
-    @PreAuthorize("hasAuthority('AddAgents')")
+   // @PreAuthorize("hasAuthority('AddAgents')")
     @GetMapping("/getOneAgent/{id}")
     public ResponseEntity<?> getAgent(@PathVariable Long id){
     	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);
@@ -155,17 +157,24 @@ public class AuthController {
     	return new ResponseEntity<List<AgentDTO>>(povratna, HttpStatus.OK);
     }
     
-    @PreAuthorize("hasAuthority('AddAgents')")
+    //@PreAuthorize("hasAuthority('AddAgents')")
     @PostMapping("/createAgent")
     public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
     	System.out.println(ca.getAccObj() + " " +ca.getUser());
     	User usr = userRepository.getOne(ca.getUser());
     	Agent ag = new Agent(usr);
     	ag.setPib(ca.getPib());
-    	RestTemplate template  = new RestTemplate();
-    	ag.setAccObj(template.getForObject("http://localhost:8082/api/accobject/getOne/" + ca.getAccObj(), AccommodationObject.class));
-    	agentRepository.saveAgent(ag.getPib(),ag.getId(),ag.getAccObj().getId());
-    	usr.getRoles().add(roleRepository.findByName(RoleName.ROLE_AGENT));
+    	if(ca.getAccObj() != null) {
+    		RestTemplate template  = new RestTemplate();
+    		ag.setAccObj(template.getForObject("https://localhost:8082/api/accobject/getOne/" + ca.getAccObj(), AccommodationObject.class));
+    		agentRepository.saveAgent(ag.getPib(),ag.getId(),ag.getAccObj().getId());
+    	}else {
+    		agentRepository.saveAgent(ag.getPib(),ag.getId(),null);
+    	}
+    	
+    	Set<Role> roles = new HashSet<>();
+    	roles.add(roleRepository.findByName(RoleName.ROLE_AGENT));
+    	usr.setRoles(roles);
     	userRepository.save(usr);
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -39,12 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 
 		.antMatchers("/api/*").permitAll()
+		.antMatchers("/h2console/*").permitAll()
 		.antMatchers("/ws/*").permitAll()
 		.antMatchers("/ws").permitAll()
 		//.antMatchers("/api/accommodations/allAdditionalServices").permitAll()
 		.antMatchers("/hello").permitAll()
 
 		.antMatchers("/api/accobject/*").permitAll()
+		.antMatchers("/api/accommodations/*").permitAll()
 		.antMatchers("/api/addresses/test2").permitAll()
 		.antMatchers("/api/comment/*").permitAll()
 		.anyRequest().authenticated().and()

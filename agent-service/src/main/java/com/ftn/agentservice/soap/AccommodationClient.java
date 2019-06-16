@@ -2,9 +2,11 @@ package com.ftn.agentservice.soap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import com.ftn.accommodationservice.xsd.AccommodationUnit;
+import com.ftn.accommodationservice.xsd.Address;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceRequest;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.GetAccommodationObjectRequest;
@@ -23,10 +25,19 @@ import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
 import com.ftn.accommodationservice.xsd.GetTypeResponse;
+import com.ftn.accommodationservice.xsd.PostAccommodationObjectRequest;
+import com.ftn.accommodationservice.xsd.PostAccommodationObjectResponse;
+import com.ftn.accommodationservice.xsd.PostAddressRequest;
+import com.ftn.accommodationservice.xsd.PostAddressResponse;
+import com.ftn.agentservice.model.AccommodationObject;
+import com.ftn.agentservice.repository.AddressRepository;
 
 public class AccommodationClient extends WebServiceGatewaySupport  {
 
 	private static final Logger log = LoggerFactory.getLogger(AccommodationClient.class);
+	
+	@Autowired
+	private AddressRepository addressRepo;
 
 	public GetAccommodationObjectResponse getAccommodation(Long id) {
 		GetAccommodationObjectRequest request = new GetAccommodationObjectRequest();
@@ -82,4 +93,30 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		request.setAccommodationUnit(au);
 		return (GetAccommodationUnitResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
+	
+	/*public PostAccommodationObjectResponse createAccObject(com.ftn.accommodationservice.xsd.AccommodationObject acc) {
+		PostAccommodationObjectRequest request = new PostAccommodationObjectRequest();
+		request.setAccommodationObject(acc);
+		AccommodationObject accObj = new AccommodationObject();
+		accObj.setAddressId(acc.get);
+	}*/
+	
+	public PostAddressResponse createAddress(Address adr) {
+		PostAddressRequest request = new PostAddressRequest();
+		com.ftn.agentservice.model.Address adresa = new com.ftn.agentservice.model.Address();
+		adresa.setLatitude(adr.getLatitude());
+		adresa.setLongitude(adr.getLongitude());
+		adresa.setPostalCode(adr.getPostalCode());
+		adresa.setStreet(adr.getStreet());
+		adresa.setStreetNumber(adr.getStreetNumber());
+		adresa.setTown(adr.getTown());
+		addressRepo.save(adresa);
+		request.setAddress(adr);
+		return (PostAddressResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+	
+	/*public PostAccommodationObjectResponse createObject(AccommodationObject acc) {
+		PostAccommodationObjectRequest requst = new PostAccommodationObjectRequest();
+		Address adr = new Address();
+	}*/
 }
