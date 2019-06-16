@@ -32,6 +32,8 @@ zuul:
       serviceId: pki-service
     agentservice:
       serviceId: agent-service
+    authservice:
+       serviceId: auth-service
   host:
     socket-timeout-millis: 30000
   sslHostnameValidationEnabled: false

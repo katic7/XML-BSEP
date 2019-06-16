@@ -26,9 +26,9 @@ public class AgentServiceApplication {
 		System.setProperty("javax.net.ssl.keyStorePassword", "password");
 		System.setProperty("javax.net.ssl.trustStore", "src/main/resources/agent.jks");
 		System.setProperty("javax.net.ssl.trustStorePassword", "password");
-
 		EurekaJerseyClientBuilder builder = new EurekaJerseyClientBuilder();
 		builder.withClientName("agent");
+		
 		builder.withSystemSSLConfiguration();
 		builder.withMaxTotalConnections(10);
 		builder.withMaxConnectionsPerHost(10);

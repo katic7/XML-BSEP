@@ -15,6 +15,7 @@ import { DestinationObject } from '../models/DestinationObject';
 import { Address } from '../models/Address';
 import { DistanceFilter } from '../models/DistanceFilter';
 import { DestinationFilter } from 'src/app/searchpage/destinationfilter.pipe';
+import { DestinationSorter } from '../models/DestinationSorter';
 
 @Component({
   selector: 'app-searchpage',
@@ -33,7 +34,10 @@ export class SearchpageComponent implements OnInit {
   listToFilter: FilterObject[] = [];
   destination:DestinationObject = new DestinationObject();
   newFilter: FilterObject ;
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe, private filterPipe: DestinationFilter,
+  distancesCalculated:DestinationSorter[] = [];
+  distArray: DestinationSorter[] = [];
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
+    private filterPipe: DestinationFilter,
     private spinner: NgxSpinnerService, private addService: AdditionalservicesService,
     private accService: AccommodationunitService) { }
 
@@ -52,7 +56,7 @@ export class SearchpageComponent implements OnInit {
           });
           this.accService.getAddress(ac.accommodationObject.addressId).subscribe(data=>{
             this.listaAdresa.push(data);
-            console.log("ADRESEEE: " + this.listaAdresa);
+          
           });
         })
       });
@@ -113,7 +117,11 @@ export class SearchpageComponent implements OnInit {
       this.destination.distanceO = new DistanceFilter();
       this.destination.distanceO.distance = event.distance;
       this.destination.distanceO.unit = event.unit;
-    }
 
+      //this.distancesCalculated = this.filterPipe.returnDistances();
+      
+      this.distancesCalculated = this.filterPipe.tempArray;
+    }
+   
   }
 }

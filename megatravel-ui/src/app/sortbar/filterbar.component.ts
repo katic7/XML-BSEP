@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AccommodationUnit } from '../models/AccommodationUnit';
 import { ifStmt } from '@angular/compiler/src/output/output_ast';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DestinationSorter } from '../models/DestinationSorter';
 
 @Component({
   selector: 'app-filterbar',
@@ -12,7 +13,9 @@ export class FilterbarComponent implements OnInit {
   lowestPriceBoolean:boolean = true;
   lowestRatingBoolean:boolean = true;
   lowestCategoryBoolean:boolean = true;
+  @Input() distancesCalculated:DestinationSorter[];
   @Input() accUnits:AccommodationUnit[];
+
   @Output() sorted = new EventEmitter<AccommodationUnit[]>();
 
   constructor() { }
@@ -128,6 +131,13 @@ export class FilterbarComponent implements OnInit {
           return 0;
       }
     })
+  }
+
+  distance() {
+    
+    if(this.distancesCalculated != null || this.distancesCalculated != undefined) {
+      console.log(this.distancesCalculated);
+    }
   }
     
  
