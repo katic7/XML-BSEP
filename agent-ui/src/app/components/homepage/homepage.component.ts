@@ -18,8 +18,17 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
     this.authService.getLogged().subscribe(data=>{
       this.logged = data;
-      if(this.logged.roles[0].name === RoleName.ROLE_AGENT){
-        this.agentJe = true;
+      console.log(data.roles[0].name + "AAAAAAAAAAAAA");
+      if(data.roles[0].name == "ROLE_AGENT"){
+        this.authService.getOneAgent(this.logged.id).subscribe(agnet=>{
+          if(agnet.accObj == null){
+            this.router.navigate(['newObject']);
+            
+          }else{
+            
+            // profil od hotela
+          }
+        })
       }else{
         this.authService.signOut();
         alert("Nemate rolu agent!");

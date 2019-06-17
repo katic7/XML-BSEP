@@ -1,9 +1,15 @@
 Manifest-Version: 1.0
 Implementation-Title: accommodation-service
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: Topolic
 Implementation-Vendor-Id: com.ftn
 Build-Jdk: 1.8.0_151
+=======
+Built-By: Milan
+Implementation-Vendor-Id: com.ftn
+Build-Jdk: 1.8.0_171
+>>>>>>> 57a6f2e82efebfbef85d4cd31064aeb97f3f4c1c
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/accommodation-service
 Created-By: Maven Integration for Eclipse

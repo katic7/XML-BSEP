@@ -46,6 +46,8 @@ import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
 import com.ftn.accommodationservice.xsd.GetTypeResponse;
+import com.ftn.accommodationservice.xsd.PostAddressRequest;
+import com.ftn.accommodationservice.xsd.PostAddressResponse;
 import com.ftn.accommodationservice.xsd.Test;
 
 
@@ -115,6 +117,25 @@ public class AccommodationEndpoint {
 		t.setName("Nemanja");
 		e.setTest(t);
 		return e;
+	}
+	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostAddressRequest")
+	@ResponsePayload
+	@Transactional
+	public PostAddressResponse createAddress(@RequestPayload PostAddressRequest request) {
+		Address adr = new Address();
+		adr.setLatitude(request.getAddress().getLatitude());
+		adr.setLongitude(request.getAddress().getLongitude());
+		adr.setPostalCode(request.getAddress().getPostalCode());
+		adr.setState(request.getAddress().getState());
+		adr.setStreet(request.getAddress().getStreet());
+		adr.setStreetNumber(request.getAddress().getStreetNumber());
+		adr.setTown(request.getAddress().getTown());
+		adr = addressrepo.save(adr);
+		PostAddressResponse response = new PostAddressResponse();
+		response.setAddress(request.getAddress());
+		response.getAddress().setId(adr.getId());
+		return response;
 	}
 	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetCategoryRequest")

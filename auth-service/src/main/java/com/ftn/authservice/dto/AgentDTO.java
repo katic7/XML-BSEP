@@ -35,7 +35,10 @@ public class AgentDTO extends UserDTO{
 		this.setNonLocked(a.isNonLocked());
 		this.setPassword(a.getPassword());
 		this.setSurname(a.getSurname());
-		this.accObj = new AccommodationObjectDTO(a.getAccObj().getId(), a.getAccObj().getName(), a.getAccObj().getAddressId(), a.getAccObj().getDescription(), a.getAccObj().getCategoryId(), a.getAccObj().isFreeCancelation(), a.getAccObj().getDaysToCancel(), a.getAccObj().getTypeId());
+		if(a.getAccObj() != null) {
+			this.accObj = new AccommodationObjectDTO(a.getAccObj().getId(), a.getAccObj().getName(), a.getAccObj().getAddressId(), a.getAccObj().getDescription(), a.getAccObj().getCategoryId(), a.getAccObj().isFreeCancelation(), a.getAccObj().getDaysToCancel(), a.getAccObj().getTypeId());
+		}
+		
 	}
 
 	public AgentDTO(Long id, String name, String surname, Long address, String email, String password, boolean enabled,

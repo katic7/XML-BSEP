@@ -13,12 +13,15 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { DatePipe } from '@angular/common';
+import { CreateObjectComponent } from './components/create-object/create-object.component';
+import { MatSelectModule } from '@angular/material';
 
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'agents', component: AgentsComponent },
+  { path: 'newObject', component: CreateObjectComponent},
 ];
 
 @NgModule({
@@ -28,6 +31,7 @@ const appRoutes: Routes = [
     AgentsComponent,
     HomepageComponent,
     NavigationComponent,
+    CreateObjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSelectModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
