@@ -63,7 +63,7 @@ export class SearchpageComponent implements OnInit {
       this.destination.distanceO = null;
        
       
-   })
+   })  
  
   }
 
@@ -75,7 +75,11 @@ export class SearchpageComponent implements OnInit {
     setTimeout(() => {
         this.spinner.hide();
     }, 1000);
-    this.accUnits = event;
+    this.accUnits = [];
+    event.forEach( e => {
+      this.accUnits.push(e);
+    })
+    console.log(this.accUnits);
   }
 
   onFilter(event) {
@@ -99,7 +103,7 @@ export class SearchpageComponent implements OnInit {
       }
     );
    
-  }
+  }  
 
   onDistance(event) {
     this.spinner.show();
@@ -121,7 +125,11 @@ export class SearchpageComponent implements OnInit {
       //this.distancesCalculated = this.filterPipe.returnDistances();
       
       this.distancesCalculated = this.filterPipe.tempArray;
-    }
+      console.log(this.distancesCalculated);
+
+      
+    }    
    
   }
+
 }

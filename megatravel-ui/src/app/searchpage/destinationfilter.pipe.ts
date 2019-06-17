@@ -23,7 +23,7 @@ export class DestinationFilter implements PipeTransform {
            for(var i = 0; i < listaAdresa.length; i++) {
                 let distanceInKm = this.calcCrow(destObj.latitude, destObj.longitude, listaAdresa[i].latitude, listaAdresa[i].longitude);
                 
-
+                
                 
                 if(destObj.distanceO.unit == "m") {
                     
@@ -34,14 +34,25 @@ export class DestinationFilter implements PipeTransform {
                            if(u.accommodationObject.addressId == listaAdresa[i].id) {
                                unn.push(u);
                                let o:DestinationSorter=new DestinationSorter();
-                               o.addressId = listaAdresa[i].id;
+                               o.unitId = u.id;
                                o.distanceInkm = distanceInKm;
-                               //this.distancesCalculated.forEach(dc => 
-                               // {
-                                   // if(o.addressId != listaAdresa[i].id) {
-                                        this.distancesCalculated.push(o);
-                                  //  }
-                               // })
+                            //    //this.distancesCalculated.forEach(dc => 
+                            //    // {
+                            //        // if(o.addressId != listaAdresa[i].id) {
+                            //             this.distancesCalculated.push(o);
+                            //       //  }
+                            //    // })
+
+                                var br = 0;
+                                distArray.forEach(d => {
+                                    if(d.unitId == o.unitId) {
+                                        br = 1;
+                                    }
+                                })
+                                if(br == 0) {
+                                    distArray.push(o);
+                                }
+                                //console.log(o);
                            }
                         
                     })
@@ -53,31 +64,45 @@ export class DestinationFilter implements PipeTransform {
                         if(u.accommodationObject.addressId == listaAdresa[i].id) {
                             unn.push(u);
                             let o:DestinationSorter = new DestinationSorter();
-                               o.addressId = listaAdresa[i].id;
-                               o.distanceInkm = distanceInKm;
-                              // this.distancesCalculated.forEach(dc => 
-                               // {
-                                  //  if(dc.addressId != listaAdresa[i].id) {
-                                        this.distancesCalculated.push(o);
-                                   // }
-                                //})
+                            o.unitId = u.id;
+                            o.distanceInkm = distanceInKm;
+                            //   // this.distancesCalculated.forEach(dc => 
+                            //    // {
+                            //       //  if(dc.addressId != listaAdresa[i].id) {
+                            //             this.distancesCalculated.push(o);
+                            //        // }
+                            //     //})
+                            var br = 0;
+                            distArray.forEach(d => {
+                                if(d.unitId == o.unitId) {
+                                    br = 1;
+                                }
+                            })
+                            if(br == 0) {
+                                distArray.push(o);
+                            }
                             
+                                //console.log(o);
                         }
                      })
                     }
                 }
             }
 
-            let tempArray: DestinationSorter[] = [];
+            /*let tempArray: DestinationSorter[] = [];
             for(var k=0; k < units.length;k++) {
                 tempArray.push(this.distancesCalculated[k]);
-            }
+            }*/
            
-            tempArray.forEach(dd=>{
+            /*tempArray.forEach(dd=>{
                 distArray.push(dd);
-            })
+            })*/
           //  distArray = this.distancesCalculated;
-           
+        //    distArray.forEach(d => {
+        //        console.log(d);
+        //    })
+        console.log(distArray);
+        this.tempArray = distArray;
             return unn;
         } else {
             return units;
@@ -104,5 +129,9 @@ export class DestinationFilter implements PipeTransform {
      toRad(Value) 
     {
         return Value * Math.PI / 180;
+    }
+
+    returnDistances() {
+        return this.tempArray;
     }
 }

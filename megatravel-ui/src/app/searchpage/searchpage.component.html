@@ -11,14 +11,14 @@
         <app-sidesearchform [searchForm]="searchForm"></app-sidesearchform>
     </div>
     <div class="sidefiltersection">
-        <app-filtersection [accUnits]="accUnits"  (sorted)="onFilter($event)" (ret)="onDistance($event)"></app-filtersection>
+        <app-filtersection (click)="sranje()" [accUnits]="accUnits"  (sorted)="onFilter($event)" (ret)="onDistance($event)"></app-filtersection>
     </div>
     
 </div>
 
 <div class="main-container">
     <div class="filterbar"> 
-        <app-filterbar [accUnits]="accUnits" [distancesCalculated]="distancesCalculated" (sorted)="onSorted($event)"></app-filterbar>
+        <app-filterbar [searchForm]="searchForm" [accUnits]="accUnits"  (sorted)="onSorted($event)"></app-filterbar>
     </div>
     
     <div class="searchobject">
@@ -34,3 +34,4 @@
         </div>
     </div>
 </div>
+

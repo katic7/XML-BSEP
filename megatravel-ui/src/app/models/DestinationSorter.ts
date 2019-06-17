@@ -1,4 +1,4 @@
 export class DestinationSorter {
-    addressId: number;
+    unitId: number;
     distanceInkm: number;
 }
