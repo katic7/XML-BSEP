@@ -19,7 +19,6 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SidesearchformComponent } from './sidesearchform/sidesearchform.component';
 import { FilterbarComponent } from './sortbar/filterbar.component';
-import { SearchobjectComponent } from './searchobject/searchobject.component';
 import { FiltersectionComponent } from './filtersection/filtersection.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouteService } from './routeservice/RouteService';
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
     SearchpageComponent,
     SidesearchformComponent,
     FilterbarComponent,
-    SearchobjectComponent,
     FiltersectionComponent,
     ProfileComponent,
     FilterPipe,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { SearchForm } from '../models/SearchForm';
@@ -16,6 +16,8 @@ import { Address } from '../models/Address';
 import { DistanceFilter } from '../models/DistanceFilter';
 import { DestinationFilter } from 'src/app/searchpage/destinationfilter.pipe';
 import { DestinationSorter } from '../models/DestinationSorter';
+import * as _ from 'underscore';
+import { AuthService } from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-searchpage',
@@ -34,12 +36,15 @@ export class SearchpageComponent implements OnInit {
   listToFilter: FilterObject[] = [];
   destination:DestinationObject = new DestinationObject();
   newFilter: FilterObject ;
+  difference;
+  logged;
   distancesCalculated:DestinationSorter[] = [];
   distArray: DestinationSorter[] = [];
   constructor(private route: ActivatedRoute, private reservationService: ReservationService, private pipe: DatePipe,
     private filterPipe: DestinationFilter,
     private spinner: NgxSpinnerService, private addService: AdditionalservicesService,
-    private accService: AccommodationunitService) { }
+    private accService: AccommodationunitService, private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -61,25 +66,82 @@ export class SearchpageComponent implements OnInit {
         })
       });
       this.destination.distanceO = null;
-       
-      
+      //this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
+      var dateone:any = new Date(this.searchForm.checkin);
+      var datetwo:any = new Date(this.searchForm.checkout);
+      this.difference = (datetwo - dateone) / 1000 / 60 / 60 / 24; 
+      this.getLoggedUser();
    })  
  
   }
 
-  
+  makeAReservation(accUnit) {
+    // let res : ReservationDTO = new ReservationDTO;
+    // res.accommodationUnitId = this.accUnit.id;
+    // res.beginDate = this.searchForm.checkin;
+    // res.endDate = this.searchForm.checkout;
+    // res.price = this.accUnit.price.price;
+    // res.userId = this.logged.id;
+
+    // console.log(res);
+
+    this.router.navigate(['/book', {in: this.searchForm.checkin, out: this.searchForm.checkout, user: this.logged.id, acu: accUnit.id, price: accUnit.price.price}]);
+  }
+
+  getLoggedUser() {
+    this.authService.getLogged().subscribe(data => {
+      this.logged = data;
+    }, error => {
+      this.logged = null;
+    })
+  }
+
 
   onSorted(event) {
+    
     this.spinner.show();
  
     setTimeout(() => {
         this.spinner.hide();
     }, 1000);
-    this.accUnits = [];
-    event.forEach( e => {
-      this.accUnits.push(e);
-    })
+    console.log(event);
+  
+    for(let v = 0; v < event.length; v++) {
+      this.accUnits[v] = event[v];
+    }
     console.log(this.accUnits);
+
+  }
+
+  onRating(event) {
+    if(event) {
+      this.accUnits = _.sortBy(this.accUnits, 'rating');
+      console.log(this.accUnits);      
+    } else {
+      this.accUnits = (_.sortBy(this.accUnits, 'rating')).reverse();
+      console.log(this.accUnits);
+    }
+  }
+
+  onPrice(event) {
+    if(event) {
+      this.accUnits = _.sortBy(this.accUnits, 'price.price');
+      console.log(this.accUnits);
+    } else {
+      this.accUnits = (_.sortBy(this.accUnits, 'price.price')).reverse();
+      console.log(this.accUnits);
+      
+    }
+  }
+
+  onCategory(event) {
+    if(event) {
+      this.accUnits = _.sortBy(this.accUnits, 'accommodationObject.categoryId');
+      console.log(this.accUnits);      
+    } else {
+      this.accUnits = (_.sortBy(this.accUnits, 'accommodationObject.categoryId')).reverse();
+      console.log(this.accUnits);
+    }
   }
 
   onFilter(event) {

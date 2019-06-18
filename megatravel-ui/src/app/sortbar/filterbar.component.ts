@@ -23,12 +23,14 @@ export class FilterbarComponent implements OnInit {
   //@Input() distancesCalculated:DestinationSorter[];
   @Input() accUnits:AccommodationUnit[];
   @Input() searchForm: SearchForm;
-  distancesCalculated : DestinationSorter[];
+  distancesCalculated : DestinationSorter[] = [];
   @Output() sorted = new EventEmitter<AccommodationUnit[]>();
-
+  lowestDistanceBoolean: boolean = true;
   result : AccommodationUnit[] = [];
   destination : DestinationObject = new DestinationObject();
-
+  @Output() ascdesc = new EventEmitter<boolean>();
+  @Output() catascdesc = new EventEmitter<boolean>();
+  @Output() priceascdesc = new EventEmitter<boolean>();
   constructor(private accService: AccommodationunitService, private filterPipe: DestinationFilter) { }
 
   ngOnInit() {
@@ -52,120 +54,46 @@ export class FilterbarComponent implements OnInit {
 
     if(this.lowestPriceBoolean) {
       this.lowestPriceBoolean = false;
-      this.sortedByPriceHighests();
-      this.sorted.emit(this.accUnits);
+      this.priceascdesc.emit(this.lowestPriceBoolean);
     } else {
       this.lowestPriceBoolean = true;
-      this.sortedByPriceLowest();
-      this.sorted.emit(this.accUnits);
+      this.priceascdesc.emit(this.lowestPriceBoolean);
     }
   }
 
   review() {
     if(this.lowestRatingBoolean) {
       this.lowestRatingBoolean = false;
-      this.sortedByReviewHighest();
-      this.sorted.emit(this.accUnits);
+      this.ascdesc.emit(this.lowestRatingBoolean);
     } else {
       this.lowestRatingBoolean = true;
-      this.sortedByReviewLowest();
-      this.sorted.emit(this.accUnits);
+      this.ascdesc.emit(this.lowestRatingBoolean);
     }
   }
 
   category() {
     if(this.lowestCategoryBoolean) {
       this.lowestCategoryBoolean = false;
-      this.sortedByCategoryHighest();
-      this.sorted.emit(this.accUnits);
+      this.catascdesc.emit(this.lowestCategoryBoolean);
     } else {
       this.lowestCategoryBoolean = true;
-      this.sortedByCategoryLowest();
-      this.sorted.emit(this.accUnits);
+      this.catascdesc.emit(this.lowestCategoryBoolean);
     }
   }
 
-  sortedByReviewLowest() {
-    this.accUnits.sort((a, b) => {
-      if (a.rating < b.rating ) {
-          return -1;
-      } else if (a.rating  > b.rating ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-  }
-
-  sortedByReviewHighest() {
-    this.accUnits.sort((a, b) => {
-      if (a.rating > b.rating ) {
-          return -1;
-      } else if (a.rating  < b.rating ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-  }
-
-  sortedByPriceLowest() {
-    this.accUnits.sort((a, b) => {
-      if (a.price.price < b.price.price ) {
-          return -1;
-      } else if (a.price.price  > b.price.price ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-  }
-
-  sortedByPriceHighests() {
-    this.accUnits.sort((a, b) => {
-      if (a.price.price > b.price.price ) {
-          return -1;
-      } else if (a.price.price  < b.price.price ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-  }
-
-  sortedByCategoryHighest() {
-    this.accUnits.sort((a, b) => {
-      if (a.accommodationObject.categoryId < b.accommodationObject.categoryId ) {
-          return -1;
-      } else if (a.accommodationObject.categoryId > b.accommodationObject.categoryId ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-  }
-
-  sortedByCategoryLowest() {
-    this.accUnits.sort((a, b) => {
-      if (a.accommodationObject.categoryId > b.accommodationObject.categoryId ) {
-          return -1;
-      } else if (a.accommodationObject.categoryId  < b.accommodationObject.categoryId ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-  }
-
   distance() {
-    
-    
-    
+    if(this.lowestDistanceBoolean) {
+      this.lowestDistanceBoolean = false;
+      this.distanceHighest();
+    } else {
+      this.lowestDistanceBoolean = true;
+      this.distanceLowest();
+    }
+  }
+
+  distanceLowest() {
     console.log(this.accUnits);
     console.log(this.distancesCalculated);
-
-    
-
     this.distancesCalculated.sort((a, b) => {
       if (a.distanceInkm < b.distanceInkm ) {
           return -1;
@@ -175,6 +103,8 @@ export class FilterbarComponent implements OnInit {
           return 0;
       }
     })
+
+
 
     //this.distancesCalculated = _.sortBy(this.distancesCalculated, 'distanceInkm');
 
@@ -196,5 +126,32 @@ export class FilterbarComponent implements OnInit {
   this.sorted.emit(this.accUnits);
   }
     
+  distanceHighest() {
+    this.distancesCalculated.sort((a, b) => {
+      if (a.distanceInkm > b.distanceInkm ) {
+          return -1;
+      } else if (a.distanceInkm  < b.distanceInkm ) {
+          return 1;
+      } else {
+          return 0;
+      }
+    })
+    this.result = [];
+
+    this.distancesCalculated.forEach( d => {
+      this.accUnits.forEach( a => {
+        if(d.unitId == a.id) {
+          this.result.push(a);
+          return false;
+        }
+      } )
+  })
+
+  this.accUnits = this.result;
+  console.log(this.distancesCalculated);
+  console.log(this.result);
+  console.log(this.accUnits);
+  this.sorted.emit(this.accUnits);
+  }
  
 }
