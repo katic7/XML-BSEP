@@ -4,4 +4,5 @@ export class ReservationDTO {
     price: number;
     accommodationUnitId: number;
     userId: number;
+    id: number;
 }

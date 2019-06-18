@@ -28,6 +28,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FilterPipe } from './searchpage/filter.pipe';
 import { BookpageComponent } from './bookpage/bookpage.component';
 import { DestinationFilter } from './searchpage/destinationfilter.pipe';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     FilterPipe,
     DestinationFilter,
-    BookpageComponent
+    BookpageComponent,
+    ReservationComponent
 
   ],
   imports: [

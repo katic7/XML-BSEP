@@ -2,8 +2,10 @@ package com.ftn.reservationservice.dto;
 
 import java.util.Date;
 
+import com.ftn.reservationservice.model.Reservation;
+
 public class ReservationDTO {
-	
+	private Long id;
 	private Date beginDate;
 	private Date endDate;
 	private float price;
@@ -14,13 +16,23 @@ public class ReservationDTO {
 		super();
 	}
 
-	public ReservationDTO(Date startDate, Date endDate, float price, Long accommodationUnitId, Long userId) {
+	public ReservationDTO(Long id, Date startDate, Date endDate, float price, Long accommodationUnitId, Long userId) {
 		super();
+		this.id = id;
 		this.beginDate = startDate;
 		this.endDate = endDate;
 		this.price = price;
 		this.accommodationUnitId = accommodationUnitId;
 		this.userId = userId;
+	}
+	
+	public ReservationDTO(Reservation r) {
+		this.beginDate = r.getBeginDate();
+		this.endDate = r.getEndDate();
+		this.price = (float) r.getPrice();
+		this.accommodationUnitId = r.getAccommodationUnit().getId();
+		this.userId= r.getUser().getId();
+		this.id = r.getId();
 	}
 
 	
@@ -63,6 +75,14 @@ public class ReservationDTO {
 
 	public void setBeginDate(Date beginDate) {
 		this.beginDate = beginDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

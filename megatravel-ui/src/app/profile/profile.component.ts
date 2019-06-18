@@ -4,6 +4,8 @@ import { AuthService } from '../auth/service/auth.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Rating } from '../models/Rating';
 import { ImageService } from '../services/image.service';
+import { ReservationDTO } from 'src/app/models/ReservationDTO';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,13 +17,16 @@ export class ProfileComponent implements OnInit {
   indicator : boolean;
   logged: User;
   ratting: Rating;
+  reservations : ReservationDTO[] = [];
 
-  constructor(private authService: AuthService, private router: Router, 
+  constructor(private reservationService : ReservationService, private authService: AuthService, private router: Router, 
               private imService: ImageService) { }
 
   ngOnInit() {
     this.authService.getLogged().subscribe(data=> {
       this.logged = data;
+      this.reservationService.getReservationsByUser(this.logged.id).subscribe(info => { this.reservations = info});
+      
     }, error => {
       this.router.navigate(['login']);
     })
@@ -39,6 +44,10 @@ export class ProfileComponent implements OnInit {
 
   bookings() {
     this.indicator = true;
+  }
+
+  onCancel(event) {
+    this.reservations.splice(this.reservations.indexOf(event), 1);
   }
 
 }

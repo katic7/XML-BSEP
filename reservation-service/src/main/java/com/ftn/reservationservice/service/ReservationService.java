@@ -12,4 +12,6 @@ public interface ReservationService {
 	List<AccommodationUnit> getAvailableAccUnits(String dest, Date startDate, Date endDate);
 	AccommodationUnit getOneUnit(Long id);
 	Reservation makeAReservation(Reservation reservation);
+	List<Reservation> findReservationsByUserId(Long id);
+	void deleteReservation(Long id);
 }

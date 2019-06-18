@@ -1,5 +1,6 @@
 package com.ftn.reservationservice.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +36,7 @@ public class ReservationController {
 	
 	@Autowired
 	public UserRepository userRepository;
+	
 	
 //	@GetMapping
 //	public ResponseEntity<List<Reservation>> getAllReservation() {
@@ -88,6 +91,30 @@ public class ReservationController {
 			return new ResponseEntity<Reservation>(newRes, HttpStatus.OK);
 		}
 		
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping("/byUser/{id}")
+	public ResponseEntity<List<ReservationDTO>> getReservationsByUser(@PathVariable Long id) {
+		System.out.println("usao u contr");
+		List<Reservation> res = reservationService.findReservationsByUserId(id);
+		if(res != null) {
+			List<ReservationDTO> r = new ArrayList<>();
+			for(Reservation re : res) {
+				r.add(new ReservationDTO(re));
+			}
+			return new ResponseEntity<List<ReservationDTO>>(r, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteReservation(@PathVariable Long id) {
+		if(id != null) {
+			reservationService.deleteReservation(id);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	

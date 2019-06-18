@@ -1,5 +1,7 @@
 package com.ftn.reservationservice.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +18,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	/*@Modifying	
 	@Query(value = "select * from reservation r where not((r.begin_date between ?1 and ?2) or (r.end_date between ?1 and ?2))",nativeQuery = true)	
 	List<Reservation> findReservationsInInterval(Date startDate, Date endDate);*/
+	
+	List<Reservation> findByUserId(Long id);
 
 }

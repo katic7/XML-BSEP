@@ -97,13 +97,16 @@
             
                
               </div><!--/tab-pane-->
-              <div *ngIf="indicator">
-                <h1>list of bookings</h1>
+              <div *ngIf="indicator" >
+                <!--h1>list of bookings</h1>
                 <div class="rating">
                     <h2>booking 1</h2>
                     <button class="btn btn-primary home_search_button ml-2" data-toggle="modal" data-target="#exampleModal">rate</button>
-                </div>
+                </div-->
+                <app-reservation *ngFor="let reservation of reservations" [reservation]="reservation" (cancelingReservation)="onCancel(event)" [logged]="logged"></app-reservation>
                 
+
+                <!-- MODAL -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">

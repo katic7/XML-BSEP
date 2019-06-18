@@ -40,4 +40,12 @@ export class ReservationService {
     return this.http.get("https://localhost:8083/api/reservations/getOneUnit/" + id);
   }
 
+  getReservationsByUser(id) : Observable<any> {
+    return this.http.get("https://localhost:8083/api/reservations/byUser/" + id);
+  }
+
+  cancelReservation(id) : Observable<any> {
+    return this.http.delete("https://localhost:8083/api/reservations/" + id);
+  }
+
 }
