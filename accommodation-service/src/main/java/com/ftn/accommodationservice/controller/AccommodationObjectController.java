@@ -71,7 +71,7 @@ public class AccommodationObjectController {
 	@GetMapping("/getOne/{id}")
 	public AccommodationObjectDTO getObj(@PathVariable Long id){
 		AccommodationObject acc = accommodationObjectService.getOneAccObj(id);
-		AccommodationObjectDTO accDto = new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId());
+		AccommodationObjectDTO accDto = new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddress().getId(), acc.getDescription(), acc.getCategory().getId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getType().getId());
 		return accDto;
 	}
 	
@@ -84,7 +84,7 @@ public class AccommodationObjectController {
 			svi.remove(acc);
 		}
 		for(AccommodationObject acc : svi) {
-			povratnaLista.add(new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddressId(), acc.getDescription(), acc.getCategoryId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getTypeId()));
+			povratnaLista.add(new AccommodationObjectDTO(acc.getId(),acc.getName(), acc.getAddress().getId(), acc.getDescription(), acc.getCategory().getId(), acc.isFreeCancelation(), acc.getDaysToCancel(), acc.getType().getId()));
 		}
 		
 		

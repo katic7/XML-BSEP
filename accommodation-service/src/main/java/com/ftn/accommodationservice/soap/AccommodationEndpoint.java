@@ -3,9 +3,11 @@ package com.ftn.accommodationservice.soap;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -16,17 +18,22 @@ import com.ftn.accommodationservice.model.AccommodationObject;
 import com.ftn.accommodationservice.model.AccommodationUnit;
 import com.ftn.accommodationservice.model.AdditionalService;
 import com.ftn.accommodationservice.model.Address;
+import com.ftn.accommodationservice.model.Agent;
 import com.ftn.accommodationservice.model.Category;
 import com.ftn.accommodationservice.model.Reservation;
 import com.ftn.accommodationservice.model.Type;
+import com.ftn.accommodationservice.model.User;
+import com.ftn.accommodationservice.repository.AccommodationObjectRepository;
 import com.ftn.accommodationservice.repository.AccommodationRepository;
 import com.ftn.accommodationservice.repository.AccommodationUnitPriceRepository;
 import com.ftn.accommodationservice.repository.AccommodationUnitRepository;
 import com.ftn.accommodationservice.repository.AdditionalServiceRepository;
 import com.ftn.accommodationservice.repository.AddressRepository;
+import com.ftn.accommodationservice.repository.AgentRepository;
 import com.ftn.accommodationservice.repository.CategoryRepository;
 import com.ftn.accommodationservice.repository.ReservationRepository;
 import com.ftn.accommodationservice.repository.TypeRepository;
+import com.ftn.accommodationservice.repository.UserRepository;
 import com.ftn.accommodationservice.service.AccommodationObjectService;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceRequest;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceResponse;
@@ -46,9 +53,12 @@ import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
 import com.ftn.accommodationservice.xsd.GetTypeResponse;
+import com.ftn.accommodationservice.xsd.PostAccommodationObjectRequest;
+import com.ftn.accommodationservice.xsd.PostAccommodationObjectResponse;
 import com.ftn.accommodationservice.xsd.PostAddressRequest;
 import com.ftn.accommodationservice.xsd.PostAddressResponse;
 import com.ftn.accommodationservice.xsd.Test;
+
 
 
 @Endpoint
@@ -56,6 +66,9 @@ public class AccommodationEndpoint {
 	
 	@Autowired
 	private AccommodationObjectService aoservice;
+	
+	@Autowired
+	private AccommodationObjectRepository accObjRepo;
 	
 	@Autowired
 	private AccommodationRepository aorepo;
@@ -81,7 +94,13 @@ public class AccommodationEndpoint {
 	@Autowired
 	private ReservationRepository res;
 	
-	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAccommodationObjectRequest")
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private AgentRepository agentRepository;
+	
+	/*@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAccommodationObjectRequest")
 	@ResponsePayload
 	@Transactional
 	public GetAccommodationObjectResponse getAccommodationById(@RequestPayload GetAccommodationObjectRequest request) {
@@ -104,7 +123,7 @@ public class AccommodationEndpoint {
 		
 		e.setAccommodationObject(s);
 		return e;
-	}
+	}*/
 	
 
 	
@@ -117,6 +136,37 @@ public class AccommodationEndpoint {
 		t.setName("Nemanja");
 		e.setTest(t);
 		return e;
+	}
+	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostAccommodationObjectRequest")
+	@ResponsePayload
+	@Transactional
+	public PostAccommodationObjectResponse createObject(@RequestPayload PostAccommodationObjectRequest request) {
+		
+		User usr = userRepository.getOne(request.getUserId());
+		
+		Agent agent = agentRepository.getOne(usr.getId());
+		AccommodationObject acc = new AccommodationObject();
+		Address adr = addressrepo.getOne(request.getAccommodationObject().getAddress().getId());
+		Category cat = catrepo.getOne(request.getAccommodationObject().getCategory().getId());
+		Type tip = typerepo.getOne(request.getAccommodationObject().getType().getId());
+		
+		acc.setAddress(adr);
+		acc.setCategory(cat);
+		acc.setType(tip);
+		acc.setDaysToCancel(request.getAccommodationObject().getDaysToCancel());
+		acc.setDescription(request.getAccommodationObject().getDescription());
+		acc.setName(request.getAccommodationObject().getName());
+		acc.setFreeCancelation(request.getAccommodationObject().isFreeCancelation());
+		acc = accObjRepo.save(acc);
+		
+		agent.setAccObj(acc);
+		agentRepository.save(agent);
+		
+		PostAccommodationObjectResponse response = new PostAccommodationObjectResponse();
+		response.setAccommodationObject(request.getAccommodationObject());
+		response.getAccommodationObject().setId(acc.getId());
+		return response;
 	}
 	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostAddressRequest")

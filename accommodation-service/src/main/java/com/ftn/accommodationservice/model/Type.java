@@ -8,10 +8,13 @@
 
 package com.ftn.accommodationservice.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,7 +53,8 @@ public class Type {
     protected long id;
     @XmlElement(required = true)
     protected String name;
-    
+    @OneToMany(mappedBy = "type")
+    private List<AccommodationObject> accObj;
 
     /**
      * Gets the value of the id property.
@@ -91,6 +95,14 @@ public class Type {
     public void setName(String value) {
         this.name = value;
     }
+
+	public List<AccommodationObject> getAccObj() {
+		return accObj;
+	}
+
+	public void setAccObj(List<AccommodationObject> accObj) {
+		this.accObj = accObj;
+	}
 
 	
 }

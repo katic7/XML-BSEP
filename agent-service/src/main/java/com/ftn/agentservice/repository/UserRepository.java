@@ -1,12 +1,13 @@
-package com.ftn.accommodationservice.repository;
+package com.ftn.agentservice.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ftn.accommodationservice.model.User;
+import com.ftn.agentservice.model.User;
+
+
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	//Optional<User> findByUsername(String username);
 	Optional<User> findByEmail(String email);
 }

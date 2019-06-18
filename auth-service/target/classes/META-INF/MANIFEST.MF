@@ -3,8 +3,16 @@ Built-By: ndimsic
 Build-Jdk: 12.0.1
 Implementation-Title: auth-service
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Implementation-Vendor-Id: com.ftn
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
  -starter-parent/auth-service
+=======
+Built-By: Milan
+Implementation-Vendor-Id: com.ftn
+Build-Jdk: 1.8.0_171
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/auth-service
+>>>>>>> 14f410ac5eb1fa6d45434f0bd82ae6538cf3d15e
 Created-By: Maven Integration for Eclipse
 

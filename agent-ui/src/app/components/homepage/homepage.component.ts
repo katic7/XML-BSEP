@@ -26,7 +26,6 @@ export class HomepageComponent implements OnInit {
             
           }else{
             
-            // profil od hotela
           }
         })
       }else{
@@ -34,6 +33,9 @@ export class HomepageComponent implements OnInit {
         alert("Nemate rolu agent!");
         this.router.navigate(['login']);
       }
+    }, error=>{
+      alert("Morate biti ulogovani!")
+      this.router.navigate(['login']);
     });
   }
 
