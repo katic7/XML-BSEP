@@ -16,7 +16,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -75,22 +77,25 @@ public class AccommodationObject {
     protected long id;
     @XmlElement(required = true)
     protected String name;
-    @XmlElement(required = true)    
-    protected Long addressId;
+    @XmlElement(required = true) 
+    @OneToOne
+    protected Address address;
     @XmlElement(required = true)
     protected String description;
     @XmlElement(required = true)
-    protected Long categoryId;
+    @ManyToOne
+    protected Category category;
     protected boolean freeCancelation;
     @XmlElement(required = true)
     protected BigInteger daysToCancel;
-    @XmlElement(required = true)    
-    protected Long typeId;
+    @XmlElement(required = true)  
+    @ManyToOne
+    protected Type type;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AccommodationUnit> accommodationsUnitList;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AdditionalService> additionalServices;
-
+    
     /**
      * Gets the value of the id property.
      * 
@@ -132,30 +137,6 @@ public class AccommodationObject {
     }
 
     /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Address }
-     *     
-     */
-    public Long getAddressId() {
-        return addressId;
-    }
-
-    /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Address }
-     *     
-     */
-    public void setAddressId(Long value) {
-        this.addressId = value;
-    }
-
-    /**
      * Gets the value of the description property.
      * 
      * @return
@@ -187,8 +168,8 @@ public class AccommodationObject {
      *     {@link Category }
      *     
      */
-    public Long getCategoryId() {
-        return categoryId;
+    public Category getCategoryId() {
+        return category;
     }
 
     /**
@@ -199,8 +180,8 @@ public class AccommodationObject {
      *     {@link Category }
      *     
      */
-    public void setCategoryId(Long value) {
-        this.categoryId = value;
+    public void setCategoryId(Category value) {
+        this.category = value;
     }
 
     /**
@@ -251,8 +232,8 @@ public class AccommodationObject {
      *     {@link Type }
      *     
      */
-    public Long getTypeId() {
-        return typeId;
+    public Type getTypeId() {
+        return type;
     }
 
     /**
@@ -263,8 +244,8 @@ public class AccommodationObject {
      *     {@link Type }
      *     
      */
-    public void setTypeId(Long value) {
-        this.typeId = value;
+    public void setTypeId(Type value) {
+        this.type = value;
     }
 
     /**
@@ -335,4 +316,30 @@ public class AccommodationObject {
 		this.additionalServices = additionalServices;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	
+	
 }

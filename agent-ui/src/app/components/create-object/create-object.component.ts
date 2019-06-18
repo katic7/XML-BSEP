@@ -6,6 +6,10 @@ import { FormControl } from '@angular/forms';
 import { strictEqual } from 'assert';
 import { stringify } from '@angular/core/src/util';
 import { CreateObjectService } from './services/create-object.service';
+import { HttpRequest } from '@angular/common/http';
+import { AuthService } from '../auth/service/auth.service';
+import { User } from 'src/app/models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-object',
@@ -19,28 +23,38 @@ export class CreateObjectComponent implements OnInit {
   kat : FormControl = new FormControl("");
   tip : FormControl = new FormControl("");
   adr : string;
+  logged : User;
 
-  constructor(private createService : CreateObjectService) { }
+  constructor(private createService : CreateObjectService, private authService: AuthService, private router : Router) { }
 
   ngOnInit() {
+
+    this.authService.getLogged().subscribe(data=>{
+      this.logged = data;
+    },error=>{
+      alert("Morate biti ulogovani!")
+      this.router.navigate(['login']);
+    });
   }
 
   onSubmit(){
-    if(this.accObj.freeCancelation == undefined){
-      this.accObj.freeCancelation = false;
+    if(this.accObj.freeCacelation == undefined){
+      this.accObj.freeCacelation = false;
     }
     this.accObj.typeId = this.tip.value;
-    alert(this.accObj.typeId)
-    alert(this.accObj.freeCancelation);
+    this.accObj.categoryId = this.kat.value;
+    alert(this.accObj.freeCacelation);
     alert
     this.adr = this.address.street.replace(" ", "+");
     this.adr = this.adr + '+' +this.address.streetNumber;
-   /* this.createService.getLocation(this.adr).subscribe(data=>{
+    this.createService.getLocation(this.adr).subscribe(data=>{
       this.address.longitude = data[0].lon;
       this.address.latitude = data[0].lat;
       this.createService.createAddress(this.address).subscribe(data=>{
         this.accObj.addressId = data.id;
+        this.createService.createObject(this.accObj).subscribe();
       });
-    });*/
+    });  
+  
   }
 }

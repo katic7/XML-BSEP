@@ -117,7 +117,7 @@ insert into type (id, name) values (1, 'hotel');
 insert into type (id, name) values (2, 'motel');
 insert into type (id, name) values (3, 'hostel');
 
---accommodation_object
+/*--accommodation_object
 insert into accommodation_object (id, address_id, category_id, days_to_cancel, description, free_cancelation, name, type_id) values (1, 1, 5, 3, 'Description of hotel 1', 0, 'Hotel 1', 1);
 insert into accommodation_object (id, address_id, category_id, days_to_cancel, description, free_cancelation, name, type_id) values (2, 2, 5, 3, 'Description of hotel 2', 1, 'Hotel 2', 1);
 insert into accommodation_object (id, address_id, category_id, days_to_cancel, description, free_cancelation, name, type_id) values (3, 3, 5, 3, 'Description of hotel 3', 1, 'Hotel 3', 1);
@@ -150,5 +150,5 @@ insert into accommodation_unit_additional_services (accommodation_unit_id, addit
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (1, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 1, 1);
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (2, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 2, 2);
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (3, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 3, 2);
-
+*/
 

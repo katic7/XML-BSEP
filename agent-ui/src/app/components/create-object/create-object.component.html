@@ -19,7 +19,7 @@
       </mat-select>
     </mat-form-field>
   <br/>
-  <mat-checkbox [(ngModel)]="accObj.freeCancelation" name="canc" id="canc">Free cacnelation</mat-checkbox>
+  <mat-checkbox [(ngModel)]="accObj.freeCacelation" name="canc" id="canc">Free cacnelation</mat-checkbox>
   <br/>
   <mat-form-field>
     <input matInput type="number" min="0" [(ngModel)]="accObj.daystoCancel" name="day" id="day" placeholder="Days to cancel">
@@ -28,7 +28,7 @@
   <br/>
   <mat-form-field>
       <mat-label>Select type of object</mat-label>
-      <mat-select [(value)]="selected" [(formControl)] ="tip">
+      <mat-select  [(formControl)] ="tip">
         <mat-option value="1">Hotel</mat-option>
         <mat-option value="2">Motel</mat-option>
         <mat-option value="3">Hostel</mat-option>

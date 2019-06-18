@@ -8,10 +8,13 @@
 
 package com.ftn.agentservice.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,8 +53,9 @@ public class Category {
     protected long id;
     @XmlElement(required = true)
     protected String name;
+    @OneToMany(mappedBy = "category")
+    private List<AccommodationObject> accObj;
     
-
     /**
      * Gets the value of the id property.
      * 
@@ -92,8 +96,16 @@ public class Category {
         this.name = value;
     }
 
-	
+	public List<AccommodationObject> getAccObj() {
+		return accObj;
+	}
 
+	public void setAccObj(List<AccommodationObject> accObj) {
+		this.accObj = accObj;
+	}
+
+	
+    
 	
 
 }
