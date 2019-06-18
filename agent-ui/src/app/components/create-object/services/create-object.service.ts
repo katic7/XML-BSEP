@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Address } from 'src/app/models/Address';
 import { Observable } from 'rxjs';
+import { AccommodationObject } from 'src/app/models/AccommodationObject';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,7 @@ export class CreateObjectService {
     return this.http.post('https://localhost:8091/api/accommodations/createAddress',adr);
   }
 
+  createObject(accObj: AccommodationObject) : Observable<any>{
+    return this.http.post('https://localhost:8091/api/accommodations/createAccObject', accObj);
+  }
 }

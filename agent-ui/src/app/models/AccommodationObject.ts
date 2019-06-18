@@ -5,7 +5,7 @@ export class AccommodationObject {
     addressId:number;
     description:string;
     categoryId:number;
-    freeCancelation:boolean;
+    freeCacelation:boolean;
     daystoCancel:number;
     typeId:number;
     

@@ -7,6 +7,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import com.ftn.accommodationservice.xsd.AccommodationUnit;
 import com.ftn.accommodationservice.xsd.Address;
+import com.ftn.accommodationservice.xsd.Category;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceRequest;
 import com.ftn.accommodationservice.xsd.GetAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.GetAccommodationObjectRequest;
@@ -29,8 +30,14 @@ import com.ftn.accommodationservice.xsd.PostAccommodationObjectRequest;
 import com.ftn.accommodationservice.xsd.PostAccommodationObjectResponse;
 import com.ftn.accommodationservice.xsd.PostAddressRequest;
 import com.ftn.accommodationservice.xsd.PostAddressResponse;
+import com.ftn.accommodationservice.xsd.Type;
+import com.ftn.agentservice.dto.AccommodationObjectDTO;
 import com.ftn.agentservice.model.AccommodationObject;
+import com.ftn.agentservice.model.User;
+import com.ftn.agentservice.repository.AccommodationObjectRepository;
 import com.ftn.agentservice.repository.AddressRepository;
+import com.ftn.agentservice.repository.CategoryRepository;
+import com.ftn.agentservice.repository.TypeRepository;
 
 public class AccommodationClient extends WebServiceGatewaySupport  {
 
@@ -39,6 +46,15 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	@Autowired
 	private AddressRepository addressRepo;
 
+	@Autowired
+	private TypeRepository typeRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private AccommodationObjectRepository accObjRepo;
+	
 	public GetAccommodationObjectResponse getAccommodation(Long id) {
 		GetAccommodationObjectRequest request = new GetAccommodationObjectRequest();
 		request.setId(id);
@@ -94,12 +110,53 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		return (GetAccommodationUnitResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	
-	/*public PostAccommodationObjectResponse createAccObject(com.ftn.accommodationservice.xsd.AccommodationObject acc) {
+	public PostAccommodationObjectResponse createAccObject(AccommodationObjectDTO acc, User usr) {
+		System.out.println(acc.getName() + "NAMEEE");
+		com.ftn.accommodationservice.xsd.AccommodationObject aco = new com.ftn.accommodationservice.xsd.AccommodationObject();
 		PostAccommodationObjectRequest request = new PostAccommodationObjectRequest();
-		request.setAccommodationObject(acc);
+		request.setAccommodationObject(aco);
+		request.getAccommodationObject().setName(acc.getName());
+		request.getAccommodationObject().setDescription(acc.getDescription());
+		request.getAccommodationObject().setFreeCancelation(acc.isFreeCacelation());
+		request.getAccommodationObject().setDaysToCancel(acc.getDaystoCancel());
+		request.setUserId(usr.getId());
+		
+		Type tip = new Type();
+		com.ftn.agentservice.model.Type type = typeRepository.getOne(acc.getTypeId());
+		tip.setId(acc.getTypeId());
+		tip.setName(type.getName());
+		
+		Category cat = new Category();
+		com.ftn.agentservice.model.Category kateg = categoryRepository.getOne(acc.getCategoryId());
+		cat.setId(acc.getCategoryId());
+		cat.setName(kateg.getName());
+		
+		Address adr = new Address();
+		com.ftn.agentservice.model.Address address = addressRepo.getOne(acc.getAddressId());
+		adr.setId(address.getId());
+		adr.setLatitude(address.getLatitude());
+		adr.setLongitude(address.getLongitude());
+		adr.setPostalCode(address.getPostalCode());
+		adr.setStreet(address.getStreet());
+		adr.setStreetNumber(address.getStreetNumber());
+		adr.setTown(address.getTown());
+		
+		request.getAccommodationObject().setAddress(adr);
+		request.getAccommodationObject().setCategory(cat);
+		request.getAccommodationObject().setType(tip);
+		
 		AccommodationObject accObj = new AccommodationObject();
-		accObj.setAddressId(acc.get);
-	}*/
+		accObj.setAddress(address);
+		accObj.setCategoryId(kateg);
+		accObj.setTypeId(type);
+		accObj.setName(acc.getName());
+		accObj.setDescription(acc.getDescription());
+		System.out.println(acc.isFreeCacelation() + "ADSADSD");
+		accObj.setFreeCancelation(acc.isFreeCacelation());
+		accObj.setDaysToCancel(acc.getDaystoCancel());
+		accObjRepo.save(accObj);
+		return (PostAccommodationObjectResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
 	
 	public PostAddressResponse createAddress(Address adr) {
 		PostAddressRequest request = new PostAddressRequest();
