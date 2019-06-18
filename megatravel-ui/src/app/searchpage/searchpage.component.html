@@ -2,7 +2,7 @@
     <app-navigation></app-navigation>
 </div>
 
-<div class="header">
+<div class="headerinfo">
     <h3>{{ searchForm.destination }}: {{accUnits.length}} properties found</h3>
 </div>
 
@@ -11,14 +11,14 @@
         <app-sidesearchform [searchForm]="searchForm"></app-sidesearchform>
     </div>
     <div class="sidefiltersection">
-        <app-filtersection (click)="sranje()" [accUnits]="accUnits"  (sorted)="onFilter($event)" (ret)="onDistance($event)"></app-filtersection>
+        <app-filtersection  [accUnits]="accUnits"  (sorted)="onFilter($event)" (ret)="onDistance($event)"></app-filtersection>
     </div>
     
 </div>
 
 <div class="main-container">
     <div class="filterbar"> 
-        <app-filterbar [searchForm]="searchForm" [accUnits]="accUnits"  (sorted)="onSorted($event)"></app-filterbar>
+        <app-filterbar [searchForm]="searchForm" [accUnits]="accUnits"  (sorted)="onSorted($event)" (ascdesc)="onRating($event)" (catascdesc)="onCategory($event)" (priceascdesc)="onPrice($event)"></app-filterbar>
     </div>
     
     <div class="searchobject">
@@ -30,7 +30,47 @@
         <p style="font-size: 20px; color: white">Loading...</p>
         </ngx-spinner>
         <div *ngFor="let accUnit of accUnits | filter: listToFilter | destinationfilter: destination:listaAdresa:distArray">
-            <app-searchobject [searchForm]="searchForm" [accUnit]="accUnit"></app-searchobject>
+            <div class="searchobjectu">
+                <div class="image">
+                  <img src="assets/bg_2.jpg" alt="">
+                </div>
+                <div class="header">
+                  <h1>{{accUnit.accommodationObject.name}}</h1>
+                  <!--<p>{{address.street}} {{address.streetNumber}}, {{address.town}}</p>-->
+              
+                  <div class="informations">
+                    <p>
+                      Object informations: {{accUnit.accommodationObject.description}}
+                    </p>
+                    <p>
+                      Unit informations: {{accUnit.description}}
+                    </p>
+                    <p>
+                      Additional services:
+                      <b *ngFor="let additionalService of accUnit.additionalServices">{{additionalService.name}} </b>
+                    </p>
+                  </div>
+                </div>
+                <div class="rightside">
+              
+                  <div class="rating">
+                    <p>Rating:<b>{{accUnit.rating}}</b> </p>  
+                    <p>Number of reviews</p>
+                
+                    <div class="price">
+                      <p>Price for {{difference}} nights:</p>
+                      <p><b>EUR {{accUnit.price.price * difference}}</b></p>
+                    </div>
+                
+                    <div class="availability">
+                      <button (click)="makeAReservation(accUnit)">See Availability</button>
+                    </div>
+                
+                  </div>
+              
+                </div>
+              </div>
+            <!--<app-searchobject [searchForm]="searchForm" [accUnit]="accUnit"></app-searchobject>-->
         </div>
     </div>
 </div>

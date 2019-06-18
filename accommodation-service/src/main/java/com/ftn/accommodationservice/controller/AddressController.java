@@ -71,7 +71,7 @@ public class AddressController {
 	}
 	
 	@GetMapping("/test3")
-	@PreAuthorize("hasAuthority('BlockComments')")
+	@PreAuthorize("hasAuthority('CREATE')")
 	public String test3() {
 		return "test3";
 	}
