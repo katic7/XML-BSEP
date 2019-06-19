@@ -21,6 +21,8 @@ IF EXIST bezbednost.crt DEL /F bezbednost.crt
 IF EXIST bezbednost.jks DEL /F bezbednost.jks
 IF EXIST agentui.crt DEL /F agentui.crt
 IF EXIST agentui.jks DEL /F agentui.jks
+IF EXIST administratorui.jks DEL /F administratorui.jks
+IF EXIST administratorui.crt DEL /F administratorui.crt
 
 echo Generating keystores...
 
@@ -186,6 +188,10 @@ IF EXIST agent.crt DEL /F agent.crt
 IF EXIST bezbednostui.crt DEL /F bezbednostui.crt
 IF EXIST bezbednost.crt DEL /F bezbednost.crt
 IF EXIST bezbednost.jks DEL /F bezbednost.jks
+IF EXIST agentui.crt DEL /F agentui.crt
+IF EXIST agentui.jks DEL /F agentui.jks
+IF EXIST administratorui.jks DEL /F administratorui.jks
+IF EXIST administratorui.crt DEL /F administratorui.crt
 
 
 
