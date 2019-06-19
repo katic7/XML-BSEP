@@ -33,7 +33,7 @@ export class ReservationService {
   }
 
   makeAReservation(info : ReservationDTO) : Observable<any> {
-    return this.http.post("https://localhost:8083/api/reservations", info);
+    return this.http.post("https://localhost:8081/reservationservice/api/reservations", info);
   }
 
   getOneUnit(id) : Observable<any> {
@@ -41,7 +41,7 @@ export class ReservationService {
   }
 
   getReservationsByUser(id) : Observable<any> {
-    return this.http.get("https://localhost:8083/api/reservations/byUser/" + id);
+    return this.http.get("https://localhost:8081/reservationservice/api/reservations/byUser/" + id);
   }
 
   cancelReservation(id) : Observable<any> {

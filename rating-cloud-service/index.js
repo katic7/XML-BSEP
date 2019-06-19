@@ -1,6 +1,6 @@
 const connection = require('./database')
 
-import('@google/cloud-debug');
+
 exports.newRating = function newRating(req, res) {
     let userID = req.body.userID;
     let comment = req.body.comment;
@@ -14,7 +14,7 @@ exports.newRating = function newRating(req, res) {
 
 
 
-import('@google/cloud-debug');
+
 exports.getAllRatings = function getAllRatings(req, res) {
     connection.query("select * from ratings", (err, result)=> {
 	if (err) res.status(400).send(err);
@@ -22,7 +22,7 @@ exports.getAllRatings = function getAllRatings(req, res) {
     });
 };
 
-import('@google/cloud-debug');
+
 exports.getSpecificRating = function getSpecificRating(req, res) {
     connection.query("select id, userID, comment, rating, accommodationID, published from ratings where id="+req.query.id,
 	(err, result)=> {
@@ -33,7 +33,7 @@ exports.getSpecificRating = function getSpecificRating(req, res) {
 	});
 };
 
-import('@google/cloud-debug');
+
 exports.getRatingsFromSpecificAcc = function getRatingsFromSpecificAcc(req, res) {
     connection.query("select * from ratings where accommodationID="+req.query.accommodationID,
 	(err, result)=> {
@@ -44,7 +44,7 @@ exports.getRatingsFromSpecificAcc = function getRatingsFromSpecificAcc(req, res)
 	});
 };
 
-import('@google/cloud-debug');
+
 exports.getRatingScore = function getRatingScore(req, res) {
     connection.query("select avg(rating) as ratingScore from ratings where accommodationID="+req.query.id,
 	(err, result)=> {
@@ -55,7 +55,7 @@ exports.getRatingScore = function getRatingScore(req, res) {
 	});
 };
 
-import('@google/cloud-debug');
+
 exports.publishComment = function publishComment(req, res) {
     let flag = req.body.flag;
     let id = req.body.id;
@@ -69,7 +69,7 @@ exports.publishComment = function publishComment(req, res) {
 	});
 };
 
-import('@google/cloud-debug');
+
 exports.getUnpublishedComments = function getUnpublishedComments(req, res) {
     connection.query("select * from ratings where published=false",
 	(err, result)=> {
@@ -81,7 +81,7 @@ exports.getUnpublishedComments = function getUnpublishedComments(req, res) {
 };
 
 
-import('@google/cloud-debug');
+
 exports.getPublishedComments = function getPublishedComments(req, res) {
     connection.query("select * from ratings where published=true",
 	(err, result)=> {
@@ -92,7 +92,7 @@ exports.getPublishedComments = function getPublishedComments(req, res) {
 	});
 };
 
-import('@google/cloud-debug');
+
 exports.getPublishedCommentsOfAccommodation = function getPublishedCommentsOfAccommodation(req, res) {
     connection.query("select * from ratings where published=true and accommodationID="+req.query.accommodationID,
 	(err, result)=> {
@@ -101,6 +101,10 @@ exports.getPublishedCommentsOfAccommodation = function getPublishedCommentsOfAcc
 		res.status(200).send(result);
 	    }
 	});
+};
+
+exports.helloWorld = (req, res) => {
+  res.send('Hello, World');
 };
 
 

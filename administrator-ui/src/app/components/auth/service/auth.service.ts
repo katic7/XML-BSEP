@@ -8,11 +8,11 @@ import { JWTAuth } from '../response/jwt-auth';
 
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
 
-const authUrl = "http://localhost:8085/api/auth/"
+const authUrl = "https://localhost:8085/api/auth/"
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +31,11 @@ export class AuthService {
   }
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JWTAuth> {
-    return this.http.post<JWTAuth>(this.loginUrl, credentials, httpOptions);
+    return this.http.post<JWTAuth>(this.loginUrl, credentials);
   }
 
   signUp(info: SignUpInfo): Observable<any> {
-    return this.http.post<string>(this.signupUrl, info, httpOptions);
+    return this.http.post<string>(this.signupUrl, info);
   }
 
   checkEmail(email: String) :Observable<any> {

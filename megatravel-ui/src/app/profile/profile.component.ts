@@ -31,11 +31,11 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['login']);
     })
  
-    this.imService.getProfilePicture().subscribe(data => {
+    /*this.imService.getProfilePicture().subscribe(data => {
       this.imbyte = data;
     }, error => {
 
-    })
+    })*/
   }
 
   dashboard() {

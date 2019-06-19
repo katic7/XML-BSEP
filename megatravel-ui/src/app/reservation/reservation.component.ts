@@ -34,18 +34,20 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.reservation);
-    this.todaysDate = this.pipe.transform(this.todaysDate, "yyyy-MM-dd");
+    this.todaysDate = new Date(this.pipe.transform(this.todaysDate, "yyyy-MM-dd"));
     this.reservation.beginDate = this.pipe.transform(this.reservation.beginDate, "yyyy-MM-dd");
     this.reservation.endDate = this.pipe.transform(this.reservation.endDate, "yyyy-MM-dd");
 
-    if(this.todaysDate < this.reservation.beginDate) {
+    if(this.todaysDate < new Date(this.reservation.beginDate)) {
       this.indicator = true;      
     }
     console.log(this.indicator);
 
-    this.accommodationUnitService.getOne(this.reservation.accommodationUnitId).subscribe(data => { this.accUnit = data; console.log(data);
+    this.reservationService.getOneUnit(this.reservation.accommodationUnitId).subscribe(data2 => { this.accUnit = data2; console.log(data2);
       this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
      }); 
+
+    console.log(this.accUnit);
   }
 
 }

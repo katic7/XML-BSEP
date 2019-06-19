@@ -52,7 +52,6 @@ public class ReservationController {
 		return "test";
 	}
 	
-	@PreAuthorize("hasAuthority('GetAccUnit')")
 	@GetMapping("/getOneUnit/{id}")
 	public ResponseEntity<AccommodationUnit> getOneAccUnit(@PathVariable Long id) {
 		AccommodationUnit acu = reservationService.getOneUnit(id);

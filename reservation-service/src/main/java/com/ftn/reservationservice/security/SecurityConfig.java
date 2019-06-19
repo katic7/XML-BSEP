@@ -46,11 +46,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/api/reservations/getfreeunits").permitAll()
 		.antMatchers("/api/reservations/*").permitAll()
 		.antMatchers("/api/addresses/*").permitAll()
-    	.antMatchers("/api/addresses/test3").permitAll();
-		//.anyRequest().authenticated().and()
+    	.antMatchers("/api/addresses/test3").permitAll()
+    	.antMatchers("/api/reservations/getOneUnit/*").permitAll()
+		.anyRequest().authenticated().and()
 		
 		
-		//.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	http.csrf().disable();
     	
        /* http

@@ -52,7 +52,6 @@ public class AccommodationController {
 		return "nemanjica";
 	}
 	
-	@PreAuthorize("hasAuthority('AddPrice')")
 	@GetMapping("/allAdditionalServices")
 	public List<AdditionalService> getAllAdditionalServices(){
 		GetAllAdditionalServiceResponse as = client.getAllAdditionalServiceResponse();

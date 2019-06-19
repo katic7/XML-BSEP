@@ -14,7 +14,6 @@ public class Permission {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NaturalId
 	private String name;
 
 	public Permission() {

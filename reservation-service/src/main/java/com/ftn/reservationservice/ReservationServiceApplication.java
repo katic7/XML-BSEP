@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+
 import com.netflix.discovery.DiscoveryClient;
 import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.EurekaJerseyClientBuilder;
 
@@ -30,7 +31,7 @@ public class ReservationServiceApplication {
 	    args.setEurekaJerseyClient(builder.build());
 	    return args;
 	}
-	
+		
 	 @Bean
 	 public RestTemplate template() throws Exception{
 		 RestTemplate template = new RestTemplate();

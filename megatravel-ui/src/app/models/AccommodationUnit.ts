@@ -14,3 +14,4 @@ export class AccommodationUnit {
     public additionalServices : AdditionalService[];
     public image : string;
 }
+

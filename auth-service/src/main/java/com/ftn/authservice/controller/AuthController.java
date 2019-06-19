@@ -223,7 +223,7 @@ public class AuthController {
             return new ResponseEntity<>("Fail -> No email found. Register first",
                      HttpStatus.BAD_REQUEST);
        } 
-    	   return new ResponseEntity<User>(loginUser, HttpStatus.OK);	
+    	   return new ResponseEntity<UserDTO>(new UserDTO(loginUser), HttpStatus.OK);	
     }
     
     @GetMapping("/validEmail/{email}")
@@ -241,7 +241,7 @@ public class AuthController {
     	System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
     	if(userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).isPresent()) {
     		User logged = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
-    		return new ResponseEntity<User>(logged, HttpStatus.OK);
+    		return new ResponseEntity<UserDTO>(new UserDTO(logged), HttpStatus.OK);
     	} else {
     		 return new ResponseEntity<>("Fail ->No logged user",
                      HttpStatus.BAD_REQUEST);

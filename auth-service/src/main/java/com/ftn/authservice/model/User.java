@@ -44,12 +44,10 @@ public class User {
 	
 	protected Long addressId;	
 	
-	@Column(unique = true)
 	private String email;
 	
 	private String password;
 	
-	@Column(name = "enabled")
 	private boolean enabled;
 	
 	private boolean nonLocked;
@@ -79,8 +77,8 @@ public class User {
 		this.addressId = address;
 		this.email = email;
 		this.password = password;
-		this.enabled = true;
-		this.nonLocked = true;
+		//this.enabled = true;
+		//this.nonLocked = true;
 		this.roles = roles;
 	}
 

@@ -34,6 +34,7 @@ zuul:
       serviceId: agent-service
     authservice:
        serviceId: auth-service
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   host:
     socket-timeout-millis: 30000
   sslHostnameValidationEnabled: false
