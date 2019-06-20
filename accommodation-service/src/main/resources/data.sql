@@ -40,9 +40,9 @@ values (1, 'Nemanja', 'Dime', 4,'nemanja@gmail.com', 1, '$2a$10$tlHY4ACO1oM5KR5e
 insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
 values (2, 'Velja', 'Veljkovic', 3,'dimsic@gmail.com', 1, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1996-08-09', '0214750252');
 insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
-values (3, 'User', 'Useric', 3,'user@gmail.com', 1, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1996-08-09', '03343425152');
+values (3, 'User', 'Useric', 3,'user@gmail.com', 0, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1996-08-09', '03343425152');
 insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
-values (4, 'Agent', 'Tajni', 3,'agent@gmail.com', 1, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1997-08-09', '0313355052');
+values (4, 'Agent', 'Tajni', 3,'agent@gmail.com', 0, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1997-08-09', '0313355052');
 
 -- role-permissions
 insert into role_permissions (permission_id, role_id) values (1, 4);

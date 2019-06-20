@@ -62,9 +62,9 @@
           <td>{{agent.enabled}}</td>
           <td>{{!agent.nonLocked}}</td>
           <td>{{agent.accObj.name}}</td>
-          <td><button (click)="ActivateUser(user)" type="button" [disabled]="user.enabled" class="btn btn-outline-success">Activate</button></td>
-          <td><button (click)="BlockUser(user)" type="button" [disabled]="!user.nonLocked" class="btn btn-outline-warning">Block</button></td>
-          <td><button (click)="DeleteUser(user)" type="button" class="btn btn-outline-danger">Delete</button></td>
+          <td><button (click)="ActivateUser(agent)" type="button" [disabled]="agent.enabled" class="btn btn-outline-success">Activate</button></td>
+          <td><button (click)="BlockUser(agent)" type="button" [disabled]="!agent.nonLocked" class="btn btn-outline-warning">Block</button></td>
+          <td><button (click)="DeleteAgent(agent)" type="button" class="btn btn-outline-danger">Delete</button></td>
           </tr>
       </tbody>
   </table>

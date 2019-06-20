@@ -57,6 +57,15 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  DeleteAgent(user){
+    this.userService.deleteUser(user.id).subscribe(data => {});
+    const index: number = this.agents.indexOf(user);
+    if (index !== -1) {
+        alert("usao");
+        this.agents.splice(index, 1);
+    }
+  }
+
   
   open(content,usrrr_id) {
     this.modalService.open(content, { centered: true });
