@@ -32,7 +32,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 									HttpServletResponse response, 
 									FilterChain filterChain) throws ServletException, IOException {
 		String jwt = getJwtFromRequest(request);
-
+		if(JwtBlackList.lista.contains(jwt)) {
+			SecurityContextHolder.clearContext();
+			return;
+		}
+		
 		if (StringUtils.hasText(jwt)) {
 			try {
 				UserDetails details = tokenProvider.getUserPrincipal(jwt);

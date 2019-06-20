@@ -11,10 +11,10 @@
             <tr>
             <th>CommentID</th>
             <th>UserID</th>
-            <th>AccUnitID</th>
-            <th>Text</th>
-            <th>Date</th>
-            <th>Visible</th>
+            <th>Comment</th>
+            <th>Rating</th>
+            <th>AccommodationID</th>
+            <th>Published</th>
             <th></th>
             </tr>
         </thead>
@@ -22,10 +22,10 @@
             <tr *ngFor="let comment of comments">
             <td>{{comment.id}}</td>
             <td>{{comment.userID}}</td>
-            <td>{{comment.accommodationUnitID}}</td>
-            <td>{{comment.text}}</td>
-            <td>{{comment.commentDate}}</td>
-            <td>{{comment.visible}}</td>
+            <td>{{comment.comment}}</td>
+            <td>{{comment.rating}}</td>
+            <td>{{comment.accommodationID}}</td>
+            <td>{{comment.published}}</td>
             <td><button (click)="Publish(comment)" type="button" class="btn btn-outline-success">Publish</button></td>
             </tr>
         </tbody>

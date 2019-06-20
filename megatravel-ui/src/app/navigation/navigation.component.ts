@@ -30,7 +30,10 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
+    this.authService.logout().subscribe(data =>{
+
+    });
     sessionStorage.clear();
-    window.location.reload();
+    this.router.navigate(['/login']);
   }
 }

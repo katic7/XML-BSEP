@@ -1,17 +1,17 @@
 export class Comment {
-
+    /*
     constructor(public id:number,
                 public userID:number,
-                public accommodationUnitID:number,
-                public text:string,
-                public commentDate:string,
-                public visible:boolean) {} 
+                public comment:string,
+                public rating:number,
+                public accommodationID:number,
+                public published:boolean) {} */
 
-    /*id:number;
+    id:number;
     userID:number;
-    accommodationUnitID:number;
-    text:string;
-    date:string;
-    visible:boolean;         */   
+    comment:string;
+    rating:number;
+    accommodationID:number;
+    published:boolean;         
 
 }

@@ -18,15 +18,16 @@ export class NavigationComponent implements OnInit {
     this.getLoggedUser();
   }
 
+  /*
   getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       this.logged = data;
     }, error => {
       this.logged = null;
     })
-  }
+  }*/
 
-  /*
+  
   getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       if(data != null) {
@@ -38,15 +39,18 @@ export class NavigationComponent implements OnInit {
       this.router.navigate(['/login']);
       })
   }
-  */
+  
 
   gotoProfile() {
     this.router.navigate(['profile']);
   }
 
   logout() {
+    this.authService.logout().subscribe(data =>{
+
+    });
     sessionStorage.clear();
-    window.location.reload();
+    this.router.navigate(['/login']);
   }
 
 }

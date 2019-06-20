@@ -19,6 +19,7 @@ export class HomepageComponent implements OnInit {
   }
 
   
+  /*
   getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       this.logged = data;
@@ -26,9 +27,9 @@ export class HomepageComponent implements OnInit {
       this.logged = null;
     })
   }
-  
+  */
 
-  /*getLoggedUser() {
+  getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       if(data != null) {
         this.logged = data;
@@ -38,7 +39,7 @@ export class HomepageComponent implements OnInit {
     }, error => {
       this.router.navigate(['/login']);
       })
-  }*/
+  }
   
 
   gotoProfile() {
@@ -46,8 +47,11 @@ export class HomepageComponent implements OnInit {
   }
 
   logout() {
+    this.authService.logout().subscribe(data =>{
+
+    });
     sessionStorage.clear();
-    window.location.reload();
+    this.router.navigate(['/login']);
   }
 
 }

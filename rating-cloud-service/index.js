@@ -62,8 +62,10 @@ exports.publishComment = function publishComment(req, res) {
     
     connection.query("UPDATE `ratings` SET `published` = "+flag+" where id = "+id,
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
+		res.set('Access-Control-Allow-Origin', "*")
+		res.set('Access-Control-Allow-Methods', 'GET, POST')
 		res.status(200).send("Successfully updated");
 	    }
 	});

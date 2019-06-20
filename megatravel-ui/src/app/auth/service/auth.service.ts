@@ -8,9 +8,9 @@ import { JWTAuth } from '../response/jwt-auth';
 
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
 
 const authUrl = "https://localhost:8085/api/auth/"
 
@@ -26,16 +26,17 @@ export class AuthService {
   private getLoggedUrl = authUrl + 'getLogged';
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
+  private logoutUrl = authUrl + 'signout/';
 
   constructor(private http: HttpClient) {
   }
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JWTAuth> {
-    return this.http.post<JWTAuth>(this.loginUrl, credentials, httpOptions);
+    return this.http.post<JWTAuth>(this.loginUrl, credentials);
   }
 
   signUp(info: SignUpInfo): Observable<any> {
-    return this.http.post<string>(this.signupUrl, info, httpOptions);
+    return this.http.post<string>(this.signupUrl, info);
   }
 
   checkEmail(email: String) :Observable<any> {
@@ -52,6 +53,10 @@ export class AuthService {
 
   confirmUser(token: String) :Observable<any> {
     return this.http.get(this.confirmUserUrl+token);
+  }
+
+  logout() :Observable<any> {
+    return this.http.get(this.logoutUrl);
   }
 
 }

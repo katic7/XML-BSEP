@@ -31,6 +31,7 @@ export class UsersComponent implements OnInit {
   usr_id :number;
   agent_user : CreateAgent = new CreateAgent();
   agents : Agent[] = [];
+  logged: User;
 
   ActivateUser(user){
     this.acU = new ActivateUser(user.id, true, "ACTIVATE");
@@ -108,11 +109,13 @@ export class UsersComponent implements OnInit {
     });
     this.accObjectService.getAccObjects().subscribe(data=>{
       this.accommodationObjects = data;
-    })
-
+    });
     this.agentService.getAll().subscribe(data=>{
       this.agents = data;
-    })
+    });
+    this.authService.getLogged().subscribe(data => {
+      this.logged = data;
+    });
   }
 
  

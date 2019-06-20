@@ -26,6 +26,7 @@ export class AuthService {
   private getLoggedUrl = authUrl + 'getLogged';
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
+  private logoutUrl = authUrl + 'signout/';
 
   constructor(private http: HttpClient) {
   }
@@ -52,6 +53,10 @@ export class AuthService {
 
   confirmUser(token: String) :Observable<any> {
     return this.http.get(this.confirmUserUrl+token);
+  }
+
+  logout() :Observable<any> {
+    return this.http.get(this.logoutUrl);
   }
 
 }

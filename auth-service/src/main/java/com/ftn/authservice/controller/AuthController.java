@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -42,6 +43,7 @@ import com.ftn.authservice.dto.ProfileDto;
 import com.ftn.authservice.dto.UserDTO;
 import com.ftn.authservice.dto.UserStatus;
 import com.ftn.authservice.exception.InvalidJWTokenException;
+import com.ftn.authservice.jwt.JwtBlackList;
 import com.ftn.authservice.jwt.JwtTokenProvider;
 import com.ftn.authservice.model.AccommodationObject;
 import com.ftn.authservice.model.Agent;
@@ -286,8 +288,12 @@ public class AuthController {
     }*/
     
     @GetMapping("/signout") 
-    public void signout() {
+    public ResponseEntity<?> signout(HttpServletRequest request) {
+    	System.out.println("LOGOUT");
+    	SecurityContextHolder.getContext().setAuthentication(null);
     	SecurityContextHolder.clearContext();
+    	JwtBlackList.lista.add(request.getHeader("Authorization").substring(7, request.getHeader("Authorization").length()));
+		return null;
     }
 
     @PostMapping("/signup")

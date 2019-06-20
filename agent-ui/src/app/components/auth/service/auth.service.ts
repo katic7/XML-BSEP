@@ -8,9 +8,9 @@ import { JWTAuth } from '../response/jwt-auth';
 
 
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
 
 const authUrl = "https://localhost:8085/api/auth/"
 
@@ -18,7 +18,7 @@ const authUrl = "https://localhost:8085/api/auth/"
   providedIn: 'root'
 })
 export class AuthService {
-  private getCurrentUser = authUrl + 'getCurrentUser';
+
   private loginUrl = authUrl + 'signin';
   private signupUrl = authUrl + 'signup';
   private testLogin = authUrl + 'testSI';
@@ -26,18 +26,17 @@ export class AuthService {
   private getLoggedUrl = authUrl + 'getLogged';
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
-  private signout = authUrl + 'signout';
-  private getAgent = authUrl + 'getOneAgent/';
+  private logoutUrl = authUrl + 'signout/';
 
   constructor(private http: HttpClient) {
   }
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JWTAuth> {
-    return this.http.post<JWTAuth>(this.loginUrl, credentials, httpOptions);
+    return this.http.post<JWTAuth>(this.loginUrl, credentials);
   }
 
   signUp(info: SignUpInfo): Observable<any> {
-    return this.http.post<string>(this.signupUrl, info, httpOptions);
+    return this.http.post<string>(this.signupUrl, info);
   }
 
   checkEmail(email: String) :Observable<any> {
@@ -56,16 +55,8 @@ export class AuthService {
     return this.http.get(this.confirmUserUrl+token);
   }
 
-  getCurrent() : Observable<any>{
-    return this.http.get(this.getCurrentUser);
+  logout() :Observable<any> {
+    return this.http.get(this.logoutUrl);
   }
 
-  signOut() : Observable<any>{
-    return this.http.get(this.signout);
-    window.sessionStorage.clear();
-  }
-
-  getOneAgent(id : number) : Observable<any>{
-    return this.http.get(this.getAgent + id);
-  }
 }

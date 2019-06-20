@@ -74,19 +74,23 @@ export class LoginComponent implements OnInit {
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
         console.table(data);
+        if(data.profile.authorities[0] != "ROLE_ADMIN"){
+          if(data.profile.authorities[0] != "ROLE_SYSTEM_ADMIN"){
+            console.table(data);
+            this.errorMessage = "You are not administrator!";
+            this.isLoginFailed = true;
+            return;
+          }
+          
+        }
+        console.table(data);
         this.jwtauth = data;
         this.tokenStorage.saveToken(data.accessToken);
  
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         
-        if(this.routeService.getPreviousUrl().includes('register')) {
-          this.router.navigate(['home']);
-        } else {
-          this._location.back();
-        }
-       
-       
+        this.router.navigate(['users']);       
       },
       error => {
         this.errorMessage = "Wrong password, please try again."
