@@ -15,19 +15,18 @@ export class CommentsComponent implements OnInit {
 
   comments : Array<Comment> = new Array<Comment>();
 
-  Publish(comment){
+  Publish(comment : Comment){
     /*
     this.new_comment = new Comment(comment.id,comment.userID,comment.accommodationUnitID,comment.text,comment.commentDate,true);
     this.comments.push(this.new_comment);*/
     let obj : PublishComment = new PublishComment();
-    obj.flag = true;
+    obj.flag = !comment.published;
     obj.id = comment.id;
     console.log(obj);
     this.commentService.setCommentVisible(obj).subscribe(data =>{
-      console.table(data);
-      comment.published = true;
+      
     });
-    
+    comment.published = !comment.published;
   }
 
   ngOnInit() {

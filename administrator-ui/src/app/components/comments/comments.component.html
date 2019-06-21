@@ -26,7 +26,9 @@
             <td>{{comment.rating}}</td>
             <td>{{comment.accommodationID}}</td>
             <td>{{comment.published}}</td>
-            <td><button (click)="Publish(comment)" type="button" class="btn btn-outline-success">Publish</button></td>
+            <td><button *ngIf="!comment.published" (click)="Publish(comment)" type="button" class="btn btn-outline-success">Publish</button>
+                <button *ngIf="comment.published" (click)="Publish(comment)" type="button" class="btn btn-outline-success">Unpublish</button>
+            </td>
             </tr>
         </tbody>
     </table>

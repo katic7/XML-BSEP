@@ -13,5 +13,7 @@ public class RatingDTO {
 	private Long userID;
 	private String comment;
 	private Integer rating;
+	private Long accommodationID;
+	private boolean published;
 	
 }

@@ -39,8 +39,9 @@ public class CommentController {
 		com.setVisible(cv.isFlag());
 		commentRepository.save(com);
 		return new ResponseEntity<String>("SET VISIBILITY!", HttpStatus.OK);*/
+	
 		String response = template.postForObject(
-				"http://localhost:8010/reservation-cloud-service/us-central1/publishComment",
+				"http://localhost:8139/publishComment",
 				cv, String.class);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 		
@@ -51,7 +52,7 @@ public class CommentController {
 	@PreAuthorize("hasAuthority('PublishComment')")
 	public ResponseEntity<?> postRating(@RequestBody RatingDTO rating){
 		HttpEntity<RatingDTO> request = new HttpEntity<RatingDTO>(rating);
-		String _return= template.postForObject("http://localhost:8010/reservation-cloud-service/us-central1/newRating",
+		String _return= template.postForObject("http://localhost:8342/newRating",
 								request, String.class);
 		return new ResponseEntity<String>(_return, HttpStatus.OK);
 	}
@@ -60,7 +61,7 @@ public class CommentController {
 	@PreAuthorize("hasAuthority('GetComments')")
 	public List<RatingDTO> getAllRatings(){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
-				"http://localhost:8010/reservation-cloud-service/us-central1/getAllRatings",
+				"http://localhost:8134/getAllRatings",
 				  HttpMethod.GET,
 				  null,
 				  new ParameterizedTypeReference<List<RatingDTO>>(){});
@@ -72,7 +73,7 @@ public class CommentController {
 	@PreAuthorize("hasAuthority('CREATE')")
 	public RatingDTO getSpecificRating(@PathVariable Long id){
 		ResponseEntity<RatingDTO> response = template.exchange(
-									"http://localhost:8010/reservation-cloud-service/us-central1/getSpecificRating?id="+id,
+									"http://localhost:8136/getSpecificRating?id="+id,
 									HttpMethod.GET,
 									null, 
 									new ParameterizedTypeReference<RatingDTO>(){});
@@ -83,7 +84,7 @@ public class CommentController {
 	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getRatingsFromSpecificAcc(@PathVariable Long id){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
-				"http://localhost:8010/reservation-cloud-service/us-central1/getRatingsFromSpecificAcc?accommodationID="+id,
+				"http://localhost:8137/getRatingsFromSpecificAcc?accommodationID="+id,
 				  HttpMethod.GET,
 				  null,
 				  new ParameterizedTypeReference<List<RatingDTO>>(){});
@@ -94,7 +95,7 @@ public class CommentController {
 	@GetMapping("/ratings/specificAccommodation/{id}")
 	public double getRatingScore(@PathVariable Long id){
 		ResponseEntity<RatingScoreDTO> response = template.exchange(
-				"http://localhost:8010/reservation-cloud-service/us-central1/getRatingScore?id="+id,
+				"http://localhost:8138/getRatingScore?id="+id,
 				HttpMethod.GET,
 				null, 
 				new ParameterizedTypeReference<RatingScoreDTO>(){});
@@ -107,7 +108,7 @@ public class CommentController {
 	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getPublishedRatingsOfAccommodation(@PathVariable Long id){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
-				"http://localhost:8010/reservation-cloud-service/us-central1/getPublishedCommentsOfAccommodation?accommodationID="+id,
+				"http://localhost:8445/getPublishedCommentsOfAccommodation?accommodationID="+id,
 				  HttpMethod.GET,
 				  null,
 				  new ParameterizedTypeReference<List<RatingDTO>>(){});
@@ -118,7 +119,7 @@ public class CommentController {
 	@GetMapping("/ratings/published")
 	public List<RatingDTO> getAllPublishedRatings(){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
-				"http://localhost:8010/reservation-cloud-service/us-central1/getPublishedComments",
+				"http://localhost:8134/getPublishedComments",
 				  HttpMethod.GET,
 				  null,
 				  new ParameterizedTypeReference<List<RatingDTO>>(){});

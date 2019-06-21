@@ -1,6 +1,7 @@
 const connection = require('./database')
 
 
+
 exports.newRating = function newRating(req, res) {
     let userID = req.body.userID;
     let comment = req.body.comment;
@@ -8,7 +9,12 @@ exports.newRating = function newRating(req, res) {
     let accommodationID = req.body.accommodationID;
     connection.query("insert into ratings (userID, comment, rating, accommodationID, published) values (?, ?, ?, ?, ?)", [userID, comment, rating, accommodationID, 0], (err, result) => {
 	if (err) res.status(400).send(err);
-	else res.status(200).send('upisano '+ comment);
+	else {
+		corsHandler(request, response, () => {
+			res.status(200).send('upisano');
+  });
+	}
+	
     });
 };
 
@@ -18,7 +24,9 @@ exports.newRating = function newRating(req, res) {
 exports.getAllRatings = function getAllRatings(req, res) {
     connection.query("select * from ratings", (err, result)=> {
 	if (err) res.status(400).send(err);
-	else res.status(200).send(result);
+	else {
+		res.status(200).send(result);
+	}
     });
 };
 
@@ -64,8 +72,6 @@ exports.publishComment = function publishComment(req, res) {
 	(err, result)=> {
 	    if (err) res.status(400).send(err);
 	    else {
-		res.set('Access-Control-Allow-Origin', "*")
-		res.set('Access-Control-Allow-Methods', 'GET, POST')
 		res.status(200).send("Successfully updated");
 	    }
 	});
