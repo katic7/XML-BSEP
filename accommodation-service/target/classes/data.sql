@@ -169,5 +169,6 @@ insert into reservation (id, active, begin_date, completed, end_date, price, res
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (5, 0, '2019-09-01', 1, '2019-09-10', 0, '2019-04-01', 1, 1);
 insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (6, 0, '2019-10-17', 1, '2019-10-23', 0, '2019-04-01', 1, 1);
 
-
+-- agents
+insert into agents (pib, id, acc_obj_id) values ("123456", 4, 2);
 
