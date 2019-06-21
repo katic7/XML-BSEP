@@ -86,6 +86,8 @@ public class AuthController {
     
     @Autowired
     EmailService emailService;
+    
+    public static RoleName roleName;
    
     
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
@@ -131,7 +133,8 @@ public class AuthController {
     	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);
     }
     
-    @PreAuthorize("hasAuthority('AddUsers')")
+    @SuppressWarnings("unchecked")
+	@PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getOnlyUsers")
     public ResponseEntity<?> getOnlyUsers(){
     	List<User> users = userRepository.findAll();
@@ -142,7 +145,13 @@ public class AuthController {
     		users.remove(userRepository.getOne(a.getId()));
     	}
     	for(User u : users) {
-    		povratna.add(new UserDTO(u));
+    		Set<Role> role = new HashSet<Role>();
+    		role = u.getRoles();
+    		Role jednaRola = (Role) role.toArray()[0];
+    		if(jednaRola.getName() != roleName.ROLE_ADMIN && jednaRola.getName() != roleName.ROLE_SYSTEM_ADMIN) {
+    			System.out.println("#@!#!@RADIIII "+ u.getEmail());
+    			povratna.add(new UserDTO(u));
+    		}
     	}
     	return new ResponseEntity<List<UserDTO>>(povratna, HttpStatus.OK);
     }
