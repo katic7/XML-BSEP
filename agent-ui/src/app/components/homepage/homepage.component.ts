@@ -29,7 +29,7 @@ export class HomepageComponent implements OnInit {
           }
         })
       }else{
-        this.authService.signOut();
+        this.authService.logout();
         alert("Nemate rolu agent!");
         this.router.navigate(['login']);
       }
