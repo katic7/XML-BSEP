@@ -1,2 +1,2 @@
-functions-framework --target=getUnpublishedComments --port 8140
+npx @google-cloud/functions-framework --target=getUnpublishedComments --port 8140
 

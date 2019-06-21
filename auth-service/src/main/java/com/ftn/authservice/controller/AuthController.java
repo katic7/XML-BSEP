@@ -133,7 +133,6 @@ public class AuthController {
     	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);
     }
     
-    @SuppressWarnings("unchecked")
 	@PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getOnlyUsers")
     public ResponseEntity<?> getOnlyUsers(){
@@ -149,7 +148,6 @@ public class AuthController {
     		role = u.getRoles();
     		Role jednaRola = (Role) role.toArray()[0];
     		if(jednaRola.getName() != roleName.ROLE_ADMIN && jednaRola.getName() != roleName.ROLE_SYSTEM_ADMIN) {
-    			System.out.println("#@!#!@RADIIII "+ u.getEmail());
     			povratna.add(new UserDTO(u));
     		}
     	}

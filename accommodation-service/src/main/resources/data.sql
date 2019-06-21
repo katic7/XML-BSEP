@@ -42,7 +42,11 @@ values (2, 'Velja', 'Veljkovic', 3,'dimsic@gmail.com', 1, '$2a$10$DAcNYGf.8duU0i
 insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
 values (3, 'User', 'Useric', 3,'user@gmail.com', 1, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1996-08-09', '03343425152');
 insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
-values (4, 'Agent', 'Tajni', 3,'agent@gmail.com', 0, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1997-08-09', '0313355052');
+values (4, 'Agent', 'Tajni', 3,'agent@gmail.com', 1, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1997-08-09', '0313355052');
+insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
+values (5, 'User2', 'Useric2', 3,'user2@gmail.com', 1, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1996-08-09', '03343425152');
+insert into users (id, name, surname, address_id, email, enabled, password, non_locked, date_of_birth, telephone) 
+values (6, 'User3', 'Useric3', 3,'user3@gmail.com', 0, '$2a$10$DAcNYGf.8duU0iHRcuYw8uNJ8oeJULYlwZoM/H4eQXk2zdN4dn9oe', 1, '1996-08-09', '03343425152');
 
 -- role-permissions
 insert into role_permissions (permission_id, role_id) values (1, 4);
@@ -113,6 +117,11 @@ insert into user_roles (user_id, role_id)
 values (3, 3);
 insert into user_roles (user_id, role_id) 
 values (4, 2);
+insert into user_roles (user_id, role_id) 
+values (5, 3);
+insert into user_roles (user_id, role_id) 
+values (6, 3);
+
 
 --address
 insert into address (id, longitude, latitude, state, town, street, street_number, postal_code) values (1, 19.8505121, 45.2500775, 'Srbija', 'Novi Sad', 'Radnicka', 41, 21000);

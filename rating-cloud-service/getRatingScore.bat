@@ -1,1 +1,1 @@
-functions-framework --target=getRatingScore --port 8138
+npx @google-cloud/functions-framework --target=getRatingScore --port 8138

@@ -1,1 +1,1 @@
-functions-framework --target=newRating --port 8135
+npx @google-cloud/functions-framework --target=newRating --port 8135

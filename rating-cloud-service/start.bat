@@ -6,4 +6,4 @@ start getRatingScore.bat
 start getPublishedCommentsOfAccommodation.bat
 start getPublishedComments.bat
 start getUnpublishedComments.bat
-start publishComments.bat
+start publishComment.bat

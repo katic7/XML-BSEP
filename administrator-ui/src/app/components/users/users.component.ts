@@ -26,7 +26,6 @@ export class UsersComponent implements OnInit {
   closeResult: string;
   accommodationObjects : AccommodationObject[] = [];
   taxNumber = new FormControl('');
-  //accommodationObjectFC = new FormControl('');
   accommodationObject : AccommodationObject = new AccommodationObject();
   usr_id :number;
   agent_user : CreateAgent = new CreateAgent();
@@ -53,7 +52,6 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(user.id).subscribe(data => {});
     const index: number = this.users.indexOf(user);
     if (index !== -1) {
-        alert("usao");
         this.users.splice(index, 1);
     }
   }
@@ -62,44 +60,35 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(user.id).subscribe(data => {});
     const index: number = this.agents.indexOf(user);
     if (index !== -1) {
-        alert("usao");
         this.agents.splice(index, 1);
     }
   }
 
-  
-  open(content,usrrr_id) {
-    this.modalService.open(content, { centered: true });
+  open(content, usrrr_id) {
     this.usr_id = usrrr_id;
-  }
-
-  AddNewAgent(){
-    this.modalService.dismissAll();
-    this.agent_user.user = this.usr_id;
-    this.agent_user.pib = this.taxNumber.value;
-    this.agent_user.accObj = this.accommodationObject.id;
-    console.log( this.agent_user);
-    this.agentService.addAgent(this.agent_user).subscribe(data=>{
-        const index: number = this.users.findIndex(user =>user.id === this.usr_id);
-        alert(index + "adas");
-          if (index !== -1) {
-            this.users.splice(index, 1);
-          }
-      this.agentService.getOneAgent(this.usr_id).subscribe(ag=>{
-        this.agents.push(ag);
-      });
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', centered: true}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-   // window.location.reload();
-    
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
+  private getDismissReason(reason: any): void {
+    if (reason === "Save click") {
+      //add agent 
+      this.agent_user.user = this.usr_id;
+      this.agent_user.pib = this.taxNumber.value;
+      this.agent_user.accObj = this.accommodationObject.id;
+      console.log( this.agent_user);
+      this.agentService.addAgent(this.agent_user).subscribe(data=>{
+          const index: number = this.users.findIndex(user =>user.id === this.usr_id);
+            if (index !== -1) {
+              this.users.splice(index, 1);
+            }
+        this.agentService.getOneAgent(this.usr_id).subscribe(ag=>{
+          this.agents.push(ag);
+        });
+      });
     }
   }
 
@@ -117,7 +106,5 @@ export class UsersComponent implements OnInit {
       this.logged = data;
     });
   }
-
- 
 
 }

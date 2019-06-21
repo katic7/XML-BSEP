@@ -19,21 +19,21 @@
             <th><img src="..\..\..\assets\img\verify.png"></th>
             <th><img src="..\..\..\assets\img\block.png"></th>
             <th><img src="..\..\..\assets\img\delete.png"></th>
-            <th></th>
+            <th><img src="..\..\..\assets\img\detective.png"></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
-              <td *ngIf="user.id != logged.id">{{user.id}}</td>
-              <td *ngIf="user.id != logged.id">{{user.email}}</td>
-              <td *ngIf="user.id != logged.id">{{user.name}}</td>
-              <td *ngIf="user.id != logged.id">{{user.surname}}</td>
-              <td *ngIf="user.id != logged.id">{{user.enabled}}</td>
-              <td *ngIf="user.id != logged.id">{{!user.nonLocked}}</td>
-              <td *ngIf="user.id != logged.id"><button (click)="ActivateUser(user)" type="button" [disabled]="user.enabled" class="btn btn-outline-success">Activate</button></td>
-              <td *ngIf="user.id != logged.id"><button (click)="BlockUser(user)" type="button" [disabled]="!user.nonLocked" class="btn btn-outline-warning">Block</button></td>
-              <td *ngIf="user.id != logged.id"><button (click)="DeleteUser(user)" type="button" class="btn btn-outline-danger">Delete</button></td>
-              <td *ngIf="user.id != logged.id"><button type="button" (click)="open(content,user.id)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Make agent</button></td>
+              <td>{{user.id}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.surname}}</td>
+              <td>{{user.enabled}}</td>
+              <td>{{!user.nonLocked}}</td>
+              <td><button (click)="ActivateUser(user)" type="button" [disabled]="user.enabled" class="btn btn-outline-success">Activate</button></td>
+              <td><button (click)="BlockUser(user)" type="button" [disabled]="!user.nonLocked" class="btn btn-outline-warning">Block</button></td>
+              <td><button (click)="DeleteUser(user)" type="button" class="btn btn-outline-danger">Delete</button></td>
+              <td><button type="button" (click)="open(content,user.id)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Make agent</button></td>
           </tr>
         </tbody>
     </table>
@@ -68,6 +68,7 @@
           </tr>
       </tbody>
   </table>
+
 </div>
 
 <!--MODAL-->
@@ -92,9 +93,11 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="AddNewAgent()">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save click')">Save</button>
   </div>
 </ng-template>
+
+
   
 
 
