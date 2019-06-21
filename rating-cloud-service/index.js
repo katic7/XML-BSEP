@@ -1,7 +1,5 @@
 const connection = require('./database')
 
-
-
 exports.newRating = function newRating(req, res) {
     let userID = req.body.userID;
     let comment = req.body.comment;
@@ -10,16 +8,13 @@ exports.newRating = function newRating(req, res) {
     connection.query("insert into ratings (userID, comment, rating, accommodationID, published) values (?, ?, ?, ?, ?)", [userID, comment, rating, accommodationID, 0], (err, result) => {
 	if (err) res.status(400).send(err);
 	else {
-		corsHandler(request, response, () => {
-			res.status(200).send('upisano');
-  });
+		
+		res.status(200).send('upisano');
+
 	}
 	
     });
 };
-
-
-
 
 exports.getAllRatings = function getAllRatings(req, res) {
     connection.query("select * from ratings", (err, result)=> {
@@ -34,7 +29,7 @@ exports.getAllRatings = function getAllRatings(req, res) {
 exports.getSpecificRating = function getSpecificRating(req, res) {
     connection.query("select id, userID, comment, rating, accommodationID, published from ratings where id="+req.query.id,
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
 		res.status(200).send(result[0]);
 	    }
@@ -81,7 +76,7 @@ exports.publishComment = function publishComment(req, res) {
 exports.getUnpublishedComments = function getUnpublishedComments(req, res) {
     connection.query("select * from ratings where published=false",
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
 		res.status(200).send(result);
 	    }
@@ -93,7 +88,7 @@ exports.getUnpublishedComments = function getUnpublishedComments(req, res) {
 exports.getPublishedComments = function getPublishedComments(req, res) {
     connection.query("select * from ratings where published=true",
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
 		res.status(200).send(result);
 	    }
@@ -104,7 +99,7 @@ exports.getPublishedComments = function getPublishedComments(req, res) {
 exports.getPublishedCommentsOfAccommodation = function getPublishedCommentsOfAccommodation(req, res) {
     connection.query("select * from ratings where published=true and accommodationID="+req.query.accommodationID,
 	(err, result)=> {
-	    if (err) res.status(400).send('nije dobro getovanje odredjenog');
+	    if (err) res.status(400).send(err);
 	    else {
 		res.status(200).send(result);
 	    }

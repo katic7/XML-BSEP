@@ -8,6 +8,9 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { DatePipe } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { RatingDTO } from '../models/RatingDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -23,8 +26,11 @@ export class ReservationComponent implements OnInit {
   address : Address = new Address();
   indicator : boolean = false;
   todaysDate = new Date();
-
-  constructor(private pipe: DatePipe, private reservationService: ReservationService, private accommodationUnitService : AccommodationunitService) { }
+  already :boolean = false;
+  comment = new FormControl('');
+  rating = new FormControl('');
+  constructor(private pipe: DatePipe, private reservationService: ReservationService,
+     private accommodationUnitService : AccommodationunitService, private router : Router) { }
 
   cancelReservation() {
     this.reservationService.cancelReservation(this.reservation.id).subscribe(data =>  {alert("Reservation canceled.");      
@@ -33,6 +39,9 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.logged == null || this.logged == undefined) {
+      this.router.navigate(['/login']);
+    }
     console.log(this.reservation);
     this.todaysDate = new Date(this.pipe.transform(this.todaysDate, "yyyy-MM-dd"));
     this.reservation.beginDate = this.pipe.transform(this.reservation.beginDate, "yyyy-MM-dd");
@@ -48,6 +57,38 @@ export class ReservationComponent implements OnInit {
      }); 
 
     console.log(this.accUnit);
+
+  
+  }
+
+  
+
+  Rate() {
+    let rating = new RatingDTO();
+    rating.accommodationID = this.accUnit.id;
+    rating.userID = this.logged.id;
+    rating.comment = this.comment.value;
+    rating.rating = +this.rating.value;
+
+    this.reservationService.getRatingsFromAcc(this.accUnit.id).subscribe(data=> {
+      let ratings:RatingDTO[] = data;
+      for(var i=0;i<ratings.length;i++) {
+        if(ratings[i].userID == this.logged.id) {
+          this.already = true;
+          alert("You have already rated this reservation.")
+          return;
+        }
+      }
+      this.reservationService.postRating(rating).subscribe(data => {
+      
+      })
+    })
+ 
+    
+ 
+    this.comment = new FormControl('');
+    this.rating = new FormControl('');
+    
   }
 
 }

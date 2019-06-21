@@ -48,4 +48,16 @@ export class ReservationService {
     return this.http.delete("https://localhost:8083/api/reservations/" + id);
   }
 
+  postRating(rating) :Observable<any> {
+    return this.http.post("https://localhost:8081/accommodationservice/api/comment/rating", rating);
+  }
+
+  getRatingsFromAcc(id) : Observable<any> {
+    return this.http.get("https://localhost:8081/accommodationservice/api/comment/ratings/accommodation/"+id);
+  }
+
+  getPublishedCommentsOfAccommodation(id) : Observable<any> {
+    return this.http.get("https://localhost:8081/accommodationservice/api/comment/ratings/published/accommodation/"+id);
+  }
+
 }

@@ -22,6 +22,7 @@ export class CommentsComponent implements OnInit {
     let obj : PublishComment = new PublishComment();
     obj.flag = !comment.published;
     obj.id = comment.id;
+    console.log(comment);
     console.log(obj);
     this.commentService.setCommentVisible(obj).subscribe(data =>{
       

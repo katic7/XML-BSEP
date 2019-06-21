@@ -12,4 +12,8 @@ export class AuthService {
   getLogged() : Observable<any> {
     return this.http.get("https://localhost:8085/api/auth/getLogged");
   }
+
+  getOne(id):Observable<any> {
+    return this.http.get("https://localhost:8085/api/auth/getOne/"+id);
+  }
 }

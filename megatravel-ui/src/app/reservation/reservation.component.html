@@ -25,8 +25,8 @@
   <div class="rightside">
 
     <div class="rating">
-      <p>Rating:<b>{{accUnit.rating}}</b> </p>  
-      <p>Number of reviews</p>
+      <!--<p>Rating:<b>{{accUnit.rating}}</b> </p>  -->
+     
   
       <div class="price">
         <p>Price per night:</p>
@@ -34,8 +34,41 @@
       </div>
   
       <div class="availability">
-        <button *ngIf="indicator==false">Rate</button>
+        <button *ngIf="indicator==false"  data-toggle="modal" data-target="#exampleModal">Rate</button>
+       
         <button (click)="cancelReservation()" *ngIf="indicator==true">Cancel</button>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Rate booking</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Rating</label>
+             <select [formControl]="rating" name="" id="">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+             </select>
+            <br>
+              <label for="">Comment</label>
+              <input [formControl]="comment" type="text">
+
+            </div>
+            <br>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" style="float:left" data-dismiss="modal">Close</button>
+              <button type="button" (click)="Rate()" class="btn btn-primary" style="float:right" data-dismiss="modal">Rate</button>
+            </div>
+          </div>
+        </div>
       </div>
   
     </div>

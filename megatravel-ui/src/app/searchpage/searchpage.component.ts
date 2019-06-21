@@ -57,7 +57,7 @@ export class SearchpageComponent implements OnInit {
         this.accUnits = data;       
         this.accUnits.forEach(ac => {
           this.accService.getRatingScore(ac.id).subscribe(data => {
-            ac.rating = data;
+            ac.rating = data.toFixed(1);
           });
           this.accService.getAddress(ac.accommodationObject.addressId).subscribe(data=>{
             this.listaAdresa.push(data);

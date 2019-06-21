@@ -6,6 +6,9 @@ import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 import { AccommodationunitService } from 'src/app/services/accommodationunit.service';
 import { Address } from 'src/app/models/Address';
 import {Location} from '@angular/common';
+import { RatingDTO } from '../models/RatingDTO';
+import { CommentShow } from '../models/CommentShow';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-bookpage',
@@ -17,6 +20,8 @@ export class BookpageComponent implements OnInit {
   reservation : ReservationDTO = new ReservationDTO();
   accUnit: AccommodationUnit = new AccommodationUnit();
   address: Address = new Address();
+  listOfRatings: RatingDTO[] = [];
+  commentList: CommentShow[] = [];
 
   book() {
     this.reservationService.makeAReservation(this.reservation).subscribe(data => { console.log(data);
@@ -28,7 +33,8 @@ export class BookpageComponent implements OnInit {
     this._location.back();
   }
 
-  constructor(private route: ActivatedRoute, private reservationService: ReservationService, private _location: Location) { }
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService, 
+    private _location: Location, private auth: AuthService) { }
 
   ngOnInit() {
 
@@ -45,6 +51,19 @@ export class BookpageComponent implements OnInit {
         this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data });
       });
     });
+
+    this.reservationService.getPublishedCommentsOfAccommodation(this.reservation.accommodationUnitId).subscribe(data => {
+        this.listOfRatings = data;
+        this.listOfRatings.forEach(lr=> {
+          this.auth.getOne(lr.userID).subscribe(data => {
+            let com = new CommentShow();
+            com.username = data.name + ' ' + data.surname;
+            com.rating = lr.rating;
+            com.comment = lr.comment;
+            this.commentList.push(com);
+          })
+        })
+    })
   }
 
 }

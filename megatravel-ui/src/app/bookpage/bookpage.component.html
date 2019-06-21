@@ -1,3 +1,8 @@
+<div class="nav">
+    <app-navigation></app-navigation>
+</div>
+
+
 <div class="mainDiv">
   <mat-card class="example-card">
     <mat-card-header>
@@ -22,8 +27,13 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
+      
       <button mat-raised-button color="primary" (click)="book()">Book</button>
       <button mat-button color="warn" (click)="goBack()">Cancel</button>
     </mat-card-actions>
   </mat-card>
+  <h4>Comments:</h4>
+      <div *ngFor="let comment of commentList">
+        {{ comment.username }}: "{{ comment.comment }}" and left {{comment.rating}} stars.
+      </div>
 </div>
