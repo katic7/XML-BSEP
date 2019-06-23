@@ -10,22 +10,22 @@ package com.ftn.accommodationservice.xsd;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Category complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Category">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://ftn.com/accommodationservice/xsd}id"/>
- *         &lt;element name="name" type="{http://ftn.com/accommodationservice/xsd}name"/>
+ *         &lt;element name="reservationID" type="{http://ftn.com/accommodationservice/xsd}id"/>
+ *         &lt;element name="completed" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,54 +35,46 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Category", propOrder = {
-    "id",
-    "name"
+@XmlType(name = "", propOrder = {
+    "reservationID",
+    "completed"
 })
-public class Category {
+@XmlRootElement(name = "PostReservationCompletionRequest")
+public class PostReservationCompletionRequest {
 
-    protected long id;
-    @XmlElement(required = true)
-    protected String name;
+    protected long reservationID;
+    protected boolean completed;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the reservationID property.
      * 
      */
-    public long getId() {
-        return id;
+    public long getReservationID() {
+        return reservationID;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the reservationID property.
      * 
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setReservationID(long value) {
+        this.reservationID = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the completed property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getName() {
-        return name;
+    public boolean isCompleted() {
+        return completed;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the completed property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setCompleted(boolean value) {
+        this.completed = value;
     }
 
 }

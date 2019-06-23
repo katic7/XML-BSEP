@@ -104,6 +104,7 @@ insert into role_permissions (permission_id, role_id) values (26, 1);
 insert into role_permissions (permission_id, role_id) values (28, 1);
 insert into role_permissions (permission_id, role_id) values (24, 2);
 insert into role_permissions (permission_id, role_id) values (13, 2);
+insert into role_permissions (permission_id, role_id) values (9, 2);
 insert into role_permissions (permission_id, role_id) values (26, 2);
 insert into role_permissions (permission_id, role_id) values (25, 3);
 insert into role_permissions (permission_id, role_id) values (27, 3);
@@ -171,12 +172,12 @@ insert into accommodation_unit_additional_services (accommodation_unit_id, addit
 insert into accommodation_unit_additional_services (accommodation_unit_id, additional_services_id) values (2, 1);
 
 --reservation
-insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (1, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 1, 1);
-insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (2, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 2, 2);
-insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (3, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 3, 2);
-insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (4, 0, '2019-05-01', 1, '2019-05-10', 0, '2019-04-01', 2, 1);
-insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (5, 0, '2019-09-01', 1, '2019-09-10', 0, '2019-04-01', 1, 1);
-insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (6, 0, '2019-10-17', 1, '2019-10-23', 0, '2019-04-01', 1, 1);
+insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (1, 0, '2019-05-01', 0, '2019-05-10', 0, '2019-04-01', 1, 1);
+insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (2, 0, '2019-05-01', 0, '2019-05-10', 0, '2019-04-01', 2, 2);
+insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (3, 0, '2019-05-01', 0, '2019-05-10', 0, '2019-04-01', 3, 2);
+insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (4, 0, '2019-05-01', 0, '2019-05-10', 0, '2019-04-01', 2, 1);
+insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (5, 0, '2019-09-01', 0, '2019-09-10', 0, '2019-04-01', 1, 1);
+insert into reservation (id, active, begin_date, completed, end_date, price, reservation_date, accommodation_unit, user) values (6, 0, '2019-10-17', 0, '2019-10-23', 0, '2019-04-01', 1, 1);
 
 -- agents
 insert into agents (pib, id, acc_obj_id) values ("123456", 4, 2);

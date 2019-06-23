@@ -117,4 +117,20 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PostMapping("/getForCompletion")
+	public ResponseEntity<List<ReservationDTO>> getForCompletion(@RequestBody Date date) {
+		System.out.println("A BRAO");
+		List<Reservation> res = new ArrayList<>();
+		if(date != null) {
+			res = reservationService.getForCompletion(date);
+			ArrayList<ReservationDTO> ress = new ArrayList<ReservationDTO>();
+			for(Reservation r : res) {
+				ress.add(new ReservationDTO(r));
+			}
+			return new ResponseEntity<List<ReservationDTO>>(ress, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
 }

@@ -15,6 +15,7 @@ import { MaterialModule } from './modules/material.module';
 import { DatePipe } from '@angular/common';
 import { CreateObjectComponent } from './components/create-object/create-object.component';
 import { MatSelectModule } from '@angular/material';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'agents', component: AgentsComponent },
   { path: 'newObject', component: CreateObjectComponent},
+  { path: 'reservations', component: ReservationsComponent }
 ];
 
 @NgModule({
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
     HomepageComponent,
     NavigationComponent,
     CreateObjectComponent,
+    ReservationsComponent,
   ],
   imports: [
     BrowserModule,

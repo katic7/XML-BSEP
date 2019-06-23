@@ -1,0 +1,36 @@
+<app-navigation></app-navigation>
+
+
+<br/>
+<br/>
+<div class="wrapper" style="margin-left: 0.5%;">
+    <div>
+        <h1 style="float: left; margin-right: 5px;">Reservations</h1>
+    </div>
+    <table class="table table-striped table-sm" id="reservations_table">
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>UserId</th>
+            <th>accommodationUnitId</th>
+            <th>Price</th>
+            <th>beginDate</th>
+            <th>endDate</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of reservations">
+            <td>{{reservation.id}}</td>
+            <td>{{reservation.userId}}</td>
+            <td>{{reservation.accommodationUnitId}}</td>
+            <td>{{reservation.price}}</td>
+            <td>{{reservation.beginDate}}</td>
+            <td>{{reservation.endDate}}</td>
+            <td><button *ngIf="!reservation.completed" (click)="Complete(reservation)" type="button" class="btn btn-outline-success">Complete</button>
+                <button *ngIf="reservation.completed" (click)="Complete(reservation)" type="button" class="btn btn-outline-danger">Uncomplete</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -11,21 +11,21 @@ package com.ftn.accommodationservice.xsd;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Category complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Category">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://ftn.com/accommodationservice/xsd}id"/>
- *         &lt;element name="name" type="{http://ftn.com/accommodationservice/xsd}name"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,54 +35,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Category", propOrder = {
-    "id",
-    "name"
+@XmlType(name = "", propOrder = {
+    "message"
 })
-public class Category {
+@XmlRootElement(name = "PostReservationCompletionResponse")
+public class PostReservationCompletionResponse {
 
-    protected long id;
     @XmlElement(required = true)
-    protected String name;
+    protected String message;
 
     /**
-     * Gets the value of the id property.
-     * 
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(long value) {
-        this.id = value;
-    }
-
-    /**
-     * Gets the value of the name property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

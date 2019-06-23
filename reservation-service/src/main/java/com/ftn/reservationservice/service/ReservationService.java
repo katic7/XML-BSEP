@@ -14,4 +14,5 @@ public interface ReservationService {
 	Reservation makeAReservation(Reservation reservation);
 	List<Reservation> findReservationsByUserId(Long id);
 	void deleteReservation(Long id);
+	List<Reservation> getForCompletion(Date date);
 }

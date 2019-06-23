@@ -170,32 +170,7 @@
 			</plugin>
   
 	
-			<!-- plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		<plugin>
-	<groupId>org.jvnet.jaxb2.maven2</groupId>
-	<artifactId>maven-jaxb2-plugin</artifactId>
-	<version>0.12.3</version>
-	<executions>
-		<execution>
-			<goals>
-				<goal>generate</goal>
-			</goals>
-		</execution>
-	</executions>
-	<configuration>
-		<schemaLanguage>WSDL</schemaLanguage>
-		<generatePackage>com.ftn.accommodationservice.xsd</generatePackage>
-		<schemas>
-			<schema>
-				<url>soap.xsd</url>
-			</schema>
-		</schemas>
-	</configuration>
-</plugin>
- -->
+			
  		<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

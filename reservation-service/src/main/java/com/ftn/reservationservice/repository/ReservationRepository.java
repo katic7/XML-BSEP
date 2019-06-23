@@ -1,8 +1,11 @@
 package com.ftn.reservationservice.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ftn.reservationservice.model.Reservation;
@@ -20,5 +23,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	List<Reservation> findReservationsInInterval(Date startDate, Date endDate);*/
 	
 	List<Reservation> findByUserId(Long id);
+	
+	
+	@Modifying	
+	@Query(value = "select * from reservation r where ?1 > r.begin_date",nativeQuery = true)
+	List<Reservation> getForCompletion(Date date);
 
 }

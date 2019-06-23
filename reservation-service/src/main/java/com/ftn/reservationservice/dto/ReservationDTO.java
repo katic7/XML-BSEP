@@ -11,6 +11,7 @@ public class ReservationDTO {
 	private float price;
 	private Long accommodationUnitId;
 	private Long userId;
+	private boolean completed;
 	
 	public ReservationDTO() {
 		super();
@@ -33,6 +34,7 @@ public class ReservationDTO {
 		this.accommodationUnitId = r.getAccommodationUnit().getId();
 		this.userId= r.getUser().getId();
 		this.id = r.getId();
+		this.completed = r.isCompleted();
 	}
 
 	
@@ -83,6 +85,14 @@ public class ReservationDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 	
 	

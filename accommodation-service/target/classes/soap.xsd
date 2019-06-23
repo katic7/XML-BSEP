@@ -43,13 +43,6 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
         	<xs:element name="id" type="tns:id"/>
             <xs:element name="longitude" type="xs:double"/>
             <xs:element name="latitude" type="xs:double"/>
-            <xs:element name="state">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:maxLength value="64"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
             <xs:element name="town">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -206,11 +199,6 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 		</xs:complexType>
 	</xs:element>
 	
-
-
-	
-	
-	
 		<xs:element name="GetAccommodationUnitResponse">
 		<xs:complexType>
 			<xs:sequence>
@@ -247,7 +235,7 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 	            <xs:element name="freeCancelation" type="tns:freeCancelation"/>
 	            <xs:element name="daysToCancel" type="tns:daysToCancel"/>
 	            <xs:element name="type" type="tns:Type"/>
-			</xs:sequence>	
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
     
@@ -385,6 +373,23 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 			</xs:sequence>	
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="PostReservationCompletionRequest">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name= "reservationID" type="tns:id"/>
+                    <xs:element name= "completed" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="PostReservationCompletionResponse">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name= "message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+    </xs:element> 
 	
 	<xs:element name="GetTestRequest">
 		<xs:complexType>

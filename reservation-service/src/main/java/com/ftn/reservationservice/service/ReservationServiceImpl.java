@@ -106,5 +106,10 @@ public class ReservationServiceImpl implements ReservationService{
 		reservationRepository.deleteById(id);;
 	}
 
+	@Override
+	public List<Reservation> getForCompletion(Date date) {
+		return reservationRepository.getForCompletion(date);
+	}
+
 	
 }
