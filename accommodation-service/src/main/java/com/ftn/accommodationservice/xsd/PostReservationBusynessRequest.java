@@ -10,6 +10,7 @@ package com.ftn.accommodationservice.xsd;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="reservation" type="{http://ftn.com/accommodationservice/xsd}Reservation"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,27 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "reservation"
 })
-@XmlRootElement(name = "GetAccUnitPriceRequest")
-public class GetAccUnitPriceRequest {
+@XmlRootElement(name = "PostReservationBusynessRequest")
+public class PostReservationBusynessRequest {
 
-    protected long id;
+    @XmlElement(required = true)
+    protected Reservation reservation;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the reservation property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Reservation }
+     *     
      */
-    public long getId() {
-        return id;
+    public Reservation getReservation() {
+        return reservation;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the reservation property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Reservation }
+     *     
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setReservation(Reservation value) {
+        this.reservation = value;
     }
 
 }

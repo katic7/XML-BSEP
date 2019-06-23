@@ -390,6 +390,22 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
                 </xs:sequence>
             </xs:complexType>
     </xs:element> 
+    
+    <xs:element name="PostReservationBusynessRequest">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name= "reservation" type="tns:Reservation"/>
+                </xs:sequence>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="PostReservationBusynessResponse">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name= "message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+    </xs:element>
 	
 	<xs:element name="GetTestRequest">
 		<xs:complexType>
