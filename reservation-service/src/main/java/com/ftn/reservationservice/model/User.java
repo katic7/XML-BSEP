@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -25,6 +27,9 @@ import javax.persistence.Table;
 @NamedEntityGraph(name = "User.Roles.Permissions", 
 	attributeNodes = @NamedAttributeNode(value = "roles", subgraph = "permissions"), 
 	subgraphs = @NamedSubgraph(name = "permissions", attributeNodes = @NamedAttributeNode("permissions")))
+@Inheritance(
+	    strategy = InheritanceType.JOINED
+	)
 public class User {
 
 	@Id
@@ -37,12 +42,10 @@ public class User {
 	
 	protected Long addressId;	
 	
-	@Column(unique = true)
 	private String email;
 	
 	private String password;
 	
-	@Column(name = "enabled")
 	private boolean enabled;
 	
 	private boolean nonLocked;
@@ -71,8 +74,8 @@ public class User {
 		this.addressId = address;
 		this.email = email;
 		this.password = password;
-		this.enabled = true;
-		this.nonLocked = true;
+		//this.enabled = true;
+		//this.nonLocked = true;
 		this.roles = roles;
 	}
 

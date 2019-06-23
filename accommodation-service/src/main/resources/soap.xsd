@@ -206,6 +206,11 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 		</xs:complexType>
 	</xs:element>
 	
+
+
+	
+	
+	
 		<xs:element name="GetAccommodationUnitResponse">
 		<xs:complexType>
 			<xs:sequence>

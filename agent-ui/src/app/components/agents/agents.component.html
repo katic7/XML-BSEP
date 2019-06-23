@@ -52,7 +52,7 @@
           </div>
         <!--button style="width:100px !important; width:55px !important; padding: 0.7px 5px; margin-left:10px;" class="btn btn-outline-primary" (click)="showPriceFrom()">New</button-->
         <div class="">
-            <label style="margin-top:5%;">Additional services:</label>
+            <label >Additional services:</label>
             <div>
               <mat-selection-list [(ngModel)]="accommodationUnit.additionalServices" #additionalServices>
                 <mat-list-option *ngFor="let additionalService of additionalServicesARRAY" [value]="additionalService">

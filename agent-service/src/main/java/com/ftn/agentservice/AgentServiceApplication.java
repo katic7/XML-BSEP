@@ -1,18 +1,21 @@
 package com.ftn.agentservice;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
-import com.ftn.agentservice.soap.AccommodationClient;
+import com.ftn.agentservice.service.CustomChatService;
 //import com.netflix.discovery.DiscoveryClient;
 //import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.EurekaJerseyClientBuilder;
 import com.netflix.discovery.DiscoveryClient;
 import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.EurekaJerseyClientBuilder;
+
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 
 
 @SpringBootApplication
@@ -36,17 +39,15 @@ public class AgentServiceApplication {
 		return args;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		SpringApplication.run(AgentServiceApplication.class, args);
+		Server server = ServerBuilder.forPort(9090).addService(new CustomChatService()).build();
+		
+		server.start();
+		
+		System.out.println("Server pokrenut na portu "+ server.getPort());
+		server.awaitTermination();
 	}
 	
-	@Autowired
-	private AccommodationClient client;
 	
-	/*@PostConstruct
-	public void init() {
-		GetAccommodationObjectResponse response = client.getAccommodation(Long.valueOf(1));
-		System.out.println(response.getAccommodationObject().getDescription());
-	}*/
-
 }

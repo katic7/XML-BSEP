@@ -10,7 +10,7 @@ export class AdditionalServiceService {
   constructor(private http : HttpClient) { }
 
   getAllAdditionalServ() : Observable<any>{
-    return this.http.get('http://localhost:8091/api/accommodations/allAdditionalServices');    //PRILAGODI BEKENND APIU
+    return this.http.get('https://localhost:8091/api/accommodations/allAdditionalServices');    //PRILAGODI BEKENND APIU
   }
 
 

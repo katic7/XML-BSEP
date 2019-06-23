@@ -168,7 +168,7 @@ copy auth.jks auth-service\src\main\resources
 copy eureka.jks eureka-service\src\main\resources
 copy zuul.jks zuul-server\src\main\resources
 copy agent.jks agent-service\src\main\resources
-copy bezbednost.jks ..\BSEP-master\bezbednost\src\main\resources 
+copy bezbednost.jks ..\BSEP\bezbednost\src\main\resources 
 
 IF EXIST eureka.jks DEL /F eureka.jks
 IF EXIST zuul.jks DEL /F zuul.jks

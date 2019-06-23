@@ -16,7 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "roles")
@@ -27,7 +26,6 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @NaturalId
     @Column(length = 60)
     private RoleName name;
 

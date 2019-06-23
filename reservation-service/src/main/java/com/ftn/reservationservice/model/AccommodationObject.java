@@ -16,13 +16,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 /**
@@ -75,22 +78,26 @@ public class AccommodationObject {
     protected long id;
     @XmlElement(required = true)
     protected String name;
-    @XmlElement(required = true)    
-    protected Long addressId;
+    @XmlElement(required = true)
+    @OneToOne
+    protected Address address;
     @XmlElement(required = true)
     protected String description;
     @XmlElement(required = true)
-    protected Long categoryId;
+    @ManyToOne
+    protected Category category;
     protected boolean freeCancelation;
     @XmlElement(required = true)
     protected BigInteger daysToCancel;
-    @XmlElement(required = true)    
-    protected Long typeId;
+    @XmlElement(required = true)   
+    @ManyToOne
+    protected Type type;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AccommodationUnit> accommodationsUnitList;
     @OneToMany(mappedBy = "accommodationObject")
     protected List<AdditionalService> additionalServices;
-
+    @OneToOne(mappedBy = "accObj")
+    private Agent agent;
     /**
      * Gets the value of the id property.
      * 
@@ -131,31 +138,17 @@ public class AccommodationObject {
         this.name = value;
     }
 
-    /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Address }
-     *     
-     */
-    public Long getAddressId() {
-        return addressId;
-    }
+    
 
-    /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Address }
-     *     
-     */
-    public void setAddressId(Long value) {
-        this.addressId = value;
-    }
+    public Address getAddress() {
+		return address;
+	}
 
-    /**
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	/**
      * Gets the value of the description property.
      * 
      * @return
@@ -179,29 +172,7 @@ public class AccommodationObject {
         this.description = value;
     }
 
-    /**
-     * Gets the value of the category property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Category }
-     *     
-     */
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    /**
-     * Sets the value of the category property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Category }
-     *     
-     */
-    public void setCategoryId(Long value) {
-        this.categoryId = value;
-    }
+   
 
     /**
      * Gets the value of the freeCancelation property.
@@ -243,29 +214,7 @@ public class AccommodationObject {
         this.daysToCancel = value;
     }
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Type }
-     *     
-     */
-    public Long getTypeId() {
-        return typeId;
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Type }
-     *     
-     */
-    public void setTypeId(Long value) {
-        this.typeId = value;
-    }
+    
 
     /**
      * Gets the value of the accommodationsUnitList property.
@@ -334,5 +283,31 @@ public class AccommodationObject {
 	public void setAdditionalServices(List<AdditionalService> additionalServices) {
 		this.additionalServices = additionalServices;
 	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+	
+		
 
 }

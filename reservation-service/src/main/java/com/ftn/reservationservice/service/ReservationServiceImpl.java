@@ -56,7 +56,7 @@ public class ReservationServiceImpl implements ReservationService{
 		List<AccommodationUnit> allAcu = accommodationUnitRepository.findAll();
 		
 		for(AccommodationUnit au : allAcu) {
-			if(addressRepository.getOne(au.getAccommodationObject().getAddressId()).getTown().equals(dest)) {
+			if(au.getAccommodationObject().getAddress().getTown().equals(dest)) {
 				acu.add(au);
 			}
 		}

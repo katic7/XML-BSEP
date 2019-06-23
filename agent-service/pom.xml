@@ -86,35 +86,38 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>io.grpc</groupId>
-		    <artifactId>grpc-netty</artifactId>
-		    <version>1.21.0</version>
+    		<groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		    <version>2.1.4.RELEASE</version>
 		</dependency>
 		<dependency>
-		  <groupId>io.grpc</groupId>
-		  <artifactId>grpc-netty-shaded</artifactId>
-		  <version>1.21.0</version>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <scope>runtime</scope>
+		    <version>1.4.199</version>
+		</dependency>
+		
+		<!-- gRPC -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.6.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-netty-shaded</artifactId>
+			<version>1.15.1</version>
 		</dependency>
 		<dependency>
-		  <groupId>io.grpc</groupId>
-		  <artifactId>grpc-protobuf</artifactId>
-		  <version>1.21.0</version>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-protobuf</artifactId>
+			<version>1.15.1</version>
 		</dependency>
 		<dependency>
-		  <groupId>io.grpc</groupId>
-		  <artifactId>grpc-stub</artifactId>
-		  <version>1.21.0</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		    <version>2.1.4.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <scope>runtime</scope>
-		    <version>1.4.199</version>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-stub</artifactId>
+			<version>1.15.1</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -130,32 +133,41 @@
 	</dependencyManagement>
 	<build>
 
-  <extensions>
-    <extension>
-      <groupId>kr.motd.maven</groupId>
-      <artifactId>os-maven-plugin</artifactId>
-      <version>1.5.0.Final</version>
-    </extension>
-  </extensions>
+
   <plugins>
-    <plugin>
-      <groupId>org.xolstice.maven.plugins</groupId>
-      <artifactId>protobuf-maven-plugin</artifactId>
-      <version>0.5.1</version>
-      <configuration>
-        <protocArtifact>com.google.protobuf:protoc:3.7.1:exe:${os.detected.classifier}</protocArtifact>
-        <pluginId>grpc-java</pluginId>
-        <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.21.0:exe:${os.detected.classifier}</pluginArtifact>
-      </configuration>
-      <executions>
-        <execution>
-          <goals>
-            <goal>compile</goal>
-            <goal>compile-custom</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
+  
+  		<plugin>
+				<groupId>com.github.os72</groupId>
+				<artifactId>protoc-jar-maven-plugin</artifactId>
+				<version>3.6.0.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+						   <includeMavenTypes>direct</includeMavenTypes>
+							
+							<inputDirectories>
+								<include>src/main/resources</include>
+							</inputDirectories>
+							
+							<outputTargets>
+								<outputTarget>
+									<type>java</type>
+									<outputDirectory>src/main/java</outputDirectory>
+								</outputTarget>
+								<outputTarget>
+									<type>grpc-java</type>
+									<pluginArtifact>io.grpc:protoc-gen-grpc-java:1.15.0</pluginArtifact>
+									<outputDirectory>src/main/java</outputDirectory>
+								</outputTarget>
+							</outputTargets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
   
 	
 			<!-- plugin>
@@ -184,10 +196,10 @@
 	</configuration>
 </plugin>
  -->
- <plugin>
+ 		<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-</plugin>
+		</plugin>
 <!--plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxb2-maven-plugin</artifactId>

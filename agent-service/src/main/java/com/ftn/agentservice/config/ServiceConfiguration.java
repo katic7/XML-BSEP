@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import com.ftn.agentservice.soap.AccommodationClient;
+import com.ftn.agentservice.soap.ReservationClinet;
 
 
 @Configuration
@@ -23,9 +24,18 @@ public class ServiceConfiguration {
 	}
 
 	@Bean
-	public AccommodationClient movieClient(Jaxb2Marshaller marshaller) {
+	public AccommodationClient accClient(Jaxb2Marshaller marshaller) {
 		AccommodationClient client = new AccommodationClient();
 		client.setDefaultUri("https://localhost:8082/ws");
+		client.setMarshaller(marshaller);
+		client.setUnmarshaller(marshaller);
+		return client;
+	}
+	
+	@Bean
+	public ReservationClinet resClient(Jaxb2Marshaller marshaller) {
+		ReservationClinet client = new ReservationClinet();
+		client.setDefaultUri("https://localhost:8083/ws");
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
 		return client;

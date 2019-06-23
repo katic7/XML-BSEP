@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.NaturalId;
 
 @Entity
 public class Permission {
@@ -14,7 +13,6 @@ public class Permission {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NaturalId
 	private String name;
 
 	public Permission() {
