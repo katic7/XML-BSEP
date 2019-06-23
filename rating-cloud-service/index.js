@@ -5,7 +5,8 @@ exports.newRating = function newRating(req, res) {
     let comment = req.body.comment;
     let rating = req.body.rating;
     let accommodationID = req.body.accommodationID;
-    connection.query("insert into ratings (userID, comment, rating, accommodationID, published) values (?, ?, ?, ?, ?)", [userID, comment, rating, accommodationID, 0], (err, result) => {
+	let reservationID = req.body.reservationID;
+    connection.query("insert into ratings (userID, comment, rating, accommodationID, published, reservationID) values (?, ?, ?, ?, ?, ?)", [userID, comment, rating, accommodationID, 0, reservationID], (err, result) => {
 	if (err) res.status(400).send(err);
 	else {
 		

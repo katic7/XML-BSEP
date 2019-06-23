@@ -8,6 +8,7 @@ export class User {
                 public address:string,
                 public postalCode:number,
                 public email:string,
+                public telephone:string,
                 public password:string,
                 public enabled:boolean,
                 public nonLocked:boolean,

@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.authService.getLogged().subscribe(data=> {
       this.logged = data;
+      console.log(data);
       this.reservationService.getReservationsByUser(this.logged.id).subscribe(info => { this.reservations = info});
       
     }, error => {

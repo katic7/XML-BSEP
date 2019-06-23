@@ -51,9 +51,11 @@ public class CommentController {
 	@PostMapping("/rating")
 	@PreAuthorize("hasAuthority('PublishComment')")
 	public ResponseEntity<?> postRating(@RequestBody RatingDTO rating){
+		System.out.println("*#@(#*@#(@*USAO*#@()#*!(@# " + rating.toString());
+		
 		HttpEntity<RatingDTO> request = new HttpEntity<RatingDTO>(rating);
 		String _return= template.postForObject("http://localhost:8135/newRating",
-								rating, String.class);
+				request, String.class);
 		return new ResponseEntity<String>(_return, HttpStatus.OK);
 	}
 	

@@ -58,10 +58,7 @@ export class ReservationComponent implements OnInit {
 
     console.log(this.accUnit);
 
-  
   }
-
-  
 
   Rate() {
     let rating = new RatingDTO();
@@ -69,13 +66,13 @@ export class ReservationComponent implements OnInit {
     rating.userID = this.logged.id;
     rating.comment = this.comment.value;
     rating.rating = +this.rating.value;
-
+    rating.reservationID = this.reservation.id;
+    rating.published = false;
     this.reservationService.getRatingsFromAcc(this.accUnit.id).subscribe(data=> {
       let ratings:RatingDTO[] = data;
       for(var i=0;i<ratings.length;i++) {
-        if(ratings[i].userID == this.logged.id) {
-          this.already = true;
-          alert("You have already rated this reservation.")
+        if(ratings[i].reservationID == this.reservation.id){
+          alert("You have already rated this reservation!");
           return;
         }
       }
@@ -83,8 +80,6 @@ export class ReservationComponent implements OnInit {
       
       })
     })
- 
-    
  
     this.comment = new FormControl('');
     this.rating = new FormControl('');

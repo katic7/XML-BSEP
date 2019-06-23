@@ -4,4 +4,5 @@ export class RatingDTO {
    rating: number;
    accommodationID: number;
    published: boolean;
+   reservationID: number;
 }

@@ -11,11 +11,11 @@
   		<div class="col-sm-3"><!--left col-->
               
 
-      <div class="text-center">
+      <!--div class="text-center">
         <img src="" class="avatar img-circle img-thumbnail" alt="avatar">
         
         <input type="file" class="text-center center-block file-upload ml-4 mt-4">
-      </div><br>
+      </div><br-->
 
         </div><!--/col-3-->
     	<div class="col-sm-9">
@@ -42,17 +42,14 @@
                             <label for="last_name"><h4>Last name</h4></label>
                               <input type="text" class="form-control" [(ngModel)]="logged.surname" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
                           </div>
-                      </div>
-          
+                      </div>         
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" [(ngModel)]="logged.phone" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                              <input type="text" class="form-control" [(ngModel)]="logged.telephone" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
                           </div>
                       </div>
-          
- 
                       <div class="form-group">
                           
                           <div class="col-xs-6">
@@ -60,27 +57,7 @@
                               <input type="email" class="form-control" [(ngModel)]="logged.email" name="email" id="email" placeholder="you@email.com" title="enter your email.">
                           </div>
                       </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="location"><h4>Location</h4></label>
-                              <input type="location" [(ngModel)]="logged.state" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password"  class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
+
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>

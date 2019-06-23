@@ -14,5 +14,5 @@ public class RatingDTO {
 	private Integer rating;
 	private Long accommodationID;
 	private boolean published;
-	
+	private Long reservationID;
 }

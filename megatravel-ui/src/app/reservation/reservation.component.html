@@ -5,7 +5,6 @@
   <div class="header">
     <h1>{{accUnit.accommodationObject.name}}</h1>
     <p>{{address.street}} {{address.streetNumber}}, {{address.town}}</p>
-
     <div class="informations">
       <p>
           <b>{{reservation.beginDate}} - {{reservation.endDate}}</b>
@@ -32,11 +31,27 @@
         <p>Price per night:</p>
         <p><b>EUR {{this.accUnit.price.price}}</b></p>
       </div>
-  
+      
       <div class="availability">
-        <button *ngIf="indicator==false"  data-toggle="modal" data-target="#exampleModal">Rate</button>
-       
+        <div *ngIf="indicator==false" class="rating_form">
+          <label for="">Rating</label>
+          <select [formControl]="rating" name="" id="" style="margin-left: 68%;">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
+
+          <br>
+              <label for="">Comment</label>
+              <input [formControl]="comment" type="text" style="margin-left:10px;">
+          <br>
+        
+        <button *ngIf="indicator==false" style="margin-left: 78%;" (click)="Rate()">Rate</button>
+      </div>
         <button (click)="cancelReservation()" *ngIf="indicator==true">Cancel</button>
+
       </div>
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -48,14 +63,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <label for="">Rating</label>
-             <select [formControl]="rating" name="" id="">
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-             </select>
+             
             <br>
               <label for="">Comment</label>
               <input [formControl]="comment" type="text">

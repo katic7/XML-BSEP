@@ -17,6 +17,7 @@ public class UserDTO {
 	private boolean enabled;
 	private boolean nonLocked;
 	private List<RoleDTO> roles;
+	private String telephone;
 	
 	
 	public UserDTO() {
@@ -46,6 +47,7 @@ public class UserDTO {
 		this.password = u.getPassword();
 		this.enabled = u.isEnabled();
 		this.nonLocked = u.isNonLocked();
+		this.telephone = u.getTelephone();
 		
 		roles = new ArrayList<>();
 		if(u.getRoles() != null) {
@@ -129,6 +131,14 @@ public class UserDTO {
 
 	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
+	}
+	
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 	
 	
