@@ -300,6 +300,7 @@ public class AccommodationObject {
 		this.type = type;
 	}
 
+	@JsonIgnore
 	public Agent getAgent() {
 		return agent;
 	}
