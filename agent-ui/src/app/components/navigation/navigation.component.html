@@ -7,8 +7,9 @@
                 <div class="phone">Welcome to agent page, <span *ngIf="logged == null">please login!</span><span *ngIf="logged != null && logged.name != null">{{logged.name}}</span></div>          
                   <div class="user_box ml-auto">
                           <div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div>
-                          <div class="user_box_login user_box_link"><button [routerLink]="['/agents']">agents</button></div>
+                          <div class="user_box_login user_box_link"><button [routerLink]="['/agents']">new unit</button></div>
                           <div class="user_box_login user_box_link"><button [routerLink]="['/reservations']">reservations</button></div>
+                          <div class="user_box_login user_box_link"><button [routerLink]="['/newreservation']">new reservation</button></div>
                           <span *ngIf="logged == null"> <div class="user_box_login user_box_link"><button [routerLink]="['/login']">login</button></div></span>
                           <span *ngIf="logged != null"> <div class="user_box_register user_box_link"><button (click)="logout()">logout</button></div></span>
                   </div>

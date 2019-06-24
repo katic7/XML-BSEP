@@ -5,6 +5,8 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
+import com.ftn.accommodationservice.xsd.PostReservationBusynessRequest;
+import com.ftn.accommodationservice.xsd.PostReservationBusynessResponse;
 import com.ftn.accommodationservice.xsd.PostReservationCompletionRequest;
 import com.ftn.accommodationservice.xsd.PostReservationCompletionResponse;
 import com.ftn.agentservice.repository.ReservationRepository;
@@ -23,5 +25,9 @@ public class ReservationClinet extends WebServiceGatewaySupport {
 	
 	public PostReservationCompletionResponse completeReservation(PostReservationCompletionRequest request) {
 		return (PostReservationCompletionResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+	
+	public PostReservationBusynessResponse makeUnitBusy(PostReservationBusynessRequest request) {
+		return (PostReservationBusynessResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 }

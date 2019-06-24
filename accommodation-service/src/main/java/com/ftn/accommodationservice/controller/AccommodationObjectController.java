@@ -134,5 +134,15 @@ public class AccommodationObjectController {
 		} 
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
+	
+	@GetMapping("/getUnits")
+	public ResponseEntity<List<AccommodationUnit>> getUnits() {
+		List<AccommodationUnit> acus = accommodationObjectService.getUnits();
+		if(acus != null) {
+			return new ResponseEntity<List<AccommodationUnit>>(acus, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
 
 }

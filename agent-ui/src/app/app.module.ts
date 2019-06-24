@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 import { CreateObjectComponent } from './components/create-object/create-object.component';
 import { MatSelectModule } from '@angular/material';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { NewreservationComponent } from './newreservation/newreservation.component';
 
 
 const appRoutes: Routes = [
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'agents', component: AgentsComponent },
   { path: 'newObject', component: CreateObjectComponent},
-  { path: 'reservations', component: ReservationsComponent }
+  { path: 'reservations', component: ReservationsComponent },
+  { path: 'newreservation', component: NewreservationComponent }
 ];
 
 @NgModule({
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
     NavigationComponent,
     CreateObjectComponent,
     ReservationsComponent,
+    NewreservationComponent,
   ],
   imports: [
     BrowserModule,

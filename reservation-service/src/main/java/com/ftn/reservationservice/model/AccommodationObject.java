@@ -299,7 +299,7 @@ public class AccommodationObject {
 	public void setType(Type type) {
 		this.type = type;
 	}
-
+	@JsonIgnore
 	public Agent getAgent() {
 		return agent;
 	}

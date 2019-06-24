@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * <p>Java class for Type complex type.
@@ -95,7 +97,7 @@ public class Type {
     public void setName(String value) {
         this.name = value;
     }
-
+    @JsonIgnore
 	public List<AccommodationObject> getAccObj() {
 		return accObj;
 	}

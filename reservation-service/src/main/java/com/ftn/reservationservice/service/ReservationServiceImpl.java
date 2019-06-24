@@ -111,5 +111,10 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationRepository.getForCompletion(date);
 	}
 
+	@Override
+	public List<AccommodationUnit> getUnits() {
+		return accommodationUnitRepository.findAll();
+	}
+
 	
 }

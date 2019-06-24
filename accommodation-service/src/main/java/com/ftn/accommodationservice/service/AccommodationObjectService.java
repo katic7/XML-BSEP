@@ -13,6 +13,7 @@ public interface AccommodationObjectService {
 	
 	AccommodationUnit getOneAccUnit(Long id);
 	AccommodationUnit AddNewAccUnit(AccommodationUnit acu);
+	List<AccommodationUnit> getUnits();
 	
 	AccommodationObject getOneAccObj(Long id);
 }

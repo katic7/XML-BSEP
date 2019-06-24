@@ -15,4 +15,6 @@ public interface ReservationService {
 	List<Reservation> findReservationsByUserId(Long id);
 	void deleteReservation(Long id);
 	List<Reservation> getForCompletion(Date date);
+	
+	List<AccommodationUnit> getUnits();
 }
