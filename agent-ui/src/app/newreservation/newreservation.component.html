@@ -1,0 +1,49 @@
+<app-navigation></app-navigation>
+
+
+<br/>
+<br/>
+<div class="container">
+  <div class="centeredTitle">
+      <h1>Create new reservation</h1>
+  </div>
+
+  <div id="em" class="form-group" id="centeredForm" style="width:25%;">      
+      
+      <div  id="em2" class="form-group" style="width:25%;">
+        <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+          <div class="">                
+            <label for="name" class="col-form-label">Reservation start date:</label>
+            <mat-form-field class="example-full-width">
+              <input matInput required [matDatepicker]="picker3" [formControl]="beginDate">
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="" style="margin-left: 15px;">
+            <label for="name" class="col-form-label">Reservation end date:</label>
+            <mat-form-field class="example-full-width">
+              <input matInput required [matDatepicker]="picker2" [formControl]="endDate">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        
+      <div>
+        <mat-form-field>
+          <mat-label>Accommodation Unit</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let accUnit of accUnits" [value]="accUnit.id">
+              {{accUnit.id}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  <button (click)="Cancel()" style="margin-top:5%;"  class="btn btn-outline-primary">Cancel</button>
+  <div class="form-group" style="margin-top:5%; float:right;">
+    <button (click)="onSubmit()"  class="btn btn-outline-success">Create</button>
+  </div>
+</div>
+</div>
+</div>

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ftn.accommodationservice.xsd.GetTestResponse;
+import com.ftn.accommodationservice.xsd.PostReservationBusynessRequest;
+import com.ftn.accommodationservice.xsd.PostReservationBusynessResponse;
 import com.ftn.accommodationservice.xsd.PostReservationCompletionRequest;
 import com.ftn.accommodationservice.xsd.PostReservationCompletionResponse;
 import com.ftn.agentservice.soap.ReservationClinet;
@@ -30,6 +32,11 @@ public class ReservationController {
 	@PostMapping("/completeReservation")
 	public PostReservationCompletionResponse completeReservation(@RequestBody PostReservationCompletionRequest request) {
 		return client.completeReservation(request);
+	}
+	
+	@PostMapping("/makeUnitBusy")
+	public PostReservationBusynessResponse makeUnitBusy(@RequestBody PostReservationBusynessRequest request) {
+		return client.makeUnitBusy(request);
 	}
 
 }

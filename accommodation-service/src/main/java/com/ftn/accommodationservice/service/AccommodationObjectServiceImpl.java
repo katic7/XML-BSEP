@@ -49,6 +49,11 @@ public class AccommodationObjectServiceImpl implements AccommodationObjectServic
 		return acurepo.getOne(id);
 	}
 
+	@Override
+	public List<AccommodationUnit> getUnits() {
+		return acurepo.findAll();
+	}
+
 	
 	
 	
