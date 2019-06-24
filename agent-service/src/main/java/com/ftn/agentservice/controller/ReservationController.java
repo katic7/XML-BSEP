@@ -34,6 +34,7 @@ public class ReservationController {
 		return client.completeReservation(request);
 	}
 	
+	@PreAuthorize("hasAuthority('ModifyContent')")
 	@PostMapping("/makeUnitBusy")
 	public PostReservationBusynessResponse makeUnitBusy(@RequestBody PostReservationBusynessRequest request) {
 		return client.makeUnitBusy(request);
