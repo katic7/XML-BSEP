@@ -20,6 +20,14 @@ export class ReservationsService {
     return this.http.post("https://localhost:8083/api/reservations/getForCompletion", date);
   }
 
+  getObjectReservations(id: number) : Observable<any> {
+    return this.http.get("https://localhost:8081/reservationservice/api/reservations/getObjectReservations/"+id);
+  }
+
+  upcomingReservations(id: number) : Observable<any> {
+    return this.http.get("https://localhost:8081/reservationservice/api/reservations/getUpComingReservations/"+id);
+  }
+
   makeUnitBusy(res : PostReservationBusynessRequest) : Observable<any> {
     return this.http.post("https://localhost:8081/agentservice/api/reservations/makeUnitBusy", res);
   }

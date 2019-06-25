@@ -21,6 +21,7 @@ import com.ftn.reservationservice.dto.SearchFormDTO;
 import com.ftn.reservationservice.model.AccommodationUnit;
 import com.ftn.reservationservice.model.Reservation;
 import com.ftn.reservationservice.repository.AccommodationUnitRepository;
+import com.ftn.reservationservice.repository.ReservationRepository;
 import com.ftn.reservationservice.repository.UserRepository;
 import com.ftn.reservationservice.service.ReservationService;
 
@@ -37,7 +38,8 @@ public class ReservationController {
 	@Autowired
 	public UserRepository userRepository;
 	
-	
+	@Autowired
+	public ReservationRepository reservationRepository;
 //	@GetMapping
 //	public ResponseEntity<List<Reservation>> getAllReservation() {
 //		List<Reservation> reservations = reservationService.getAll();
@@ -131,6 +133,30 @@ public class ReservationController {
 		}
 		
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping("/getObjectReservations/{id}")
+	public ResponseEntity<List<ReservationDTO>> getObjectReservations(@PathVariable Long id){
+		Date date = new Date();
+		List<Reservation> lista = reservationRepository.getObjectReservations(id,date);
+		List<ReservationDTO> povratna = new ArrayList<ReservationDTO>();
+		for(Reservation r:lista) {
+			ReservationDTO rDTO = new ReservationDTO(r);
+			povratna.add(rDTO);
+		}
+		return new ResponseEntity<List<ReservationDTO>>(povratna, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getUpComingReservations/{id}")
+	public ResponseEntity<List<ReservationDTO>> getUpComingReservations(@PathVariable Long id){
+		Date date = new Date();
+		List<Reservation> lista = reservationRepository.getUpComingReservations(id, date);
+		List<ReservationDTO> povratna = new ArrayList<ReservationDTO>();
+		for(Reservation r:lista) {
+			ReservationDTO rDTO = new ReservationDTO(r);
+			povratna.add(rDTO);
+		}
+		return new ResponseEntity<List<ReservationDTO>>(povratna, HttpStatus.OK);
 	}
 	
 	@GetMapping("/getUnits")
