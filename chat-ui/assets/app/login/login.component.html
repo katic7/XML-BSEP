@@ -1,12 +1,10 @@
-
-
   <div class="container" style="max-width:390px;">
     <div *ngIf="validEmail" class="back">
       <button (click)="backToEmail()" class="back-button"><i class="fas fa-chevron-left"></i></button><p>Megatravel.com Account</p>
     </div>
     
 
-    <h1>Sign in</h1>
+    <h1>Sign in to CHATapp</h1>
 
     <p>You can sign in using your Megatravel.com account to access our services.</p>
    
@@ -57,20 +55,6 @@
           <button>google</button>
         </div>
       </div>
-
-      <div class="password">
-        <button *ngIf="!validEmail">Having trouble signing in?</button>
-        <button *ngIf="validEmail">Forgot your password?</button>
-      </div>
-    
+   
   </div>
 
-
-
-<div *ngIf="!validEmail" class="container" style="max-width:390px;margin-top: 4%;">
-  <h2>Don't have an account yet?</h2>
-  <p style="margin-top: 4%">Create an account to easily use Megatravel.com services.</p>
-  <div class="password" style="text-align: left;">
-    <button (click)="register()" style="padding: 0px">Create your account</button>
-  </div>
-</div>

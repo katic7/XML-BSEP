@@ -11,11 +11,13 @@ import { JWTAuth } from '../models/jwt-auth';
 import { AuthLoginInfo } from '../models/login-info';
 import { AuthService } from '../services/auth.service';
 import { TokenStorageService } from '../services/token-storage.service';
+import { RouteService } from '../routeservice/RouteService';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers:[ AuthService, TokenStorageService, RouteService]
 })
 export class LoginComponent implements OnInit {
   form: any = {};
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit {
  
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private httpClient : HttpClient, private _location: Location,
-              private router: Router) { }
+              private router: Router, private routerService : RouteService) { }
  
   ngOnInit() {
     
@@ -78,7 +80,10 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         
-        this.router.navigate(['chat']);       
+        console.log(this.routerService.getPreviousUrl());
+        if(this.routerService.getPreviousUrl().includes("login")){
+          window.history.back();
+        }    
       },
       error => {
         this.errorMessage = "Wrong password, please try again."

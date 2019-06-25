@@ -29,4 +29,8 @@ export class AccommodationunitService {
     return this.http.get("https://localhost:8082/api/addresses/" + id);
   }
 
+  getAllAgents() : Observable<any>{
+    return this.http.get('//localhost:8085/api/auth/getAgents');
+  }
+
 }

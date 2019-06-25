@@ -1,0 +1,19 @@
+<!-- Top Bar -->
+<header class="header">
+  <div class="top_bar">
+      <div class="container">
+          <div class="row">
+              <div class="col d-flex flex-row">           
+                  <div class="user_box ml-auto">
+                          <!--div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div-->
+                          <div class="user_box_login user_box_link"><button class="chatBtn" [routerLink]="['/chat']">chat</button></div>
+                          <!--div class="user_box_login user_box_link"><button [routerLink]="['/comments']">comments</button></div-->
+                          <!--div class="user_box_login user_box_link"><button [routerLink]="['/agents']">agents</button></div-->
+                          <span *ngIf="logged == null"> <div class="user_box_login user_box_link"><button class="logBtn" [routerLink]="['/login']">login</button></div></span>
+                          <span *ngIf="logged != null"> <div class="user_box_register user_box_link"><button class="logBtn" (click)="logout()">logout</button></div></span>
+                  </div>
+              </div>
+          </div>
+      </div>		
+  </div>
+</header>

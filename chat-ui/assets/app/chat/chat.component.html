@@ -1,6 +1,9 @@
+<app-homepage></app-homepage>
+<br/>
+<br/>
 <div class="container-fluid">
     <div class="row">
-        <h2>Realtime Chat Application</h2>
+        <h2>Welcome to chat!</h2>
         <hr>
     </div>
     <div class="row">
@@ -9,20 +12,6 @@
                 <label for="username">Username</label>
                 <input type="text" [(ngModel)]="user" class="form-control" id="username" disabled>
                 <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
-            </div>
-        </div>
-        <div class="col-sm-5">
-            <label for="roomInput">Choose room</label>
-            <select name="roomInput" id="roomInput" class="form-control" [(ngModel)]="room">
-                <option value="Lobby">Lobby</option>
-                <option value="Hall">Hall</option>
-                <option value="Deluxe">Deluxe</option>
-            </select>
-        </div>
-        <div class="col sm-2">
-            <div style="margin-top:19px;" class="pull-right"> 
-                <button type="button" class="btn btn-primary" (click)="join()">Join</button>
-                <button type="button" class="btn btn-default" (click)="leave()">Leave</button>
             </div>
         </div>
     </div>

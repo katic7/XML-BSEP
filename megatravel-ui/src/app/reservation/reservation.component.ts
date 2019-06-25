@@ -11,6 +11,7 @@ import { Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { RatingDTO } from '../models/RatingDTO';
 import { Router } from '@angular/router';
+import { Agent } from '../models/Agent';
 
 @Component({
   selector: 'app-reservation',
@@ -29,6 +30,7 @@ export class ReservationComponent implements OnInit {
   already :boolean = false;
   comment = new FormControl('');
   rating = new FormControl('');
+  allAgents : Agent[] = [];
   constructor(private pipe: DatePipe, private reservationService: ReservationService,
      private accommodationUnitService : AccommodationunitService, private router : Router) { }
 
@@ -84,6 +86,19 @@ export class ReservationComponent implements OnInit {
     this.comment = new FormControl('');
     this.rating = new FormControl('');
     
+  }
+
+  agentID:number;
+  Chat(){
+    this.accommodationUnitService.getAllAgents().subscribe(data =>{
+      this.allAgents = data;
+      for(var i=0; i<this.allAgents.length; i++){
+        if(this.allAgents[i].accObj.id == this.accUnit.accommodationObject.id){
+          this.agentID = this.allAgents[i].id;
+          window.open('http://localhost:3000/chat/' + this.logged.id + "/" + this.reservation.id + "/" + this.agentID, "_blank");
+        }
+      }
+    });  
   }
 
 }
