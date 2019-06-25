@@ -11,7 +11,11 @@ export class AccomoodationUnitService {
   constructor(private http : HttpClient) { }
 
   addNewAccU(accU : AccommodationUnit) : Observable<any>{
-    return this.http.post('https://localhost:8091/api/accommodations/addAccUnit', accU);    //PRILAGODI BEKENND APIU
+    return this.http.post('https://localhost:8081/agentservice/api/accommodations/addAccUnit', accU);    //PRILAGODI BEKENND APIU
+  }
+
+  getObjectUnits(id: number) : Observable<any>{
+    return this.http.get("https://localhost:8081/agentservice/api/accommodations/getObjectUnits/"+id);
   }
 
   getUnits() : Observable<any> {

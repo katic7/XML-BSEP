@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
+import com.ftn.accommodationservice.xsd.AccUnitPrice;
 import com.ftn.accommodationservice.xsd.AccommodationUnit;
 import com.ftn.accommodationservice.xsd.Address;
 import com.ftn.accommodationservice.xsd.Category;
@@ -18,6 +19,8 @@ import com.ftn.accommodationservice.xsd.GetAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetAddressRequest;
 import com.ftn.accommodationservice.xsd.GetAddressResponse;
+import com.ftn.accommodationservice.xsd.GetAllAccUnitPriceRequest;
+import com.ftn.accommodationservice.xsd.GetAllAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetCategoryRequest;
@@ -26,10 +29,14 @@ import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
 import com.ftn.accommodationservice.xsd.GetTypeResponse;
+import com.ftn.accommodationservice.xsd.PostAccUnitPriceRequest;
+import com.ftn.accommodationservice.xsd.PostAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.PostAccommodationObjectRequest;
 import com.ftn.accommodationservice.xsd.PostAccommodationObjectResponse;
 import com.ftn.accommodationservice.xsd.PostAddressRequest;
 import com.ftn.accommodationservice.xsd.PostAddressResponse;
+import com.ftn.accommodationservice.xsd.PostObjectUnitsRequest;
+import com.ftn.accommodationservice.xsd.PostObjectUnitsResponse;
 import com.ftn.accommodationservice.xsd.Type;
 import com.ftn.agentservice.dto.AccommodationObjectDTO;
 import com.ftn.agentservice.model.AccommodationObject;
@@ -69,6 +76,12 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		return (GetTestResponse) getWebServiceTemplate().marshalSendAndReceive(req);
 	}
 	
+	public PostObjectUnitsResponse getUnits(Long id) {
+		PostObjectUnitsRequest request = new PostObjectUnitsRequest();
+		request.setId(id);
+		return (PostObjectUnitsResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+	
 	public GetCategoryResponse getCategory(Long id) {
 		GetCategoryRequest request = new GetCategoryRequest();
 		request.setId(1);
@@ -83,7 +96,7 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	
 	public GetAddressResponse getAddress(Long id) {
 		GetAddressRequest request = new GetAddressRequest();
-		request.setId(1);
+		request.setId(id);
 		return (GetAddressResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	
@@ -96,6 +109,11 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	public GetAllAdditionalServiceResponse getAllAdditionalServiceResponse() {
 		GetAllAdditionalServiceRequest request = new GetAllAdditionalServiceRequest();
 		return (GetAllAdditionalServiceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+	
+	public GetAllAccUnitPriceResponse getAllPrices() {
+		GetAllAccUnitPriceRequest request = new GetAllAccUnitPriceRequest();
+		return (GetAllAccUnitPriceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	
 	public GetAccUnitPriceResponse getAccUnitPrice(Long id) {
@@ -170,6 +188,13 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		addressRepo.save(adresa);
 		request.setAddress(adr);
 		return (PostAddressResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+
+	public PostAccUnitPriceResponse createPrice(AccUnitPrice acc) {
+		// TODO Auto-generated method stub
+		PostAccUnitPriceRequest request = new PostAccUnitPriceRequest();
+		request.setAccUnitPrice(acc);
+		return (PostAccUnitPriceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	
 	/*public PostAccommodationObjectResponse createObject(AccommodationObject acc) {

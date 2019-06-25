@@ -1,41 +1,20 @@
+.example-form {
+    margin-left: 20%;
+    
+    margin-bottom: 20px;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
 
-#price{
-    display: grid;
-}
-
-.centered{
-    position: fixed; /* or absolute */
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -100px;
-}
-
-#centeredForm{
-    position: fixed; /* or absolute */
-    top: 20%;
-    left: 5%;
-}
-
-.centeredTitle{
-    position: fixed; /* or absolute */
-    top: 10%;
-    left: 5%;
-}
-
-#priceFORM{
-    width: 10%;
-}
-
-#em2{
-    position: fixed; /* or absolute */
-    margin-top: 2%; 
-}
-
-.priceTitle{
-    position: fixed; /* or absolute */
-    top: 11%;
-    left: 50%;
-}
-
-
+  .number {
+    width: 30%;
+  }

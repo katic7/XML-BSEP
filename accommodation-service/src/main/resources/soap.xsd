@@ -263,6 +263,23 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 		</xs:complexType>
 	</xs:element>
 	
+	<xs:element name="PostObjectUnitsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "id" type="tns:id"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="PostObjectUnitsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accommodationUnit" type="tns:AccommodationUnit" maxOccurs="unbounded"
+                minOccurs="0"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
 	<xs:element name="PostAddressRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -308,6 +325,39 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 			<xs:sequence>
 				<xs:element name="additionalServices" type="tns:AdditionalService" maxOccurs="unbounded"
                 minOccurs="0"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetAllAccUnitPriceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="GetAllAccUnitPriceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accUnitPrice" type="tns:AccUnitPrice" maxOccurs="unbounded"
+                minOccurs="0"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="PostAccUnitPriceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AccUnitPrice" type="tns:AccUnitPrice"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="PostAccUnitPriceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name= "AccUnitPrice" type="tns:AccUnitPrice"/>
 			</xs:sequence>	
 		</xs:complexType>
 	</xs:element>

@@ -1,2 +1,62 @@
 <app-navigation></app-navigation>
 
+<br/>
+<br/>
+
+<div style="margin-left: 40px;">
+    <h1> Informations of {{accObj.name}} [{{tip}}]</h1>
+    <br/>
+
+    <table class="table table-borderless" style="width: 40%">
+        <tbody>
+          <tr>
+            <th scope="row">Description</th>
+            <td>{{accObj.description}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Number of stars</th>
+            <td>{{accObj.categoryId}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Address</th>
+            <td>{{adr.street}} {{adr.streetNumber}}, {{adr.town}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Free cancelation</th>
+            <td>{{freeCancel}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Days to cancel</th>
+            <td>{{accObj.daystoCancel}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+
+      <h1 *ngIf="imaUnita"> All units</h1>
+      <table class="table table-hover" *ngIf="imaUnita">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Number of beds</th>
+            <th scope="col">Description</th>
+            <th scope="col">Balcony</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let unit of allUnits; let i = index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{unit.numberOfBeds}}</td>
+            <td>{{unit.description}}</td>
+            <td *ngIf="unit.balcony">Yes</td>
+            <td *ngIf="!unit.balcony">No</td>
+            <td>{{unit.rating}}</td>
+            <td>{{unit.price.price}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <h1 *ngIf="!imaUnita">Your object doesn't have any units. Create your first unit!</h1>
+</div>

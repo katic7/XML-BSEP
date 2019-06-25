@@ -45,6 +45,8 @@ import com.ftn.accommodationservice.xsd.GetAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetAddressRequest;
 import com.ftn.accommodationservice.xsd.GetAddressResponse;
+import com.ftn.accommodationservice.xsd.GetAllAccUnitPriceRequest;
+import com.ftn.accommodationservice.xsd.GetAllAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetCategoryRequest;
@@ -53,11 +55,17 @@ import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
 import com.ftn.accommodationservice.xsd.GetTypeResponse;
+import com.ftn.accommodationservice.xsd.PostAccUnitPriceRequest;
+import com.ftn.accommodationservice.xsd.PostAccUnitPriceResponse;
 import com.ftn.accommodationservice.xsd.PostAccommodationObjectRequest;
 import com.ftn.accommodationservice.xsd.PostAccommodationObjectResponse;
 import com.ftn.accommodationservice.xsd.PostAddressRequest;
 import com.ftn.accommodationservice.xsd.PostAddressResponse;
+import com.ftn.accommodationservice.xsd.PostObjectUnitsRequest;
+import com.ftn.accommodationservice.xsd.PostObjectUnitsResponse;
 import com.ftn.accommodationservice.xsd.Test;
+
+import io.micrometer.core.ipc.http.HttpSender.Response;
 
 
 
@@ -169,6 +177,33 @@ public class AccommodationEndpoint {
 		return response;
 	}
 	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostObjectUnitsRequest")
+	@ResponsePayload
+	@Transactional
+	public PostObjectUnitsResponse getUnits(@RequestPayload PostObjectUnitsRequest request) {
+		List<AccommodationUnit> lista = aunitrepo.findAllByObject(request.getId());
+		PostObjectUnitsResponse response = new PostObjectUnitsResponse();
+		//List<com.ftn.accommodationservice.xsd.AccommodationUnit> povratna = new ArrayList<com.ftn.accommodationservice.xsd.AccommodationUnit>();
+		for(AccommodationUnit uni : lista) {
+			com.ftn.accommodationservice.xsd.AccommodationUnit unit = new com.ftn.accommodationservice.xsd.AccommodationUnit();
+			com.ftn.accommodationservice.xsd.AccUnitPrice price = new com.ftn.accommodationservice.xsd.AccUnitPrice();
+			price.setEndDate(uni.getPrice().getEndDate());
+			price.setStartDate(uni.getPrice().getStartDate());
+			price.setId(uni.getPrice().getId());
+			price.setPrice(uni.getPrice().getPrice());
+			
+			unit.setPrice(price);
+			unit.setBalcony(uni.isBalcony());
+			unit.setDescription(uni.getDescription());
+			unit.setId(uni.getId());
+			unit.setNumberOfBeds(uni.getNumberOfBeds());
+			unit.setRating(uni.getRating());
+			//povratna.add(unit);
+			response.getAccommodationUnit().add(unit);
+		}
+		
+		return response;
+	}
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostAddressRequest")
 	@ResponsePayload
 	@Transactional
@@ -200,6 +235,23 @@ public class AccommodationEndpoint {
 		e.setCategory(s);
 		return e;
 	}
+	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostAccUnitPriceRequest")
+	@ResponsePayload
+	@Transactional
+	public PostAccUnitPriceResponse createPrice(@RequestPayload PostAccUnitPriceRequest request) {
+		AccUnitPrice price = new AccUnitPrice();
+		price.setEndDate(request.getAccUnitPrice().getEndDate());
+		price.setPrice(request.getAccUnitPrice().getPrice());
+		price.setStartDate(request.getAccUnitPrice().getStartDate());
+		price = acurepo.save(price);
+		PostAccUnitPriceResponse response = new PostAccUnitPriceResponse();
+		request.getAccUnitPrice().setId(price.getId());
+		response.setAccUnitPrice(request.getAccUnitPrice());
+		return response;
+	}
+	
+	
 	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAccUnitPriceRequest")
 	@ResponsePayload
@@ -244,6 +296,23 @@ public class AccommodationEndpoint {
 		return e;
 	}
 	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAllAccUnitPriceRequest")
+	@ResponsePayload
+	@Transactional
+	public GetAllAccUnitPriceResponse getAllAccUnitPrice(@RequestPayload GetAllAccUnitPriceRequest request) {
+	
+		List<AccUnitPrice> lista = acurepo.findAll();
+		GetAllAccUnitPriceResponse response = new GetAllAccUnitPriceResponse();
+		for(AccUnitPrice ac: lista) {
+			com.ftn.accommodationservice.xsd.AccUnitPrice price = new com.ftn.accommodationservice.xsd.AccUnitPrice();
+			price.setEndDate(ac.getEndDate());
+			price.setId(ac.getId());
+			price.setStartDate(ac.getStartDate());
+			price.setPrice(ac.getPrice());
+			response.getAccUnitPrice().add(price);
+		}
+		return response;
+	}
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetAllAdditionalServiceRequest")
 	@ResponsePayload
 	@Transactional
