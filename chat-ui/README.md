@@ -11,6 +11,11 @@ Real time chat application that sends and shows messages to a recipient instantl
 npm install npm@latest -g
 ```
 
+* megatravel-ui started.
+* users can chat with agents if reservation begin date is yet to come.
+* agents can chat with users if reservation is made in accommodation object that he manages,
+and reservation begin date is yet to come.
+
 ### Installing
 
 1. Clone the repo
