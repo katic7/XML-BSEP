@@ -2,12 +2,15 @@ package com.ftn.reservationservice.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +18,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.ftn.reservationservice.dto.ReservationDTO;
 import com.ftn.reservationservice.dto.SearchFormDTO;
+import com.ftn.reservationservice.dto.UserDTO;
 import com.ftn.reservationservice.model.AccommodationUnit;
+import com.ftn.reservationservice.model.Agent;
 import com.ftn.reservationservice.model.Reservation;
+import com.ftn.reservationservice.model.Role;
+import com.ftn.reservationservice.model.RoleName;
+import com.ftn.reservationservice.model.User;
 import com.ftn.reservationservice.repository.AccommodationUnitRepository;
+import com.ftn.reservationservice.repository.ReservationRepository;
+import com.ftn.reservationservice.repository.AgentRepository;
 import com.ftn.reservationservice.repository.UserRepository;
 import com.ftn.reservationservice.service.ReservationService;
 
@@ -37,7 +48,15 @@ public class ReservationController {
 	@Autowired
 	public UserRepository userRepository;
 	
+	@Autowired
+	public ReservationRepository reservationRepository;
+
+	public static RoleName roleName;
+	 
+	@Autowired
+	public AgentRepository agentRepository;
 	
+
 //	@GetMapping
 //	public ResponseEntity<List<Reservation>> getAllReservation() {
 //		List<Reservation> reservations = reservationService.getAll();
@@ -131,6 +150,30 @@ public class ReservationController {
 		}
 		
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping("/getObjectReservations/{id}")
+	public ResponseEntity<List<ReservationDTO>> getObjectReservations(@PathVariable Long id){
+		Date date = new Date();
+		List<Reservation> lista = reservationRepository.getObjectReservations(id,date);
+		List<ReservationDTO> povratna = new ArrayList<ReservationDTO>();
+		for(Reservation r:lista) {
+			ReservationDTO rDTO = new ReservationDTO(r);
+			povratna.add(rDTO);
+		}
+		return new ResponseEntity<List<ReservationDTO>>(povratna, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getUpComingReservations/{id}")
+	public ResponseEntity<List<ReservationDTO>> getUpComingReservations(@PathVariable Long id){
+		Date date = new Date();
+		List<Reservation> lista = reservationRepository.getUpComingReservations(id, date);
+		List<ReservationDTO> povratna = new ArrayList<ReservationDTO>();
+		for(Reservation r:lista) {
+			ReservationDTO rDTO = new ReservationDTO(r);
+			povratna.add(rDTO);
+		}
+		return new ResponseEntity<List<ReservationDTO>>(povratna, HttpStatus.OK);
 	}
 	
 	@GetMapping("/getUnits")

@@ -52,7 +52,10 @@ export class CreateObjectComponent implements OnInit {
       this.address.latitude = data[0].lat;
       this.createService.createAddress(this.address).subscribe(data=>{
         this.accObj.addressId = data.id;
-        this.createService.createObject(this.accObj).subscribe();
+        this.createService.createObject(this.accObj).subscribe(acc=>{
+          this.router.navigate(['home']);
+        });
+        
       });
     });  
   

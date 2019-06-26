@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth/service/auth.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
+import { Agent } from 'src/app/models/Agent';
+import { AccommodationObject } from 'src/app/models/AccommodationObject';
+
 
 @Component({
   selector: 'app-navigation',
@@ -11,9 +14,10 @@ import { User } from 'src/app/models/User';
 export class NavigationComponent implements OnInit {
 
   constructor(private authService : AuthService, private router: Router) { }
-
+  
   logged: User;
-
+  agent: Agent;
+  accObject : AccommodationObject = new AccommodationObject();
   ngOnInit() {
     this.getLoggedUser();
   }
@@ -32,6 +36,10 @@ export class NavigationComponent implements OnInit {
     this.authService.getLogged().subscribe(data => {
       if(data != null) {
         this.logged = data;
+        this.authService.getOneAgent(data.id).subscribe(agnet=>{
+          this.agent = agnet;
+          this.accObject = agnet.accObj;
+        });
       }else{
         this.router.navigate(['/login']);
       }

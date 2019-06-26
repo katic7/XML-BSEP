@@ -32,6 +32,7 @@
         <p><b>EUR {{this.accUnit.price.price}}</b></p>
       </div>
       
+      <button (click)="Chat()" *ngIf="indicator==true" class="btn btn-success">Chat</button>
       <div class="availability">
         <div *ngIf="indicator==false" class="rating_form">
           <label for="">Rating</label>
@@ -47,12 +48,11 @@
               <label for="">Comment</label>
               <input [formControl]="comment" type="text" style="margin-left:10px;">
           <br>
-        
         <button *ngIf="indicator==false" style="margin-left: 78%;" (click)="Rate()">Rate</button>
       </div>
-        <button (click)="cancelReservation()" *ngIf="indicator==true">Cancel</button>
-
+        <button (click)="cancelReservation()" *ngIf="indicator==true" style="margin-top:100%;">Cancel reservation</button>
       </div>
+      
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

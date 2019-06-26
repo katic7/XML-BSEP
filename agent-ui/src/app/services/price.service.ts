@@ -11,7 +11,7 @@ export class PriceService {
   constructor(private http : HttpClient) { }
 
   addNewPrice(price : AccUnitPrice) : Observable<any>{
-    return this.http.post('https://localhost:8085/api/', price);   
+    return this.http.post('//localhost:8091/api/accommodations/createPrice', price);   
   }
 
 }

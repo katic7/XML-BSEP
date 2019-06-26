@@ -29,4 +29,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	@Query(value = "select * from reservation r where ?1 > r.begin_date",nativeQuery = true)
 	List<Reservation> getForCompletion(Date date);
 
+	@Query(value="select r.id, r.active, r.begin_date, r.completed, r.end_date, r.price, r.reservation_date, r.accommodation_unit, r.user from reservation r, accommodation_unit ac where ac.accommodation_object = ?1 and r.accommodation_unit = ac.id and ?2 > r.begin_date", nativeQuery=true)
+	List<Reservation> getObjectReservations(Long id, Date dat);
+	
+	@Query(value="select r.id, r.active, r.begin_date, r.completed, r.end_date, r.price, r.reservation_date, r.accommodation_unit, r.user from reservation r, accommodation_unit ac where ac.accommodation_object = ?1 and r.accommodation_unit = ac.id and ?2 < r.begin_date", nativeQuery=true)
+	List<Reservation> getUpComingReservations(Long id, Date dat);
 }

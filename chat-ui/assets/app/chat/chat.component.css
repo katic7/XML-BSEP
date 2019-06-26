@@ -1,3 +1,7 @@
 h1 {
     color: red;
 }
+
+.container-fluid{
+    padding: 50px 250px 250px 250px;
+}

@@ -81,11 +81,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         
-        if(this.routeService.getPreviousUrl().includes('register')) {
-          this.router.navigate(['home']);
-        } else {
-          this._location.back();
-        }
+        this.router.navigate(['home']);
        
        
       },

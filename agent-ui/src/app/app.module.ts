@@ -7,7 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './components/auth/auth-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteService } from './components/routeservice/RouteService';
-import { AgentsComponent } from './components/agents/agents.component';
+import { AgentsComponent} from './components/agents/agents.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

@@ -1,1 +1,4 @@
 eureka-service/logs
+auth-service/target/
+reservation-service/target/
+accommodation-service/target/

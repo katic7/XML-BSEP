@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: auth-service
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Topolic
+Built-By: Korisnik
 Implementation-Vendor-Id: com.ftn
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_201
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/auth-service
 Created-By: Maven Integration for Eclipse

@@ -3,6 +3,11 @@ import { AuthService } from '../auth/service/auth.service';
 import { User } from 'src/app/models/User';
 import { RoleName } from 'src/app/models/Role';
 import { Router } from '@angular/router';
+import { AccommodationObject } from 'src/app/models/AccommodationObject';
+import { AddressServiceService } from 'src/app/services/address-service.service';
+import { Address } from 'src/app/models/Address';
+import { AccomoodationUnitService } from 'src/app/services/accomoodation-unit.service';
+import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
 
 @Component({
   selector: 'app-homepage',
@@ -13,7 +18,13 @@ export class HomepageComponent implements OnInit {
 
   logged : User;
   agentJe : boolean = true;
-  constructor(private authService : AuthService, private router : Router) { }
+  accObj : AccommodationObject = new AccommodationObject();
+  tip:string;
+  adr : Address = new Address();
+  freeCancel :string;
+  constructor(private authService : AuthService, private router : Router,private addressService : AddressServiceService, private unitService : AccomoodationUnitService) { }
+  allUnits : AccommodationUnit[] = [];
+  imaUnita : boolean = false;
 
   ngOnInit() {
     this.authService.getLogged().subscribe(data=>{
@@ -25,9 +36,30 @@ export class HomepageComponent implements OnInit {
             this.router.navigate(['newObject']);
             
           }else{
-            
+            this.accObj = agnet.accObj;
+            if(agnet.accObj.typeId == 1){
+              this.tip = "Hotel";
+            }else if(agnet.accObj.typeId == 2){
+              this.tip = "Motel";
+            }else if(agnet.accObj.typeId == 3){
+              this.tip = "Hostel";
           }
-        })
+          if(agnet.accObj.freeCacelation == true){
+            this.freeCancel = "Yes";
+          }else{
+            this.freeCancel = "No";
+          }
+          this.addressService.getAddress(agnet.accObj.addressId).subscribe(adresa=>{
+            this.adr = adresa;
+          })
+          this.unitService.getObjectUnits(agnet.accObj.id).subscribe(units=>{
+            this.allUnits = units;
+            if(units.length > 0){
+              this.imaUnita = true;
+            }
+          })
+        }
+      })
       }else{
         this.authService.logout();
         alert("Nemate rolu agent!");
