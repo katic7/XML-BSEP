@@ -6,6 +6,8 @@ import { ReservationCompletionResponse } from 'src/app/models/ReservationComplet
 import { AuthService } from '../components/auth/service/auth.service';
 import { User } from '../models/User';
 import { Router } from '@angular/router';
+import { Agent } from '../models/Agent';
+import { AccommodationUnit } from '../models/AccommodationUnit';
 
 @Component({
   selector: 'app-reservations',
@@ -18,6 +20,8 @@ export class ReservationsComponent implements OnInit {
   upcomingRes : Array<Reservations> = new Array<Reservations>();
   todaysDate = new Date();
   logged:User;
+  allAgents : Agent[] = [];
+  accUnit : AccommodationUnit = new AccommodationUnit();
 
   Complete(res) {
     var info : ReservationCompletionResponse = new ReservationCompletionResponse();
@@ -30,6 +34,10 @@ export class ReservationsComponent implements OnInit {
 
 
   constructor(private reservationService: ReservationsService, private pipe: DatePipe,private authService:AuthService,private router:Router) { }
+
+  Chat(reservat){
+    window.open('http://localhost:3000/chat/' + reservat.userId + "/" + reservat.id + "/" + this.logged.id, "_blank"); 
+  }
 
   ngOnInit() {
    /* this.todaysDate = new Date(this.pipe.transform(this.todaysDate, "yyyy-MM-dd"));

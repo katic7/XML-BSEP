@@ -34,7 +34,7 @@
         </tbody>
     </table>
 
-    <h1>Upcoming reservaitons</h1>
+    <h1>Upcoming reservations</h1>
     <table class="table table-striped table-sm" id="reservations_table">
         <thead>
             <tr>
@@ -55,8 +55,7 @@
             <td>{{reservation.price}}</td>
             <td>{{reservation.beginDate | date}}</td>
             <td>{{reservation.endDate | date}}</td>
-            <td><button *ngIf="!reservation.completed" (click)="Complete(reservation)" type="button" class="btn btn-outline-success">Complete</button>
-                <button *ngIf="reservation.completed" (click)="Complete(reservation)" type="button" class="btn btn-outline-danger">Uncomplete</button>
+            <td><button (click)="Chat(reservation)" type="button" class="btn btn-outline-success">Chat</button>
             </td>
             </tr>
         </tbody>

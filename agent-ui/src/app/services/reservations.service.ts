@@ -32,4 +32,8 @@ export class ReservationsService {
     return this.http.post("https://localhost:8081/agentservice/api/reservations/makeUnitBusy", res);
   }
 
+  getAllAgents() : Observable<any>{
+    return this.http.get('https://localhost:8081/authservice/api/auth/getAgents');
+  }
+
 }
