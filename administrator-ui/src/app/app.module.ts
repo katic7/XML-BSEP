@@ -16,7 +16,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule, MatFormFieldModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-import { CodebookComponent } from './codebook/codebook.component';
+import { CodebookComponent } from 'src/app/components/codebook/codebook.component';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent },

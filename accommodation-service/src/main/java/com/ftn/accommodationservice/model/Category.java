@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -51,6 +52,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     "name"
 })
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

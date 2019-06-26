@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -57,6 +58,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     
 })
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AdditionalService {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

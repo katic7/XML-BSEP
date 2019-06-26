@@ -247,6 +247,8 @@ public class AccommodationObjectController {
 		as.setAccommodationUnits(new ArrayList<AccommodationUnit>());
 		as.setIncluded(addser.isIncluded());
 		as.setPrice(addser.getPrice());
+		as.setName(addser.getName());
+		as.setAccommodationObject(accommodationObjectRepository.getOne(Long.valueOf(1)));
 		additonalRepo.save(as);
 		return new ResponseEntity<AdditionalService>(as, HttpStatus.OK);
 	}

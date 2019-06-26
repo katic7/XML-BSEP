@@ -1,0 +1,146 @@
+<app-homepage></app-homepage>
+
+<br/>
+<br/>
+<div class="wrapper" style="margin-left: 0.5%;">
+  <div>
+      <h1 style="text-align: center; margin-right: 5px;">Codebook</h1>
+  </div>
+  <h2>Types <button type="button" (click)="open(content, 1, 0, 0, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-success">Add</button> </h2>
+  <table class="table table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Name</th>          
+          <th><img src="..\..\..\assets\img\compose.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let type of types">
+            <td>{{type.id}}</td>
+            <td>{{type.name}}</td>            
+            <td><button type="button" (click)="open(content, 4, type.id, type.name, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-warning">Edit</button></td>
+            <td><button type="button" (click)="open(content, 7, type.id, type.name, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-danger">Delete</button></td>            
+        </tr>
+      </tbody>
+  </table>
+  <br>
+  <h2>Categories <button type="button" (click)="open(content, 2, 0, 0, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-success">Add</button></h2>
+  <table class="table table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Name</th>          
+          <th><img src="..\..\..\assets\img\compose.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>            
+            <td><button type="button" (click)="open(content, 5, category.id, category.name, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-warning">Edit</button></td>
+            <td><button type="button" (click)="open(content, 8, category.id, category.name, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-danger">Delete</button></td>            
+        </tr>
+      </tbody>
+  </table>
+  <br>
+  <h2>Additional Services <button type="button" (click)="open(content, 3, 0, 0, 0)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-success">Add</button></h2>
+  <table class="table table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>            
+          <th><img src="..\..\..\assets\img\compose.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let additionalService of additionalServices">
+            <td>{{additionalService.id}}</td>
+            <td>{{additionalService.name}}</td>
+            <td>{{additionalService.price}}</td>              
+            <td><button type="button" (click)="open(content, 6, additionalService.id, additionalService.name, additionalService.price)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-warning">Edit</button></td>
+            <td><button type="button" (click)="open(content, 9, additionalService.id, additionalService.name, additionalService.price)" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-danger">Delete</button></td>            
+        </tr>
+      </tbody>
+  </table>
+
+</div>
+
+<!--MODAL-->
+<ng-template #content let-modal>
+    <div *ngIf="showAddType || showAddCategory">
+        <div class="modal-header">
+        <h4 *ngIf="showAddType && !showEditType" class="modal-title" id="modal-basic-title">Add type</h4>
+        <h4 *ngIf="showEditType" class="modal-title" id="modal-basic-title">Edit type</h4>
+        <h4 *ngIf="showAddCategory && !showEditCategory" class="modal-title" id="modal-basic-title">Add category</h4>
+        <h4 *ngIf="showEditCategory" class="modal-title" id="modal-basic-title">Edit type</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">  
+        <div class="form-group" style="margin-top:10%;">
+            <label>Name: </label>
+            <input type="text" class="form-control" [formControl]="newName" required />  
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button *ngIf="showAddType && !showEditType" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Add 1')">Save</button>
+        <button *ngIf="showEditType" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Edit 1')">Save</button>
+        <button *ngIf="showAddCategory && !showEditCategory" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Add 2')">Save</button>
+        <button *ngIf="showEditCategory" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Edit 2')">Save</button>
+        </div>
+    </div>
+
+    <div *ngIf="showAddAdditionalService">
+        <div class="modal-header">
+        <h4 *ngIf="showAddAdditionalService && !showEditAddAdditionalService" class="modal-title" id="modal-basic-title">Add Additional service</h4>
+        <h4 *ngIf="showEditAddAdditionalService" class="modal-title" id="modal-basic-title">Edit Additional service</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">  
+        <div class="form-group" style="margin-top:10%;">
+            <label>Name: </label>
+            <input type="text" class="form-control" [formControl]="newName" required />  
+        </div>
+        <div class="form-group" style="margin-top:10%;">
+                <label>Price: </label>
+                <input type="number" class="form-control" [formControl]="newPrice" required />  
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button *ngIf="showAddAdditionalService && !showEditAdditionalService" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Add 3')">Save</button>
+        <button *ngIf="showEditAdditionalService" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Edit 3')">Save</button>
+        </div>
+    </div>
+
+    <div *ngIf="showDeleteType || showDeleteCategory || showDeleteAdditionalService">
+        <div class="modal-header">
+        <h4 *ngIf="showDeleteType" class="modal-title" id="modal-basic-title">Delete type</h4>
+        <h4 *ngIf="showDeleteCategory" class="modal-title" id="modal-basic-title">Delete category</h4>
+        <h4 *ngIf="showDeleteAdditionalService" class="modal-title" id="modal-basic-title">Delete additional service</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">  
+        <div class="form-group" style="margin-top:10%;">
+            <label *ngIf="showDeleteType">Are you sure you want to delete this type?</label>
+            <label *ngIf="showDeleteCategory">Are you sure you want to delete this category?</label>
+            <label *ngIf="showDeleteAdditionalService">Are you sure you want to delete this additional service?</label>            
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button *ngIf="showDeleteType" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Delete 1')">Confirm</button>
+        <button *ngIf="showDeleteCategory" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Delete 2')">Confirm</button>
+        <button *ngIf="showDeleteAdditionalService" type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Delete 3')">Confirm</button>
+        </div>
+    </div>
+
+</ng-template>
