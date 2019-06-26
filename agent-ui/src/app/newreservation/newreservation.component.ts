@@ -54,7 +54,7 @@ export class NewreservationComponent implements OnInit {
       res.reservation.completed = true;
       res.reservation.id = 9999;
       res.reservation.price = 0;
-      //res.reservation.reservationDate = new Date(this.datePipe.transform(this.todaysDate, "yyyy-MM-dd"));
+      res.reservation.reservationDate = this.datePipe.transform(this.todaysDate, "yyyy-MM-dd");
       //alert('ok');
       console.log(res);
       this.reservationService.makeUnitBusy(res).subscribe(data => {});
