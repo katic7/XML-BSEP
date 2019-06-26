@@ -32,7 +32,7 @@ npm install socket.io socket.io-client
 ```
 5. Install nodemon
 ```sh
-npm inatalll -g nodemon
+npm install -g nodemon
 ```
 
 ## Build and start

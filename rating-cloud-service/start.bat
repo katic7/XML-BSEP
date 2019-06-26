@@ -7,3 +7,4 @@ start getPublishedCommentsOfAccommodation.bat
 start getPublishedComments.bat
 start getUnpublishedComments.bat
 start publishComment.bat
+exit
