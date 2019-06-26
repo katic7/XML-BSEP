@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +20,13 @@ import com.ftn.accommodationservice.model.AccUnitPrice;
 import com.ftn.accommodationservice.model.AccommodationObject;
 import com.ftn.accommodationservice.model.AccommodationUnit;
 import com.ftn.accommodationservice.model.AdditionalService;
+import com.ftn.accommodationservice.model.Category;
 import com.ftn.accommodationservice.model.Reservation;
+import com.ftn.accommodationservice.model.Type;
 import com.ftn.accommodationservice.repository.AccommodationObjectRepository;
 import com.ftn.accommodationservice.repository.AdditionalServiceRepository;
+import com.ftn.accommodationservice.repository.CategoryRepository;
+import com.ftn.accommodationservice.repository.TypeRepository;
 import com.ftn.accommodationservice.service.AccommodationObjectService;
 
 @RestController
@@ -36,6 +41,12 @@ public class AccommodationObjectController {
 	
 	@Autowired
 	private AdditionalServiceRepository additonalRepo;
+	
+	@Autowired
+	private CategoryRepository catrepo;
+	
+	@Autowired
+	private TypeRepository typerepo;
 	
 	@PreAuthorize("hasAuthority('AddPrice')")
 	@GetMapping("/getprices")
@@ -144,5 +155,127 @@ public class AccommodationObjectController {
 		
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
+	
+	
+	/* 
+	 * 
+	 * 	SIFRANIK
+	 * 
+	 * */
+	
+	@GetMapping("/types")
+	public ResponseEntity<List<Type>> getAllTypes() {
+		List<Type> ty = new ArrayList<>();
+		ty = typerepo.findAll();
+		return new ResponseEntity<List<Type>>(ty, HttpStatus.OK);
+	}
+	
+	@GetMapping("/categories")
+	public ResponseEntity<List<Category>> getAllCategories() {
+		List<Category> ty = new ArrayList<>();
+		ty = catrepo.findAll();
+		return new ResponseEntity<List<Category>>(ty, HttpStatus.OK);
+	}
+	
+	@GetMapping("/additionalservices")
+	public ResponseEntity<List<AdditionalService>> getAllAdditionalServices() {
+		List<AdditionalService> ty = new ArrayList<>();
+		ty = additonalRepo.findAll();
+		return new ResponseEntity<List<AdditionalService>>(ty, HttpStatus.OK);
+	}
+	
+	@GetMapping("/types/{id}")
+	public ResponseEntity<Type> getOneType(@PathVariable Long id) {
+		Type ty = new Type();
+		ty = typerepo.getOne(id);
+		return new ResponseEntity<Type>(ty, HttpStatus.OK);
+	}
+	
+	@GetMapping("/categories/{id}")
+	public ResponseEntity<Category> getOneCategory(@PathVariable Long id) {
+		Category ty = new Category();
+		ty = catrepo.getOne(id);
+		return new ResponseEntity<Category>(ty, HttpStatus.OK);
+	}
+	
+	@GetMapping("/additionalservices/{id}")
+	public ResponseEntity<AdditionalService> getOneAdditionalService(@PathVariable Long id) {
+		AdditionalService ty = new AdditionalService();
+		ty = additonalRepo.getOne(id);
+		return new ResponseEntity<AdditionalService>(ty, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/types/{id}")
+	public ResponseEntity<?> deleteOneType(@PathVariable Long id) {		
+		typerepo.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/categories/{id}")
+	public ResponseEntity<?> deleteOneCategory(@PathVariable Long id) {
+		catrepo.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/additionalservices/{id}")
+	public ResponseEntity<?> deleteOneAdditionalService(@PathVariable Long id) {
+		additonalRepo.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@PostMapping("/types")
+	public ResponseEntity<Type> addType(@RequestBody Type type) {
+		Type ty = new Type();
+		ty.setAccObj(new ArrayList<AccommodationObject>());
+		ty.setName(type.getName());
+		typerepo.save(ty);
+		return new ResponseEntity<Type>(ty, HttpStatus.OK);
+	}
+	
+	@PostMapping("/categories")
+	public ResponseEntity<Category> addCategory(@RequestBody Category category) {
+		Category cat = new Category();
+		cat.setAccObj(new ArrayList<AccommodationObject>());
+		cat.setName(category.getName());
+		catrepo.save(cat);
+		return new ResponseEntity<Category>(cat, HttpStatus.OK);
+	}
+	
+	@PostMapping("/additionalservices")
+	public ResponseEntity<AdditionalService> addAdditionalService(@RequestBody AdditionalService addser) {
+		AdditionalService as = new AdditionalService();
+		as.setAccommodationUnits(new ArrayList<AccommodationUnit>());
+		as.setIncluded(addser.isIncluded());
+		as.setPrice(addser.getPrice());
+		additonalRepo.save(as);
+		return new ResponseEntity<AdditionalService>(as, HttpStatus.OK);
+	}
+	
+	@PostMapping("/types/{id}")
+	public ResponseEntity<Type> updateType(@PathVariable Long id, @RequestBody Type type) {
+		Type ty = typerepo.getOne(type.getId());
+		ty.setName(type.getName());
+		typerepo.save(ty);
+		return new ResponseEntity<Type>(ty, HttpStatus.OK);
+	}
+	
+	@PostMapping("/categories/{id}")
+	public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
+		Category cat = catrepo.getOne(category.getId());
+		cat.setName(category.getName());
+		catrepo.save(cat);
+		return new ResponseEntity<Category>(cat, HttpStatus.OK);
+	}
+	
+	@PostMapping("/additionalservices/{id}")
+	public ResponseEntity<AdditionalService> updateAdditionalService(@PathVariable Long id, @RequestBody AdditionalService addser) {
+		AdditionalService as = additonalRepo.getOne(addser.getId());
+		as.setName(addser.getName());
+		as.setPrice(addser.getPrice());
+		additonalRepo.save(as);
+		return new ResponseEntity<AdditionalService>(as, HttpStatus.OK);
+	}
+	
+	
 
 }

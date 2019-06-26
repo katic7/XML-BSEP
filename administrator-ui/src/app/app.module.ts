@@ -16,6 +16,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MatInputModule, MatFormFieldModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { CodebookComponent } from './codebook/codebook.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent },
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'agents', component: AgentsComponent },
   { path: 'comments', component: CommentsComponent },
+  { path: 'codebook', component: CodebookComponent }
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     AgentsComponent,
     CommentsComponent,
     HomepageComponent,
+    CodebookComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,100 @@
+<app-homepage></app-homepage>
+
+<br/>
+<br/>
+<div class="wrapper" style="margin-left: 0.5%;">
+  <div>
+      <h1 style="text-align: center; margin-right: 5px;">Codebook</h1>
+  </div>
+  <h2>Types <button type="button" (click)="open(content)" data-toggle="modal" data-target="#addType" class="btn btn-outline-success">Add</button> </h2>
+  <table class="table table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Name</th>          
+          <th><img src="..\..\..\assets\img\compose.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let type of types">
+            <td>{{type.id}}</td>
+            <td>{{type.name}}</td>            
+            <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+            <!--td><button type="button" (click)="open(content,user.id)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Make agent</button></td-->
+        </tr>
+      </tbody>
+  </table>
+  <br>
+  <h2>Categories <button type="button" class="btn btn-outline-success">Add</button></h2>
+  <table class="table table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Name</th>          
+          <th><img src="..\..\..\assets\img\compose.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>            
+            <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+            <!--td><button type="button" (click)="open(content,user.id)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Make agent</button></td-->
+        </tr>
+      </tbody>
+  </table>
+  <br>
+  <h2>Additional Services <button type="button" class="btn btn-outline-success">Add</button></h2>
+  <table class="table table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>            
+          <th><img src="..\..\..\assets\img\compose.png"></th>
+          <th><img src="..\..\..\assets\img\delete.png"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let additionalService of additionalServices">
+            <td>{{additionalService.id}}</td>
+            <td>{{additionalService.name}}</td>
+            <td>{{additionalService.price}}</td>              
+            <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+            <!--td><button type="button" (click)="open(content,user.id)" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Make agent</button></td-->
+        </tr>
+      </tbody>
+  </table>
+
+</div>
+
+<!--MODAL-->
+<ng-template #addType let-modal>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add agent</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+ 
+  <div class="form-group" style="width:65%;">
+    <label style="float:left;">Accommodation Object: </label>
+    <select style="float:right;" [(ngModel)]="accommodationObject" #accommodationObjectss>
+      <option *ngFor="let accObject of accommodationObjects" [ngValue]="accObject" >{{accObject.name}}</option>
+    </select>
+  </div>
+  <div class="form-group" style="margin-top:10%;">
+    <label for="taxNumber">Tax number: </label>
+    <input type="text" class="form-control" name="taxNumber" [formControl]="taxNumber" required />  
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save click')">Save</button>
+</div>
+</ng-template>

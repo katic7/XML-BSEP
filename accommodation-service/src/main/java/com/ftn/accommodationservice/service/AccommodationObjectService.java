@@ -16,4 +16,5 @@ public interface AccommodationObjectService {
 	List<AccommodationUnit> getUnits();
 	
 	AccommodationObject getOneAccObj(Long id);
+	
 }

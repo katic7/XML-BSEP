@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -98,6 +100,7 @@ public class Category {
         this.name = value;
     }
 
+    @JsonIgnore
 	public List<AccommodationObject> getAccObj() {
 		return accObj;
 	}

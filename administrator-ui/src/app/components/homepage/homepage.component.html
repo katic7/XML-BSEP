@@ -9,6 +9,7 @@
                           <!--div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div-->
                           <div class="user_box_login user_box_link"><button [routerLink]="['/users']">users</button></div>
                           <div class="user_box_login user_box_link"><button [routerLink]="['/comments']">comments</button></div>
+                          <div class="user_box_login user_box_link"><button [routerLink]="['/codebook']">codebook</button></div>
                           <!--div class="user_box_login user_box_link"><button [routerLink]="['/agents']">agents</button></div-->
                           <span *ngIf="logged == null"> <div class="user_box_login user_box_link"><button [routerLink]="['/login']">login</button></div></span>
                           <span *ngIf="logged != null"> <div class="user_box_register user_box_link"><button (click)="logout()">logout</button></div></span>
