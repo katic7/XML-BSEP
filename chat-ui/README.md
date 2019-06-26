@@ -11,11 +11,8 @@ Real time chat application that sends and shows messages to a recipient instantl
 npm install npm@latest -g
 ```
 
-* megatravel-ui started.
-* agent-ui started.
-* users can chat with agents if reservation begin date is yet to come.
-* agents can chat with users if reservation is made in accommodation object that he manages,
-and reservation begin date is yet to come.
+* megatravel-ui started. (https://github.com/katic7/XML-BSEP/tree/master/megatravel-ui)
+* agent-ui started. (https://github.com/katic7/XML-BSEP/tree/master/agent-ui)
 
 ### Installing
 
@@ -39,18 +36,21 @@ npm inatalll -g nodemon
 ```
 
 ## Build and start
-
 1. Double click on `start.bat` Windows Batch file
 
-2. Open browser and type http://localhost:3000/login
-&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`or`
-[User logged] - https://localhost:4200/profile find bookings and click chat button
-[Agent logged] - https://localhost:4203/reservations find chat button in table
+2. Open browser and type http://localhost:3000/login <br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <b style="color: red;"> or </b> <br />
+[User logged] - https://localhost:4200/profile find bookings and click chat button <br />
+&nbsp; <b> *users can chat with agents if reservation begin date is yet to come. </b> <br />
+[Agent logged] - https://localhost:4203/reservations find chat button in table <br />
+&nbsp; <b> *agents can chat with users if reservation is made in accommodation object that he manages,
+and reservation begin date is yet to come. </b>
+
 
 ## Authors
 
-* **Nikola Bašić** -  [nikolabasic](https://github.com/basicnikola)
-* **Nemanja Dimšić** -  [nemanjadimsic](https://github.com/nemanjadimsic)
-* **Miloš Topolić** -  [milostopolic](https://github.com/milostopolic)
-* **Milan Katić** -  [milankatic](https://github.com/katic7)
+* **Nikola Basic** -  [nikolabasic](https://github.com/basicnikola)
+* **Nemanja Dimsic** -  [nemanjadimsic](https://github.com/nemanjadimsic)
+* **Milos Topolic** -  [milostopolic](https://github.com/milostopolic)
+* **Milan Katic** -  [milankatic](https://github.com/katic7)
 
