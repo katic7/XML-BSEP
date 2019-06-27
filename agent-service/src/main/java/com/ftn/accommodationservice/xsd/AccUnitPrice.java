@@ -7,12 +7,14 @@
 
 package com.ftn.accommodationservice.xsd;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
+
 
 
 /**
@@ -49,10 +51,10 @@ public class AccUnitPrice {
     protected long id;
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar startDate;
+    protected Date startDate;
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar endDate;
+    protected Date endDate;
     protected double price;
 
     /**
@@ -76,10 +78,10 @@ public class AccUnitPrice {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
@@ -88,10 +90,10 @@ public class AccUnitPrice {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setStartDate(XMLGregorianCalendar value) {
+    public void setStartDate(Date value) {
         this.startDate = value;
     }
 
@@ -100,10 +102,10 @@ public class AccUnitPrice {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
@@ -112,10 +114,10 @@ public class AccUnitPrice {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setEndDate(XMLGregorianCalendar value) {
+    public void setEndDate(Date value) {
         this.endDate = value;
     }
 

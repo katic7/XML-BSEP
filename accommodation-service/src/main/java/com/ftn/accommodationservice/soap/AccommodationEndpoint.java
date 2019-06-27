@@ -387,12 +387,12 @@ public class AccommodationEndpoint {
 			ress.add(res.getOne(rr.getId()));
 		}
 		
-		aunitrepo.save(unitModel);
+		unitModel = aunitrepo.save(unitModel);
 		
 		com.ftn.accommodationservice.xsd.AccommodationUnit rspau = new com.ftn.accommodationservice.xsd.AccommodationUnit();
+		rspau.setId(unitModel.getId());
 		rspau.setAccObjectId(request.getAccommodationUnit().getAccObjectId());
 		rspau.setBalcony(request.getAccommodationUnit().isBalcony());
-		rspau.setId(request.getAccommodationUnit().getId());
 		rspau.setDescription(request.getAccommodationUnit().getDescription());
 		rspau.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
 		rspau.setPrice(request.getAccommodationUnit().getPrice());

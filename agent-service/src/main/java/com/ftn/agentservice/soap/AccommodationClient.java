@@ -1,5 +1,8 @@
 package com.ftn.agentservice.soap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +43,13 @@ import com.ftn.accommodationservice.xsd.PostObjectUnitsResponse;
 import com.ftn.accommodationservice.xsd.Type;
 import com.ftn.agentservice.dto.AccommodationObjectDTO;
 import com.ftn.agentservice.model.AccommodationObject;
+import com.ftn.agentservice.model.AdditionalService;
+import com.ftn.agentservice.model.Reservation;
 import com.ftn.agentservice.model.User;
 import com.ftn.agentservice.repository.AccommodationObjectRepository;
+import com.ftn.agentservice.repository.AccommodationUnitPriceRepository;
+import com.ftn.agentservice.repository.AccommodationUnitRepository;
+import com.ftn.agentservice.repository.AdditionalServiceRepository;
 import com.ftn.agentservice.repository.AddressRepository;
 import com.ftn.agentservice.repository.CategoryRepository;
 import com.ftn.agentservice.repository.TypeRepository;
@@ -54,7 +62,16 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	private AddressRepository addressRepo;
 
 	@Autowired
+	private AccommodationUnitRepository aunitrepo;
+	
+	@Autowired
+	private AdditionalServiceRepository additionalservicerepo;
+	
+	@Autowired
 	private TypeRepository typeRepository;
+	
+	@Autowired
+	private AccommodationUnitPriceRepository acurepo;
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -125,6 +142,45 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	public GetAccommodationUnitResponse saveNewAcc(AccommodationUnit au) {
 		GetAccommodationUnitRequest request = new GetAccommodationUnitRequest();
 		request.setAccommodationUnit(au);
+		com.ftn.agentservice.model.AccommodationUnit unitModel = new com.ftn.agentservice.model.AccommodationUnit();
+		unitModel.setBalcony(request.getAccommodationUnit().isBalcony());
+		unitModel.setDescription(request.getAccommodationUnit().getDescription());
+		AccommodationObject ao = accObjRepo.getOne(request.getAccommodationUnit().getAccObjectId());
+		
+		
+		System.out.println(request.getAccommodationUnit().getAdditionalServices().size() + " text");
+		unitModel.setAccommodationObject(ao);
+		List<AdditionalService> servisi = new ArrayList<>();
+		for(com.ftn.accommodationservice.xsd.AdditionalService xsd : request.getAccommodationUnit().getAdditionalServices())  {
+			System.out.println("usao34");
+			unitModel.getAdditionalServices().add(additionalservicerepo.getOne(xsd.getId()));
+		}
+		System.out.println(unitModel.getAdditionalServices().size() + " text222");
+		//unitModel.setAdditionalServices(servisi);
+		
+		unitModel.setId(request.getAccommodationUnit().getId());
+		//unitModel.setImage(request.getAccommodationUnit().getImage());
+		com.ftn.agentservice.model.AccUnitPrice acup = new com.ftn.agentservice.model.AccUnitPrice();
+		acup.setEndDate(request.getAccommodationUnit().getPrice().getEndDate());
+		acup.setStartDate(request.getAccommodationUnit().getPrice().getStartDate());
+		acup.setPrice(request.getAccommodationUnit().getPrice().getPrice());
+		acup.setAccommodationUnit(aunitrepo.getOne(request.getAccommodationUnit().getId()));
+		unitModel.setPrice(acurepo.save(acup));
+		unitModel.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
+		unitModel.setRating(request.getAccommodationUnit().getRating());
+		List<Reservation> ress = new ArrayList<>();
+		
+		
+		unitModel = aunitrepo.save(unitModel);
+		
+		com.ftn.accommodationservice.xsd.AccommodationUnit rspau = new com.ftn.accommodationservice.xsd.AccommodationUnit();
+		rspau.setId(unitModel.getId());
+		rspau.setAccObjectId(request.getAccommodationUnit().getAccObjectId());
+		rspau.setBalcony(request.getAccommodationUnit().isBalcony());
+		rspau.setDescription(request.getAccommodationUnit().getDescription());
+		rspau.setNumberOfBeds(request.getAccommodationUnit().getNumberOfBeds());
+		rspau.setPrice(request.getAccommodationUnit().getPrice());
+		rspau.setRating(request.getAccommodationUnit().getRating());
 		return (GetAccommodationUnitResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 	}
 	

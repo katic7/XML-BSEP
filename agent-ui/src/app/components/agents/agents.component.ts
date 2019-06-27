@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import { AdditionalServiceService } from 'src/app/services/additional-service.service';
 import { AuthService } from '../auth/service/auth.service';
 import { User } from 'src/app/models/User';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-agents',
@@ -19,8 +20,16 @@ import { User } from 'src/app/models/User';
 })
 export class AgentsComponent implements OnInit {
 
-  constructor(private authService : AuthService, private router: Router, private priceService : PriceService, private accUnitService : AccomoodationUnitService, private datePipe: DatePipe, private additionalServiceService : AdditionalServiceService) { }
+  constructor(private authService : AuthService, 
+    private router: Router, 
+    private priceService : PriceService, 
+    private accUnitService : AccomoodationUnitService, 
+    private datePipe: DatePipe, 
+    private additionalServiceService : AdditionalServiceService,
+    private imageService : ImageService) { }
 
+  imageUrl:string[]=[];
+  fileToUpload: File[] =[];
   show_register_form : boolean = false;
   show_newPrice : boolean = false;
   form: any = {};
@@ -94,7 +103,12 @@ export class AgentsComponent implements OnInit {
        });
      });*/
      this.accUnitService.addNewAccU(newAccommodationUnit).subscribe(data=>{
+       this.imageService.postFile(this.fileToUpload, data.id).subscribe(data=>{
+        this.router.navigate(['home']);
+       })
+       alert(data.id);
        this.router.navigate(['home']);
+       
      })
      
     this.numberOfBeds = new FormControl('');
@@ -148,5 +162,19 @@ export class AgentsComponent implements OnInit {
     });
   }
   
+
+  handleFileInput(file:FileList){
+    this.fileToUpload.push(file.item(0));
+
+    this.imageUrl=[];    
+    for(var i =0; i< this.fileToUpload.length;i++){
+      var reader = new FileReader();
+      reader.onload=(event:any)=>{
+        this.imageUrl.push(event.target.result);
+      }
+      reader.readAsDataURL(this.fileToUpload[i]);
+    }
+    
+  }
 
 }

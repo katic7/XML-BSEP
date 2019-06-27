@@ -161,10 +161,10 @@ insert into acc_unit_price (id, end_date, price, start_date) values (4, '2019-12
 insert into acc_unit_price (id, end_date, price, start_date) values (5, '2019-12-31', 19, '2019-01-01');
 
 --accommodation_unit
-insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (1, 1, 'Description of unit 1', '', 2, 4.99, 1, 1);
-insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (2, 1, 'Description of unit 2', '', 3, 4.42, 2, 2);
-insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (3, 0, 'Description of unit 3', '', 4, 2.29, 3, 3);
-insert into accommodation_unit (id, balcony, description, image, number_of_beds, rating, accommodation_object, price_id) values (4, 0, 'Description of unit 4', '', 4, 2.29, 4, 4);
+insert into accommodation_unit (id, balcony, description, number_of_beds, rating, accommodation_object, price_id) values (1, 1, 'Description of unit 1', 2, 4.99, 1, 1);
+insert into accommodation_unit (id, balcony, description, number_of_beds, rating, accommodation_object, price_id) values (2, 1, 'Description of unit 2', 3, 4.42, 2, 2);
+insert into accommodation_unit (id, balcony, description, number_of_beds, rating, accommodation_object, price_id) values (3, 0, 'Description of unit 3', 4, 2.29, 3, 3);
+insert into accommodation_unit (id, balcony, description, number_of_beds, rating, accommodation_object, price_id) values (4, 0, 'Description of unit 4', 4, 2.29, 4, 4);
 
 --accommodation_unit_additional_services
 insert into accommodation_unit_additional_services (accommodation_unit_id, additional_services_id) values (1, 1);

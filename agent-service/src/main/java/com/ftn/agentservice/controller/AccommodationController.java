@@ -1,10 +1,17 @@
 package com.ftn.agentservice.controller;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +19,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import com.ftn.accommodationservice.xsd.AccUnitPrice;
@@ -33,7 +43,11 @@ import com.ftn.accommodationservice.xsd.PostAddressRequest;
 import com.ftn.accommodationservice.xsd.PostAddressResponse;
 import com.ftn.accommodationservice.xsd.PostObjectUnitsResponse;
 import com.ftn.agentservice.dto.AccommodationObjectDTO;
+import com.ftn.agentservice.model.Image;
 import com.ftn.agentservice.model.User;
+import com.ftn.agentservice.repository.AccommodationObjectRepository;
+import com.ftn.agentservice.repository.AccommodationUnitRepository;
+import com.ftn.agentservice.repository.ImageRepository;
 import com.ftn.agentservice.repository.UserRepository;
 import com.ftn.agentservice.soap.AccommodationClient;
 
@@ -43,6 +57,12 @@ public class AccommodationController {
 	
 	@Autowired
 	private AccommodationClient client;
+	
+	@Autowired
+	private AccommodationUnitRepository acurepo;
+	
+	@Autowired
+	private ImageRepository imageRepo;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -117,5 +137,61 @@ public class AccommodationController {
 		GetAccommodationUnitResponse r = client.saveNewAcc(accUnit);
 		return r.getAccommodationUnit();
 		
+	}
+	
+	@RequestMapping(value = "/uploadImage/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> uploadFile(@PathVariable @Min(1) Long id,
+			@RequestParam("Image") MultipartFile[] request) {
+		System.out.print("pogodio image");
+		String returnValue = "";
+		com.ftn.agentservice.model.AccommodationUnit acc = new com.ftn.agentservice.model.AccommodationUnit();
+		acc = acurepo.getOne(id);
+		acc.setImage(new ArrayList<Image>());
+		List<Image> slike = new ArrayList<>();
+		
+		for (int i = 0; i < request.length; i++) {
+			try {
+				// saveImage(request[i]);
+				slike.add(saveImages(request[i], acc));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		acc.setImage(slike);
+		return new ResponseEntity<>( HttpStatus.OK);
+
+	}
+	
+	public Image saveImages(MultipartFile images, com.ftn.agentservice.model.AccommodationUnit acc) throws IOException {
+
+		String folder = "photos/";
+		// byte[] bytes = image.getBytes();
+		// Path path = Paths.get(folder + image.getOriginalFilename());
+		// System.out.println(path.toAbsolutePath());
+		// for (int i = 0; i < images.length; i++) {
+		
+ 		
+		
+		Path path = Paths.get(folder + images.getOriginalFilename());
+		System.out.println(path.toAbsolutePath());
+		ClassPathResource backImgFile = new ClassPathResource(path.toAbsolutePath().toString());
+		byte[] arrayPic = images.getBytes();
+		// backImgFile.getInputStream().read(arrayPic);
+		Image blackImage = new Image(images.getOriginalFilename(), arrayPic);
+		blackImage.setAccUnit(acc);
+		imageRepo.save(blackImage);
+		
+		//NewAccommodationUnitResponse response = agentSoapController.newAccommodationUnit(savedUnit);
+		//System.out.println(response.getAccommodationUnit().getBedNumber() + "IVANA ACC UNIT");
+		
+		return blackImage;
+		// }
+		/*
+		 * retrieve image from MySQL via SpringJPA for (ImageModel imageModel :
+		 * imageRepository.findAll()) { Files.write(Paths.get("retrieve-dir/" +
+		 * imageModel.getName() + "." + imageModel.getType()), imageModel.getPic()); }
+		 */
+
 	}
 }
