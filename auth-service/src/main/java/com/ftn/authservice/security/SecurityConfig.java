@@ -80,6 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/api/addresses/test2").permitAll()
 		.antMatchers("/api/comment/rating").permitAll()
 		.antMatchers("/api/auth/**").permitAll()
+		.antMatchers("/api/auth/createAgent").permitAll()
 		.anyRequest().authenticated().and()
 		
 		

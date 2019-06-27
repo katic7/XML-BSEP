@@ -57,7 +57,10 @@ export class NewreservationComponent implements OnInit {
       res.reservation.reservationDate = this.datePipe.transform(this.todaysDate, "yyyy-MM-dd");
       //alert('ok');
       console.log(res);
-      this.reservationService.makeUnitBusy(res).subscribe(data => {});
+      this.reservationService.makeUnitBusy(res).subscribe(data => {
+        alert("Uspesno kreirano");
+        this.router.navigate(['/reservations']);
+      });
     } else {
       alert('Popuni sva polja.');
     }
@@ -67,8 +70,28 @@ export class NewreservationComponent implements OnInit {
   constructor(private reservationService: ReservationsService, private datePipe: DatePipe, private router: Router, private authService: AuthService, private accommodationService: AccomoodationUnitService) { }
 
   ngOnInit() {
-    this.accommodationService.getUnits().subscribe(data => { this.accUnits = data; console.log(data); });
-    this.getLoggedUser();
+    this.authService.getLogged().subscribe(data=>{
+      this.logged = data;
+      console.log(data.roles[0].name + "AAAAAAAAAAAAA");
+      if(data.roles[0].name == "ROLE_AGENT"){
+        this.authService.getOneAgent(this.logged.id).subscribe(agnet=>{
+          if(agnet.accObj == null){
+            this.router.navigate(['newObject']);
+          }else{
+           this.accommodationService.getAgentUnits(agnet.accObj.id).subscribe(data2 =>{
+            this.accUnits = data2;
+           });
+        }
+      })
+      }else{
+        this.authService.logout();
+        alert("Nemate rolu agent!");
+        this.router.navigate(['login']);
+      }
+    }, error=>{
+      alert("Morate biti ulogovani!")
+      this.router.navigate(['login']);
+    });
   }
 
 }

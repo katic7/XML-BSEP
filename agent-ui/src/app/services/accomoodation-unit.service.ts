@@ -18,8 +18,8 @@ export class AccomoodationUnitService {
     return this.http.get("https://localhost:8081/agentservice/api/accommodations/getObjectUnits/"+id);
   }
 
-  getUnits() : Observable<any> {
-    return this.http.get('https://localhost:8083/api/reservations/getUnits');
+  getAgentUnits(id) : Observable<any> {
+    return this.http.get('https://localhost:8081/reservationservice/api/reservations/getAgentUnits/' + id);
   }
 
 }

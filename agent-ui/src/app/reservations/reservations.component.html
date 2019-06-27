@@ -55,7 +55,7 @@
             <td>{{reservation.price}}</td>
             <td>{{reservation.beginDate | date}}</td>
             <td>{{reservation.endDate | date}}</td>
-            <td><button (click)="Chat(reservation)" type="button" class="btn btn-outline-success">Chat</button>
+            <td><button (click)="Chat(reservation)" type="button" [disabled]="reservation.userId == this.logged.id" class="btn btn-outline-success">Chat</button>
             </td>
             </tr>
         </tbody>

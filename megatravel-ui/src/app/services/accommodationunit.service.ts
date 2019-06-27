@@ -33,4 +33,12 @@ export class AccommodationunitService {
     return this.http.get('//localhost:8085/api/auth/getAgents');
   }
 
+  getAllTypes() : Observable<any> {
+    return this.http.get('https://localhost:8082/api/accobject/types');
+  }
+
+  getAllCategories() : Observable<any> {
+    return this.http.get('https://localhost:8082/api/accobject/categories');
+  }
+
 }

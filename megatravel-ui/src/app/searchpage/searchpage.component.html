@@ -29,15 +29,20 @@
         type="line-scale-party">
         <p style="font-size: 20px; color: white">Loading...</p>
         </ngx-spinner>
-        <div *ngFor="let accUnit of accUnits | filter: listToFilter | destinationfilter: destination:listaAdresa:distArray">
+        <div *ngFor="let accUnit of accUnits | filter: listToFilter | destinationfilter: destination:distArray">
             <div class="searchobjectu">
                 <div class="image">
                   <img src="assets/bg_2.jpg" alt="">
                 </div>
                 <div class="header">
                   <h1>{{accUnit.accommodationObject.name}}</h1>
-                  <p>{{accUnit.accommodationObject.address.street}} {{accUnit.accommodationObject.address.streetNumber}}, {{accUnit.accommodationObject.address.town}}</p>
-              
+                  <p>{{accUnit.accommodationObject.address.street}} {{accUnit.accommodationObject.address.streetNumber}}, {{accUnit.accommodationObject.address.town}}
+                    <br />
+                    Type: <b> {{accUnit.accommodationObject.type.name}} </b> Category: <b> {{accUnit.accommodationObject.category.name}} </b>
+                  </p>
+                  
+                    
+                  
                   <div class="informations">
                     <p>
                       Object informations: {{accUnit.accommodationObject.description}}
@@ -55,15 +60,15 @@
               
                   <div class="rating">
                     <p>Rating:<b>{{accUnit.rating}}</b> </p>  
-                    <p>Number of reviews</p>
+                    <!--<p>Number of reviews</p>-->
                 
                     <div class="price">
-                      <p>Price for {{difference}} nights:</p>
-                      <p><b>EUR {{accUnit.price.price * difference}}</b></p>
+                      <p>Price for {{difference}} nights: <br />
+                        <b>EUR {{accUnit.price.price * difference}}</b></p>
                     </div>
                 
                     <div class="availability">
-                      <button (click)="makeAReservation(accUnit)">See Availability</button>
+                      <button (click)="makeAReservation(accUnit)" >See Availability</button>
                     </div>
                 
                   </div>

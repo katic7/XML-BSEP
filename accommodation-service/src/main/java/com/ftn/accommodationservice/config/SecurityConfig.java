@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/api/addresses/test2").permitAll()
 		.antMatchers("/api/comment/ratings/specificAccommodation/*").permitAll()
 		.antMatchers("/api/addresses/*").permitAll()
+		.antMatchers("/api/accobject/getOne/*").permitAll()
+		.antMatchers("/api/comment/ratings/published/accommodation/*").permitAll()
 		.anyRequest().authenticated().and()
 
 		

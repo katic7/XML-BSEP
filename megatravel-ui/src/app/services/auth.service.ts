@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +17,5 @@ export class AuthService {
   getOne(id):Observable<any> {
     return this.http.get("https://localhost:8085/api/auth/getOne/"+id);
   }
+
 }

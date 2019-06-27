@@ -107,7 +107,6 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/published/accommodation/{id}")
-	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getPublishedRatingsOfAccommodation(@PathVariable Long id){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
 				"http://localhost:8445/getPublishedCommentsOfAccommodation?accommodationID="+id,

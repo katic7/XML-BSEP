@@ -16,12 +16,12 @@ import { DestinationSorter } from '../models/DestinationSorter';
 export class DestinationFilter implements PipeTransform {
     distancesCalculated:DestinationSorter[]=[];
     tempArray: DestinationSorter[] = [];
-    transform(units: AccommodationUnit[], destObj: DestinationObject, listaAdresa:Address[], distArray: DestinationSorter[]): AccommodationUnit[] {
+    transform(units: AccommodationUnit[], destObj: DestinationObject, distArray: DestinationSorter[]): AccommodationUnit[] {
         distArray = [];
         let unn : AccommodationUnit[] = [];
         if( destObj.distanceO != null) {
-           for(var i = 0; i < listaAdresa.length; i++) {
-                let distanceInKm = this.calcCrow(destObj.latitude, destObj.longitude, listaAdresa[i].latitude, listaAdresa[i].longitude);
+           for(var i = 0; i < units.length; i++) {
+                let distanceInKm = this.calcCrow(destObj.latitude, destObj.longitude, units[i].accommodationObject.address.latitude, units[i].accommodationObject.address.longitude);
                 
                 
                 
@@ -30,11 +30,11 @@ export class DestinationFilter implements PipeTransform {
                     let distanceInM = distanceInKm*1000;
                     if(destObj.distanceO.distance > distanceInM) {       
                       //return units.filter(u => u.accommodationObject.addressId == listaAdresa[i].id);
-                      units.forEach(u => {
-                           if(u.accommodationObject.addressId == listaAdresa[i].id) {
-                               unn.push(u);
+                      //units.forEach(u => {
+                           //if(u.accommodationObject.addressId == listaAdresa[i].id) {
+                               unn.push(units[i]);
                                let o:DestinationSorter=new DestinationSorter();
-                               o.unitId = u.id;
+                               o.unitId = units[i].id;
                                o.distanceInkm = distanceInKm;
                             //    //this.distancesCalculated.forEach(dc => 
                             //    // {
@@ -53,18 +53,18 @@ export class DestinationFilter implements PipeTransform {
                                     distArray.push(o);
                                 }
                                 //console.log(o);
-                           }
+                           //}
                         
-                    })
+                    //})
                     }
                 } else {
                     if(destObj.distanceO.distance > distanceInKm) {         
                      //return units.filter(u => u.accommodationObject.addressId == listaAdresa[i].id);
-                     units.forEach(u => {
-                        if(u.accommodationObject.addressId == listaAdresa[i].id) {
-                            unn.push(u);
+                     //units.forEach(u => {
+                        //if(u.accommodationObject.addressId == listaAdresa[i].id) {
+                            unn.push(units[i]);
                             let o:DestinationSorter = new DestinationSorter();
-                            o.unitId = u.id;
+                            o.unitId = units[i].id;
                             o.distanceInkm = distanceInKm;
                             //   // this.distancesCalculated.forEach(dc => 
                             //    // {
@@ -83,8 +83,8 @@ export class DestinationFilter implements PipeTransform {
                             }
                             
                                 //console.log(o);
-                        }
-                     })
+                        //}
+                     //})
                     }
                 }
             }

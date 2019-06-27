@@ -31,7 +31,7 @@ export class SearchpageComponent implements OnInit {
   accUnits : AccommodationUnit[] = [];
   searchTerm: AdditionalService = null;
   event = null;
-  listaAdresa: Address[] = [];
+  //listaAdresa: Address[] = [];
   something = null;
   listToFilter: FilterObject[] = [];
   destination:DestinationObject = new DestinationObject();
@@ -54,15 +54,15 @@ export class SearchpageComponent implements OnInit {
       this.searchForm.destination = a.where;
       this.searchForm.persons = +a.persons;
       this.reservationService.getFreeAccUnits(this.searchForm).subscribe(data => { 
-        this.accUnits = data;       
+        this.accUnits = data;
         this.accUnits.forEach(ac => {
           this.accService.getRatingScore(ac.id).subscribe(data => {
             ac.rating = data.toFixed(1);
           });
-          this.accService.getAddress(ac.accommodationObject.addressId).subscribe(data=>{
-            this.listaAdresa.push(data);
+          // this.accService.getAddress(ac.accommodationObject.address).subscribe(data=>{
+          //   this.listaAdresa.push(data);
           
-          });
+          // });
         })
       });
       this.destination.distanceO = null;
@@ -84,8 +84,12 @@ export class SearchpageComponent implements OnInit {
     // res.userId = this.logged.id;
 
     // console.log(res);
-
-    this.router.navigate(['/book', {in: this.searchForm.checkin, out: this.searchForm.checkout, user: this.logged.id, acu: accUnit.id, price: accUnit.price.price}]);
+    if(this.logged == null){
+      alert("Please login first!");
+      this.router.navigate(['login']);
+    }else{
+      this.router.navigate(['/book', {in: this.searchForm.checkin, out: this.searchForm.checkout, user: this.logged.id, acu: accUnit.id, price: accUnit.price.price}]);
+    }
   }
 
   getLoggedUser() {

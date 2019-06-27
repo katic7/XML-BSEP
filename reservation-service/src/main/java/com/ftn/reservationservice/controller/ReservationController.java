@@ -186,4 +186,15 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@GetMapping("/getAgentUnits/{id}")
+	public ResponseEntity<List<AccommodationUnit>> getAgentUnits(@PathVariable Long id) {
+		List<AccommodationUnit> acus = accommodationUnitRepository.getAgentUnits(id);
+		
+		if(acus != null) {
+			return new ResponseEntity<List<AccommodationUnit>>(acus, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+	
 }

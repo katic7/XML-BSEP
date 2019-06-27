@@ -27,6 +27,7 @@ export class AuthService {
   private validEmailUrl = authUrl + 'validEmail/';
   private confirmUserUrl = authUrl + 'confirm/';
   private logoutUrl = authUrl + 'signout/';
+  private updUser = authUrl + 'updateUser';
 
   constructor(private http: HttpClient) {
   }
@@ -57,6 +58,10 @@ export class AuthService {
 
   logout() :Observable<any> {
     return this.http.get(this.logoutUrl);
+  }
+
+  updateUser(user : User) : Observable<any> {
+    return this.http.post(this.updUser, user);
   }
 
 }

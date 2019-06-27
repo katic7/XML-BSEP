@@ -2,12 +2,12 @@
   <h2>Filter by:</h2>
   <hr>
 
+  <!--
   <h5>Type</h5>
-  <div class="types">
-    <input type="checkbox" (change)="filter($event)" name="All-inclusive" id="all-inc"> All-inclusive <br>
-    <input type="checkbox" (change)="filter($event)" name="nesto" id="nesto"> Breakfast & dinner <br>
-    <input type="checkbox" (change)="filter($event)" name="nesto2" id="nesto2"> Nesto <br>
+  <div class="types" *ngFor="let tt of allTypes">
+    <input type="checkbox" (change)="filter($event)" name="{{tt.name}}" id="{{tt.name}}"> {{tt.name}} <br>
   </div>
+  -->
 
   <h5>Services</h5>
   <div class="services">

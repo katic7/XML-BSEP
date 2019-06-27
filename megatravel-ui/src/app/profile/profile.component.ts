@@ -51,4 +51,15 @@ export class ProfileComponent implements OnInit {
     this.reservations.splice(this.reservations.indexOf(event), 1);
   }
 
+  updateUser(){
+    if(this.logged.name != "" && this.logged.surname != "" && this.logged.email != "" && this.logged.telephone != ""){
+      this.authService.updateUser(this.logged).subscribe(data =>{
+        alert("Successfully updated!");
+      });
+    }else{
+      alert("No blank fields!!!");
+    }
+    
+  }
+
 }

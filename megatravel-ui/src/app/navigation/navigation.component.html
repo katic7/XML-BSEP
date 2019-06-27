@@ -9,6 +9,8 @@
                      
                     <div class="user_box ml-auto">
                             <div class="user_box_login user_box_link"><button [routerLink]="['/home']">home</button></div>
+                            <div *ngIf="adminLogged" class="user_box_login user_box_link"><button (click)="adminPage()">Administration</button></div>
+                            <div *ngIf="agentLogged" class="user_box_login user_box_link"><button (click)="agentPage()">Agent page</button></div>
                             <span *ngIf="logged == null"> <div class="user_box_login user_box_link"><button [routerLink]="['/login']">login</button></div></span>
                             <span *ngIf="logged == null"> <div class="user_box_register user_box_link"><button [routerLink]="['/register']">register</button></div></span>
                             <span *ngIf="logged != null"> <div class="user_box_register user_box_link"><button (click)="logout()">logout</button></div></span>

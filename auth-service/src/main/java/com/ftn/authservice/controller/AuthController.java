@@ -25,9 +25,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -256,6 +254,20 @@ public class AuthController {
                      HttpStatus.BAD_REQUEST);
     	}   	
     	
+    }
+    
+    @PostMapping("/updateUser")
+    public ResponseEntity<UserDTO> updateUser(@RequestBody User u){
+    	User updatedUser = userRepository.getOne(u.getId());
+    	updatedUser.setName(u.getName());
+    	updatedUser.setSurname(u.getSurname());
+    	updatedUser.setEmail(u.getEmail());
+    	updatedUser.setTelephone(u.getTelephone());
+    	userRepository.save(updatedUser);
+    	
+    	return new ResponseEntity<UserDTO>(new UserDTO(updatedUser), HttpStatus.OK);
+
+    	   	
     }
   
     

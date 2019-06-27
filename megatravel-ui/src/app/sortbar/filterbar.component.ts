@@ -42,9 +42,9 @@ export class FilterbarComponent implements OnInit {
           this.distancesCalculated = [];
           var ds = new DestinationSorter();
           ds.unitId = u.id;
-          this.accService.getAddress(u.accommodationObject.addressId).subscribe( data => { 
-            ds.distanceInkm = this.filterPipe.calcCrow( this.destination.latitude, this.destination.longitude, data.latitude, data.longitude);
-            this.distancesCalculated.push(ds); } )
+          // this.accService.getAddress(u.accommodationObject.addressId).subscribe( data => { 
+          //   ds.distanceInkm = this.filterPipe.calcCrow( this.destination.latitude, this.destination.longitude, data.latitude, data.longitude);
+          //   this.distancesCalculated.push(ds); } )
           console.log(ds);       
         } )
       });      

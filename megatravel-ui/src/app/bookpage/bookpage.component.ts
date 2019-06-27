@@ -48,7 +48,7 @@ export class BookpageComponent implements OnInit {
 
       this.reservationService.getOneUnit(a.acu).subscribe(data => {
         this.accUnit = data;
-        this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data });
+        //this.reservationService.getAdress(this.accUnit.accommodationObject.address).subscribe(data => { this.address = data });
       });
     });
 

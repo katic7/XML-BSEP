@@ -6,6 +6,9 @@ import { AdditionalService } from '../models/AdditionalService';
 import { AdditionalservicesService } from '../services/additionalservices.service';
 import { FormControl } from '@angular/forms';
 import { DistanceFilter } from '../models/DistanceFilter';
+import { AccommodationunitService } from '../services/accommodationunit.service';
+import { Type } from '../models/Type';
+import { Category } from '../models/Category';
 
 @Component({
   selector: 'app-filtersection',
@@ -16,16 +19,25 @@ export class FiltersectionComponent implements OnInit {
   @Input() accUnits:AccommodationUnit[];
   @Output() sorted = new EventEmitter<String>();
   allAdditionalServices : AdditionalService[] = [];
+  allTypes : Type[] = [];
+  allCategories : Category[] = [];
   distance = new FormControl("");
   unit = new FormControl("");
   @Output() ret = new EventEmitter<DistanceFilter>();
 
-  constructor(private additionalServices: AdditionalservicesService) { }
+  constructor(private additionalServices: AdditionalservicesService, private accommodationUnitService : AccommodationunitService) { }
 
   ngOnInit() {
     this.additionalServices.getAllAdditionalServices().subscribe(data => {
       this.allAdditionalServices = data;
-    })
+    });
+    this.accommodationUnitService.getAllTypes().subscribe(dataTypes =>{
+      this.allTypes = dataTypes;
+    });
+    this.accommodationUnitService.getAllCategories().subscribe(dataCateg =>{
+      this.allCategories = dataCateg;
+    });
+
   }
 
   filter(event) {
@@ -34,7 +46,11 @@ export class FiltersectionComponent implements OnInit {
 
   onInput() {
     let ret = new DistanceFilter();
-    ret.distance = this.distance.value;
+    if(this.distance.value == ""){
+      ret.distance = 9999999999;
+    }else {
+      ret.distance = this.distance.value;
+    }
     ret.unit = this.unit.value;
     this.ret.emit(ret);
   }

@@ -55,7 +55,7 @@ export class ReservationComponent implements OnInit {
     console.log(this.indicator);
 
     this.reservationService.getOneUnit(this.reservation.accommodationUnitId).subscribe(data2 => { this.accUnit = data2; console.log(data2);
-      this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
+      //this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
      }); 
 
     console.log(this.accUnit);
