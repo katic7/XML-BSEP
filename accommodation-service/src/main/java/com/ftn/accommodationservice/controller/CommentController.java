@@ -83,7 +83,6 @@ public class CommentController {
 	}
 	
 	@GetMapping("/ratings/accommodation/{id}")
-	@PreAuthorize("hasAuthority('CREATE')")
 	public List<RatingDTO> getRatingsFromSpecificAcc(@PathVariable Long id){
 		ResponseEntity<List<RatingDTO>> response = template.exchange(
 				"http://localhost:8137/getRatingsFromSpecificAcc?accommodationID="+id,

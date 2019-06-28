@@ -33,11 +33,9 @@ export class NavigationComponent implements OnInit {
     this.authService.getLogged().subscribe(data => {
       this.logged = data;
       if(this.logged.roles[0].name.valueOf().toString() == "ROLE_ADMIN" || this.logged.roles[0].name.valueOf().toString() == "ROLE_SYSTEM_ADMIN"){
-        alert("admin");
         this.adminLogged = true;
         this.agentLogged = false;
       }else if(this.logged.roles[0].name.valueOf().toString() == "ROLE_AGENT"){
-        alert("agent");
         this.agentLogged = true;
         this.adminLogged = false;
       }

@@ -67,6 +67,10 @@ export class ReservationComponent implements OnInit {
     rating.accommodationID = this.accUnit.id;
     rating.userID = this.logged.id;
     rating.comment = this.comment.value;
+    if(rating.comment.includes("<")){
+      alert("XSS alert");
+      return;
+    }
     rating.rating = +this.rating.value;
     rating.reservationID = this.reservation.id;
     rating.published = false;

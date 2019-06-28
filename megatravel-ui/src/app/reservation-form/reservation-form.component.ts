@@ -26,6 +26,11 @@ export class ReservationFormComponent implements OnInit {
     form.checkout = this.checkout.value;
     form.destination = this.destination.value;
     form.persons = this.persons.value;
+
+    if(form.destination.includes("<")){
+      alert("XSS alert");
+      return;
+    }
     
     if(form.checkin != null || form.checkout != null || form.destination != '' || form.persons != null) {
       this.router.navigate(['/search',{ where: form.destination, in: form.checkin, out: form.checkout, persons: form.persons }])
