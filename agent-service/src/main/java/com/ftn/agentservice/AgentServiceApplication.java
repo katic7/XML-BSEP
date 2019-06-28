@@ -40,6 +40,15 @@ public class AgentServiceApplication {
 	}
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
+		System.setProperty("KEY_STORE_CLASSPATH", "classpath:agent.jks");
+		System.setProperty("KEY_STORE_PASSWORD", "password");
+		System.setProperty("KEY_ALIAS", "agent");
+		System.setProperty("WEB_SERVICE_USERNAME", "nemanjica");
+		System.setProperty("WEB_SERVICE_PASSWORD", "password");
+		System.setProperty("EUREKA_INSTANCE_HOSTNAME", "localhost");
+		System.setProperty("CLIENT_SERVICEURL_DEFAULTZONE", "https://localhost:8761/eureka/");
+		System.setProperty("DATASOURCE_USERNAME", "root");
+		System.setProperty("DATASOURCE_PASSWORD", "root");
 		SpringApplication.run(AgentServiceApplication.class, args);
 		Server server = ServerBuilder.forPort(9090).addService(new CustomChatService()).build();
 		

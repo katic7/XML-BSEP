@@ -39,6 +39,14 @@ public class ReservationServiceApplication {
 	 }
 
 	public static void main(String[] args) {
+		System.setProperty("KEY_STORE_CLASSPATH", "src/main/resources/reservation.jks");
+		System.setProperty("KEY_STORE_PASSWORD", "password");
+		System.setProperty("KEY_ALIAS", "reservation");
+		System.setProperty("EUREKA_INSTANCE_HOSTNAME", "localhost");
+		System.setProperty("CLIENT_SERVICEURL_DEFAULTZONE", "https://localhost:8761/eureka/");
+		System.setProperty("DATASOURCE_URL_JDBC_MYSQL", "//localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+		System.setProperty("DATASOURCE_USERNAME", "root");
+		System.setProperty("DATASOURCE_PASSWORD", "root");
 		SpringApplication.run(ReservationServiceApplication.class, args);
 	}
 

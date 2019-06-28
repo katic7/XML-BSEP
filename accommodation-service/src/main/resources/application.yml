@@ -2,20 +2,20 @@ server:
   port: ${PORT:8082}
   ssl:
     enabled: true
-    key-store: classpath:accommodation.jks
-    key-store-password: password
-    key-alias: accommodation
+    key-store: ${KEY_STORE_CLASSPATH}
+    key-store-password: ${KEY_STORE_PASSWORD}
+    key-alias: ${KEY_ALIAS}
 web:
   service:
-    username: nemanjica
-    password: password
+    username: ${WEB_SERVICE_USERNAME}
+    password: ${WEB_SERVICE_PASSWORD}
     
 security:
   require-ssl: true
   
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_INSTANCE_HOSTNAME}
     prefer-ip-address: false
     nonSecurePortEnabled: false
     securePortEnabled: true
@@ -23,14 +23,14 @@ eureka:
   client:
     securePortEnabled: true
     serviceUrl:
-      defaultZone: https://localhost:8761/eureka/ 
+      defaultZone: ${CLIENT_SERVICEURL_DEFAULTZONE}
 spring:
   application:
     name: accommodation-service
   datasource:
-    url: jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:mysql:${DATASOURCE_URL_JDBC_MYSQL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
     initialization-mode: always
   jpa:
     hibernate:

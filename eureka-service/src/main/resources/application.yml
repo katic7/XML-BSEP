@@ -7,11 +7,11 @@ server:
   ssl:
     enabled: true
     client-auth: need
-    key-store: classpath:eureka.jks
-    key-store-password: password
-    key-alias: eureka
-    trust-store: classpath:eureka.jks
-    trust-store-password: password
+    key-store: ${KEY_STORE_CLASSPATH}
+    key-store-password: ${KEY_STORE_PASSWORD}
+    key-alias: ${KEY_ALIAS}
+    trust-store: ${TRUST_STORE_CLASSPATH}
+    trust-store-password: ${TRUST_STORE_PASSWORD}
     
 eureka:
   instance:

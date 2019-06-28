@@ -35,6 +35,18 @@ public class AuthServiceApplication {
 	}
 
 	public static void main(String[] args) {
+		System.setProperty("KEY_STORE_CLASSPATH", "src/main/resources/auth.jks");
+		System.setProperty("KEY_STORE_PASSWORD", "password");
+		System.setProperty("KEY_ALIAS", "auth");
+		System.setProperty("EUREKA_INSTANCE_HOSTNAME", "localhost");
+		System.setProperty("CLIENT_SERVICEURL_DEFAULTZONE", "https://localhost:8761/eureka/");
+		System.setProperty("DATASOURCE_URL_JDBC_MYSQL", "jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+		System.setProperty("DATASOURCE_USERNAME", "root");
+		System.setProperty("DATASOURCE_PASSWORD", "root");
+		System.setProperty("MAIL_HOST", "smtp.gmail.com");
+		System.setProperty("MAIL_USERNAME", "af083085@gmail.com");
+		System.setProperty("MAIL_PASSWORD", "ovojetest123");
+		System.setProperty("AUTH_APP_JWTSECRET", "jwtAuthSecretKey");
 		SpringApplication.run(AuthServiceApplication.class, args);
 	}
 	

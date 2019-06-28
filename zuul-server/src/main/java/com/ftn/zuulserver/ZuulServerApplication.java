@@ -55,7 +55,18 @@ public class ZuulServerApplication {
 	 }
 
 	public static void main(String[] args) {
+		System.setProperty("KEY_STORE_CLASSPATH", "src/main/resources/zuul.jks");
 		System.setProperty("KEY_STORE_PASSWORD", "password");
+		System.setProperty("KEY_ALIAS", "zuul");
+		System.setProperty("EUREKA_INSTANCE_HOSTNAME", "localhost");
+		System.setProperty("CLIENT_SERVICEURL_DEFAULTZONE", "https://localhost:8761/eureka/");
+		System.setProperty("ZUUL_ROUTES_RESERVATIONSERVICE_SERVICEID", "reservation-service");
+		System.setProperty("ZUUL_ROUTES_ACCOMMODATIONSERVICE_SERVICEID", "accommodation-service");
+		System.setProperty("ZUUL_ROUTES_BEZBEDNOST_SERVICEID", "pki-service");
+		System.setProperty("ZUUL_ROUTES_AGENTSERVICE_SERVICEID", "agent-service");
+		System.setProperty("ZUUL_ROUTES_AUTHSERVICE_SERVICEID", "auth-service");
+		System.setProperty("TRUST_STORE_CLASSPATH", "zuul.jks");
+		System.setProperty("TRUST_STORE_PASSWORD", "classpath:password");
 		SpringApplication.run(ZuulServerApplication.class, args);
 	}
 

@@ -2,16 +2,16 @@ server:
   port: ${PORT:8085}
   ssl:
     enabled: true
-    key-store: classpath:auth.jks
-    key-store-password: password
-    key-alias: auth
+    key-store: ${KEY_STORE_CLASSPATH}
+    key-store-password: ${KEY_STORE_PASSWORD}
+    key-alias: ${KEY_ALIAS}
     
 security:
   require-ssl: true
   
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_INSTANCE_HOSTNAME}
     prefer-ip-address: false
     nonSecurePortEnabled: false
     securePortEnabled: true
@@ -19,18 +19,18 @@ eureka:
   client:
     securePortEnabled: true
     serviceUrl:
-      defaultZone: https://localhost:8761/eureka/ 
+      defaultZone: ${CLIENT_SERVICEURL_DEFAULTZONE}
 spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
+    url:  ${DATASOURCE_URL_JDBC_MYSQL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
   mail:
-    host: smtp.gmail.com
-    username: af083085@gmail.com
-    password: ovojetest123
+    host: ${MAIL_HOST}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     debug: true
     port: 465
     transport:
@@ -44,5 +44,5 @@ spring:
 
 auth:
   app:
-    jwtSecret: jwtAuthSecretKey
+    jwtSecret: ${AUTH_APP_JWTSECRET}
     jwtExpiration: 864000
