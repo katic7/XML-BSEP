@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.ftn.authservice.validator.ValidPassword;
+
 public class SignUpRequest {
 
 	@Email
@@ -12,6 +14,7 @@ public class SignUpRequest {
 	private String email;
 
 	@NotBlank
+	@ValidPassword
 	private String password;
 
 	@NotBlank
@@ -53,5 +56,7 @@ public class SignUpRequest {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+	
+	
 
 }

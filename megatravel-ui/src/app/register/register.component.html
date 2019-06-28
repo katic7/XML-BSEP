@@ -15,7 +15,11 @@
 
     <div *ngIf="validEmail">
       <h1>Create password</h1>
-      <p>Please choose a password for your Megatravel.com account registered to {{form.username}}.</p>
+      <p>Please choose a password for your Megatravel.com account registered to {{form.username}}.
+        <br>
+        <br>
+         <b>Password must be at least 8 characters long, containing at least one uppercase character, one digit and one special character!</b>
+      </p>
     </div>
     
     <div *ngIf="!validEmail" id="em" class="form-group animated bounceInRight">
