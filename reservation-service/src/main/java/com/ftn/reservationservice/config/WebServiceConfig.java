@@ -38,30 +38,6 @@ public class WebServiceConfig extends WsConfigurerAdapter  {
 		return definition;
 	}
 	
-	@Bean
-    public Wss4jSecurityInterceptor securityInterceptor(){
-        Wss4jSecurityInterceptor securityInterceptor = new Wss4jSecurityInterceptor();
-        securityInterceptor.setValidationActions("Timestamp UsernameToken");
-        securityInterceptor.setValidationCallbackHandler(securityCallbackHandler());
-        return securityInterceptor;
-    }
-	
-    @Bean
-    public SimplePasswordValidationCallbackHandler securityCallbackHandler(){
-        SimplePasswordValidationCallbackHandler callbackHandler = new SimplePasswordValidationCallbackHandler();
-        Properties users = new Properties();
-        users.setProperty("megamegaadmin", "fwejif9324320jk");
-        callbackHandler.setUsers(users);
-        return callbackHandler;
-    }
-
-    @Override
-    public void addInterceptors(List interceptors) {
-        interceptors.add(securityInterceptor());
-    }
-	
-	
-    
 
 	@Bean
 	public XsdSchema coursesSchema() {

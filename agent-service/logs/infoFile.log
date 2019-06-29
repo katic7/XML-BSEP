@@ -29,3 +29,9 @@ DESKTOP-RGDHRKN | 2019-06-29 11:03:58 | as.AgentServiceApplication | No active p
 DESKTOP-RGDHRKN | 2019-06-29 11:18:22 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-RGDHRKN | 2019-06-29 11:18:34 | as.AgentServiceApplication | Started AgentServiceApplication in 13.419 seconds (JVM running for 14.339)
 DESKTOP-RGDHRKN | 2019-06-29 11:41:38 | as.AccommodationController | user: 4, id: 5 | D0N0AU | success
+MKIT_LENOVO40 | 2019-06-29 11:58:38 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:10:29 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:10:59 | as.AgentServiceApplication | Started AgentServiceApplication in 40.413 seconds (JVM running for 61.781)
+MKIT_LENOVO40 | 2019-06-29 12:18:26 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:19:38 | as.AgentServiceApplication | Started AgentServiceApplication in 90.522 seconds (JVM running for 94.578)
+MKIT_LENOVO40 | 2019-06-29 12:21:01 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default

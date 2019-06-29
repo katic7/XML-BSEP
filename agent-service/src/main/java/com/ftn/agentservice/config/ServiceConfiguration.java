@@ -30,23 +30,12 @@ public class ServiceConfiguration {
 //		marshaller.setContextPath("com.ftn.accommodationservice.xsd");
 		return marshaller;
 	}
-	
-	@Bean
-    public Wss4jSecurityInterceptor securityInterceptor(){
-        Wss4jSecurityInterceptor wss4jSecurityInterceptor = new Wss4jSecurityInterceptor();
-        wss4jSecurityInterceptor.setSecurementActions("Timestamp UsernameToken");
-        wss4jSecurityInterceptor.setSecurementUsername("megamegaadmin");
-        wss4jSecurityInterceptor.setSecurementPassword("fwejif9324320jk");
-        return wss4jSecurityInterceptor;
-    }
 
 	@Bean
 	public AccommodationClient accClient(Jaxb2Marshaller marshaller) throws Exception {
 		AccommodationClient client = new AccommodationClient();
 		client.setDefaultUri("https://localhost:8082/ws");
 		client.setMarshaller(marshaller);
-		ClientInterceptor[] interceptors = new ClientInterceptor[] {securityInterceptor()};
-		client.setInterceptors(interceptors);
 		client.setUnmarshaller(marshaller);
 		return client;
 	}
@@ -56,8 +45,8 @@ public class ServiceConfiguration {
 		ReservationClinet client = new ReservationClinet();
 		client.setDefaultUri("https://localhost:8083/ws");
 		client.setMarshaller(marshaller);
-		ClientInterceptor[] interceptors = new ClientInterceptor[] {securityInterceptor()};
-		client.setInterceptors(interceptors);
+		/*ClientInterceptor[] interceptors = new ClientInterceptor[] {securityInterceptor()};
+		client.setInterceptors(interceptors);*/
 		client.setUnmarshaller(marshaller);
 		return client;
 	}

@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 DESKTOP-RGDHRKN | 2019-06-29 03:08:49 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-RGDHRKN | 2019-06-29 03:08:59 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 11.701 seconds (JVM running for 12.369)
 DESKTOP-RGDHRKN | 2019-06-29 03:10:19 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
@@ -41,7 +41,6 @@ DESKTOP-RGDHRKN | 2019-06-29 11:31:41 | as.AccommodationObjectController | user:
 DESKTOP-RGDHRKN | 2019-06-29 11:31:49 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3AS | success
 DESKTOP-RGDHRKN | 2019-06-29 11:31:51 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3AS | success
 DESKTOP-RGDHRKN | 2019-06-29 11:32:34 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
-=======
 MKIT_LENOVO40 | 2019-06-28 07:39:38 | as.AccommodationServiceApplication | ja sam doktor logbacka a ti?
 MKIT_LENOVO40 | 2019-06-28 07:39:44 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
 MKIT_LENOVO40 | 2019-06-28 07:40:07 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 28.968 seconds (JVM running for 29.951)
@@ -54,4 +53,7 @@ MKIT_LENOVO40 | 2019-06-28 10:08:23 | as.AccommodationServiceApplication | Start
 MKIT_LENOVO40 | 2019-06-28 11:19:50 | as.AccommodationServiceApplication | ja sam doktor logbacka a ti?
 MKIT_LENOVO40 | 2019-06-28 11:19:58 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
 MKIT_LENOVO40 | 2019-06-28 11:20:27 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 37.503 seconds (JVM running for 50.242)
->>>>>>> Stashed changes
+MKIT_LENOVO40 | 2019-06-29 11:58:36 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:11:21 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:14:17 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:18:25 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default

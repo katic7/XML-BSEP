@@ -27,3 +27,5 @@ DESKTOP-RGDHRKN | 2019-06-29 11:17:59 | as.ReservationServiceApplication | No ac
 DESKTOP-RGDHRKN | 2019-06-29 11:18:09 | as.ReservationServiceApplication | Started ReservationServiceApplication in 10.614 seconds (JVM running for 11.338)
 DESKTOP-RGDHRKN | 2019-06-29 11:24:27 | as.ReservationController | user: 3, beginDate: Mon Jul 01 02:00:00 CEST 2019, endDate: Wed Jul 10 02:00:00 CEST 2019 | NAN0R3 | success
 DESKTOP-RGDHRKN | 2019-06-29 11:28:32 | as.ReservationController | user: 3, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Tue Jul 30 02:00:00 CEST 2019 | NAN0R3 | success
+MKIT_LENOVO40 | 2019-06-29 12:18:26 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:19:35 | as.ReservationServiceApplication | Started ReservationServiceApplication in 80.97 seconds (JVM running for 85.299)
