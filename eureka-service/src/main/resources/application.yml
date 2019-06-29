@@ -7,11 +7,19 @@ server:
   ssl:
     enabled: true
     client-auth: need
+<<<<<<< Updated upstream
     key-store: ${KEY_STORE_CLASSPATH}
     key-store-password: ${KEY_STORE_PASSWORD}
     key-alias: ${KEY_ALIAS}
     trust-store: ${TRUST_STORE_CLASSPATH}
     trust-store-password: ${TRUST_STORE_PASSWORD}
+=======
+    key-store: ${KEY_STORE_PATH}
+    key-store-password: ${KEY_STORE_PASSWORD}
+    key-alias: eureka
+    trust-store: ${KEY_STORE_PATH}
+    trust-store-password: ${KEY_STORE_PASSWORD}
+>>>>>>> Stashed changes
     
 eureka:
   instance:

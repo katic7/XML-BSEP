@@ -2,6 +2,8 @@ package com.ftn.accommodationservice;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -38,7 +40,10 @@ public class AccommodationServiceApplication {
 		 return template;
 	 }
 
+	 
+	    private static final Logger logger = LoggerFactory.getLogger(AccommodationServiceApplication.class);
 	public static void main(String[] args) {
+
 		System.setProperty("KEY_STORE_CLASSPATH", "src/main/resources/accommodation.jks");
 		System.setProperty("KEY_STORE_PASSWORD", "password");
 		System.setProperty("KEY_ALIAS", "accommodation");

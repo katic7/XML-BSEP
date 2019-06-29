@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 
+import com.sun.jna.platform.win32.Advapi32Util;
+import com.sun.jna.platform.win32.Advapi32Util.Account;
+
 @EnableEurekaServer
 @SpringBootApplication
 public class EurekaServiceApplication {
@@ -29,10 +32,14 @@ public class EurekaServiceApplication {
 		System.setProperty("KEY_ALIAS", "eureka");
 		System.setProperty("TRUST_STORE_CLASSPATH", "src/main/resources/eureka.jks");
 		System.setProperty("TRUST_STORE_PASSWORD", "password");
+		System.setProperty("KEY_STORE_PATH", "src/main/resources/eureka.jks");
 		/*System.setProperty("javax.net.ssl.keyStore", "src/main/resources/key-eureka.jks");
 	    System.setProperty("javax.net.ssl.keyStorePassword", "password");
 		System.setProperty("javax.net.ssl.trustStore","src/main/resources/trust-eureka.jks");
         System.setProperty("javax.net.ssl.trustStorePassword", "password");*/
+
+		System.out.println(Advapi32Util.getUserName());
+		
 		SpringApplication.run(EurekaServiceApplication.class, args);
 		
 	}

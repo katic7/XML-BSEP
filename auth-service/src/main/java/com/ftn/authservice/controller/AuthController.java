@@ -214,6 +214,9 @@ public class AuthController {
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
+    int attemps = 0;
+    String myEmail = "";
+    
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
     	InetAddress localhost = null;
@@ -225,11 +228,18 @@ public class AuthController {
 		}
 		String ip = (localhost.getHostAddress()).trim();
     	try {
-    		
+    		/*if(loginRequest.getEmail().equals(myEmail)) {
+    			
+    		} else {
+    			this.myEmail = loginRequest.getEmail();
+    			this.attemps = 0;
+    		}*/
+
     		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
 	                loginRequest.getEmail(),
 	                loginRequest.getPassword()
 	         );
+    		
 	         
     		Authentication authentication = authenticationManager.authenticate(
 	            token
@@ -246,7 +256,18 @@ public class AuthController {
     		logger.info("ID: {} | PRN4SI | success", us.getId() );
 	        return ResponseEntity.ok(new JwtAuthenticationResponse(profile, jwt));
 		} catch (AuthenticationException e) {
+
 			logger.error("userIP: {} | PRN4SI | failed", ip);
+
+			/*attemps++;
+			if(attemps == 3) {
+				User r = userRepository.findByEmail(loginRequest.getEmail()).get();
+				r.setNonLocked(false);
+				userRepository.save(r);
+				logger.error("ID: {} | LCKD | error", r.getId() );
+			}*/
+			logger.error("PRN4SI | fail");
+
 			return new ResponseEntity<String>("Not logged! " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
     }

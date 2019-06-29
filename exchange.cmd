@@ -26,27 +26,27 @@ IF EXIST administratorui.crt DEL /F administratorui.crt
 
 echo Generating keystores...
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias eureka -validity 3650 -keyalg RSA -keystore eureka.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias eureka -validity 3650 -keyalg RSA -keystore eureka.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias zuul -validity 3650 -keyalg RSA -keystore zuul.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias zuul -validity 3650 -keyalg RSA -keystore zuul.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias accommodation -validity 3650 -keyalg RSA -keystore accommodation.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias accommodation -validity 3650 -keyalg RSA -keystore accommodation.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias auth -validity 3650 -keyalg RSA -keystore auth.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias auth -validity 3650 -keyalg RSA -keystore auth.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias reservation -validity 3650 -keyalg RSA -keystore reservation.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias reservation -validity 3650 -keyalg RSA -keystore reservation.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias agent -validity 3650 -keyalg RSA -keystore agent.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias agent -validity 3650 -keyalg RSA -keystore agent.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias megatravel -validity 3650 -keyalg RSA -keystore megatravel.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias megatravel -validity 3650 -keyalg RSA -keystore megatravel.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias bezbednostui -validity 3650 -keyalg RSA -keystore bezbednostui.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias bezbednostui -validity 3650 -keyalg RSA -keystore bezbednostui.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias bezbednost -validity 3650 -keyalg RSA -keystore bezbednost.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias bezbednost -validity 3650 -keyalg RSA -keystore bezbednost.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias agentui -validity 3650 -keyalg RSA -keystore agentui.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias agentui -validity 3650 -keyalg RSA -keystore agentui.jks -keypass password -storepass password
 
-keytool -genkey -dname "CN=%commonName%, OU=I, O=I, L=T, ST=On, C=CA" -alias administratorui -validity 3650 -keyalg RSA -keystore administratorui.jks -keypass password -storepass password
+keytool -genkey -dname "CN=%commonName%, OU=megatravel, O=PKI Inc Cert, L=Novi Sad, ST=On, C=RS" -alias administratorui -validity 3650 -keyalg RSA -keystore administratorui.jks -keypass password -storepass password
 
 echo Distributing and importing...
 
