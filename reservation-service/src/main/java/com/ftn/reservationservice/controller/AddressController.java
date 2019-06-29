@@ -41,22 +41,4 @@ public class AddressController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
-	@GetMapping("/test")
-	@PreAuthorize("hasAuthority('READ')")
-	public String test() throws NoSuchAlgorithmException {
-		RestTemplate rt = new RestTemplate();
-		return rt.getForObject("https://localhost:8082/api/reservations/test2", String.class);
-	}
-	
-	@GetMapping("/test2")
-	@PreAuthorize("hasAuthority('CREATE')")
-	public String test2() {
-		return "test2";
-	}
-	
-	@GetMapping("/test3")
-	public String test3() {
-		return "ja sam iz reservation-service";
-	}
-
 }

@@ -23,10 +23,6 @@ public class ReservationController {
 	private ReservationClinet client;
 	
 	
-	@GetMapping
-	public GetTestResponse test() {
-		return client.test(1);
-	}
 	
 	@PreAuthorize("hasAuthority('ModifyContent')")
 	@PostMapping("/completeReservation")

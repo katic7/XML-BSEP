@@ -51,35 +51,10 @@ public class AddressController {
 		return new ResponseEntity<Address>(addressService.getOne(id), HttpStatus.OK);
 	}
 	
-
+	
 	@PostMapping //treba
 	public ResponseEntity<Address> postNewAddress(@RequestBody Address address, HttpServletRequest request) {
 		return new ResponseEntity<Address>(addressService.addAddress(address), HttpStatus.CREATED);
-	}
-	
-	@GetMapping("/test")
-	public String testa() {
-		ResponseEntity<String> response = template.getForEntity("https://localhost:8761/hello",
-				 String.class);
-				 System.out.println(response.getBody());
-				 return "a";
-	}
-	
-	@GetMapping("/test2")
-	public String test2() {
-		return crepo.getOne(Long.valueOf(1)).getName();
-	}
-	
-	@GetMapping("/test3")
-	@PreAuthorize("hasAuthority('CREATE')")
-	public String test3() {
-		return "test3";
-	}
-	
-	@GetMapping("/testhttps")
-	public String test5() {
-		return "ssl ok";
-		
 	}
 
 

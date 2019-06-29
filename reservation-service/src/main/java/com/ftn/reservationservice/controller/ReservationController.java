@@ -66,10 +66,6 @@ public class ReservationController {
 //		return null;
 //	}
 	
-	@GetMapping("/test2")
-	public String test2() {
-		return "test";
-	}
 	
 	@GetMapping("/getOneUnit/{id}")
 	public ResponseEntity<AccommodationUnit> getOneAccUnit(@PathVariable Long id) {
@@ -112,6 +108,7 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PreAuthorize("hasAuthority('MakeReservation')")
 	@GetMapping("/byUser/{id}")
 	public ResponseEntity<List<ReservationDTO>> getReservationsByUser(@PathVariable Long id) {
 		System.out.println("usao u contr");
@@ -127,6 +124,7 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PreAuthorize("hasAuthority('MakeReservation')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteReservation(@PathVariable Long id) {
 		if(id != null) {
@@ -136,6 +134,7 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PreAuthorize("hasAuthority('CompleteReservation')")
 	@PostMapping("/getForCompletion")
 	public ResponseEntity<List<ReservationDTO>> getForCompletion(@RequestBody Date date) {
 		System.out.println("A BRAO");
@@ -152,6 +151,7 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PreAuthorize("hasAuthority('CompleteReservation')")
 	@GetMapping("/getObjectReservations/{id}")
 	public ResponseEntity<List<ReservationDTO>> getObjectReservations(@PathVariable Long id){
 		Date date = new Date();
@@ -164,6 +164,7 @@ public class ReservationController {
 		return new ResponseEntity<List<ReservationDTO>>(povratna, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('CompleteReservation')")
 	@GetMapping("/getUpComingReservations/{id}")
 	public ResponseEntity<List<ReservationDTO>> getUpComingReservations(@PathVariable Long id){
 		Date date = new Date();
@@ -186,6 +187,7 @@ public class ReservationController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
+	@PreAuthorize("hasAuthority('CompleteReservation')")
 	@GetMapping("/getAgentUnits/{id}")
 	public ResponseEntity<List<AccommodationUnit>> getAgentUnits(@PathVariable Long id) {
 		List<AccommodationUnit> acus = accommodationUnitRepository.getAgentUnits(id);

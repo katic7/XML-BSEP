@@ -86,6 +86,7 @@ public class AccommodationObjectController {
 		return accDto;
 	}
 	
+	@PreAuthorize("hasAuthority('AddAgents')")
 	@GetMapping("/getAllwOutAgent")
 	public List<AccommodationObjectDTO> getFreeAcc(){
 		List<AccommodationObject> svi = accommodationObjectRepository.findAll();
@@ -184,6 +185,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<List<AdditionalService>>(ty, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('AddContent')")
 	@GetMapping("/types/{id}")
 	public ResponseEntity<Type> getOneType(@PathVariable Long id) {
 		Type ty = new Type();
@@ -191,6 +193,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<Type>(ty, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('AddContent')")
 	@GetMapping("/categories/{id}")
 	public ResponseEntity<Category> getOneCategory(@PathVariable Long id) {
 		Category ty = new Category();
@@ -198,6 +201,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<Category>(ty, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('AddContent')")
 	@GetMapping("/additionalservices/{id}")
 	public ResponseEntity<AdditionalService> getOneAdditionalService(@PathVariable Long id) {
 		AdditionalService ty = new AdditionalService();
@@ -205,24 +209,28 @@ public class AccommodationObjectController {
 		return new ResponseEntity<AdditionalService>(ty, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('DeleteCodebook')")
 	@DeleteMapping("/types/{id}")
 	public ResponseEntity<?> deleteOneType(@PathVariable Long id) {		
 		typerepo.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('DeleteCodebook')")
 	@DeleteMapping("/categories/{id}")
 	public ResponseEntity<?> deleteOneCategory(@PathVariable Long id) {
 		catrepo.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('DeleteCodebook')")
 	@DeleteMapping("/additionalservices/{id}")
 	public ResponseEntity<?> deleteOneAdditionalService(@PathVariable Long id) {
 		additonalRepo.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('AddContent')")
 	@PostMapping("/types")
 	public ResponseEntity<Type> addType(@RequestBody Type type) {
 		Type ty = new Type();
@@ -232,6 +240,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<Type>(ty, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('AddContent')")
 	@PostMapping("/categories")
 	public ResponseEntity<Category> addCategory(@RequestBody Category category) {
 		Category cat = new Category();
@@ -241,6 +250,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<Category>(cat, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('AddContent')")
 	@PostMapping("/additionalservices")
 	public ResponseEntity<AdditionalService> addAdditionalService(@RequestBody AdditionalService addser) {
 		AdditionalService as = new AdditionalService();
@@ -253,6 +263,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<AdditionalService>(as, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('EditCodebook')")
 	@PostMapping("/types/{id}")
 	public ResponseEntity<Type> updateType(@PathVariable Long id, @RequestBody Type type) {
 		Type ty = typerepo.getOne(type.getId());
@@ -261,6 +272,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<Type>(ty, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('EditCodebook')")
 	@PostMapping("/categories/{id}")
 	public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
 		Category cat = catrepo.getOne(category.getId());
@@ -269,6 +281,7 @@ public class AccommodationObjectController {
 		return new ResponseEntity<Category>(cat, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('EditCodebook')")
 	@PostMapping("/additionalservices/{id}")
 	public ResponseEntity<AdditionalService> updateAdditionalService(@PathVariable Long id, @RequestBody AdditionalService addser) {
 		AdditionalService as = additonalRepo.getOne(addser.getId());

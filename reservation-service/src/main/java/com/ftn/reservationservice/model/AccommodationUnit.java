@@ -8,6 +8,7 @@
 
 package com.ftn.reservationservice.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,8 +86,8 @@ public class AccommodationUnit {
     @XmlElement(required = true)
     protected String description;
     protected double rating;
-    @XmlElement(required = true)
-    protected String image;
+    @OneToMany(mappedBy = "accUnit")
+    protected List<Image> image;
     @ManyToMany
 	@JoinTable(
 	        name = "accommodation_unit_additional_services", 
@@ -291,12 +292,14 @@ public class AccommodationUnit {
 		this.reservations = reservations;
 	}
 
-	public String getImage() {
+	public List<Image> getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(List<Image> image) {
 		this.image = image;
 	}
+
+	
 
 }

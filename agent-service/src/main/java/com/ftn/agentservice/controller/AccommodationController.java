@@ -80,6 +80,7 @@ public class AccommodationController {
 		return "nemanjica";
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@GetMapping("/getObjectUnits/{id}")
 	public List<AccommodationUnit> getUnits(@PathVariable Long id){
 		PostObjectUnitsResponse response = client.getUnits(id);
@@ -92,6 +93,7 @@ public class AccommodationController {
 		return as.getAdditionalServices();
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@GetMapping("/getAddress/{id}")
 	public Address getAddress(@PathVariable Long id) {
 		GetAddressResponse response = client.getAddress(id);
@@ -104,12 +106,14 @@ public class AccommodationController {
 		return response.getAccUnitPrice();
 	}*/
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/createPrice")
 	public AccUnitPrice createPrice(@RequestBody AccUnitPrice acc) {
 		PostAccUnitPriceResponse response = client.createPrice(acc);
 		return response.getAccUnitPrice();
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/createAddress")
 	public Address createAddress(@RequestBody Address adr) {
 		PostAddressResponse address = client.createAddress(adr);
@@ -117,6 +121,7 @@ public class AccommodationController {
 		return adr;
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/createAccObject")
 	public AccommodationObjectDTO createObject(@RequestBody AccommodationObjectDTO accObj, HttpServletRequest request) {
 		String token = (request.getHeader("Authorization")).substring(7, request.getHeader("Authorization").length());
@@ -139,6 +144,7 @@ public class AccommodationController {
 		
 	}
 	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@RequestMapping(value = "/uploadImage/{id}", method = RequestMethod.POST)
 	public ResponseEntity<?> uploadFile(@PathVariable @Min(1) Long id,
 			@RequestParam("Image") MultipartFile[] request) {

@@ -45,7 +45,7 @@ export class ReservationService {
   }
 
   cancelReservation(id) : Observable<any> {
-    return this.http.delete("https://localhost:8083/api/reservations/" + id);
+    return this.http.delete("https://localhost:8081/reservationservice/api/reservations/" + id);
   }
 
   postRating(rating) :Observable<any> {

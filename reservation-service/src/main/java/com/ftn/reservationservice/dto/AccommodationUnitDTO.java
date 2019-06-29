@@ -46,7 +46,6 @@ public class AccommodationUnitDTO {
 		this.price = au.getPrice();
 		this.description = au.getDescription();
 		this.rating = au.getRating();
-		this.image = au.getImage();
 		this.additionalServices = au.getAdditionalServices();
 		this.accommodationObject = au.getAccommodationObject();
 		this.reservations = au.getReservations();

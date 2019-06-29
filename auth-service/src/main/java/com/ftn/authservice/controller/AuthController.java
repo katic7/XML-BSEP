@@ -119,13 +119,13 @@ public class AuthController {
     	return users;
     }
     
-    //@PreAuthorize("hasAuthority('AddUsers')")
+    @PreAuthorize("hasAuthority('AddUsers')")
     @GetMapping("/getOne/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id){
     	return new ResponseEntity<UserDTO>(new UserDTO(userRepository.getOne(id)), HttpStatus.OK);	
     }
     
-   // @PreAuthorize("hasAuthority('AddAgents')")
+    @PreAuthorize("hasAuthority('AddAgents')")
     @GetMapping("/getOneAgent/{id}")
     public ResponseEntity<?> getAgent(@PathVariable Long id){
     	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);
@@ -152,7 +152,7 @@ public class AuthController {
     	return new ResponseEntity<List<UserDTO>>(povratna, HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasAuthority('AddAccUnit')")
+    @PreAuthorize("hasAuthority('AddAccUnit')")
     @GetMapping("/getAgents")
     public ResponseEntity<List<AgentDTO>> getAgents(){
     	List<Agent> svi = agentRepository.findAll();
@@ -164,7 +164,7 @@ public class AuthController {
     	return new ResponseEntity<List<AgentDTO>>(povratna, HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasAuthority('AddAgents')")
+    @PreAuthorize("hasAuthority('AddAgents')")
     @PostMapping("/createAgent")
     public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
     	System.out.println(ca.getAccObj() + " " +ca.getUser());
@@ -256,6 +256,7 @@ public class AuthController {
     	
     }
     
+    @PreAuthorize("hasAuthority('UpdateUser')")
     @PostMapping("/updateUser")
     public ResponseEntity<UserDTO> updateUser(@RequestBody User u){
     	User updatedUser = userRepository.getOne(u.getId());
