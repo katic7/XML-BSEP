@@ -27,19 +27,15 @@ insert into permission (id, name) values (25, 'PublishComment');
 insert into permission (id, name) values (26, 'GetAccUnit');
 insert into permission (id, name) values (27, 'MakeReservation');
 insert into permission (id, name) values (28, 'GetAdditionalServices');
-<<<<<<< Updated upstream
 insert into permission (id, name) values (29, 'DeleteCodebook');
 insert into permission (id, name) values (30, 'EditCodebook');
 insert into permission (id, name) values (31, 'UpdateUser');
 insert into permission (id, name) values (32, 'CompleteReservation');
-=======
-insert into permission (id, name) values (29, 'GetCertificates');
-insert into permission (id, name) values (30, 'IssueCert');
-insert into permission (id, name) values (31, 'GetSoftwares');
-insert into permission (id, name) values (32, 'ExchangeCertificate');
-insert into permission (id, name) values (33, 'GetRevokedCert');
-
->>>>>>> Stashed changes
+insert into permission (id, name) values (33, 'GetCertificates');
+insert into permission (id, name) values (34, 'IssueCert');
+insert into permission (id, name) values (35, 'GetSoftwares');
+insert into permission (id, name) values (36, 'ExchangeCertificate');
+insert into permission (id, name) values (37, 'GetRevokedCert');
 
 -- roles
 insert into roles (id, name) values (1, 'ROLE_ADMIN');
@@ -93,11 +89,13 @@ insert into role_permissions (permission_id, role_id) values (28, 4);
 insert into role_permissions (permission_id, role_id) values (29, 4);
 insert into role_permissions (permission_id, role_id) values (30, 4);
 insert into role_permissions (permission_id, role_id) values (31, 4);
-<<<<<<< Updated upstream
-=======
 insert into role_permissions (permission_id, role_id) values (32, 4);
 insert into role_permissions (permission_id, role_id) values (33, 4);
->>>>>>> Stashed changes
+insert into role_permissions (permission_id, role_id) values (34, 4);
+insert into role_permissions (permission_id, role_id) values (35, 4);
+insert into role_permissions (permission_id, role_id) values (36, 4);
+insert into role_permissions (permission_id, role_id) values (37, 4);
+
 insert into role_permissions (permission_id, role_id) values (1, 1);
 insert into role_permissions (permission_id, role_id) values (2, 1);
 insert into role_permissions (permission_id, role_id) values (3, 1);

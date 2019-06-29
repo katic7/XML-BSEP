@@ -35,3 +35,5 @@ MKIT_LENOVO40 | 2019-06-29 12:10:59 | as.AgentServiceApplication | Started Agent
 MKIT_LENOVO40 | 2019-06-29 12:18:26 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
 MKIT_LENOVO40 | 2019-06-29 12:19:38 | as.AgentServiceApplication | Started AgentServiceApplication in 90.522 seconds (JVM running for 94.578)
 MKIT_LENOVO40 | 2019-06-29 12:21:01 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 06:48:35 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 06:48:56 | as.AgentServiceApplication | Started AgentServiceApplication in 27.359 seconds (JVM running for 34.086)

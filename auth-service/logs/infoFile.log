@@ -91,3 +91,6 @@ DESKTOP-RGDHRKN | 2019-06-29 11:39:11 | as.AuthController | ID: 8 | PRN4SI | suc
 DESKTOP-RGDHRKN | 2019-06-29 11:39:30 | as.AuthController | ID: 8 | PRN4SI | success
 DESKTOP-RGDHRKN | 2019-06-29 11:40:02 | as.AuthController | user: 8, id: 8 | UPUSER | success
 DESKTOP-RGDHRKN | 2019-06-29 11:40:40 | as.AuthController | ID: 4 | PRN4SI | success
+MKIT_LENOVO40 | 2019-06-29 06:35:56 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 06:36:31 | as.AuthServiceApplication | Started AuthServiceApplication in 42.758 seconds (JVM running for 55.605)
+MKIT_LENOVO40 | 2019-06-29 08:02:48 | as.AuthController | ID: 1 | PRN4SI | success

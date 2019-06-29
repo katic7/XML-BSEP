@@ -113,7 +113,7 @@ export class SearchpageComponent implements OnInit {
     for(let v = 0; v < event.length; v++) {
       this.accUnits[v] = event[v];
     }
-    console.log(this.accUnits);
+ 
 
   }
 
@@ -191,7 +191,8 @@ export class SearchpageComponent implements OnInit {
       //this.distancesCalculated = this.filterPipe.returnDistances();
       
       this.distancesCalculated = this.filterPipe.tempArray;
-      console.log(this.distancesCalculated);
+      
+      
 
       
     }    

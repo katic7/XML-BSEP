@@ -42,58 +42,87 @@ export class FilterbarComponent implements OnInit {
           this.distancesCalculated = [];
           var ds = new DestinationSorter();
           ds.unitId = u.id;
-          // this.accService.getAddress(u.accommodationObject.addressId).subscribe( data => { 
-          //   ds.distanceInkm = this.filterPipe.calcCrow( this.destination.latitude, this.destination.longitude, data.latitude, data.longitude);
-          //   this.distancesCalculated.push(ds); } )
-          console.log(ds);       
+         this.accService.getAddress(u.accommodationObject.address.id).subscribe( data => { 
+           ds.distanceInkm = this.filterPipe.calcCrow( this.destination.latitude, this.destination.longitude, data.latitude, data.longitude);
+            this.distancesCalculated.push(ds);
+          
+          } )
+          console.log(this.distancesCalculated);       
         } )
-      });      
+      }); 
+      
+      for(var i = 0; i < this.accUnits.length; i++) {
+        if(this.distancesCalculated[i].unitId == this.accUnits[i].id) {
+          this.accUnits[i].distance = this.distancesCalculated[i].distanceInkm;
+        }
+      }
   }
 
   priceLowest() {
 
+    this.accUnits = _.sortBy(this.accUnits, 'price.price');
     if(this.lowestPriceBoolean) {
       this.lowestPriceBoolean = false;
-      this.priceascdesc.emit(this.lowestPriceBoolean);
+      this.sorted.emit(this.accUnits.reverse());
     } else {
       this.lowestPriceBoolean = true;
-      this.priceascdesc.emit(this.lowestPriceBoolean);
+      this.sorted.emit(this.accUnits.reverse());
     }
+
   }
 
   review() {
+
+    this.accUnits = _.sortBy(this.accUnits, 'rating');
     if(this.lowestRatingBoolean) {
       this.lowestRatingBoolean = false;
-      this.ascdesc.emit(this.lowestRatingBoolean);
+      this.sorted.emit(this.accUnits);
     } else {
       this.lowestRatingBoolean = true;
-      this.ascdesc.emit(this.lowestRatingBoolean);
+      this.sorted.emit(this.accUnits.reverse());
     }
   }
 
   category() {
+    this.accUnits = _.sortBy(this.accUnits, 'accommodationObject.category.name');
     if(this.lowestCategoryBoolean) {
       this.lowestCategoryBoolean = false;
-      this.catascdesc.emit(this.lowestCategoryBoolean);
+      this.sorted.emit(this.accUnits.reverse());
     } else {
       this.lowestCategoryBoolean = true;
-      this.catascdesc.emit(this.lowestCategoryBoolean);
+      this.sorted.emit(this.accUnits.reverse());
     }
+
   }
 
   distance() {
+    this.accUnits  = _.sortBy(this.accUnits, 'distance')
     if(this.lowestDistanceBoolean) {
       this.lowestDistanceBoolean = false;
-      this.distanceHighest();
+      this.sorted.emit(this.accUnits);
+    
     } else {
       this.lowestDistanceBoolean = true;
-      this.distanceLowest();
+      this.distancesCalculated  = this.distancesCalculated.reverse();
+      this.sorted.emit(this.accUnits.reverse());
+
     }
+  }
+
+  appends() {
+    let temp: AccommodationUnit[] = [];
+    for(var i = 0; i < this.accUnits.length; i++) {
+      if(this.accUnits[i].id == this.distancesCalculated[i].unitId) {
+          temp.push(this.accUnits[i]);
+      }
+    }
+    return temp;
   }
 
   distanceLowest() {
     console.log(this.accUnits);
     console.log(this.distancesCalculated);
+   /*
     this.distancesCalculated.sort((a, b) => {
       if (a.distanceInkm < b.distanceInkm ) {
           return -1;
@@ -118,12 +147,13 @@ export class FilterbarComponent implements OnInit {
         }
       } )
   })
+*/
 
-  this.accUnits = this.result;
+  //this.accUnits = this.result;
   console.log(this.distancesCalculated);
   console.log(this.result);
   console.log(this.accUnits);
-  this.sorted.emit(this.accUnits);
+  //this.sorted.emit(this.accUnits);
   }
     
   distanceHighest() {

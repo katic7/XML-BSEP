@@ -13,5 +13,6 @@ export class AccommodationUnit {
     public price : AccUnitPrice;
     public additionalServices : AdditionalService[];
     public image : string;
+    public distance:number;
 }
 
