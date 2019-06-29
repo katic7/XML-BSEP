@@ -13,7 +13,7 @@ export class AccObjectService {
   constructor(private http : HttpClient) { }
 
   getAccObjects() : Observable<any>{  
-    return this.http.get('//localhost:8082/api/accobject/getAllwOutAgent'); //sve koji nemaju agenta       STA JE OVO
+    return this.http.get('//localhost:8081/accommodationservice/api/accobject/getAllwOutAgent'); //sve koji nemaju agenta       STA JE OVO
   }
 
   getAllTypes() : Observable<any> {
@@ -29,15 +29,15 @@ export class AccObjectService {
   }
 
   addType(info : Type) : Observable<any> {
-    return this.http.post('https://localhost:8082/api/accobject/types', info);
+    return this.http.post('https://localhost:8081/accommodationservice/api/accobject/types', info);
   }
 
   addCategory(info : Category) : Observable<any> {
-    return this.http.post('https://localhost:8082/api/accobject/categories', info);
+    return this.http.post('https://localhost:8081/accommodationservice/api/accobject/categories', info);
   }
 
   addAdditionalService(info : AdditionalService) : Observable<any> {
-    return this.http.post('https://localhost:8082/api/accobject/additionalservices', info);
+    return this.http.post('https://localhost:8081/accommodationservice/api/accobject/additionalservices', info);
   }
   updateType(info : Type) : Observable<any> {
     return this.http.post('https://localhost:8081/accommodationservice/api/accobject/types/' + info.id, info);

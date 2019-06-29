@@ -125,7 +125,7 @@ public class AuthController {
     	return new ResponseEntity<UserDTO>(new UserDTO(userRepository.getOne(id)), HttpStatus.OK);	
     }
     
-    @PreAuthorize("hasAuthority('AddAgents')")
+    @PreAuthorize("hasAuthority('ModifyContent')")
     @GetMapping("/getOneAgent/{id}")
     public ResponseEntity<?> getAgent(@PathVariable Long id){
     	return new ResponseEntity<AgentDTO>(new AgentDTO(agentRepository.getOne(id)), HttpStatus.OK);

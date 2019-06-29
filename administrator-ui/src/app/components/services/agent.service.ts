@@ -11,14 +11,14 @@ export class AgentService {
   constructor(private http : HttpClient) { }
 
   addAgent(createAgent : CreateAgent) : Observable<any>{    
-    return this.http.post('//localhost:8085/api/auth/createAgent', createAgent);
+    return this.http.post('https://localhost:8085/api/auth/createAgent', createAgent);
   }
 
   getAll() : Observable<any>{
-    return this.http.get('//localhost:8085/api/auth/getAgents');
+    return this.http.get('https://localhost:8085/api/auth/getAgents');
   }
 
   getOneAgent(id: number) : Observable<any>{
-    return this.http.get('//localhost:8085/api/auth/getOneAgent/'+id);
+    return this.http.get('https://localhost:8085/api/auth/getOneAgent/'+id);
   }
 }
