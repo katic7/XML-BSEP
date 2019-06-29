@@ -23,3 +23,7 @@ DESKTOP-RGDHRKN | 2019-06-29 10:51:54 | as.ReservationServiceApplication | Start
 DESKTOP-RGDHRKN | 2019-06-29 10:53:08 | as.ReservationController | user: 1, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Sat Jul 27 02:00:00 CEST 2019 | NAN0R3 | success
 DESKTOP-RGDHRKN | 2019-06-29 10:53:48 | as.ReservationController | user: 3, beginDate: Sun Jul 28 02:00:00 CEST 2019, endDate: Wed Jul 31 02:00:00 CEST 2019 | NAN0R3 | success
 DESKTOP-RGDHRKN | 2019-06-29 10:53:54 | as.ReservationController | id: 10 | 0BR3Z3 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:17:59 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:18:09 | as.ReservationServiceApplication | Started ReservationServiceApplication in 10.614 seconds (JVM running for 11.338)
+DESKTOP-RGDHRKN | 2019-06-29 11:24:27 | as.ReservationController | user: 3, beginDate: Mon Jul 01 02:00:00 CEST 2019, endDate: Wed Jul 10 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:28:32 | as.ReservationController | user: 3, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Tue Jul 30 02:00:00 CEST 2019 | NAN0R3 | success

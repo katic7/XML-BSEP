@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
         console.table(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
-        this.router.navigate(['confirm-account/ft']);
+        this.router.navigate(['login']);
       },
       error => {
         console.log(error);

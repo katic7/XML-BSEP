@@ -65,3 +65,29 @@ DESKTOP-RGDHRKN | 2019-06-29 10:47:00 | as.AuthController | ID: 1 | PRN4SI | suc
 DESKTOP-RGDHRKN | 2019-06-29 10:52:10 | as.AuthController | ID: 1 | PRN4SI | success
 DESKTOP-RGDHRKN | 2019-06-29 10:52:23 | as.AuthController | ID: 1 | PRN4SI | success
 DESKTOP-RGDHRKN | 2019-06-29 10:53:06 | as.AuthController | ID: 3 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:16:59 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:17:18 | as.AuthServiceApplication | Started AuthServiceApplication in 21.371 seconds (JVM running for 22.354)
+DESKTOP-RGDHRKN | 2019-06-29 11:19:03 | as.AuthController | ID: 3 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:22:59 | as.AuthController | ID: 3 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:28:01 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:28:18 | as.AuthServiceApplication | Started AuthServiceApplication in 19.268 seconds (JVM running for 20.136)
+DESKTOP-RGDHRKN | 2019-06-29 11:29:40 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:11 | as.AuthController | user: 1, id: 6 | AKN0U5 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:15 | as.AuthController | user: 1, id: 3 | BLN0U5 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:26 | as.AuthController | user: 1, id: 5 | 0BUSER | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:31 | as.AuthController | user: 1, id: 6 | KRN0AG | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:31 | as.AuthController | user: 1, id: 6 | KRN0AG | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:55 | as.AuthController | user: 1, id: 6 | 0BUSER | success
+DESKTOP-RGDHRKN | 2019-06-29 11:30:57 | as.AuthController | user: 1, id: 4 | BLN0U5 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:33:47 | as.AuthController | user: 7 | R3USER | success
+DESKTOP-RGDHRKN | 2019-06-29 11:34:09 | as.AuthController | ID: 7 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:35:49 | as.AuthController | user: 7, id: 7 | UPUSER | success
+DESKTOP-RGDHRKN | 2019-06-29 11:37:17 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:37:38 | as.AuthServiceApplication | Started AuthServiceApplication in 22.017 seconds (JVM running for 22.999)
+DESKTOP-RGDHRKN | 2019-06-29 11:38:21 | as.AuthController | user: 8 | R3USER | success
+DESKTOP-RGDHRKN | 2019-06-29 11:38:58 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:39:03 | as.AuthController | user: 1, id: 8 | AKN0U5 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:39:11 | as.AuthController | ID: 8 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:39:30 | as.AuthController | ID: 8 | PRN4SI | success
+DESKTOP-RGDHRKN | 2019-06-29 11:40:02 | as.AuthController | user: 8, id: 8 | UPUSER | success
+DESKTOP-RGDHRKN | 2019-06-29 11:40:40 | as.AuthController | ID: 4 | PRN4SI | success

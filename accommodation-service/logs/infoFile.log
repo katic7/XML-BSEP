@@ -27,3 +27,16 @@ DESKTOP-RGDHRKN | 2019-06-29 10:47:48 | as.AccommodationObjectController | user:
 DESKTOP-RGDHRKN | 2019-06-29 10:47:50 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3AS | success
 DESKTOP-RGDHRKN | 2019-06-29 10:48:33 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
 DESKTOP-RGDHRKN | 2019-06-29 10:48:45 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 13.419 seconds (JVM running for 14.137)
+DESKTOP-RGDHRKN | 2019-06-29 11:17:37 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:17:49 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 13.757 seconds (JVM running for 14.481)
+DESKTOP-RGDHRKN | 2019-06-29 11:27:37 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:27:51 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 15.499 seconds (JVM running for 16.288)
+DESKTOP-RGDHRKN | 2019-06-29 11:31:11 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:13 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:24 | as.AccommodationObjectController | user: 1, id: 6 | UPJ3C4 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:34 | as.AccommodationObjectController | user: 1, id: 5 | UPJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:39 | as.AccommodationObjectController | user: 1, id: 5 | BRJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:41 | as.AccommodationObjectController | user: 1, id: 6 | BRJ3C4 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:49 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3AS | success
+DESKTOP-RGDHRKN | 2019-06-29 11:31:51 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3AS | success
+DESKTOP-RGDHRKN | 2019-06-29 11:32:34 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default

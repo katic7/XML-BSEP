@@ -28,3 +28,10 @@ DESKTOP-RGDHRKN | 2019-06-29 10:45:48 | as.JwtTokenProvider | Exception thrown i
 DESKTOP-RGDHRKN | 2019-06-29 10:45:56 | as.JwtTokenProvider | Exception thrown io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-06-29T10:19:48Z. Current time: 2019-06-29T10:45:56Z, a difference of 1568897 milliseconds.  Allowed clock skew: 0 milliseconds.
 DESKTOP-RGDHRKN | 2019-06-29 10:45:59 | as.JwtTokenProvider | Exception thrown io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-06-29T10:19:48Z. Current time: 2019-06-29T10:45:59Z, a difference of 1571714 milliseconds.  Allowed clock skew: 0 milliseconds.
 DESKTOP-RGDHRKN | 2019-06-29 10:52:14 | as.AuthController | userIP: 192.168.0.16 | R3USER | failed
+DESKTOP-RGDHRKN | 2019-06-29 11:18:50 | as.JwtTokenProvider | Exception thrown io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-06-29T11:07:30Z. Current time: 2019-06-29T11:18:50Z, a difference of 680984 milliseconds.  Allowed clock skew: 0 milliseconds.
+DESKTOP-RGDHRKN | 2019-06-29 11:22:50 | as.JwtTokenProvider | Exception thrown io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-06-29T11:01:24Z. Current time: 2019-06-29T11:22:50Z, a difference of 1286174 milliseconds.  Allowed clock skew: 0 milliseconds.
+DESKTOP-RGDHRKN | 2019-06-29 11:29:36 | as.JwtTokenProvider | Exception thrown io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-06-29T11:01:24Z. Current time: 2019-06-29T11:29:36Z, a difference of 1692755 milliseconds.  Allowed clock skew: 0 milliseconds.
+DESKTOP-RGDHRKN | 2019-06-29 11:29:39 | as.JwtTokenProvider | Exception thrown io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-06-29T11:01:24Z. Current time: 2019-06-29T11:29:39Z, a difference of 1695995 milliseconds.  Allowed clock skew: 0 milliseconds.
+DESKTOP-RGDHRKN | 2019-06-29 11:32:14 | as.AuthController | userIP: 192.168.0.16 | PRN4SI | failed
+DESKTOP-RGDHRKN | 2019-06-29 11:32:18 | as.AuthController | userIP: 192.168.0.16 | PRN4SI | failed
+DESKTOP-RGDHRKN | 2019-06-29 11:38:36 | as.AuthController | userIP: 192.168.0.16 | PRN4SI | failed

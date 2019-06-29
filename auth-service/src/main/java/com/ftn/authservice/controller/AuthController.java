@@ -134,7 +134,7 @@ public class AuthController {
     	return users;
     }
     
-    @PreAuthorize("hasAuthority('AddUsers')")
+    @PreAuthorize("hasAuthority('PublishComment')")
     @GetMapping("/getOne/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id){
     	return new ResponseEntity<UserDTO>(new UserDTO(userRepository.getOne(id)), HttpStatus.OK);	
@@ -373,7 +373,7 @@ public class AuthController {
 				    		   				encoder.encode(signUpRequest.getPassword()),
 				    		   				Collections.singleton(roleRepository.findByName(RoleName.ROLE_USER)));
 				        
-				        user.setEnabled(true);
+				        user.setEnabled(false);
 				        
 				        
 				       

@@ -116,6 +116,7 @@ insert into role_permissions (permission_id, role_id) values (31, 1);
 insert into role_permissions (permission_id, role_id) values (24, 2);
 insert into role_permissions (permission_id, role_id) values (13, 2);
 insert into role_permissions (permission_id, role_id) values (9, 2);
+insert into role_permissions (permission_id, role_id) values (25, 2);
 insert into role_permissions (permission_id, role_id) values (26, 2);
 insert into role_permissions (permission_id, role_id) values (27, 2);
 insert into role_permissions (permission_id, role_id) values (31, 2);
