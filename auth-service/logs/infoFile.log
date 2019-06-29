@@ -94,3 +94,8 @@ DESKTOP-RGDHRKN | 2019-06-29 11:40:40 | as.AuthController | ID: 4 | PRN4SI | suc
 MKIT_LENOVO40 | 2019-06-29 06:35:56 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
 MKIT_LENOVO40 | 2019-06-29 06:36:31 | as.AuthServiceApplication | Started AuthServiceApplication in 42.758 seconds (JVM running for 55.605)
 MKIT_LENOVO40 | 2019-06-29 08:02:48 | as.AuthController | ID: 1 | PRN4SI | success
+DESKTOP-SKD9GDH | 2019-06-29 10:09:55 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-06-29 10:10:37 | as.AuthServiceApplication | Started AuthServiceApplication in 44.868 seconds (JVM running for 56.552)
+DESKTOP-SKD9GDH | 2019-06-29 10:45:33 | as.AuthController | ID: 3 | PRN4SI | success
+DESKTOP-SKD9GDH | 2019-06-29 11:30:02 | as.AuthController | ID: 3 | PRN4SI | success
+DESKTOP-SKD9GDH | 2019-06-29 11:45:08 | as.AuthController | ID: 3 | PRN4SI | success

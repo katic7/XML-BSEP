@@ -34,6 +34,7 @@
       
       <button (click)="Chat()" *ngIf="indicator==true" class="btn btn-success">Chat</button>
       <div class="availability">
+        <!-- RATING -->
         <div *ngIf="indicator==false" class="rating_form">
           <label for="">Rating</label>
           <select [formControl]="rating" name="" id="" style="margin-left: 68%;">
@@ -41,8 +42,7 @@
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-              <option value="5">5</option>
-          </select>
+              <option value="5">5</option>          </select>
 
           <br>
               <label for="">Comment</label>
@@ -50,7 +50,8 @@
           <br>
         <button *ngIf="indicator==false" style="margin-left: 78%;" (click)="Rate()">Rate</button>
       </div>
-        <button (click)="cancelReservation()" *ngIf="indicator==true" style="margin-top:100%;">Cancel reservation</button>
+
+        <button (click)="cancelReservation()" *ngIf="indicator==true  && indicator2==true" style="margin-top:100%;">Cancel reservation</button>
       </div>
       
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

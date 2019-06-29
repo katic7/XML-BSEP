@@ -26,11 +26,13 @@ export class ReservationComponent implements OnInit {
   accUnit : AccommodationUnit = new AccommodationUnit();
   address : Address = new Address();
   indicator : boolean = false;
+  indicator2 : boolean = false;
   todaysDate = new Date();
   already :boolean = false;
   comment = new FormControl('');
   rating = new FormControl('');
   allAgents : Agent[] = [];
+  difference;
   constructor(private pipe: DatePipe, private reservationService: ReservationService,
      private accommodationUnitService : AccommodationunitService, private router : Router) { }
 
@@ -44,18 +46,37 @@ export class ReservationComponent implements OnInit {
     if(this.logged == null || this.logged == undefined) {
       this.router.navigate(['/login']);
     }
-    console.log(this.reservation);
-    this.todaysDate = new Date(this.pipe.transform(this.todaysDate, "yyyy-MM-dd"));
-    this.reservation.beginDate = this.pipe.transform(this.reservation.beginDate, "yyyy-MM-dd");
-    this.reservation.endDate = this.pipe.transform(this.reservation.endDate, "yyyy-MM-dd");
-
-    if(this.todaysDate < new Date(this.reservation.beginDate)) {
-      this.indicator = true;      
-    }
-    console.log(this.indicator);
+    
 
     this.reservationService.getOneUnit(this.reservation.accommodationUnitId).subscribe(data2 => { this.accUnit = data2; console.log(data2);
       //this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
+      console.log(this.reservation);
+      this.todaysDate = new Date(this.pipe.transform(this.todaysDate, "yyyy-MM-dd"));
+      this.reservation.beginDate = this.pipe.transform(this.reservation.beginDate, "yyyy-MM-dd");
+      this.reservation.endDate = this.pipe.transform(this.reservation.endDate, "yyyy-MM-dd");
+
+      var dateone:any = new Date(this.todaysDate);
+      var datetwo:any = new Date(this.reservation.beginDate);
+      this.difference = (datetwo - dateone) / 1000 / 60 / 60 / 24; 
+      console.log(this.difference);
+      // if(this.todaysDate < new Date(this.reservation.beginDate)) {
+      //   this.indicator = true;      
+      // }
+      if(this.difference - this.accUnit.accommodationObject.daysToCancel > 0) {
+        this.indicator = true;      
+      }
+
+      if(this.difference > 0) {
+        this.indicator = true;
+        if(this.difference > this.accUnit.accommodationObject.daysToCancel) {
+          this.indicator2 = true;
+        } else {
+          this.indicator2 = false;
+        }
+      } else {
+        this.indicator = false; 
+      }
+      console.log(this.indicator);
      }); 
 
     console.log(this.accUnit);
