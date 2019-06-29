@@ -99,89 +99,14 @@ export class FilterbarComponent implements OnInit {
     this.accUnits  = _.sortBy(this.accUnits, 'distance')
     if(this.lowestDistanceBoolean) {
       this.lowestDistanceBoolean = false;
-      this.sorted.emit(this.accUnits);
+      this.sorted.emit(this.accUnits.reverse());
     
     } else {
       this.lowestDistanceBoolean = true;
-      this.distancesCalculated  = this.distancesCalculated.reverse();
-      this.sorted.emit(this.accUnits.reverse());
+      this.sorted.emit(this.accUnits);
 
     }
   }
 
-  appends() {
-    let temp: AccommodationUnit[] = [];
-    for(var i = 0; i < this.accUnits.length; i++) {
-      if(this.accUnits[i].id == this.distancesCalculated[i].unitId) {
-          temp.push(this.accUnits[i]);
-      }
-    }
-    return temp;
-  }
-
-  distanceLowest() {
-    console.log(this.accUnits);
-    console.log(this.distancesCalculated);
-   /*
-    this.distancesCalculated.sort((a, b) => {
-      if (a.distanceInkm < b.distanceInkm ) {
-          return -1;
-      } else if (a.distanceInkm  > b.distanceInkm ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-
-
-
-    //this.distancesCalculated = _.sortBy(this.distancesCalculated, 'distanceInkm');
-
-    this.result = [];
-
-    this.distancesCalculated.forEach( d => {
-      this.accUnits.forEach( a => {
-        if(d.unitId == a.id) {
-          this.result.push(a);
-          return false;
-        }
-      } )
-  })
-*/
-
-  //this.accUnits = this.result;
-  console.log(this.distancesCalculated);
-  console.log(this.result);
-  console.log(this.accUnits);
-  //this.sorted.emit(this.accUnits);
-  }
-    
-  distanceHighest() {
-    this.distancesCalculated.sort((a, b) => {
-      if (a.distanceInkm > b.distanceInkm ) {
-          return -1;
-      } else if (a.distanceInkm  < b.distanceInkm ) {
-          return 1;
-      } else {
-          return 0;
-      }
-    })
-    this.result = [];
-
-    this.distancesCalculated.forEach( d => {
-      this.accUnits.forEach( a => {
-        if(d.unitId == a.id) {
-          this.result.push(a);
-          return false;
-        }
-      } )
-  })
-
-  this.accUnits = this.result;
-  console.log(this.distancesCalculated);
-  console.log(this.result);
-  console.log(this.accUnits);
-  this.sorted.emit(this.accUnits);
-  }
- 
+  
 }
