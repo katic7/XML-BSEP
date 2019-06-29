@@ -1,1 +1,29 @@
-DESKTOP-RGDHRKN | 2019-06-02 01:09:08 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:08:49 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:08:59 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 11.701 seconds (JVM running for 12.369)
+DESKTOP-RGDHRKN | 2019-06-29 03:10:19 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:10:40 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 21.956 seconds (JVM running for 22.714)
+DESKTOP-RGDHRKN | 2019-06-29 03:11:09 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:11:13 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:11:53 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:12:04 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 12.233 seconds (JVM running for 13.03)
+DESKTOP-RGDHRKN | 2019-06-29 03:13:20 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:13:31 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 12.0 seconds (JVM running for 12.66)
+DESKTOP-RGDHRKN | 2019-06-29 03:14:38 | as.AccommodationObjectController | user: 1, id: 3 | UPJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:14:40 | as.AccommodationObjectController | user: 1, id: 3 | BRJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:52:44 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:52:54 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 11.427 seconds (JVM running for 12.114)
+DESKTOP-RGDHRKN | 2019-06-29 09:43:48 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 09:44:00 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 14.31 seconds (JVM running for 15.16)
+DESKTOP-RGDHRKN | 2019-06-29 10:09:32 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 10:09:44 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 13.232 seconds (JVM running for 14.014)
+DESKTOP-RGDHRKN | 2019-06-29 10:45:25 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 10:45:37 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 13.255 seconds (JVM running for 13.928)
+DESKTOP-RGDHRKN | 2019-06-29 10:47:09 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 10:47:11 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3T1 | success
+DESKTOP-RGDHRKN | 2019-06-29 10:47:23 | as.AccommodationObjectController | user: 1, id: 6 | UPJ3C4 | success
+DESKTOP-RGDHRKN | 2019-06-29 10:47:26 | as.AccommodationObjectController | user: 1, id: 6 | BRJ3C4 | success
+DESKTOP-RGDHRKN | 2019-06-29 10:47:41 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3AS | success
+DESKTOP-RGDHRKN | 2019-06-29 10:47:48 | as.AccommodationObjectController | user: 1, id: 4 | UPJ3AS | success
+DESKTOP-RGDHRKN | 2019-06-29 10:47:50 | as.AccommodationObjectController | user: 1, id: 4 | BRJ3AS | success
+DESKTOP-RGDHRKN | 2019-06-29 10:48:33 | as.AccommodationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 10:48:45 | as.AccommodationServiceApplication | Started AccommodationServiceApplication in 13.419 seconds (JVM running for 14.137)

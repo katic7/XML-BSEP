@@ -1,5 +1,7 @@
 package com.ftn.authservice.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -98,14 +100,27 @@ public class AuthController {
     @PreAuthorize("hasAuthority('AddUsers')")
     @PostMapping("/activateUser") //dodati permisije
     public ResponseEntity<?> activateUser(@RequestBody ActivateUserDTO acu){
+    	User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+    	InetAddress localhost = null;
+		try {
+			localhost = InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        System.out.println("System IP Address : " + 
+                      (localhost.getHostAddress()).trim());
     	User usr = userRepository.getOne(acu.getId());
     	if(acu.getStatus().equals(UserStatus.ACTIVATE)) {
     		usr.setEnabled(acu.isFlag());
+    		logger.info("user: {}, id: {} | AKN0U5 | success", u.getId(), usr.getId());
     		userRepository.save(usr);
     	}else if(acu.getStatus().equals(UserStatus.BLOCK)){
     		usr.setNonLocked(!acu.isFlag());
+    		logger.info("user: {}, id: {} | BLN0U5 | success", u.getId(), usr.getId());
     		userRepository.save(usr);
     	}
+
     	return new ResponseEntity<UserDTO>(new UserDTO(usr), HttpStatus.OK);
     }
     
@@ -167,21 +182,24 @@ public class AuthController {
     @PreAuthorize("hasAuthority('AddAgents')")
     @PostMapping("/createAgent")
     public ResponseEntity<?> createAgent(@RequestBody CreateAgentDTO ca){
-    	System.out.println(ca.getAccObj() + " " +ca.getUser());
+    	User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
     	User usr = userRepository.getOne(ca.getUser());
     	Agent ag = new Agent(usr);
     	ag.setPib(ca.getPib());
     	if(ca.getAccObj() != null) {
     		RestTemplate template  = new RestTemplate();
     		ag.setAccObj(template.getForObject("https://localhost:8082/api/accobject/getOne/" + ca.getAccObj(), AccommodationObject.class));
+    		logger.info("user: {}, id: {} | KRN0AG | success", u.getId(), usr.getId());
     		agentRepository.saveAgent(ag.getPib(),ag.getId(),ag.getAccObj().getId());
     	}else {
+    		logger.info("user: {}, id: {} | KRN0AG | success", u.getId(), usr.getId());
     		agentRepository.saveAgent(ag.getPib(),ag.getId(),null);
     	}
     	
     	Set<Role> roles = new HashSet<>();
     	roles.add(roleRepository.findByName(RoleName.ROLE_AGENT));
     	usr.setRoles(roles);
+		logger.info("user: {}, id: {} | KRN0AG | success", u.getId(), usr.getId());
     	userRepository.save(usr);
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -189,13 +207,23 @@ public class AuthController {
     @PreAuthorize("hasAuthority('DeleteUsers')")
     @RequestMapping(value="/deleteUser/{id}", method=RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
+    	User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
     	User usr = userRepository.getOne(id);
+		logger.info("user: {}, id: {} | 0BUSER | success", u.getId(), usr.getId());
     	userRepository.delete(usr);
     	return new ResponseEntity<>(HttpStatus.OK);
     }
     
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    	InetAddress localhost = null;
+		try {
+			localhost = InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String ip = (localhost.getHostAddress()).trim();
     	try {
     		
     		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
@@ -218,7 +246,7 @@ public class AuthController {
     		logger.info("ID: {} | PRN4SI | success", us.getId() );
 	        return ResponseEntity.ok(new JwtAuthenticationResponse(profile, jwt));
 		} catch (AuthenticationException e) {
-			logger.error("PRN4SI | fail");
+			logger.error("userIP: {} | PRN4SI | failed", ip);
 			return new ResponseEntity<String>("Not logged! " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
     }
@@ -235,7 +263,18 @@ public class AuthController {
     
     @GetMapping("/validEmail/{email}")
     public ResponseEntity<?> validEmail(@PathVariable String email) {
+    	InetAddress localhost = null;
+		try {
+			localhost = InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String ip = (localhost.getHostAddress()).trim();
+        System.out.println("System IP Address : " + 
+                      (localhost.getHostAddress()).trim());
     	if(userRepository.findByEmail(email).isPresent()) {
+    		logger.error("userIP: {} | R3USER | failed", ip);
     		return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);	
     	} else {
     		return new ResponseEntity<>(true,
@@ -259,12 +298,14 @@ public class AuthController {
     @PreAuthorize("hasAuthority('UpdateUser')")
     @PostMapping("/updateUser")
     public ResponseEntity<UserDTO> updateUser(@RequestBody User u){
+    	User usr = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
     	User updatedUser = userRepository.getOne(u.getId());
     	updatedUser.setName(u.getName());
     	updatedUser.setSurname(u.getSurname());
     	updatedUser.setEmail(u.getEmail());
     	updatedUser.setTelephone(u.getTelephone());
     	userRepository.save(updatedUser);
+		logger.info("user: {}, id: {} | UPUSER | success", usr.getId(), updatedUser.getId());
     	
     	return new ResponseEntity<UserDTO>(new UserDTO(updatedUser), HttpStatus.OK);
 
@@ -337,8 +378,8 @@ public class AuthController {
 				        
 				       
 				        //emailService.sendNotification(user, confirmationToken, "Welcome to Megatravel.com! Confirm your registration.");
-				        
 				        userRepository.save(user);
+						logger.info("user: {} | R3USER | success", user.getId());
 				        return new ResponseEntity<User>(user, HttpStatus.CREATED);
 						   
 					   

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.ftn.accommodationservice.model.Address;
-
+import com.ftn.accommodationservice.model.User;
 import com.ftn.accommodationservice.repository.CategoryRepository;
+import com.ftn.accommodationservice.repository.UserRepository;
 import com.ftn.accommodationservice.service.AddressService;
 
 @RestController
@@ -36,6 +38,9 @@ public class AddressController {
 	
 	 @Autowired
 	 private RestTemplate template;
+	 
+	@Autowired 
+	private UserRepository userRepository;
 	
 	@GetMapping //treba
 	public ResponseEntity<List<Address>> getAllAddresses() {
@@ -56,6 +61,36 @@ public class AddressController {
 	public ResponseEntity<Address> postNewAddress(@RequestBody Address address, HttpServletRequest request) {
 		return new ResponseEntity<Address>(addressService.addAddress(address), HttpStatus.CREATED);
 	}
+
+	
+	@GetMapping("/test")
+	public String testa() {
+		ResponseEntity<String> response = template.getForEntity("https://localhost:8761/hello",
+				 String.class);
+				 System.out.println(response.getBody());
+				 return "a";
+	}
+	
+	@GetMapping("/test2")
+	public String test2() {
+		return crepo.getOne(Long.valueOf(1)).getName();
+	}
+	
+	@GetMapping("/test3")
+	@PreAuthorize("hasAuthority('CREATE')")
+	public String test3() {
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+		System.out.println(u.getId());
+		return "test3";
+	}
+	
+	@GetMapping("/testhttps")
+	public String test5() {
+		return "ssl ok";
+		
+	}
+
 
 
 }

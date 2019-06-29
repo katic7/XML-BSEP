@@ -2,6 +2,8 @@ package com.ftn.accommodationservice.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -19,7 +21,6 @@ import org.springframework.web.client.RestTemplate;
 import com.ftn.accommodationservice.dto.CommentVisibilityDTO;
 import com.ftn.accommodationservice.dto.RatingDTO;
 import com.ftn.accommodationservice.dto.RatingScoreDTO;
-import com.ftn.accommodationservice.model.AccommodationUnit;
 import com.ftn.accommodationservice.repository.AccommodationUnitRepository;
 
 @RestController
@@ -31,6 +32,8 @@ public class CommentController {
 	
 	@Autowired
 	private AccommodationUnitRepository aunitRepository;
+	
+	private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
 	
 	@PostMapping("/visibility")
 	@PreAuthorize("hasAuthority('ApproveComment')")
@@ -50,12 +53,11 @@ public class CommentController {
 	
 	@PostMapping("/rating")
 	@PreAuthorize("hasAuthority('PublishComment')")
-	public ResponseEntity<?> postRating(@RequestBody RatingDTO rating){
-		System.out.println("*#@(#*@#(@*USAO*#@()#*!(@# " + rating.toString());
-		
+	public ResponseEntity<?> postRating(@RequestBody RatingDTO rating){		
 		HttpEntity<RatingDTO> request = new HttpEntity<RatingDTO>(rating);
 		String _return= template.postForObject("http://localhost:8135/newRating",
 				request, String.class);
+		logger.info("reservationID: {}, comment: {} | P0SK0M | success", rating.getReservationID(), rating.getComment() );
 		return new ResponseEntity<String>(_return, HttpStatus.OK);
 	}
 	

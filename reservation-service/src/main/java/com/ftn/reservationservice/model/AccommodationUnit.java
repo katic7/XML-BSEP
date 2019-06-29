@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.ftn.reservationservice.model.Image;
 
 
 /**
@@ -292,6 +293,7 @@ public class AccommodationUnit {
 		this.reservations = reservations;
 	}
 
+
 	public List<Image> getImage() {
 		return image;
 	}
@@ -299,6 +301,7 @@ public class AccommodationUnit {
 	public void setImage(List<Image> image) {
 		this.image = image;
 	}
+
 
 	
 

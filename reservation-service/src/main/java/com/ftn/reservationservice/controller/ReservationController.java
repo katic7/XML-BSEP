@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +58,7 @@ public class ReservationController {
 	@Autowired
 	public AgentRepository agentRepository;
 	
+	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 
 //	@GetMapping
 //	public ResponseEntity<List<Reservation>> getAllReservation() {
@@ -78,7 +81,6 @@ public class ReservationController {
 	
 	@PostMapping("/getfreeunits")
 	public ResponseEntity<List<AccommodationUnit>> getFreeAccUnits(@RequestBody SearchFormDTO info) {
-		System.out.println("``````````````````USAO JE GDE TREBA`````````````````");
 		List<AccommodationUnit> acu = reservationService.getAvailableAccUnits(info.getDestination(), info.getCheckin(), info.getCheckout());
 		if(acu != null) {
 			return new ResponseEntity<List<AccommodationUnit>>(acu, HttpStatus.OK);
@@ -99,19 +101,17 @@ public class ReservationController {
 			newRes.setReservationDate(new Date());
 			newRes.setPrice(res.getPrice());
 			newRes.setUser(userRepository.getOne(res.getUserId()));
-			
 			reservationService.makeAReservation(newRes);
-			
+			logger.info("user: {}, beginDate: {}, endDate: {} | NAN0R3 | success", newRes.getUser().getId(), newRes.getBeginDate(), newRes.getEndDate());
 			return new ResponseEntity<Reservation>(newRes, HttpStatus.OK);
 		}
-		
+
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
 	@PreAuthorize("hasAuthority('MakeReservation')")
 	@GetMapping("/byUser/{id}")
 	public ResponseEntity<List<ReservationDTO>> getReservationsByUser(@PathVariable Long id) {
-		System.out.println("usao u contr");
 		List<Reservation> res = reservationService.findReservationsByUserId(id);
 		if(res != null) {
 			List<ReservationDTO> r = new ArrayList<>();
@@ -129,15 +129,16 @@ public class ReservationController {
 	public ResponseEntity<?> deleteReservation(@PathVariable Long id) {
 		if(id != null) {
 			reservationService.deleteReservation(id);
+			logger.info("id: {} | 0BR3Z3 | success", id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
+		logger.error("id: {} | 0BR3Z3 | failed", id);
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
 	@PreAuthorize("hasAuthority('CompleteReservation')")
 	@PostMapping("/getForCompletion")
 	public ResponseEntity<List<ReservationDTO>> getForCompletion(@RequestBody Date date) {
-		System.out.println("A BRAO");
 		List<Reservation> res = new ArrayList<>();
 		if(date != null) {
 			res = reservationService.getForCompletion(date);

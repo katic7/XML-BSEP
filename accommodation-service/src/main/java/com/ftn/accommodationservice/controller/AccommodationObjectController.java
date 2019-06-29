@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +24,15 @@ import com.ftn.accommodationservice.model.AdditionalService;
 import com.ftn.accommodationservice.model.Category;
 import com.ftn.accommodationservice.model.Reservation;
 import com.ftn.accommodationservice.model.Type;
+import com.ftn.accommodationservice.model.User;
 import com.ftn.accommodationservice.repository.AccommodationObjectRepository;
 import com.ftn.accommodationservice.repository.AdditionalServiceRepository;
 import com.ftn.accommodationservice.repository.CategoryRepository;
 import com.ftn.accommodationservice.repository.TypeRepository;
+import com.ftn.accommodationservice.repository.UserRepository;
 import com.ftn.accommodationservice.service.AccommodationObjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/accobject")
@@ -48,12 +53,16 @@ public class AccommodationObjectController {
 	@Autowired
 	private TypeRepository typerepo;
 	
+	@Autowired 
+	private UserRepository userRepository;
+	
+	private static final Logger logger = LoggerFactory.getLogger(AccommodationObjectController.class);
+	
 	@PreAuthorize("hasAuthority('AddPrice')")
 	@GetMapping("/getprices")
 	public ResponseEntity<List<AccUnitPrice>> getAllPrices() {
 		List<AccUnitPrice> prices = accommodationObjectService.getAllPrices();
 		if(prices != null) {
-			System.out.println("dosao");
 			return new ResponseEntity<List<AccUnitPrice>>(prices, HttpStatus.OK);
 		} 
 
@@ -63,6 +72,7 @@ public class AccommodationObjectController {
 	@PreAuthorize("hasAuthority('AddPrice')")
 	@PostMapping("/addprice")
 	public ResponseEntity<AccUnitPrice> addNewPrice(@RequestBody AccUnitPrice acup) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		AccUnitPrice price = new AccUnitPrice();
 		if(acup != null) {
 			price.setStartDate(acup.getStartDate());
@@ -72,10 +82,10 @@ public class AccommodationObjectController {
 			//price.setAccommodationUnit(new AccommodationUnit());
 			
 			accommodationObjectService.addNewPrice(price);
-			
+			logger.info("user: {}, id: {} | D0N0C3 | success", u.getId(), price.getId());
 			return new ResponseEntity<AccUnitPrice>(price, HttpStatus.OK);
 		}
-		
+		logger.error("user: {} | D0N0C3 | failed", u.getId());
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
@@ -106,6 +116,7 @@ public class AccommodationObjectController {
 	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/addunit/{accobject_id}")
 	public ResponseEntity<AccommodationUnit> addNewAccUnit(@PathVariable Long accobject_id, @RequestBody AccommodationUnit acu) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		AccommodationUnit newAcu = new AccommodationUnit();
 		if(acu != null) {
 			AccommodationObject aco = accommodationObjectService.getOneAccObj(accobject_id);
@@ -120,10 +131,10 @@ public class AccommodationObjectController {
 			newAcu.setRating(0);
 			
 			accommodationObjectService.AddNewAccUnit(newAcu);
-			
+			logger.info("user: {}, id: {} | D0N05J | success", u.getId(), newAcu.getId());
 			return new ResponseEntity<AccommodationUnit>(newAcu, HttpStatus.OK);
 		}
-		
+		logger.error("user: {} | D0N05J | failed", u.getId());
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
@@ -211,42 +222,52 @@ public class AccommodationObjectController {
 	
 	@PreAuthorize("hasAuthority('DeleteCodebook')")
 	@DeleteMapping("/types/{id}")
-	public ResponseEntity<?> deleteOneType(@PathVariable Long id) {		
+	public ResponseEntity<?> deleteOneType(@PathVariable Long id) {	
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		typerepo.deleteById(id);
+		logger.info("user: {}, id: {} | BRJ3T1 | success", u.getId(), id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('DeleteCodebook')")
 	@DeleteMapping("/categories/{id}")
 	public ResponseEntity<?> deleteOneCategory(@PathVariable Long id) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		catrepo.deleteById(id);
+		logger.info("user: {}, id: {} | BRJ3C4 | success", u.getId(), id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('DeleteCodebook')")
 	@DeleteMapping("/additionalservices/{id}")
 	public ResponseEntity<?> deleteOneAdditionalService(@PathVariable Long id) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		additonalRepo.deleteById(id);
+		logger.info("user: {}, id: {} | BRJ3AS | success", u.getId(), id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('AddContent')")
 	@PostMapping("/types")
 	public ResponseEntity<Type> addType(@RequestBody Type type) {
+		//User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		Type ty = new Type();
 		ty.setAccObj(new ArrayList<AccommodationObject>());
 		ty.setName(type.getName());
 		typerepo.save(ty);
+		//logger.info("user: {}, id: {} | D0J3T1 | success", u.getId(), ty.getId());
 		return new ResponseEntity<Type>(ty, HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('AddContent')")
 	@PostMapping("/categories")
 	public ResponseEntity<Category> addCategory(@RequestBody Category category) {
+		//User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		Category cat = new Category();
 		cat.setAccObj(new ArrayList<AccommodationObject>());
 		cat.setName(category.getName());
 		catrepo.save(cat);
+		//logger.info("user: {}, id: {} | D0J3C4 | success", u.getId(), category.getId());
 		return new ResponseEntity<Category>(cat, HttpStatus.OK);
 	}
 	
@@ -260,6 +281,8 @@ public class AccommodationObjectController {
 		as.setName(addser.getName());
 		as.setAccommodationObject(accommodationObjectRepository.getOne(Long.valueOf(1)));
 		additonalRepo.save(as);
+		//User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+		//logger.info("user: {}, id: {} | D0J3AS | success", u.getId(), addser.getId());
 		return new ResponseEntity<AdditionalService>(as, HttpStatus.OK);
 	}
 	
@@ -269,25 +292,31 @@ public class AccommodationObjectController {
 		Type ty = typerepo.getOne(type.getId());
 		ty.setName(type.getName());
 		typerepo.save(ty);
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+		logger.info("user: {}, id: {} | UPJ3T1 | success", u.getId(), type.getId());
 		return new ResponseEntity<Type>(ty, HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('EditCodebook')")
 	@PostMapping("/categories/{id}")
 	public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		Category cat = catrepo.getOne(category.getId());
 		cat.setName(category.getName());
 		catrepo.save(cat);
+		logger.info("user: {}, id: {} | UPJ3C4 | success", u.getId(), category.getId());
 		return new ResponseEntity<Category>(cat, HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('EditCodebook')")
 	@PostMapping("/additionalservices/{id}")
 	public ResponseEntity<AdditionalService> updateAdditionalService(@PathVariable Long id, @RequestBody AdditionalService addser) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		AdditionalService as = additonalRepo.getOne(addser.getId());
 		as.setName(addser.getName());
 		as.setPrice(addser.getPrice());
 		additonalRepo.save(as);
+		logger.info("user: {}, id: {} | UPJ3AS | success", u.getId(), addser.getId());
 		return new ResponseEntity<AdditionalService>(as, HttpStatus.OK);
 	}
 	

@@ -9,11 +9,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Min;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,11 +70,15 @@ public class AccommodationController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	private static final Logger logger = LoggerFactory.getLogger(AccommodationController.class);
+	
 	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping
 	public String newAcc(@RequestBody AccommodationUnit request) {
+		//t
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		GetAccommodationUnitResponse r = client.saveNewAcc(request);
-		System.out.println(r.getAccommodationUnit().getDescription());
+		logger.info("user: {}, id: {} | D0N0AU | success", u.getId(), r.getAccommodationUnit().getId());
 		return r.getAccommodationUnit().getDescription();	
 	}
 	
@@ -124,22 +131,25 @@ public class AccommodationController {
 	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/createAccObject")
 	public AccommodationObjectDTO createObject(@RequestBody AccommodationObjectDTO accObj, HttpServletRequest request) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		String token = (request.getHeader("Authorization")).substring(7, request.getHeader("Authorization").length());
 		System.out.println(token + "TOKEEEEEN");
 		RestTemplate template = new RestTemplate();
 		String username = template.getForObject("https://localhost:8085/api/auth/check/{token}/username", String.class, token);
 		
 		User usr = userRepository.findByEmail(username).get();
-		System.out.println(username + "AAAAAAAAAA");
 		PostAccommodationObjectResponse acc = client.createAccObject(accObj, usr);
 		accObj.setId(acc.getAccommodationObject().getId());
+		logger.info("user: {}, id: {} | D0N0A0 | success", u.getId(), accObj.getId());
 		return accObj;
 	}
 	
 	@PreAuthorize("hasAuthority('AddAccUnit')")
 	@PostMapping("/addAccUnit")
 	public AccommodationUnit addNewAccUnit(@RequestBody AccommodationUnit accUnit) {
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		GetAccommodationUnitResponse r = client.saveNewAcc(accUnit);
+		logger.info("user: {}, id: {} | D0N0AU | success", u.getId(), r.getAccommodationUnit().getId());
 		return r.getAccommodationUnit();
 		
 	}
@@ -149,6 +159,7 @@ public class AccommodationController {
 	public ResponseEntity<?> uploadFile(@PathVariable @Min(1) Long id,
 			@RequestParam("Image") MultipartFile[] request) {
 		System.out.print("pogodio image");
+		User u = userRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).get();
 		String returnValue = "";
 		com.ftn.agentservice.model.AccommodationUnit acc = new com.ftn.agentservice.model.AccommodationUnit();
 		acc = acurepo.getOne(id);
@@ -164,6 +175,7 @@ public class AccommodationController {
 				e.printStackTrace();
 			}
 		}
+		logger.info("user: {}, id: {} | D0N0SL | success", u.getId(), acc.getId());
 		acc.setImage(slike);
 		return new ResponseEntity<>( HttpStatus.OK);
 
