@@ -167,7 +167,7 @@ public class AuthController {
     	return new ResponseEntity<List<UserDTO>>(povratna, HttpStatus.OK);
     }
     
-    @PreAuthorize("hasAuthority('AddAccUnit')")
+    //@PreAuthorize("hasAuthority('AddAccUnit')")
     @GetMapping("/getAgents")
     public ResponseEntity<List<AgentDTO>> getAgents(){
     	List<Agent> svi = agentRepository.findAll();

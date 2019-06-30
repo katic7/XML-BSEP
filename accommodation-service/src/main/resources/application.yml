@@ -28,7 +28,7 @@ spring:
   application:
     name: accommodation-service
   datasource:
-    url: jdbc:mysql://mysql1:3306/spring_app_db?useSSL=false
+    url: jdbc:mysql://localhost:3306/megatravel?useSSL=false&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: root
     initialization-mode: always

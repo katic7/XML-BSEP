@@ -132,3 +132,29 @@ Milan-PC | 2019-06-30 12:18:48 | as.AuthController | user: 1, id: 5 | KRN0AG | s
 Milan-PC | 2019-06-30 12:18:50 | as.AuthController | user: 1, id: 5 | AKN0U5 | success
 Milan-PC | 2019-06-30 12:19:08 | as.AuthController | ID: 5 | PRN4SI | success
 Milan-PC | 2019-06-30 12:20:25 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 11:57:19 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 11:57:50 | as.AuthServiceApplication | Started AuthServiceApplication in 36.194 seconds (JVM running for 45.234)
+Milan-PC | 2019-06-30 12:08:09 | as.AuthController | user: 10 | R3USER | success
+Milan-PC | 2019-06-30 12:09:21 | as.AuthController | ID: 1 | PRN4SI | success
+Milan-PC | 2019-06-30 12:09:26 | as.AuthController | user: 1, id: 10 | AKN0U5 | success
+Milan-PC | 2019-06-30 12:09:33 | as.AuthController | user: 1, id: 10 | KRN0AG | success
+Milan-PC | 2019-06-30 12:09:33 | as.AuthController | user: 1, id: 10 | KRN0AG | success
+Milan-PC | 2019-06-30 12:09:46 | as.AuthController | ID: 10 | PRN4SI | success
+Milan-PC | 2019-06-30 12:10:21 | as.AuthController | ID: 10 | PRN4SI | success
+Milan-PC | 2019-06-30 12:11:02 | as.AuthController | ID: 10 | PRN4SI | success
+Milan-PC | 2019-06-30 12:11:05 | as.AuthController | ID: 10 | PRN4SI | success
+Milan-PC | 2019-06-30 12:15:18 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 12:29:03 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:29:33 | as.AuthServiceApplication | Started AuthServiceApplication in 35.137 seconds (JVM running for 36.433)
+Milan-PC | 2019-06-30 12:29:52 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 12:33:08 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 12:33:33 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 12:34:14 | as.AuthController | ID: 8 | PRN4SI | success
+Milan-PC | 2019-06-30 12:34:16 | as.AuthController | ID: 8 | PRN4SI | success
+Milan-PC | 2019-06-30 12:37:16 | as.AuthController | ID: 8 | PRN4SI | success
+Milan-PC | 2019-06-30 12:39:31 | as.AuthController | ID: 8 | PRN4SI | success
+Milan-PC | 2019-06-30 12:48:00 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:48:32 | as.AuthServiceApplication | Started AuthServiceApplication in 41.517 seconds (JVM running for 52.855)
+Milan-PC | 2019-06-30 12:49:23 | as.AuthController | ID: 2 | PRN4SI | success
+Milan-PC | 2019-06-30 12:49:32 | as.AuthController | user: 2, id: 5 | BLN0U5 | success
+Milan-PC | 2019-06-30 12:49:38 | as.AuthController | user: 2, id: 5 | 0BUSER | success

@@ -69,4 +69,7 @@ export class AuthService {
     return this.http.get(this.getAgent + id);
   }
 
+  syncDataBase() : Observable<any>{
+    return this.http.get('https://localhost:8091/api/accommodations/syncDataBase');
+  }
 }

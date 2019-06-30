@@ -80,8 +80,10 @@ export class LoginComponent implements OnInit {
  
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        this.authService.syncDataBase().subscribe(data=>{
+          this.router.navigate(['home']);
+        })
         
-        this.router.navigate(['home']);
        
        
       },
