@@ -12,6 +12,8 @@ import { FormControl } from '@angular/forms';
 import { RatingDTO } from '../models/RatingDTO';
 import { Router } from '@angular/router';
 import { Agent } from '../models/Agent';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-reservation',
@@ -32,9 +34,12 @@ export class ReservationComponent implements OnInit {
   comment = new FormControl('');
   rating = new FormControl('');
   allAgents : Agent[] = [];
+  imageUrl:string[]=[];
+  fileToUpload: File[]=[];
+  images : any;
   difference;
   constructor(private pipe: DatePipe, private reservationService: ReservationService,
-     private accommodationUnitService : AccommodationunitService, private router : Router) { }
+     private accommodationUnitService : AccommodationunitService, private router : Router,  private sanitizer: DomSanitizer) { }
 
   cancelReservation() {
     this.reservationService.cancelReservation(this.reservation.id).subscribe(data =>  {alert("Reservation canceled.");      
@@ -49,6 +54,7 @@ export class ReservationComponent implements OnInit {
     
 
     this.reservationService.getOneUnit(this.reservation.accommodationUnitId).subscribe(data2 => { this.accUnit = data2; console.log(data2);
+
       //this.reservationService.getAdress(this.accUnit.accommodationObject.addressId).subscribe(data => { this.address = data;});
       console.log(this.reservation);
       this.todaysDate = new Date(this.pipe.transform(this.todaysDate, "yyyy-MM-dd"));
@@ -77,6 +83,18 @@ export class ReservationComponent implements OnInit {
         this.indicator = false; 
       }
       console.log(this.indicator);
+
+      this.accommodationUnitService.getAllImages(this.accUnit.id).subscribe(slike=>{
+        this.images = slike;
+        this.imageUrl=[];
+        
+        for(let v=0; v <slike.length;v++){
+          this.imageUrl.push( "data:image/*;base64," + slike[v].data);
+          console.log(this.imageUrl[0]);
+        }
+      })
+
+
      }); 
 
     console.log(this.accUnit);

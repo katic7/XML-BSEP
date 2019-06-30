@@ -99,3 +99,36 @@ DESKTOP-SKD9GDH | 2019-06-29 10:10:37 | as.AuthServiceApplication | Started Auth
 DESKTOP-SKD9GDH | 2019-06-29 10:45:33 | as.AuthController | ID: 3 | PRN4SI | success
 DESKTOP-SKD9GDH | 2019-06-29 11:30:02 | as.AuthController | ID: 3 | PRN4SI | success
 DESKTOP-SKD9GDH | 2019-06-29 11:45:08 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 09:51:30 | as.AuthServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 09:51:51 | as.AuthServiceApplication | Started AuthServiceApplication in 25.212 seconds (JVM running for 30.618)
+Milan-PC | 2019-06-30 09:54:23 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 09:59:33 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 10:02:16 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 10:06:24 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 10:22:37 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 10:28:45 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 10:29:43 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 10:33:53 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 10:34:35 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 10:49:35 | as.AuthController | ID: 3 | PRN4SI | success
+Milan-PC | 2019-06-30 10:50:18 | as.AuthController | ID: 4 | PRN4SI | success
+Milan-PC | 2019-06-30 11:01:28 | as.AuthController | ID: 1 | PRN4SI | success
+Milan-PC | 2019-06-30 11:01:44 | as.AuthController | user: 1, id: 5 | KRN0AG | success
+Milan-PC | 2019-06-30 11:01:45 | as.AuthController | user: 1, id: 5 | KRN0AG | success
+Milan-PC | 2019-06-30 11:01:49 | as.AuthController | user: 1, id: 5 | AKN0U5 | success
+Milan-PC | 2019-06-30 11:02:39 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 11:18:51 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 11:19:19 | as.AuthController | ID: 1 | PRN4SI | success
+Milan-PC | 2019-06-30 11:19:27 | as.AuthController | user: 1, id: 5 | KRN0AG | success
+Milan-PC | 2019-06-30 11:19:27 | as.AuthController | user: 1, id: 5 | KRN0AG | success
+Milan-PC | 2019-06-30 11:19:29 | as.AuthController | user: 1, id: 5 | AKN0U5 | success
+Milan-PC | 2019-06-30 11:19:49 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 11:37:48 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 11:55:55 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 12:14:24 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 12:18:40 | as.AuthController | ID: 1 | PRN4SI | success
+Milan-PC | 2019-06-30 12:18:48 | as.AuthController | user: 1, id: 5 | KRN0AG | success
+Milan-PC | 2019-06-30 12:18:48 | as.AuthController | user: 1, id: 5 | KRN0AG | success
+Milan-PC | 2019-06-30 12:18:50 | as.AuthController | user: 1, id: 5 | AKN0U5 | success
+Milan-PC | 2019-06-30 12:19:08 | as.AuthController | ID: 5 | PRN4SI | success
+Milan-PC | 2019-06-30 12:20:25 | as.AuthController | ID: 3 | PRN4SI | success

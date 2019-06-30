@@ -17,10 +17,10 @@ export class CreateObjectService {
   }
 
   createAddress(adr : Address) :Observable<any>{
-    return this.http.post('https://localhost:8091/api/accommodations/createAddress',adr);
+    return this.http.post('https://localhost:8081/agentservice/api/accommodations/createAddress',adr);
   }
 
   createObject(accObj: AccommodationObject) : Observable<any>{
-    return this.http.post('https://localhost:8091/api/accommodations/createAccObject', accObj);
+    return this.http.post('https://localhost:8081/agentservice/api/accommodations/createAccObject', accObj);
   }
 }

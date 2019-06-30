@@ -54,6 +54,7 @@ export class SearchpageComponent implements OnInit {
       this.searchForm.destination = a.where;
       this.searchForm.persons = +a.persons;
       this.reservationService.getFreeAccUnits(this.searchForm).subscribe(data => { 
+        console.log(data);
         this.accUnits = data;
         this.accUnits.forEach(ac => {
           this.accService.getRatingScore(ac.id).subscribe(data => {

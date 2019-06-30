@@ -41,4 +41,7 @@ export class AccommodationunitService {
     return this.http.get('https://localhost:8082/api/accobject/categories');
   }
 
+  getAllImages(id : number) : Observable<any>{
+    return this.http.get('https://localhost:8091/api/accommodations/getImage/' + id);
+  }
 }

@@ -1,6 +1,8 @@
 package com.ftn.agentservice.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +22,9 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedSubgraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.ftn.agentservice.dto.RoleDTO;
+import com.ftn.agentservice.dto.UserDTO;
 
 
 @Entity
@@ -76,6 +81,32 @@ public class User {
 		this.enabled = true;
 		this.nonLocked = true;
 		this.roles = roles;
+	}
+	
+	public User(UserDTO u) {
+		Set<Role> role = new HashSet<Role>();
+		Set<Permission> per = new HashSet<Permission>();
+		if(u.getRoles() != null) {
+			for(RoleDTO r : u.getRoles()) {
+			Role ro = new Role();
+			ro.setName(r.getName());
+			ro.setId(r.getId());
+			ro.setPermissions(per);
+			role.add(ro);
+		}
+		}
+		this.id = u.getId();
+		this.name = u.getName();
+		this.surname = u.getSurname();
+		this.addressId = u.getAddressId();
+		this.email = u.getEmail();
+		this.password = u.getPassword();
+		this.enabled = u.isEnabled();
+		this.nonLocked = u.isNonLocked();
+		this.dateOfBirth = new Date();
+		this.telephone = u.getTelephone();
+		this.reservations = new ArrayList<Reservation>();
+		this.roles = role;
 	}
 
 	public User(Long id, String name, String surname, Long addressId, String email, String password,

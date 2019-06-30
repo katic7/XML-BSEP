@@ -51,6 +51,7 @@ import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetCategoryRequest;
 import com.ftn.accommodationservice.xsd.GetCategoryResponse;
+import com.ftn.accommodationservice.xsd.GetDataBaseResponse;
 import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
@@ -204,6 +205,73 @@ public class AccommodationEndpoint {
 		
 		return response;
 	}
+	
+	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "GetDataBaseRequest")
+	@ResponsePayload
+	@Transactional
+	public GetDataBaseResponse syncDataBase() {
+		GetDataBaseResponse response = new GetDataBaseResponse();
+		Converter conv = new Converter();
+		List<Type> tipovi = typerepo.findAll();
+		List<Category>kategorije = catrepo.findAll();
+		List<Address>adrese = addressrepo.findAll();
+		List<AdditionalService>addService = additionalservicerepo.findAll();
+		List<AccUnitPrice>acPrice = acurepo.findAll();
+		List<AccommodationObject> accObj = accObjRepo.findAll();
+		List<AccommodationUnit> accUnit = aunitrepo.findAll();
+		List<Reservation> reservations = res.findAll();
+		for(Type tp : tipovi) {
+			com.ftn.accommodationservice.xsd.Type tipp = new com.ftn.accommodationservice.xsd.Type();
+			tipp = conv.covertType(tp);
+			response.getType().add(tipp);
+		}
+		
+		for(Category ct : kategorije) {
+			com.ftn.accommodationservice.xsd.Category cat = new com.ftn.accommodationservice.xsd.Category();
+			cat = conv.convertCategory(ct);
+			response.getCategory().add(cat);
+		}
+		
+		for(Address adr : adrese) {
+			com.ftn.accommodationservice.xsd.Address adresa = new com.ftn.accommodationservice.xsd.Address();
+			adresa = conv.convertAddress(adr);
+			response.getAddress().add(adresa);
+		}
+		
+		for(AdditionalService ads : addService) {
+			com.ftn.accommodationservice.xsd.AdditionalService ad = new com.ftn.accommodationservice.xsd.AdditionalService();
+			ad = conv.convertAdditionalService(ads);
+			response.getAdditionalService().add(ad);
+		}
+		
+		for(AccUnitPrice ac : acPrice) {
+			com.ftn.accommodationservice.xsd.AccUnitPrice acp = new com.ftn.accommodationservice.xsd.AccUnitPrice();
+			acp = conv.convertAccUnitPrice(ac);
+			response.getAccUnitPrice().add(acp);
+		}
+		
+		for(AccommodationObject aco : accObj) {
+			com.ftn.accommodationservice.xsd.AccommodationObject acob = new com.ftn.accommodationservice.xsd.AccommodationObject();
+			acob = conv.convertAccommodation(aco);
+			
+			response.getAccommodationObject().add(acob);
+		}
+		
+		for(AccommodationUnit ac : accUnit) {
+			com.ftn.accommodationservice.xsd.AccommodationUnit acu = new com.ftn.accommodationservice.xsd.AccommodationUnit();
+			acu = conv.convertAccUnit(ac);
+			response.getAccommodationUnit().add(acu);
+		}
+		
+		for(Reservation ress : reservations) {
+			com.ftn.accommodationservice.xsd.Reservation reser = new com.ftn.accommodationservice.xsd.Reservation();
+			reser = conv.convertReservation(ress);
+			response.getReservation().add(reser);
+		}
+		
+		return response;
+	}
+	
 	@PayloadRoot(namespace = "http://ftn.com/accommodationservice/xsd", localPart = "PostAddressRequest")
 	@ResponsePayload
 	@Transactional

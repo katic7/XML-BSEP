@@ -43,6 +43,7 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
         	<xs:element name="id" type="tns:id"/>
             <xs:element name="longitude" type="xs:double"/>
             <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="state" type="tns:state"/>
             <xs:element name="town">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -341,6 +342,37 @@ xmlns:tns="http://ftn.com/accommodationservice/xsd" elementFormDefault="qualifie
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="accUnitPrice" type="tns:AccUnitPrice" maxOccurs="unbounded"
+                minOccurs="0"/>
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetDataBaseRequest">
+		<xs:complexType>
+			<xs:sequence>
+				
+			</xs:sequence>	
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="GetDataBaseResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accommodationObject" type="tns:AccommodationObject" maxOccurs="unbounded"
+                minOccurs="0"/>
+				<xs:element name="accommodationUnit" type="tns:AccommodationUnit" maxOccurs="unbounded"
+                minOccurs="0"/>
+				<xs:element name="accUnitPrice" type="tns:AccUnitPrice" maxOccurs="unbounded"
+                minOccurs="0"/>
+                <xs:element name="reservation" type="tns:Reservation" maxOccurs="unbounded"
+                minOccurs="0"/>
+                <xs:element name="category" type="tns:Category" maxOccurs="unbounded"
+                minOccurs="0"/>
+                <xs:element name="type" type="tns:Type" maxOccurs="unbounded"
+                minOccurs="0"/>
+                <xs:element name="additionalService" type="tns:AdditionalService" maxOccurs="unbounded"
+                minOccurs="0"/>
+                <xs:element name="address" type="tns:address" maxOccurs="unbounded"
                 minOccurs="0"/>
 			</xs:sequence>	
 		</xs:complexType>

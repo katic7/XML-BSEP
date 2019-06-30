@@ -34,7 +34,7 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 	    //String username = restTemplate.getForObject("https://localhost:8085/api/auth/check/{token}/username", String.class, token);
 		String username = httpRequest.getHeader("username");
 		String permisije = httpRequest.getHeader("Permissions");
-	    
+		System.out.println(httpRequest.getHeader("Token"));
 	    System.out.println(username);
 		System.out.println(permisije);
 		if(username != null && permisije != null && !username.equals("") && !permisije.equals("")) {
@@ -46,7 +46,7 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 				authorities.add(new SimpleGrantedAuthority(tokene));
 			}
 			
-			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username,  null, authorities);
+			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username,  httpRequest.getHeader("Token"), authorities);
 			
 			
 			auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));

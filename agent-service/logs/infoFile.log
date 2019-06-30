@@ -1,39 +1,17 @@
-DESKTOP-RGDHRKN | 2019-06-29 04:01:36 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:01:45 | as.AgentServiceApplication | Started AgentServiceApplication in 10.278 seconds (JVM running for 11.057)
-DESKTOP-RGDHRKN | 2019-06-29 04:04:12 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:04:30 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:04:38 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:05:54 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:06:03 | as.AgentServiceApplication | Started AgentServiceApplication in 10.204 seconds (JVM running for 11.004)
-DESKTOP-RGDHRKN | 2019-06-29 04:09:10 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:09:20 | as.AgentServiceApplication | Started AgentServiceApplication in 10.524 seconds (JVM running for 11.322)
-DESKTOP-RGDHRKN | 2019-06-29 04:10:45 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:11:04 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:11:56 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:12:07 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:12:16 | as.AgentServiceApplication | Started AgentServiceApplication in 10.343 seconds (JVM running for 11.076)
-DESKTOP-RGDHRKN | 2019-06-29 04:16:10 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:16:26 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:16:35 | as.AgentServiceApplication | Started AgentServiceApplication in 10.248 seconds (JVM running for 11.12)
-DESKTOP-RGDHRKN | 2019-06-29 04:17:52 | as.AccommodationController | user: 4, id: 7 | D0N0AU | success
-DESKTOP-RGDHRKN | 2019-06-29 04:19:01 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:20:11 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:20:18 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 04:20:27 | as.AgentServiceApplication | Started AgentServiceApplication in 10.53 seconds (JVM running for 11.316)
-DESKTOP-RGDHRKN | 2019-06-29 04:21:29 | as.AccommodationController | user: 4, id: 8 | D0N0AU | success
-DESKTOP-RGDHRKN | 2019-06-29 09:44:17 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 09:44:28 | as.AgentServiceApplication | Started AgentServiceApplication in 12.545 seconds (JVM running for 13.504)
-DESKTOP-RGDHRKN | 2019-06-29 10:07:57 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 11:02:39 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 11:03:58 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 11:18:22 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-DESKTOP-RGDHRKN | 2019-06-29 11:18:34 | as.AgentServiceApplication | Started AgentServiceApplication in 13.419 seconds (JVM running for 14.339)
-DESKTOP-RGDHRKN | 2019-06-29 11:41:38 | as.AccommodationController | user: 4, id: 5 | D0N0AU | success
-MKIT_LENOVO40 | 2019-06-29 11:58:38 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-MKIT_LENOVO40 | 2019-06-29 12:10:29 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-MKIT_LENOVO40 | 2019-06-29 12:10:59 | as.AgentServiceApplication | Started AgentServiceApplication in 40.413 seconds (JVM running for 61.781)
-MKIT_LENOVO40 | 2019-06-29 12:18:26 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-MKIT_LENOVO40 | 2019-06-29 12:19:38 | as.AgentServiceApplication | Started AgentServiceApplication in 90.522 seconds (JVM running for 94.578)
-MKIT_LENOVO40 | 2019-06-29 12:21:01 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-MKIT_LENOVO40 | 2019-06-29 06:48:35 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
-MKIT_LENOVO40 | 2019-06-29 06:48:56 | as.AgentServiceApplication | Started AgentServiceApplication in 27.359 seconds (JVM running for 34.086)
+Milan-PC | 2019-06-30 12:03:36 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:03:54 | as.AgentServiceApplication | Started AgentServiceApplication in 21.873 seconds (JVM running for 23.179)
+Milan-PC | 2019-06-30 12:05:50 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:06:31 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:06:44 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:08:37 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:12:37 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 12:20:52 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 01:47:29 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 01:47:45 | as.AgentServiceApplication | Started AgentServiceApplication in 20.585 seconds (JVM running for 21.646)
+Milan-PC | 2019-06-30 01:59:20 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 01:59:35 | as.AgentServiceApplication | Started AgentServiceApplication in 18.803 seconds (JVM running for 19.776)
+Milan-PC | 2019-06-30 02:00:30 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 02:00:46 | as.AgentServiceApplication | Started AgentServiceApplication in 20.601 seconds (JVM running for 21.595)
+Milan-PC | 2019-06-30 02:02:40 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 02:07:32 | as.AgentServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 02:07:46 | as.AgentServiceApplication | Started AgentServiceApplication in 17.949 seconds (JVM running for 18.831)

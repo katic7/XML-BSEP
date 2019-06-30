@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Image {
 
@@ -69,6 +71,7 @@ public class Image {
 		this.data = data;
 	}
 
+	@JsonIgnore
 	public AccommodationUnit getAccUnit() {
 		return accUnit;
 	}

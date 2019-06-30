@@ -28,6 +28,8 @@ import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceRequest;
 import com.ftn.accommodationservice.xsd.GetAllAdditionalServiceResponse;
 import com.ftn.accommodationservice.xsd.GetCategoryRequest;
 import com.ftn.accommodationservice.xsd.GetCategoryResponse;
+import com.ftn.accommodationservice.xsd.GetDataBaseRequest;
+import com.ftn.accommodationservice.xsd.GetDataBaseResponse;
 import com.ftn.accommodationservice.xsd.GetTestRequest;
 import com.ftn.accommodationservice.xsd.GetTestResponse;
 import com.ftn.accommodationservice.xsd.GetTypeRequest;
@@ -52,6 +54,7 @@ import com.ftn.agentservice.repository.AccommodationUnitRepository;
 import com.ftn.agentservice.repository.AdditionalServiceRepository;
 import com.ftn.agentservice.repository.AddressRepository;
 import com.ftn.agentservice.repository.CategoryRepository;
+import com.ftn.agentservice.repository.ReservationRepository;
 import com.ftn.agentservice.repository.TypeRepository;
 
 public class AccommodationClient extends WebServiceGatewaySupport  {
@@ -78,6 +81,9 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	
 	@Autowired
 	private AccommodationObjectRepository accObjRepo;
+	
+	@Autowired
+	private ReservationRepository reservationRepository;
 	
 	public GetAccommodationObjectResponse getAccommodation(Long id) {
 		GetAccommodationObjectRequest request = new GetAccommodationObjectRequest();
@@ -251,6 +257,71 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 		PostAccUnitPriceRequest request = new PostAccUnitPriceRequest();
 		request.setAccUnitPrice(acc);
 		return (PostAccUnitPriceResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+	}
+
+	public GetDataBaseResponse getDataBase() {
+		categoryRepository.deleteAll();
+		typeRepository.deleteAll();
+		addressRepo.deleteAll();
+		additionalservicerepo.deleteAll();
+		acurepo.deleteAll();
+		accObjRepo.deleteAll();
+		aunitrepo.deleteAll();
+		reservationRepository.deleteAll();
+		Converter conv = new Converter();
+		GetDataBaseRequest request = new GetDataBaseRequest();
+		GetDataBaseResponse response = (GetDataBaseResponse) getWebServiceTemplate().marshalSendAndReceive(request);
+
+		for(Category cat : response.getCategory()) {
+			com.ftn.agentservice.model.Category kateg = new com.ftn.agentservice.model.Category();
+			kateg = conv.convertCategory(cat);
+			categoryRepository.save(kateg);
+		}
+		
+		for(Type tip : response.getType()) {
+			com.ftn.agentservice.model.Type tipp = new com.ftn.agentservice.model.Type();
+			tipp = conv.covertType(tip);
+			typeRepository.save(tipp);
+		}
+		
+		for(Address adrr : response.getAddress()) {
+			com.ftn.agentservice.model.Address adres = new com.ftn.agentservice.model.Address();
+			adres = conv.convertAddress(adrr);
+			addressRepo.save(adres);
+		}
+		
+		System.out.println(response.getAdditionalService().size()+"AAAAAAAAAAA");
+		for(com.ftn.accommodationservice.xsd.AdditionalService ads : response.getAdditionalService()) {
+			AdditionalService ad = new AdditionalService();
+			ad = conv.convertAdditionalService(ads);
+			additionalservicerepo.save(ad);
+		}
+		
+		System.out.println(response.getAccommodationObject().size()+"ACCOBJ");
+		for(com.ftn.accommodationservice.xsd.AccommodationObject aco : response.getAccommodationObject()) {
+			AccommodationObject accObj = new AccommodationObject();
+			accObj = conv.convertAccommodation(aco);
+			accObjRepo.save(accObj);
+		}
+		
+		for(AccUnitPrice ac : response.getAccUnitPrice()) {
+			com.ftn.agentservice.model.AccUnitPrice acp = new com.ftn.agentservice.model.AccUnitPrice();
+			acp = conv.convertAccUnitPrice(ac);
+			acurepo.save(acp);
+		}
+		
+		for(AccommodationUnit ac : response.getAccommodationUnit()) {
+			com.ftn.agentservice.model.AccommodationUnit acu = new com.ftn.agentservice.model.AccommodationUnit();
+			acu = conv.convertAccUnit(ac);
+			aunitrepo.save(acu);
+		}
+		
+		for(com.ftn.accommodationservice.xsd.Reservation res :  response.getReservation()) {
+			Reservation reser = new Reservation();
+			reser = conv.convertReservation(res);
+			reservationRepository.save(reser);
+		}
+		return response;
 	}
 	
 	/*public PostAccommodationObjectResponse createObject(AccommodationObject acc) {
