@@ -35,3 +35,45 @@ services:
         links:
           - eureka:eureka
 
+
+    accommodation:
+            image: accommodation-service
+            container_name: accommodation-service
+            build:
+                context: ./accommodation-service
+                dockerfile: Dockerfile
+            ports:
+              - "8082"
+            depends_on:
+              - eureka
+            links:
+              - eureka:eureka
+
+
+    reservation:
+            image: reservation-service
+            container_name: reservation-service
+            build:
+                context: ./reservation-service
+                dockerfile: Dockerfile
+            ports:
+              - "8083"
+            depends_on:
+              - eureka
+            links:
+              - eureka:eureka
+
+
+    auth:
+            image: auth-service
+            container_name: auth-service
+            build:
+                context: ./auth-service
+                dockerfile: Dockerfile
+            ports:
+              - "8085"
+            depends_on:
+              - eureka
+            links:
+              - eureka:eureka
+

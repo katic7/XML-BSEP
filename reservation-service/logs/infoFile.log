@@ -43,3 +43,6 @@ DESKTOP-SKD9GDH | 2019-06-29 11:32:20 | as.ReservationController | user: 3, begi
 DESKTOP-SKD9GDH | 2019-06-29 11:32:30 | as.ReservationController | user: 3, beginDate: Wed Jul 03 02:00:00 CEST 2019, endDate: Thu Jul 04 02:00:00 CEST 2019 | NAN0R3 | success
 DESKTOP-SKD9GDH | 2019-06-29 11:47:29 | as.ReservationController | id: 16 | 0BR3Z3 | success
 DESKTOP-SKD9GDH | 2019-06-29 11:49:01 | as.ReservationController | user: 3, beginDate: Wed Jul 03 02:00:00 CEST 2019, endDate: Fri Jul 05 02:00:00 CEST 2019 | NAN0R3 | success
+MKIT_LENOVO40 | 2019-06-30 09:46:38 | as.ReservationServiceApplicationTests | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-30 09:59:41 | as.ReservationServiceApplicationTests | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-30 10:00:15 | as.ReservationServiceApplicationTests | Started ReservationServiceApplicationTests in 43.272 seconds (JVM running for 46.935)

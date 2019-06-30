@@ -8,7 +8,7 @@ docker images
 ```
 pokretanje kontejnera
 ``` 
-docker run --detach -p 8082:8028 accommodation-service:latest
+docker run --detach -p 8082:8082 accommodation-service:latest
 
 ```
 
