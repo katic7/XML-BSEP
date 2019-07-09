@@ -93,6 +93,11 @@ export class SearchpageComponent implements OnInit {
     }
   }
 
+  ifForDelete(event){
+    console.log("AJDEE" + event)
+   // this.accUnits.splice(event, 1);
+  }
+
   getLoggedUser() {
     this.authService.getLogged().subscribe(data => {
       this.logged = data;

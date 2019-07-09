@@ -10,6 +10,8 @@ import { HttpRequest } from '@angular/common/http';
 import { AuthService } from '../auth/service/auth.service';
 import { User } from 'src/app/models/User';
 import { Router } from '@angular/router';
+import { Type } from 'src/app/models/Type';
+import { Category } from 'src/app/models/Category';
 
 @Component({
   selector: 'app-create-object',
@@ -22,6 +24,8 @@ export class CreateObjectComponent implements OnInit {
   accObj : AccommodationObject = new AccommodationObject();
   kat : FormControl = new FormControl("");
   tip : FormControl = new FormControl("");
+  tipovi : Type[] = [];
+  kategorije : Category[] = [];
   adr : string;
   logged : User;
 
@@ -31,6 +35,12 @@ export class CreateObjectComponent implements OnInit {
 
     this.authService.getLogged().subscribe(data=>{
       this.logged = data;
+      this.createService.getAllCategories().subscribe(cat=>{
+        this.kategorije = cat;
+      });
+      this.createService.getAllTypes().subscribe(tip=>{
+        this.tipovi = tip;
+      })
     },error=>{
       alert("Morate biti ulogovani!")
       this.router.navigate(['login']);

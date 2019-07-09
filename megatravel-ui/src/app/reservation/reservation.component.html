@@ -1,6 +1,7 @@
 <div class="searchobject">
   <div class="image">
-    <img [src]="sanitizer.bypassSecurityTrustUrl(imageUrl[0])" alt="">
+    <img *ngIf="!slikaAss" [src]="sanitizer.bypassSecurityTrustUrl(imageUrl[0])" alt="">
+    <img  *ngIf="slikaAss" src="assets/bg_2.jpg" alt="">
   </div>
   <div class="header">
     <h1>{{accUnit.accommodationObject.name}}</h1>

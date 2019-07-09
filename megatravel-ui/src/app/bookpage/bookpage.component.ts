@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationDTO } from 'src/app/models/ReservationDTO';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { AccommodationUnit } from 'src/app/models/AccommodationUnit';
@@ -9,6 +9,7 @@ import {Location} from '@angular/common';
 import { RatingDTO } from '../models/RatingDTO';
 import { CommentShow } from '../models/CommentShow';
 import { AuthService } from '../services/auth.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-bookpage',
@@ -23,10 +24,15 @@ export class BookpageComponent implements OnInit {
   listOfRatings: RatingDTO[] = [];
   commentList: CommentShow[] = [];
 
+  @Output() ifForDelete  = new EventEmitter();
+
   book() {
     this.reservationService.makeAReservation(this.reservation).subscribe(data => { console.log(data);
       alert("Booked successfully");
-      this._location.back();});
+      this.ifForDelete.emit(this.accUnit.id);
+      //this._location.back();
+      this.router.navigate(['profile']);
+    });
   }
 
   goBack() {
@@ -34,7 +40,7 @@ export class BookpageComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, private reservationService: ReservationService, 
-    private _location: Location, private auth: AuthService) { }
+    private _location: Location, private auth: AuthService, private router : Router) { }
 
   ngOnInit() {
 

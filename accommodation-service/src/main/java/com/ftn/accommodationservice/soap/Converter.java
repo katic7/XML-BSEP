@@ -32,6 +32,7 @@ public class Converter {
 		accObj.setDescription(acc.getDescription());
 		accObj.setFreeCancelation(acc.isFreeCancelation());
 		accObj.setName(acc.getName());
+		accObj.setId(acc.getId());
 		accObj.setType(tip);
 		accObj.setCategory(cat);
 		accObj.setAddress(adr);
@@ -49,6 +50,7 @@ public class Converter {
 		acc.setBalcony(accU.isBalcony());
 		acc.setDescription(accU.getDescription());
 		acc.setNumberOfBeds(accU.getNumberOfBeds());
+		acc.setId(accU.getId());
 		acc.setRating(accU.getRating());
 		acc.setAccObjectId(accU.getAccommodationObject().getId());
 		return acc;
@@ -56,18 +58,21 @@ public class Converter {
 	
 	public Type covertType(com.ftn.accommodationservice.model.Type tip) {
 		Type type = new Type();
+		type.setId(tip.getId());
 		type.setName(tip.getName());
 		return type;
 	}
 	
 	public Category convertCategory(com.ftn.accommodationservice.model.Category cat) {
 		Category kat = new Category();
+		kat.setId(cat.getId());
 		kat.setName(cat.getName());
 		return kat;
 	}
 	
 	public Address convertAddress(com.ftn.accommodationservice.model.Address address) {
 		Address adr = new Address();
+		adr.setId(address.getId());
 		adr.setLatitude(address.getLatitude());
 		adr.setLongitude(address.getLongitude());
 		adr.setPostalCode(address.getPostalCode());
@@ -80,6 +85,7 @@ public class Converter {
 	
 	public AdditionalService convertAdditionalService(com.ftn.accommodationservice.model.AdditionalService addit) {
 		AdditionalService add = new AdditionalService();
+		add.setId(addit.getId());
 		add.setIncluded(addit.isIncluded());
 		add.setName(addit.getName());
 		add.setPrice(addit.getPrice());
@@ -88,6 +94,7 @@ public class Converter {
 	
 	public AccUnitPrice convertAccUnitPrice(com.ftn.accommodationservice.model.AccUnitPrice accP) {
 		AccUnitPrice acc = new AccUnitPrice();
+		acc.setId(accP.getId());
 		acc.setEndDate(accP.getEndDate());
 		acc.setPrice(accP.getPrice());
 		acc.setStartDate(accP.getStartDate());
@@ -96,6 +103,7 @@ public class Converter {
 	
 	public Reservation convertReservation(com.ftn.accommodationservice.model.Reservation reserv) {
 		Reservation res = new Reservation();
+		res.setId(reserv.getId());
 		res.setActive(reserv.isActive());
 		res.setAccUnitId(reserv.getAccommodationUnit().getId());
 		res.setCompleted(reserv.isCompleted());

@@ -38,6 +38,7 @@ export class ReservationComponent implements OnInit {
   fileToUpload: File[]=[];
   images : any;
   difference;
+  slikaAss : boolean = false;
   constructor(private pipe: DatePipe, private reservationService: ReservationService,
      private accommodationUnitService : AccommodationunitService, private router : Router,  private sanitizer: DomSanitizer) { }
 
@@ -91,6 +92,9 @@ export class ReservationComponent implements OnInit {
         for(let v=0; v <slike.length;v++){
           this.imageUrl.push( "data:image/*;base64," + slike[v].data);
           console.log(this.imageUrl[0]);
+        }
+        if(this.imageUrl.length == 0){
+          this.slikaAss = true;
         }
       })
 

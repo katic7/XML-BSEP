@@ -260,14 +260,6 @@ public class AccommodationClient extends WebServiceGatewaySupport  {
 	}
 
 	public GetDataBaseResponse getDataBase() {
-		accObjRepo.deleteAll();
-		aunitrepo.deleteAll();
-		reservationRepository.deleteAll();
-		categoryRepository.deleteAll();
-		typeRepository.deleteAll();
-		addressRepo.deleteAll();
-		additionalservicerepo.deleteAll();
-		acurepo.deleteAll();
 		
 		Converter conv = new Converter();
 		GetDataBaseRequest request = new GetDataBaseRequest();

@@ -63,7 +63,7 @@ export class FilterbarComponent implements OnInit {
     this.accUnits = _.sortBy(this.accUnits, 'price.price');
     if(this.lowestPriceBoolean) {
       this.lowestPriceBoolean = false;
-      this.sorted.emit(this.accUnits.reverse());
+      this.sorted.emit(this.accUnits);
     } else {
       this.lowestPriceBoolean = true;
       this.sorted.emit(this.accUnits.reverse());

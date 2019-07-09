@@ -23,4 +23,12 @@ export class CreateObjectService {
   createObject(accObj: AccommodationObject) : Observable<any>{
     return this.http.post('https://localhost:8081/agentservice/api/accommodations/createAccObject', accObj);
   }
+
+  getAllTypes():Observable<any>{
+    return this.http.get('https://localhost:8081/agentservice/api/accommodations/types');
+  }
+
+  getAllCategories():Observable<any>{
+    return this.http.get('https://localhost:8081/agentservice/api/accommodations/categories');
+  }
 }

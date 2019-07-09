@@ -62,7 +62,9 @@ import com.ftn.agentservice.model.Role;
 import com.ftn.agentservice.model.User;
 import com.ftn.agentservice.repository.AccommodationObjectRepository;
 import com.ftn.agentservice.repository.AccommodationUnitRepository;
+import com.ftn.agentservice.repository.CategoryRepository;
 import com.ftn.agentservice.repository.ImageRepository;
+import com.ftn.agentservice.repository.TypeRepository;
 import com.ftn.agentservice.repository.UserRepository;
 import com.ftn.agentservice.soap.AccommodationClient;
 
@@ -78,6 +80,12 @@ public class AccommodationController {
 	
 	@Autowired
 	private ImageRepository imageRepo;
+	
+	@Autowired
+	private TypeRepository typerepo;
+	
+	@Autowired
+	private CategoryRepository catrepo;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -136,6 +144,22 @@ public class AccommodationController {
 	public ResponseEntity<?> syncDataBase(){
 		GetDataBaseResponse response = client.getDataBase();
 		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
+	@GetMapping("/types")
+	public ResponseEntity<List<com.ftn.agentservice.model.Type>> getAllTypes() {
+		List<com.ftn.agentservice.model.Type> ty = new ArrayList<>();
+		ty = typerepo.findAll();
+		return new ResponseEntity<List<com.ftn.agentservice.model.Type>>(ty, HttpStatus.OK);
+	}
+	
+	@PreAuthorize("hasAuthority('AddAccUnit')")
+	@GetMapping("/categories")
+	public ResponseEntity<List<com.ftn.agentservice.model.Category>> getAllCategories() {
+		List<com.ftn.agentservice.model.Category> ty = new ArrayList<>();
+		ty = catrepo.findAll();
+		return new ResponseEntity<List<com.ftn.agentservice.model.Category>>(ty, HttpStatus.OK);
 	}
 	
 	@PreAuthorize("hasAuthority('AddAccUnit')")

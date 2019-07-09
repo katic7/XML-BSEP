@@ -68,7 +68,7 @@
                     </div>
                 
                     <div class="availability">
-                      <button (click)="makeAReservation(accUnit)" >See Availability</button>
+                      <button (click)="makeAReservation(accUnit)" (ifForDelete) = "ifForDelete($event)" >See Availability</button>
                     </div>
                 
                   </div>

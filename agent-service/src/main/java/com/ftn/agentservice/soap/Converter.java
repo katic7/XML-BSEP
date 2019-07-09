@@ -14,6 +14,7 @@ public class Converter {
 
 	public com.ftn.agentservice.model.Type covertType(Type tip) {
 		com.ftn.agentservice.model.Type type = new com.ftn.agentservice.model.Type();
+		type.setId(tip.getId());
 		type.setName(tip.getName());
 		return type;
 	}
@@ -21,6 +22,7 @@ public class Converter {
 	public com.ftn.agentservice.model.Category convertCategory(Category cat) {
 		com.ftn.agentservice.model.Category kat = new com.ftn.agentservice.model.Category();
 		kat.setName(cat.getName());
+		kat.setId(cat.getId());
 		return kat;
 	}
 	
@@ -30,6 +32,7 @@ public class Converter {
 		adr.setLongitude(address.getLongitude());
 		adr.setPostalCode(address.getPostalCode());
 		adr.setState(address.getState());
+		adr.setId(address.getId());
 		adr.setStreet(address.getStreet());
 		adr.setStreetNumber(address.getStreetNumber());
 		adr.setTown(address.getTown());
@@ -41,6 +44,7 @@ public class Converter {
 		add.setIncluded(addit.isIncluded());
 		add.setName(addit.getName());
 		add.setPrice(addit.getPrice());
+		add.setId(addit.getId());
 		return add;
 	}
 	
@@ -49,6 +53,7 @@ public class Converter {
 		acc.setEndDate(accP.getEndDate());
 		acc.setPrice(accP.getPrice());
 		acc.setStartDate(accP.getStartDate());
+		acc.setId(accP.getId());
 		return acc;
 	}
 	
@@ -76,6 +81,7 @@ public class Converter {
 		accObj.setDescription(acc.getDescription());
 		accObj.setFreeCancelation(acc.isFreeCancelation());
 		accObj.setName(acc.getName());
+		accObj.setId(acc.getId());
 		accObj.setType(tip);
 		accObj.setCategory(cat);
 		return accObj;
@@ -94,6 +100,7 @@ public class Converter {
 		acc.setBalcony(accU.isBalcony());
 		acc.setDescription(accU.getDescription());
 		acc.setNumberOfBeds(accU.getNumberOfBeds());
+		acc.setId(accU.getId());
 		acc.setRating(accU.getRating());
 		acc.setAccommodationObject(ao);
 		return acc;
@@ -111,6 +118,7 @@ public class Converter {
 		res.setPrice(reserv.getPrice());
 		res.setUser(null);	//nema usera na agent bazi
 		res.setBeginDate(reserv.getBeginDate());
+		res.setId(reserv.getId());
 		res.setEndDate(reserv.getEndDate());
 		res.setReservationDate(reserv.getReservationDate());
 		return res;

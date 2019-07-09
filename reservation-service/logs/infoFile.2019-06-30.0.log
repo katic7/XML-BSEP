@@ -1,0 +1,63 @@
+DESKTOP-RGDHRKN | 2019-06-29 03:37:36 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:37:44 | as.ReservationServiceApplication | Started ReservationServiceApplication in 9.024 seconds (JVM running for 9.643)
+DESKTOP-RGDHRKN | 2019-06-29 03:41:22 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:41:30 | as.ReservationServiceApplication | Started ReservationServiceApplication in 8.856 seconds (JVM running for 9.467)
+DESKTOP-RGDHRKN | 2019-06-29 03:42:28 | as.ReservationController | user: com.ftn.reservationservice.model.User@7d26d81d, id: null | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:44:45 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:44:53 | as.ReservationServiceApplication | Started ReservationServiceApplication in 8.788 seconds (JVM running for 9.398)
+DESKTOP-RGDHRKN | 2019-06-29 03:45:00 | as.ReservationController | user: com.ftn.reservationservice.model.User@17b42f7b, accUid: com.ftn.reservationservice.model.AccommodationUnit@11f3b926 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:46:37 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:46:45 | as.ReservationServiceApplication | Started ReservationServiceApplication in 8.918 seconds (JVM running for 9.572)
+DESKTOP-RGDHRKN | 2019-06-29 03:46:49 | as.ReservationController | user: 3, beginDate: Sun Jun 30 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:50:18 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 03:50:26 | as.ReservationServiceApplication | Started ReservationServiceApplication in 9.206 seconds (JVM running for 9.825)
+DESKTOP-RGDHRKN | 2019-06-29 03:50:47 | as.ReservationController | id: 10 | 0BR3Z3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:54:50 | as.ReservationController | id: 9 | 0BR3Z3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:55:18 | as.ReservationController | id: 10 | 0BR3Z3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:55:36 | as.ReservationController | user: 3, beginDate: Sun Jun 30 02:00:00 CEST 2019, endDate: Mon Jul 01 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 03:55:41 | as.ReservationController | id: 9 | 0BR3Z3 | success
+DESKTOP-RGDHRKN | 2019-06-29 09:44:39 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 09:44:48 | as.ReservationServiceApplication | Started ReservationServiceApplication in 10.72 seconds (JVM running for 11.425)
+DESKTOP-RGDHRKN | 2019-06-29 10:51:45 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 10:51:54 | as.ReservationServiceApplication | Started ReservationServiceApplication in 10.619 seconds (JVM running for 11.343)
+DESKTOP-RGDHRKN | 2019-06-29 10:53:08 | as.ReservationController | user: 1, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Sat Jul 27 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 10:53:48 | as.ReservationController | user: 3, beginDate: Sun Jul 28 02:00:00 CEST 2019, endDate: Wed Jul 31 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 10:53:54 | as.ReservationController | id: 10 | 0BR3Z3 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:17:59 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-RGDHRKN | 2019-06-29 11:18:09 | as.ReservationServiceApplication | Started ReservationServiceApplication in 10.614 seconds (JVM running for 11.338)
+DESKTOP-RGDHRKN | 2019-06-29 11:24:27 | as.ReservationController | user: 3, beginDate: Mon Jul 01 02:00:00 CEST 2019, endDate: Wed Jul 10 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-RGDHRKN | 2019-06-29 11:28:32 | as.ReservationController | user: 3, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Tue Jul 30 02:00:00 CEST 2019 | NAN0R3 | success
+MKIT_LENOVO40 | 2019-06-29 12:18:26 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 12:19:35 | as.ReservationServiceApplication | Started ReservationServiceApplication in 80.97 seconds (JVM running for 85.299)
+MKIT_LENOVO40 | 2019-06-29 06:47:02 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-29 06:47:21 | as.ReservationServiceApplication | Started ReservationServiceApplication in 24.582 seconds (JVM running for 26.531)
+DESKTOP-SKD9GDH | 2019-06-29 10:14:45 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+DESKTOP-SKD9GDH | 2019-06-29 10:15:05 | as.ReservationServiceApplication | Started ReservationServiceApplication in 24.404 seconds (JVM running for 32.289)
+DESKTOP-SKD9GDH | 2019-06-29 10:46:21 | as.ReservationController | user: 3, beginDate: Fri Jun 28 02:00:00 CEST 2019, endDate: Sun Jun 30 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 10:46:21 | as.ReservationController | user: 3, beginDate: Fri Jun 28 02:00:00 CEST 2019, endDate: Sun Jun 30 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 10:47:01 | as.ReservationController | user: 3, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Wed Jul 31 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 10:47:07 | as.ReservationController | user: 3, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Wed Jul 31 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 10:47:12 | as.ReservationController | user: 3, beginDate: Wed Jul 24 02:00:00 CEST 2019, endDate: Wed Jul 31 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 11:32:08 | as.ReservationController | user: 3, beginDate: Mon Jul 01 02:00:00 CEST 2019, endDate: Thu Jul 04 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 11:32:20 | as.ReservationController | user: 3, beginDate: Tue Jul 02 02:00:00 CEST 2019, endDate: Thu Jul 04 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 11:32:30 | as.ReservationController | user: 3, beginDate: Wed Jul 03 02:00:00 CEST 2019, endDate: Thu Jul 04 02:00:00 CEST 2019 | NAN0R3 | success
+DESKTOP-SKD9GDH | 2019-06-29 11:47:29 | as.ReservationController | id: 16 | 0BR3Z3 | success
+DESKTOP-SKD9GDH | 2019-06-29 11:49:01 | as.ReservationController | user: 3, beginDate: Wed Jul 03 02:00:00 CEST 2019, endDate: Fri Jul 05 02:00:00 CEST 2019 | NAN0R3 | success
+MKIT_LENOVO40 | 2019-06-30 09:46:38 | as.ReservationServiceApplicationTests | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-30 09:59:41 | as.ReservationServiceApplicationTests | No active profile set, falling back to default profiles: default
+MKIT_LENOVO40 | 2019-06-30 10:00:15 | as.ReservationServiceApplicationTests | Started ReservationServiceApplicationTests in 43.272 seconds (JVM running for 46.935)
+Milan-PC | 2019-06-30 11:58:08 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 11:58:25 | as.ReservationServiceApplication | Started ReservationServiceApplication in 21.615 seconds (JVM running for 23.841)
+Milan-PC | 2019-06-30 12:15:57 | as.ReservationController | user: 3, beginDate: Tue Jun 18 01:00:00 BST 2019, endDate: Wed Jun 19 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 12:18:52 | as.ReservationController | id: 9 | 0BR3Z3 | success
+Milan-PC | 2019-06-30 08:36:50 | as.ReservationServiceApplication | No active profile set, falling back to default profiles: default
+Milan-PC | 2019-06-30 08:37:02 | as.ReservationServiceApplication | Started ReservationServiceApplication in 16.587 seconds (JVM running for 18.087)
+Milan-PC | 2019-06-30 10:15:17 | as.ReservationController | user: 3, beginDate: Tue Jun 11 01:00:00 BST 2019, endDate: Tue Jun 18 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:27:36 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:31:35 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:32:26 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:32:53 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:34:13 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:35:27 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:39:08 | as.ReservationController | user: 3, beginDate: Mon Jun 10 01:00:00 BST 2019, endDate: Fri Jun 14 01:00:00 BST 2019 | NAN0R3 | success
+Milan-PC | 2019-06-30 10:53:50 | as.ReservationController | user: 3, beginDate: Wed Jun 19 01:00:00 BST 2019, endDate: Wed Jun 12 01:00:00 BST 2019 | NAN0R3 | success

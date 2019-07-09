@@ -37,13 +37,6 @@ export class HomepageComponent implements OnInit {
             
           }else{
             this.accObj = agnet.accObj;
-            if(agnet.accObj.typeId == 1){
-              this.tip = "Hotel";
-            }else if(agnet.accObj.typeId == 2){
-              this.tip = "Motel";
-            }else if(agnet.accObj.typeId == 3){
-              this.tip = "Hostel";
-          }
           if(agnet.accObj.freeCacelation == true){
             this.freeCancel = "Yes";
           }else{
